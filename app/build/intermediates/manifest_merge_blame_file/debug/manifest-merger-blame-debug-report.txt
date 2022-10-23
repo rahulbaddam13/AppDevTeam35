@@ -1,0 +1,133 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="edu.northeastern.numad22fa_mrp"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="27"
+8-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="32" />
+9-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+11-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:6:5-79
+11-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:6:22-76
+12    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+12-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:7:5-81
+12-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:7:22-78
+13    <uses-permission android:name="android.permission.INTERNET" />
+13-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:8:5-66
+13-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:8:22-64
+14    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+14-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:9:5-78
+14-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:9:22-76
+15
+16    <application
+16-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:11:5-44:19
+17        android:allowBackup="true"
+17-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:12:9-35
+18        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+18-->[androidx.core:core:1.8.0] C:\Users\madhu\.gradle\caches\transforms-3\0638d9dacb5fd10604e28ec2b4d3c80b\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
+19        android:dataExtractionRules="@xml/data_extraction_rules"
+19-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:13:9-65
+20        android:debuggable="true"
+21        android:extractNativeLibs="false"
+22        android:fullBackupContent="@xml/backup_rules"
+22-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:14:9-54
+23        android:icon="@mipmap/ic_launcher_35"
+23-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:15:9-46
+24        android:label="@string/app_name"
+24-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:16:9-41
+25        android:roundIcon="@mipmap/ic_launcher_35_round"
+25-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:17:9-57
+26        android:supportsRtl="true"
+26-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:18:9-35
+27        android:testOnly="true"
+28        android:theme="@style/Theme.NUMAD22Fa_MRP" >
+28-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:19:9-51
+29        <activity
+29-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:21:9-24:61
+30            android:name="edu.northeastern.numad22fa_mrp.WeatherActivity"
+30-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:22:13-44
+31            android:configChanges="orientation|screenSize"
+31-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:24:13-59
+32            android:exported="false" />
+32-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:23:13-37
+33        <activity
+33-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:25:9-27:40
+34            android:name="edu.northeastern.numad22fa_mrp.FinalProject"
+34-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:26:13-41
+35            android:exported="false" />
+35-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:27:13-37
+36        <activity
+36-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:28:9-30:40
+37            android:name="edu.northeastern.numad22fa_mrp.StickItToEm"
+37-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:29:13-40
+38            android:exported="false" />
+38-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:30:13-37
+39        <activity
+39-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:31:9-34:61
+40            android:name="edu.northeastern.numad22fa_mrp.AtYourService"
+40-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:32:13-42
+41            android:configChanges="orientation|screenSize"
+41-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:34:13-59
+42            android:exported="false" />
+42-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:33:13-37
+43        <activity
+43-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:35:9-43:20
+44            android:name="edu.northeastern.numad22fa_mrp.MainActivity"
+44-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:36:13-41
+45            android:exported="true" >
+45-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:37:13-36
+46            <intent-filter>
+46-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:38:13-42:29
+47                <action android:name="android.intent.action.MAIN" />
+47-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:39:17-69
+47-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:39:25-66
+48
+49                <category android:name="android.intent.category.LAUNCHER" />
+49-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:41:17-77
+49-->D:\Work\Northeastern\Courses\Fall_2022\CS5520-MobileAppDev-DanielFeinberg\AppDevTeam35\app\src\main\AndroidManifest.xml:41:27-74
+50            </intent-filter>
+51        </activity>
+52        <activity
+52-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\madhu\.gradle\caches\transforms-3\6cf32bd63839314617d4a9c83e43d49a\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+53            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+53-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\madhu\.gradle\caches\transforms-3\6cf32bd63839314617d4a9c83e43d49a\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+54            android:exported="false"
+54-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\madhu\.gradle\caches\transforms-3\6cf32bd63839314617d4a9c83e43d49a\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+55            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+55-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\madhu\.gradle\caches\transforms-3\6cf32bd63839314617d4a9c83e43d49a\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+56
+57        <meta-data
+57-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\madhu\.gradle\caches\transforms-3\90ac72f3235d0f6396ecdabd09355d2c\transformed\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+58            android:name="com.google.android.gms.version"
+58-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\madhu\.gradle\caches\transforms-3\90ac72f3235d0f6396ecdabd09355d2c\transformed\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+59            android:value="@integer/google_play_services_version" />
+59-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\madhu\.gradle\caches\transforms-3\90ac72f3235d0f6396ecdabd09355d2c\transformed\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+60
+61        <provider
+61-->[androidx.emoji2:emoji2:1.2.0] C:\Users\madhu\.gradle\caches\transforms-3\69e8195e0af1903606758bebf50c459d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+62            android:name="androidx.startup.InitializationProvider"
+62-->[androidx.emoji2:emoji2:1.2.0] C:\Users\madhu\.gradle\caches\transforms-3\69e8195e0af1903606758bebf50c459d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
+63            android:authorities="edu.northeastern.numad22fa_mrp.androidx-startup"
+63-->[androidx.emoji2:emoji2:1.2.0] C:\Users\madhu\.gradle\caches\transforms-3\69e8195e0af1903606758bebf50c459d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
+64            android:exported="false" >
+64-->[androidx.emoji2:emoji2:1.2.0] C:\Users\madhu\.gradle\caches\transforms-3\69e8195e0af1903606758bebf50c459d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
+65            <meta-data
+65-->[androidx.emoji2:emoji2:1.2.0] C:\Users\madhu\.gradle\caches\transforms-3\69e8195e0af1903606758bebf50c459d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+66                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+66-->[androidx.emoji2:emoji2:1.2.0] C:\Users\madhu\.gradle\caches\transforms-3\69e8195e0af1903606758bebf50c459d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
+67                android:value="androidx.startup" />
+67-->[androidx.emoji2:emoji2:1.2.0] C:\Users\madhu\.gradle\caches\transforms-3\69e8195e0af1903606758bebf50c459d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
+68            <meta-data
+68-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\madhu\.gradle\caches\transforms-3\a2a5ae00951a98f5c9bbf6406733a104\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+69                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+69-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\madhu\.gradle\caches\transforms-3\a2a5ae00951a98f5c9bbf6406733a104\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+70                android:value="androidx.startup" />
+70-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\madhu\.gradle\caches\transforms-3\a2a5ae00951a98f5c9bbf6406733a104\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+71        </provider>
+72    </application>
+73
+74</manifest>
