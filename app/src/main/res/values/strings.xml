@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NUMAD22Fa_MRP</string>
+    <string name="get_weather">Get Weather</string>
 </resources>
