@@ -58,7 +58,6 @@ public class WeatherCustomLocation extends AppCompatActivity {
     private int currentPhotoNumber = 0;
     private Button button;
 
-    private TextView locationId;
 
     public static String httpResponse(URL url) throws IOException {
         StringBuilder jsonResult = new StringBuilder();
@@ -91,69 +90,74 @@ public class WeatherCustomLocation extends AppCompatActivity {
         button = (Button) findViewById(R.id.yes);
         imageView = (ImageView) findViewById(R.id.imageWeather);
         button.setVisibility(View.INVISIBLE);
-//        locationId = findViewById(R.id.locationId);
-//        locationId.setVisibility(View.INVISIBLE);
 
 
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            search.setOnClickListener(new View.OnClickListener() {
 
-                removeImg();
-                getWeatherData(textField.getText().toString().trim());
-//                locationId.setVisibility(View.VISIBLE);
-                button.setVisibility(View.VISIBLE);
 
-            }
-        });
+                @Override
+                public void onClick(View v) {
 
-    }
+                    getWeatherData(textField.getText().toString().trim());
+
+
+
+                }
+            });
+        }
+
 
     private void getWeatherData(String name) {
 
-        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+            ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+            try {
+                Call<Example> call = apiInterface.getWeatherData(name);
+                call.enqueue(new Callback<Example>() {
+                    @SuppressLint("SetTextI18n")
+                    @Override
+                    public void onResponse(Call<Example> call, Response<Example> response) {
+                        if (response.body() == null) {
+                            Toast.makeText(WeatherCustomLocation.this, "Enter Valid Location", Toast.LENGTH_SHORT).show();
 
-        Call<Example> call = apiInterface.getWeatherData(name);
+                        } else {
+                            humidity = response.body().getMain().getHumidity();
+                            temperature = response.body().getMain().getTemp();
+                            tempText.setText("Temp" + " " + response.body().getMain().getTemp() + " C");
+                            descText.setText("Feels Like" + " " + response.body().getMain().getFeels_like());
+                            humidityText.setText("Humidity" + " " + response.body().getMain().getHumidity());
+                            button.setVisibility(View.VISIBLE);
+                        }
 
-        call.enqueue(new Callback<Example>() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onResponse(Call<Example> call, Response<Example> response) {
+                    }
 
-                assert response.body() != null;
-                humidity = response.body().getMain().getHumidity();
-                temperature = response.body().getMain().getTemp();
-                tempText.setText("Temp" + " " + response.body().getMain().getTemp() + " C");
-                descText.setText("Feels Like" + " " + response.body().getMain().getFeels_like());
-                humidityText.setText("Humidity" + " " + response.body().getMain().getHumidity());
+                    @Override
+                    public void onFailure(Call<Example> call, Throwable t) {
+                        Toast.makeText(WeatherCustomLocation.this, "Enter Location", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }catch (NullPointerException e)
+            {
+                Toast.makeText(WeatherCustomLocation.this, "Enter Valid Location", Toast.LENGTH_SHORT).show();
+
             }
-
-            @Override
-            public void onFailure(Call<Example> call, Throwable t) {
-
-            }
-        });
 
     }
 
-
     private String constructUrl(String url) {
-        String urlTag = "";
-        if(Float.parseFloat(humidity) >90) {
-            urlTag = "raining";
-        }
-        else {
-            if (Float.parseFloat(temperature) < 15) {
+        String urlTag;
+
+        if (Float.parseFloat(temperature) < 15) {
                 urlTag = "cold";
             }
             if (Float.parseFloat(temperature) > 25) {
                 urlTag = "scorching";
             }
-            if (Float.parseFloat(temperature) < 5) {
+            if (Float.parseFloat(temperature) < 15) {
                 urlTag = "shivery";
             }
-        }
-        urlTag = "raining";
+        else{
+            urlTag = "raining";
+            }
         url += "?method=flickr.photos.search";
         url += "&api_key=" + key;
         url += "&tags=" + urlTag;
@@ -188,21 +192,13 @@ public class WeatherCustomLocation extends AppCompatActivity {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-
-                // background work here (doInBackground())
                 JSONObject jObject = new JSONObject();
                 try {
                     Log.e("WebActivity", Base_Url);
                     Base_Url = constructUrl(Base_Url);
                     URL url = new URL(Base_Url);
-
-                    // 1. open the url request
-                    // 2. download json response
-                    // 3. parse json response to photo object
                     String res = httpResponse(url);
                     jObject = new JSONObject(res);
-
-
                 } catch (MalformedURLException e) {
                     Log.e("WebService","MalformedURLException");
                     e.printStackTrace();
@@ -213,7 +209,6 @@ public class WeatherCustomLocation extends AppCompatActivity {
                     Log.e("WebService","JSONException");
                     e.printStackTrace();
                 }
-
                 JSONObject finalJObject = jObject;
                 // parse data from json
                 try {
