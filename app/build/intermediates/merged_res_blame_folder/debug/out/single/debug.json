@@ -1,0 +1,154 @@
+[
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/drawable-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/layout_activity_stick_it_to_em.xml.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/layout/activity_stick_it_to_em.xml"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/mipmap-xhdpi_ic_launcher_35_round.png.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/mipmap-xhdpi/ic_launcher_35_round.png"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/layout_activity_weather_custom.xml.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/layout/activity_weather_custom.xml"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/layout_weather_layout.xml.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/layout/weather_layout.xml"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/layout_weather_info.xml.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/layout/weather_info.xml"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/mipmap-anydpi-v26_ic_launcher_35_round.xml.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/mipmap-anydpi-v26/ic_launcher_35_round.xml"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/mipmap-hdpi_ic_launcher_35.png.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/mipmap-hdpi/ic_launcher_35.png"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/layout_activity_weather.xml.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/layout/activity_weather.xml"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/drawable-v24_search.png.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/drawable-v24/search.png"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/mipmap-xhdpi_ic_launcher_35.png.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/mipmap-xhdpi/ic_launcher_35.png"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/xml_data_extraction_rules.xml.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/layout_weather_city.xml.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/layout/weather_city.xml"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/mipmap-mdpi_ic_launcher_35.png.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/mipmap-mdpi/ic_launcher_35.png"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/xml_backup_rules.xml.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/layout_activity_final_project.xml.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/layout/activity_final_project.xml"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/mipmap-xxxhdpi_ic_launcher_35.png.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/mipmap-xxxhdpi/ic_launcher_35.png"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/mipmap-xxhdpi_ic_launcher_35.png.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/mipmap-xxhdpi/ic_launcher_35.png"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/layout_activity_at_your_service.xml.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/layout/activity_at_your_service.xml"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/mipmap-anydpi-v26_ic_launcher_35.xml.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/mipmap-anydpi-v26/ic_launcher_35.xml"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/mipmap-xxhdpi_ic_launcher_35_round.png.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/mipmap-xxhdpi/ic_launcher_35_round.png"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/drawable_ic_launcher_mrp_foreground.xml.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/drawable/ic_launcher_mrp_foreground.xml"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/drawable_ic_launcher_35_foreground.xml.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/drawable/ic_launcher_35_foreground.xml"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/drawable_ic_launcher_background.xml.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/mipmap-mdpi_ic_launcher_35_round.png.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/mipmap-mdpi/ic_launcher_35_round.png"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/mipmap-xxxhdpi_ic_launcher_35_round.png.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/mipmap-xxxhdpi/ic_launcher_35_round.png"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/layout_activity_main.xml.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/layout/activity_main.xml"
+    },
+    {
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-33:/mipmap-hdpi_ic_launcher_35_round.png.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-35:/mipmap-hdpi/ic_launcher_35_round.png"
+    }
+]
