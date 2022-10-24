@@ -73,9 +73,9 @@ public class WeatherActivity extends AppCompatActivity {
                 return;
             }
             if (locationResult != null) {
-                lat = String.format("%.4f", locationResult.getLastLocation().getLatitude());
-                longitude = String.format("%.4f", locationResult.getLastLocation().getLongitude());
-                Log.d(TAG, "onLocationResult: " + locationResult.getLocations().toString());
+                lat = String.format("%.4f", locationResult.getLocations().get(0).getLatitude());
+                longitude = String.format("%.4f", locationResult.getLocations().get(0).getLongitude());
+                Log.d(TAG, "onLocationResult: " + locationResult.getLocations().get(0).toString());
 
                getCity();
             }
@@ -238,8 +238,10 @@ public class WeatherActivity extends AppCompatActivity {
                         WeatherRecyclerViewItem.LOCATION,
                         header.getProperties().getLocation().getProperties().getCity(),
                         header.getProperties().getLocation().getProperties().getState());
-                itemList.add(0, loc);
-                rvRetrofitAdapter.notifyItemInserted(0);
+                if (itemList.isEmpty()) {
+                    itemList.add(0, loc);
+                    rvRetrofitAdapter.notifyItemInserted(0);
+                }
 
                 getDate();
             }
@@ -258,8 +260,10 @@ public class WeatherActivity extends AppCompatActivity {
         WeatherRecyclerViewItem date = new WeatherRecyclerViewItem.Date(
                 WeatherRecyclerViewItem.DATE,
                 datetxt);
-        itemList.add(1, date);
-        rvRetrofitAdapter.notifyItemInserted(1);
+        if (itemList.size() == 1) {
+            itemList.add(1, date);
+            rvRetrofitAdapter.notifyItemInserted(1);
+        }
         getWeather();
     }
 
@@ -291,8 +295,10 @@ public class WeatherActivity extends AppCompatActivity {
                                 prop[i].getTemperature(),
                                 prop[i].getIcon(),
                                 prop[i].getDetailedForecast());
-                        itemList.add(data);
-                        rvRetrofitAdapter.notifyItemInserted(itemList.size() - 1);
+                        if (itemList.size() == 2 || itemList.size() == 3) {
+                            itemList.add(data);
+                            rvRetrofitAdapter.notifyItemInserted(itemList.size() - 1);
+                        }
                 }
                 progress.setVisibility(View.GONE);
           }
