@@ -31,12 +31,12 @@ public class AtYourService extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openWeather(View view) {
+    /*public void openWeather(View view) {
         int theId = view.getId();
         if (theId == R.id.weather) {
             Intent intent = new Intent(this, WeatherActivity.class);
             startActivity(intent);
         }
-    }
+    }*/
 
 }
