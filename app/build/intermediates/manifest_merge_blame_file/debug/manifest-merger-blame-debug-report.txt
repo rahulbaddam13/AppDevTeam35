@@ -1,0 +1,140 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="edu.northeastern.numad22fa_mrp"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="27"
+8-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="32" />
+9-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+11-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:6:5-81
+11-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:6:22-78
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:7:5-66
+12-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:7:22-64
+13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+13-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:8:5-78
+13-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:8:22-76
+14
+15    <application
+15-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:10:5-43:19
+16        android:allowBackup="true"
+16-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:11:9-35
+17        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+17-->[androidx.core:core:1.8.0] C:\Users\Pranathi\.gradle\caches\transforms-3\0638d9dacb5fd10604e28ec2b4d3c80b\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
+18        android:dataExtractionRules="@xml/data_extraction_rules"
+18-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:12:9-65
+19        android:debuggable="true"
+20        android:extractNativeLibs="false"
+21        android:fullBackupContent="@xml/backup_rules"
+21-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:13:9-54
+22        android:icon="@mipmap/ic_launcher_35"
+22-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:14:9-46
+23        android:label="@string/app_name"
+23-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:15:9-41
+24        android:roundIcon="@mipmap/ic_launcher_35_round"
+24-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:16:9-57
+25        android:supportsRtl="true"
+25-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:17:9-35
+26        android:testOnly="true"
+27        android:theme="@style/Theme.NUMAD22Fa_MRP" >
+27-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:18:9-51
+28        <activity
+28-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:20:9-23:61
+29            android:name="edu.northeastern.numad22fa_mrp.WeatherActivity"
+29-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:21:13-44
+30            android:configChanges="orientation|screenSize"
+30-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:23:13-59
+31            android:exported="false" />
+31-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:22:13-37
+32        <activity
+32-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:24:9-26:40
+33            android:name="edu.northeastern.numad22fa_mrp.FinalProject"
+33-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:25:13-41
+34            android:exported="false" />
+34-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:26:13-37
+35        <activity
+35-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:27:9-29:40
+36            android:name="edu.northeastern.numad22fa_mrp.StickItToEm"
+36-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:28:13-40
+37            android:exported="false" />
+37-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:29:13-37
+38        <activity
+38-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:30:9-33:61
+39            android:name="edu.northeastern.numad22fa_mrp.AtYourService"
+39-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:31:13-42
+40            android:configChanges="orientation|screenSize"
+40-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:33:13-59
+41            android:exported="false" />
+41-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:32:13-37
+42        <activity
+42-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:34:9-42:20
+43            android:name="edu.northeastern.numad22fa_mrp.MainActivity"
+43-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:35:13-41
+44            android:exported="true" >
+44-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:36:13-36
+45            <intent-filter>
+45-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:37:13-41:29
+46                <action android:name="android.intent.action.MAIN" />
+46-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:38:17-69
+46-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:38:25-66
+47
+48                <category android:name="android.intent.category.LAUNCHER" />
+48-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:40:17-77
+48-->C:\Users\Pranathi\AndroidStudioProjects\Group\app\src\main\AndroidManifest.xml:40:27-74
+49            </intent-filter>
+50        </activity>
+51
+52        <provider
+52-->[com.squareup.picasso:picasso:2.71828] C:\Users\Pranathi\.gradle\caches\transforms-3\972607284ef26ab891de86d531b3dabf\transformed\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
+53            android:name="com.squareup.picasso.PicassoProvider"
+53-->[com.squareup.picasso:picasso:2.71828] C:\Users\Pranathi\.gradle\caches\transforms-3\972607284ef26ab891de86d531b3dabf\transformed\jetified-picasso-2.71828\AndroidManifest.xml:9:13-64
+54            android:authorities="edu.northeastern.numad22fa_mrp.com.squareup.picasso"
+54-->[com.squareup.picasso:picasso:2.71828] C:\Users\Pranathi\.gradle\caches\transforms-3\972607284ef26ab891de86d531b3dabf\transformed\jetified-picasso-2.71828\AndroidManifest.xml:10:13-72
+55            android:exported="false" />
+55-->[com.squareup.picasso:picasso:2.71828] C:\Users\Pranathi\.gradle\caches\transforms-3\972607284ef26ab891de86d531b3dabf\transformed\jetified-picasso-2.71828\AndroidManifest.xml:11:13-37
+56
+57        <activity
+57-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Pranathi\.gradle\caches\transforms-3\6cf32bd63839314617d4a9c83e43d49a\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+58            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+58-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Pranathi\.gradle\caches\transforms-3\6cf32bd63839314617d4a9c83e43d49a\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+59            android:exported="false"
+59-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Pranathi\.gradle\caches\transforms-3\6cf32bd63839314617d4a9c83e43d49a\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+60            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+60-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Pranathi\.gradle\caches\transforms-3\6cf32bd63839314617d4a9c83e43d49a\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+61
+62        <meta-data
+62-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Pranathi\.gradle\caches\transforms-3\90ac72f3235d0f6396ecdabd09355d2c\transformed\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+63            android:name="com.google.android.gms.version"
+63-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Pranathi\.gradle\caches\transforms-3\90ac72f3235d0f6396ecdabd09355d2c\transformed\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+64            android:value="@integer/google_play_services_version" />
+64-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Pranathi\.gradle\caches\transforms-3\90ac72f3235d0f6396ecdabd09355d2c\transformed\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+65
+66        <provider
+66-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Pranathi\.gradle\caches\transforms-3\69e8195e0af1903606758bebf50c459d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+67            android:name="androidx.startup.InitializationProvider"
+67-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Pranathi\.gradle\caches\transforms-3\69e8195e0af1903606758bebf50c459d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
+68            android:authorities="edu.northeastern.numad22fa_mrp.androidx-startup"
+68-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Pranathi\.gradle\caches\transforms-3\69e8195e0af1903606758bebf50c459d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
+69            android:exported="false" >
+69-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Pranathi\.gradle\caches\transforms-3\69e8195e0af1903606758bebf50c459d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
+70            <meta-data
+70-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Pranathi\.gradle\caches\transforms-3\69e8195e0af1903606758bebf50c459d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+71                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+71-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Pranathi\.gradle\caches\transforms-3\69e8195e0af1903606758bebf50c459d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
+72                android:value="androidx.startup" />
+72-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Pranathi\.gradle\caches\transforms-3\69e8195e0af1903606758bebf50c459d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
+73            <meta-data
+73-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Pranathi\.gradle\caches\transforms-3\a2a5ae00951a98f5c9bbf6406733a104\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+74                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+74-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Pranathi\.gradle\caches\transforms-3\a2a5ae00951a98f5c9bbf6406733a104\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+75                android:value="androidx.startup" />
+75-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Pranathi\.gradle\caches\transforms-3\a2a5ae00951a98f5c9bbf6406733a104\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+76        </provider>
+77    </application>
+78
+79</manifest>

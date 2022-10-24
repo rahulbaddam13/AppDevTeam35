@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Pranathi/AndroidStudioProjects/Group/app/src/main/res/layout/activity_at_your_service.xml" value="0.24242424242424243" />
+        <entry key="..\:/Users/Pranathi/AndroidStudioProjects/Group/app/src/main/res/layout/activity_weather.xml" value="0.12" />
+        <entry key="..\:/Users/Pranathi/AndroidStudioProjects/Group/app/src/main/res/layout/weather_city.xml" value="0.10729166666666666" />
+        <entry key="..\:/Users/Pranathi/AndroidStudioProjects/Group/app/src/main/res/layout/weather_info.xml" value="0.10729166666666666" />
+        <entry key="..\:/Users/Pranathi/AndroidStudioProjects/Group/app/src/main/res/layout/weather_layout.xml" value="0.10729166666666666" />
         <entry key="..\:/Users/rahul/AndroidStudioProjects/NUMAD22Fa_MRP/app/src/main/res/mipmap-anydpi-v26/ic_launcher_35_round.xml" value="0.1" />
       </map>
     </option>

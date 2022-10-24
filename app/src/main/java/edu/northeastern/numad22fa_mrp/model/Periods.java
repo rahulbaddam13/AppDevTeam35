@@ -6,6 +6,11 @@ public class Periods {
     private int temperature;
     private String icon;
     private String detailedForecast;
+    private boolean isDaytime;
+
+    public boolean isDaytime() {
+        return isDaytime;
+    }
 
     public int getNumber() {
         return number;
