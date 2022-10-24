@@ -11,6 +11,7 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
+import android.icu.util.DateInterval;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Looper;
@@ -31,6 +32,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import edu.northeastern.numad22fa_mrp.adapters.RVRetrofitAdapter;
@@ -234,6 +237,14 @@ public class WeatherActivity extends AppCompatActivity {
                 y = header.getProperties().getGridY();
                 code = header.getProperties().getCwa();
 
+                StringBuffer info = new StringBuffer("X:").append(x)
+                        .append("\n")
+                        .append("Y:").append(y)
+                        .append("\n")
+                        .append("CWA:").append(code);
+
+                Log.d(TAG, "onResponse: " + info);
+
                 WeatherRecyclerViewItem loc = new WeatherRecyclerViewItem.Header(
                         WeatherRecyclerViewItem.LOCATION,
                         header.getProperties().getLocation().getProperties().getCity(),
@@ -279,14 +290,21 @@ public class WeatherActivity extends AppCompatActivity {
 
                 Log.d(TAG, "Call Success!");
                 info = response.body();
+                LocalDate now = LocalDate.now();
+                LocalDateTime start = now.atStartOfDay();
+                LocalDateTime latest = start.plusHours(9);
+                LocalDateTime current = LocalDateTime.now();
+
                 Periods[] prop = info.getProperties().getPeriods();
                 if (days == 0){
                     num = 0;
                 }
-                else if (prop[0].isDaytime() & days != 0){
-                    num = (int) (2 * (days)) + 2;
+                else if (prop[0].isDaytime()){
+                    num = (int) (2 * (days));
+                } else if (current.isAfter(start) && (current.isBefore(latest)) ) {
+                    num = (int) (2 * (days)) + 1;
                 } else {
-                    num = (int)(2 * (days)) + 1;
+                    num = (int)(2 * (days - 1)) + 1;
                 }
                 for (int i = num; i < (num + 2); i++) {
                         WeatherRecyclerViewItem data = new WeatherRecyclerViewItem.Period(
