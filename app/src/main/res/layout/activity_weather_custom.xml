@@ -25,7 +25,8 @@
             android:textSize="16dp"
             android:background="#fff"
             android:padding="10dp"
-            android:text="Enter a Location"
+            android:hint="Enter a Location"
+            android:textColorHint="@color/cardview_dark_background"
             android:layout_marginLeft="15dp"
             android:gravity="center"
             android:layout_gravity="center"
@@ -96,12 +97,19 @@
                 android:paddingTop="10dp">
 
             </ImageView>
-            <ProgressBar
-                android:id="@+id/progress"
+<!--            <ProgressBar-->
+<!--                android:id="@+id/progress"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_horizontal">-->
+<!--            </ProgressBar>-->
+            <ImageView
+                android:id="@+id/sun"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal">
-            </ProgressBar>
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_load_foreground">
+            </ImageView>
         </LinearLayout>
 
 

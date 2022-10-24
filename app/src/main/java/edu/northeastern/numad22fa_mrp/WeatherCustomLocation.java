@@ -13,6 +13,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -52,6 +54,8 @@ import retrofit2.Response;
 
 public class WeatherCustomLocation extends AppCompatActivity {
     ImageView search;
+    Animation animation;
+    ImageView sun;
     TextView tempText, descText, humidityText;
     EditText textField;
     String temperature,humidity;
@@ -96,8 +100,12 @@ public class WeatherCustomLocation extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.imageWeather);
         button.setVisibility(View.INVISIBLE);
 
-        progress = findViewById(R.id.progress);
-        progress.setVisibility(View.INVISIBLE);
+//        progress = findViewById(R.id.progress);
+//        progress.setVisibility(View.INVISIBLE);
+        sun = findViewById(R.id.sun);
+        sun.setVisibility(View.INVISIBLE);
+        animation = AnimationUtils.loadAnimation(this,R.anim.rotate);
+
 
 
             search.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +113,7 @@ public class WeatherCustomLocation extends AppCompatActivity {
 
                 @Override
                 public void onClick(View v) {
+
                     getWeatherData(textField.getText().toString().trim());
 
                 }
@@ -189,7 +198,8 @@ public class WeatherCustomLocation extends AppCompatActivity {
     }
 
     public void clickWebService(View view) {
-        progress.setVisibility(View.VISIBLE);
+//        progress.setVisibility(View.VISIBLE);
+        sun.startAnimation(animation);
 
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
@@ -265,8 +275,11 @@ public class WeatherCustomLocation extends AppCompatActivity {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
+                        sun.setVisibility(View.INVISIBLE);
                         imageView.setImageBitmap(finalPhotoIcon);
-                        progress.setVisibility(View.INVISIBLE);;
+//                        progress.setVisibility(View.INVISIBLE);;
+
+
                     }
                 });
             }
