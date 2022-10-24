@@ -96,6 +96,12 @@
                 android:paddingTop="10dp">
 
             </ImageView>
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+            </ProgressBar>
         </LinearLayout>
 
 

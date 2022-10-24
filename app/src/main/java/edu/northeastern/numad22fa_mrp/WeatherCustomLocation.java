@@ -2,9 +2,11 @@ package edu.northeastern.numad22fa_mrp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,6 +60,8 @@ public class WeatherCustomLocation extends AppCompatActivity {
     static String key = "032be1117fdb2f5cf13a0747160895d6";
     private int currentPhotoNumber = 0;
     private Button button;
+    private ProgressBar progress;
+    private ObjectAnimator progressAnimator;
 
 
     public static String httpResponse(URL url) throws IOException {
@@ -91,16 +96,16 @@ public class WeatherCustomLocation extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.imageWeather);
         button.setVisibility(View.INVISIBLE);
 
+        progress = findViewById(R.id.progress);
+        progress.setVisibility(View.INVISIBLE);
+
 
             search.setOnClickListener(new View.OnClickListener() {
 
 
                 @Override
                 public void onClick(View v) {
-
                     getWeatherData(textField.getText().toString().trim());
-
-
 
                 }
             });
@@ -184,6 +189,7 @@ public class WeatherCustomLocation extends AppCompatActivity {
     }
 
     public void clickWebService(View view) {
+        progress.setVisibility(View.VISIBLE);
 
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
@@ -236,6 +242,7 @@ public class WeatherCustomLocation extends AppCompatActivity {
                             Toast.makeText(WeatherCustomLocation.this, "Enter Location!", Toast.LENGTH_SHORT).show();
                         }
                     });
+
                     return;
                 }
                 Random random = new Random();
@@ -259,6 +266,7 @@ public class WeatherCustomLocation extends AppCompatActivity {
                     @Override
                     public void run() {
                         imageView.setImageBitmap(finalPhotoIcon);
+                        progress.setVisibility(View.INVISIBLE);;
                     }
                 });
             }
