@@ -11,10 +11,12 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
-import android.location.Location;
+
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -29,11 +31,16 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+
 import edu.northeastern.numad22fa_mrp.adapters.RVRetrofitAdapter;
 import edu.northeastern.numad22fa_mrp.model.IPlaceHolder;
 import edu.northeastern.numad22fa_mrp.model.Periods;
 import edu.northeastern.numad22fa_mrp.model.WeatherHeader;
 import edu.northeastern.numad22fa_mrp.model.WeatherInfo;
+import edu.northeastern.numad22fa_mrp.model.WeatherRecyclerViewItem;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -46,14 +53,19 @@ public class WeatherActivity extends AppCompatActivity {
     private String lat;
     private String longitude;
     RecyclerView recyclerView;
+    private WeatherHeader header;
+    private WeatherInfo info;
     private int x;
+    private int num;
+    private long days;
     private int y;
     private String code;
     private final static int REQUEST_CODE = 100;
+    String datetxt;
     private static final String TAG = "Weather";
     RVRetrofitAdapter rvRetrofitAdapter;
-    WeatherHeader header;
-    WeatherInfo info;
+    ArrayList<WeatherRecyclerViewItem> itemList;
+    ProgressBar progress;
     FusedLocationProviderClient fusedLocationProviderClient;
     LocationRequest locationRequest;
     LocationCallback locationCallback = new LocationCallback() {
@@ -62,10 +74,12 @@ public class WeatherActivity extends AppCompatActivity {
             if (locationResult == null) {
                 return;
             }
-            for(Location location: locationResult.getLocations()){
-                lat = String.format("%.4f", location.getLatitude());
-                longitude = String.format("%.4f", location.getLongitude());
-                Log.d(TAG, "onLocationResult: " + location.toString());
+            if (locationResult != null) {
+                lat = String.format("%.4f", locationResult.getLocations().get(0).getLatitude());
+                longitude = String.format("%.4f", locationResult.getLocations().get(0).getLongitude());
+                Log.d(TAG, "onLocationResult: " + locationResult.getLocations().get(0).toString());
+
+                getCity();
             }
         }
     };
@@ -75,10 +89,11 @@ public class WeatherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
 
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        datetxt = getIntent().getStringExtra("dateString");
+        days = getIntent().getLongExtra("daysFuture", 0);
+
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(WeatherActivity.this);
         locationRequest = locationRequest.create();
-        locationRequest.setInterval(2000);
-        locationRequest.setFastestInterval(1000);
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
         retrofit = new Retrofit.Builder()
@@ -88,14 +103,15 @@ public class WeatherActivity extends AppCompatActivity {
 
         api = retrofit.create(IPlaceHolder.class);
 
-        getCity();
+
+        itemList = new ArrayList<>();
+        progress = findViewById(R.id.progressBar);
+
         recyclerView = findViewById(R.id.weatherRecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        rvRetrofitAdapter = new RVRetrofitAdapter(this, info, header);
+        rvRetrofitAdapter = new RVRetrofitAdapter(this, itemList);
         recyclerView.setAdapter(rvRetrofitAdapter);
     }
-
-
 
     @Override
     protected void onStart() {
@@ -107,6 +123,7 @@ public class WeatherActivity extends AppCompatActivity {
         } else {
             askLocationPermissions();
         }
+
     }
 
     @Override
@@ -204,9 +221,7 @@ public class WeatherActivity extends AppCompatActivity {
 
 
     private void getCity() {
-//        Call<WeatherHeader> call = api.getLocation(lat + "," + longitude);
-
-        Call<WeatherHeader> call = api.getLocation("40.5902,-74.3494");
+        Call<WeatherHeader> call = api.getLocation(lat + "," + longitude);
         call.enqueue(new Callback<WeatherHeader>() {
             @Override
             public void onResponse(Call<WeatherHeader> call, Response<WeatherHeader> response) {
@@ -220,21 +235,25 @@ public class WeatherActivity extends AppCompatActivity {
                 x = header.getProperties().getGridX();
                 y = header.getProperties().getGridY();
                 code = header.getProperties().getCwa();
-                getWeather();
 
-                StringBuffer str = new StringBuffer();
-                str.append("X:")
-                        .append(header.getProperties().getGridX())
+                StringBuffer info = new StringBuffer("X:").append(x)
                         .append("\n")
-                        .append("Y:")
-                        .append(header.getProperties().getGridY())
+                        .append("Y:").append(y)
                         .append("\n")
-                        .append("City:")
-                        .append(header.getProperties().getLocation().getProperties().getCity())
-                        .append("\n");
+                        .append("CWA:").append(code);
 
-                Log.d(TAG, str.toString());
+                Log.d(TAG, "onResponse: " + info);
 
+                WeatherRecyclerViewItem loc = new WeatherRecyclerViewItem.Header(
+                        WeatherRecyclerViewItem.LOCATION,
+                        header.getProperties().getLocation().getProperties().getCity(),
+                        header.getProperties().getLocation().getProperties().getState());
+                if (itemList.isEmpty()) {
+                    itemList.add(0, loc);
+                    rvRetrofitAdapter.notifyItemInserted(0);
+                }
+
+                getDate();
             }
 
             @Override
@@ -247,8 +266,19 @@ public class WeatherActivity extends AppCompatActivity {
 
     }
 
+    private void getDate() {
+        WeatherRecyclerViewItem date = new WeatherRecyclerViewItem.Date(
+                WeatherRecyclerViewItem.DATE,
+                datetxt);
+        if (itemList.size() == 1) {
+            itemList.add(1, date);
+            rvRetrofitAdapter.notifyItemInserted(1);
+        }
+        getWeather();
+    }
+
     private void getWeather() {
-       Call<WeatherInfo> call = api.getWeatherInfo(code,x,y);
+        Call<WeatherInfo> call = api.getWeatherInfo(code,x,y);
         call.enqueue(new Callback<WeatherInfo>() {
             @Override
             public void onResponse(Call<WeatherInfo> call, Response<WeatherInfo> response) {
@@ -259,25 +289,36 @@ public class WeatherActivity extends AppCompatActivity {
 
                 Log.d(TAG, "Call Success!");
                 info = response.body();
-                rvRetrofitAdapter.notifyDataSetChanged();
+                LocalDate now = LocalDate.now();
+                LocalDateTime start = now.atStartOfDay();
+                LocalDateTime latest = start.plusHours(9);
+                LocalDateTime current = LocalDateTime.now();
 
                 Periods[] prop = info.getProperties().getPeriods();
-                int num = 0;
-                if (num < 13) {
-                    for (int i = num; i < (num + 2); i++) {
-                        StringBuffer str = new StringBuffer();
-                        str.append("Name:")
-                                .append(prop[i].getName())
-                                .append("\n")
-                                .append(prop[i].getTemperature());
-
-                        Log.d(TAG, str.toString());
-                    }
+                if (days == 0){
+                    num = 0;
+                }
+                else if (prop[0].isDaytime()){
+                    num = (int) (2 * (days));
+                } else if (current.isAfter(start) && (current.isBefore(latest)) ) {
+                    num = (int) (2 * (days)) + 1;
                 } else {
-                    prop[num].getName();
-                    prop[num].getTemperature();
-               }
-          }
+                    num = (int)(2 * (days - 1)) + 1;
+                }
+                for (int i = num; i < (num + 2); i++) {
+                    WeatherRecyclerViewItem data = new WeatherRecyclerViewItem.Period(
+                            WeatherRecyclerViewItem.INFORMATION,
+                            prop[i].getName(),
+                            prop[i].getTemperature(),
+                            prop[i].getIcon(),
+                            prop[i].getDetailedForecast());
+                    if (itemList.size() == 2 || itemList.size() == 3) {
+                        itemList.add(data);
+                        rvRetrofitAdapter.notifyItemInserted(itemList.size() - 1);
+                    }
+                }
+                progress.setVisibility(View.GONE);
+            }
 
             @Override
             public void onFailure(Call<WeatherInfo> call, Throwable t) {

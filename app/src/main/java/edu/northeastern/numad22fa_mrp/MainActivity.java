@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
     private Button atYourService;
     private Button stickItToEm;
     private Button project;
-    private Button my;
+//    private Button my;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         atYourService = (Button)findViewById(R.id.AtYourService);
         stickItToEm = (Button)findViewById(R.id.StickItToEm);
         project = (Button)findViewById(R.id.Project);
-        my = (Button)findViewById(R.id.my);
+//        my = (Button)findViewById(R.id.my);
 
         atYourService.setOnClickListener(new View.OnClickListener() {
             @Override
