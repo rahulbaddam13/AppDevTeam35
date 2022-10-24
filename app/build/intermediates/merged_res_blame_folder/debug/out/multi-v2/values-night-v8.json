@@ -4,7 +4,7 @@
             "outputFile": "edu.northeastern.numad22fa_mrp.app-mergeDebugResources-29:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Pranathi\\AndroidStudioProjects\\Group\\app\\src\\main\\res\\values-night\\themes.xml",
+                    "source": "C:\\Users\\Pranathi\\AndroidStudioProjects\\Team35\\app\\src\\main\\res\\values-night\\themes.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

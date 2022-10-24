@@ -1,0 +1,162 @@
+Index: .idea/libraries/Gradle__com_squareup_okio_okio_1_17_4.xml
+===================================================================
+diff --git a/.idea/libraries/Gradle__com_squareup_okio_okio_1_17_4.xml b/.idea/libraries/Gradle__com_squareup_okio_okio_1_17_4.xml
+deleted file mode 100644
+--- a/.idea/libraries/Gradle__com_squareup_okio_okio_1_17_4.xml	(revision 9de5161d9228964be86fc0a47fba6b4f186baebe)
++++ /dev/null	(revision 9de5161d9228964be86fc0a47fba6b4f186baebe)
+@@ -1,13 +0,0 @@
+-<component name="libraryTable">
+-  <library name="Gradle: com.squareup.okio:okio:1.17.4">
+-    <CLASSES>
+-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.17.4/50077892fbc179bc69c0ac488442fd3a864e897f/okio-1.17.4.jar!/" />
+-    </CLASSES>
+-    <JAVADOC>
+-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.17.4/2cbe219932e057d1617be61b719fef4a2f930f4e/okio-1.17.4-javadoc.jar!/" />
+-    </JAVADOC>
+-    <SOURCES>
+-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.17.4/2181e952345acc506d8243349a31013ab25abf9/okio-1.17.4-sources.jar!/" />
+-    </SOURCES>
+-  </library>
+-</component>
+\ No newline at end of file
+Index: .idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_12_0_aar.xml
+===================================================================
+diff --git a/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_12_0_aar.xml b/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_12_0_aar.xml
+deleted file mode 100644
+--- a/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_12_0_aar.xml	(revision 9de5161d9228964be86fc0a47fba6b4f186baebe)
++++ /dev/null	(revision 9de5161d9228964be86fc0a47fba6b4f186baebe)
+@@ -1,18 +0,0 @@
+-<component name="libraryTable">
+-  <library name="Gradle: com.github.bumptech.glide:gifdecoder:4.12.0@aar">
+-    <ANNOTATIONS>
+-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/941829037e8304a9bb42ed3806b9c67a/transformed/jetified-gifdecoder-4.12.0/annotations.zip!/" />
+-    </ANNOTATIONS>
+-    <CLASSES>
+-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/941829037e8304a9bb42ed3806b9c67a/transformed/jetified-gifdecoder-4.12.0/jars/classes.jar!/" />
+-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/941829037e8304a9bb42ed3806b9c67a/transformed/jetified-gifdecoder-4.12.0/res" />
+-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/941829037e8304a9bb42ed3806b9c67a/transformed/jetified-gifdecoder-4.12.0/AndroidManifest.xml" />
+-    </CLASSES>
+-    <JAVADOC>
+-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/gifdecoder/4.12.0/746b9323bb108e97840d4dacd37bd8d4cec34419/gifdecoder-4.12.0-javadoc.jar!/" />
+-    </JAVADOC>
+-    <SOURCES>
+-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/gifdecoder/4.12.0/756734cd8ffb3c771f376767fa8464157f2d02d4/gifdecoder-4.12.0-sources.jar!/" />
+-    </SOURCES>
+-  </library>
+-</component>
+\ No newline at end of file
+Index: .idea/libraries/Gradle__com_github_bumptech_glide_disklrucache_4_12_0.xml
+===================================================================
+diff --git a/.idea/libraries/Gradle__com_github_bumptech_glide_disklrucache_4_12_0.xml b/.idea/libraries/Gradle__com_github_bumptech_glide_disklrucache_4_12_0.xml
+deleted file mode 100644
+--- a/.idea/libraries/Gradle__com_github_bumptech_glide_disklrucache_4_12_0.xml	(revision 9de5161d9228964be86fc0a47fba6b4f186baebe)
++++ /dev/null	(revision 9de5161d9228964be86fc0a47fba6b4f186baebe)
+@@ -1,13 +0,0 @@
+-<component name="libraryTable">
+-  <library name="Gradle: com.github.bumptech.glide:disklrucache:4.12.0">
+-    <CLASSES>
+-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/disklrucache/4.12.0/6d44c9103551e3ff51f00ac26077c143a8fb74f9/disklrucache-4.12.0.jar!/" />
+-    </CLASSES>
+-    <JAVADOC>
+-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/disklrucache/4.12.0/9f3e0051f88c4f6b6a590f09da050a2a220b8137/disklrucache-4.12.0-javadoc.jar!/" />
+-    </JAVADOC>
+-    <SOURCES>
+-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/disklrucache/4.12.0/d094cc41b94fcacbdd801b8352ab9d15b686bbe9/disklrucache-4.12.0-sources.jar!/" />
+-    </SOURCES>
+-  </library>
+-</component>
+\ No newline at end of file
+Index: .idea/libraries/Gradle__com_airbnb_android_lottie_3_4_1_aar.xml
+===================================================================
+diff --git a/.idea/libraries/Gradle__com_airbnb_android_lottie_3_4_1_aar.xml b/.idea/libraries/Gradle__com_airbnb_android_lottie_3_4_1_aar.xml
+deleted file mode 100644
+--- a/.idea/libraries/Gradle__com_airbnb_android_lottie_3_4_1_aar.xml	(revision 9de5161d9228964be86fc0a47fba6b4f186baebe)
++++ /dev/null	(revision 9de5161d9228964be86fc0a47fba6b4f186baebe)
+@@ -1,18 +0,0 @@
+-<component name="libraryTable">
+-  <library name="Gradle: com.airbnb.android:lottie:3.4.1@aar">
+-    <ANNOTATIONS>
+-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/5fb20126c3d1bb2a6419109d9a0b4386/transformed/jetified-lottie-3.4.1/annotations.zip!/" />
+-    </ANNOTATIONS>
+-    <CLASSES>
+-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/5fb20126c3d1bb2a6419109d9a0b4386/transformed/jetified-lottie-3.4.1/jars/classes.jar!/" />
+-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5fb20126c3d1bb2a6419109d9a0b4386/transformed/jetified-lottie-3.4.1/res" />
+-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5fb20126c3d1bb2a6419109d9a0b4386/transformed/jetified-lottie-3.4.1/AndroidManifest.xml" />
+-    </CLASSES>
+-    <JAVADOC>
+-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.airbnb.android/lottie/3.4.1/69bbf03c37f7861a089b111afe8bf63ff266dbe9/lottie-3.4.1-javadoc.jar!/" />
+-    </JAVADOC>
+-    <SOURCES>
+-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.airbnb.android/lottie/3.4.1/5083f3e4cd203a9412213be75d58b4976f7f4966/lottie-3.4.1-sources.jar!/" />
+-    </SOURCES>
+-  </library>
+-</component>
+\ No newline at end of file
+Index: .idea/libraries/Gradle__com_github_bumptech_glide_annotations_4_12_0.xml
+===================================================================
+diff --git a/.idea/libraries/Gradle__com_github_bumptech_glide_annotations_4_12_0.xml b/.idea/libraries/Gradle__com_github_bumptech_glide_annotations_4_12_0.xml
+deleted file mode 100644
+--- a/.idea/libraries/Gradle__com_github_bumptech_glide_annotations_4_12_0.xml	(revision 9de5161d9228964be86fc0a47fba6b4f186baebe)
++++ /dev/null	(revision 9de5161d9228964be86fc0a47fba6b4f186baebe)
+@@ -1,13 +0,0 @@
+-<component name="libraryTable">
+-  <library name="Gradle: com.github.bumptech.glide:annotations:4.12.0">
+-    <CLASSES>
+-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/annotations/4.12.0/298d793db124809d74ad9a90de5eddc408898c84/annotations-4.12.0.jar!/" />
+-    </CLASSES>
+-    <JAVADOC>
+-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/annotations/4.12.0/cf9a61b18be858fb8a5cb90141158f8d9e747c0d/annotations-4.12.0-javadoc.jar!/" />
+-    </JAVADOC>
+-    <SOURCES>
+-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/annotations/4.12.0/68ce89be3f3104dd72be3f169b6c4398fbdb2144/annotations-4.12.0-sources.jar!/" />
+-    </SOURCES>
+-  </library>
+-</component>
+\ No newline at end of file
+Index: .idea/libraries/Gradle__com_github_bumptech_glide_glide_4_12_0_aar.xml
+===================================================================
+diff --git a/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_12_0_aar.xml b/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_12_0_aar.xml
+deleted file mode 100644
+--- a/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_12_0_aar.xml	(revision 9de5161d9228964be86fc0a47fba6b4f186baebe)
++++ /dev/null	(revision 9de5161d9228964be86fc0a47fba6b4f186baebe)
+@@ -1,15 +0,0 @@
+-<component name="libraryTable">
+-  <library name="Gradle: com.github.bumptech.glide:glide:4.12.0@aar">
+-    <CLASSES>
+-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/8ae98c978a254b9158048ca2c3cf9c70/transformed/jetified-glide-4.12.0/jars/classes.jar!/" />
+-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8ae98c978a254b9158048ca2c3cf9c70/transformed/jetified-glide-4.12.0/res" />
+-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8ae98c978a254b9158048ca2c3cf9c70/transformed/jetified-glide-4.12.0/AndroidManifest.xml" />
+-    </CLASSES>
+-    <JAVADOC>
+-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/4.12.0/a1ed6593904cff903246abb68f5dbbc9bf7dde60/glide-4.12.0-javadoc.jar!/" />
+-    </JAVADOC>
+-    <SOURCES>
+-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/4.12.0/478d8792d0a43e0045a7756da6f2c053a8e830dd/glide-4.12.0-sources.jar!/" />
+-    </SOURCES>
+-  </library>
+-</component>
+\ No newline at end of file
+Index: .idea/libraries/Gradle__androidx_exifinterface_exifinterface_1_2_0_aar.xml
+===================================================================
+diff --git a/.idea/libraries/Gradle__androidx_exifinterface_exifinterface_1_2_0_aar.xml b/.idea/libraries/Gradle__androidx_exifinterface_exifinterface_1_2_0_aar.xml
+deleted file mode 100644
+--- a/.idea/libraries/Gradle__androidx_exifinterface_exifinterface_1_2_0_aar.xml	(revision 9de5161d9228964be86fc0a47fba6b4f186baebe)
++++ /dev/null	(revision 9de5161d9228964be86fc0a47fba6b4f186baebe)
+@@ -1,16 +0,0 @@
+-<component name="libraryTable">
+-  <library name="Gradle: androidx.exifinterface:exifinterface:1.2.0@aar">
+-    <ANNOTATIONS>
+-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/c274166e975bbf044c204b6514904f57/transformed/exifinterface-1.2.0/annotations.zip!/" />
+-    </ANNOTATIONS>
+-    <CLASSES>
+-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/c274166e975bbf044c204b6514904f57/transformed/exifinterface-1.2.0/jars/classes.jar!/" />
+-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c274166e975bbf044c204b6514904f57/transformed/exifinterface-1.2.0/res" />
+-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c274166e975bbf044c204b6514904f57/transformed/exifinterface-1.2.0/AndroidManifest.xml" />
+-    </CLASSES>
+-    <JAVADOC />
+-    <SOURCES>
+-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.exifinterface/exifinterface/1.2.0/cae89dd2d8af4160feaed1a42933db7ccf0002d7/exifinterface-1.2.0-sources.jar!/" />
+-    </SOURCES>
+-  </library>
+-</component>
+\ No newline at end of file
