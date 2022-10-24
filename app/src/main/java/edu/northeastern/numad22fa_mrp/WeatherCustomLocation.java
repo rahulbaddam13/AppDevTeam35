@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -60,6 +61,9 @@ public class WeatherCustomLocation extends AppCompatActivity {
 
     private TextView locationId;
 
+    private ProgressBar pgsBar;
+
+
     public static String httpResponse(URL url) throws IOException {
         StringBuilder jsonResult = new StringBuilder();
 
@@ -95,15 +99,22 @@ public class WeatherCustomLocation extends AppCompatActivity {
 //        locationId.setVisibility(View.INVISIBLE);
 
 
+        pgsBar = (ProgressBar) findViewById(R.id.pBar);
+
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //Display progress bar
+                pgsBar.setVisibility(v.VISIBLE);
 
                 removeImg();
                 getWeatherData(textField.getText().toString().trim());
 //                locationId.setVisibility(View.VISIBLE);
                 button.setVisibility(View.VISIBLE);
 
+                //Hide progress bar
+                pgsBar.setVisibility(v.GONE);
             }
         });
 
