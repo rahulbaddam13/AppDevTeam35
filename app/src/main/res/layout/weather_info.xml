@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:elevation="8dp"
-    app:cardUseCompatPadding="true">
+    app:cardUseCompatPadding="true"
+    android:id="@+id/infoView">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,8 +16,7 @@
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tonight"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/icon"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,8 +36,7 @@
             android:id="@+id/temperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="79"
-            android:textSize="45dp"
+            android:textSize="45sp"
             android:layout_marginTop="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/icon"
@@ -51,7 +50,6 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            android:text="balh baljirfrovfrnv gipgvteguitegntgn rjgnofg fgbgtfgbt reigifn bgtgin."
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/icon"

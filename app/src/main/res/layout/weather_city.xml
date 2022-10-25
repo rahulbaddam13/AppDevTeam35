@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:id="@+id/locationView">
 
    <TextView
        android:id="@+id/city"
@@ -15,8 +16,7 @@
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintTop_toTopOf="parent"
        app:layout_constraintBottom_toTopOf="@id/state"
-       android:textSize="45dp"
-       android:text="Edison,"
+       android:textSize="45sp"
        android:textAlignment="center"/>
 
     <TextView
@@ -29,8 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/city"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:textSize="45dp"
-        android:text="New Jersey"
+        android:textSize="45sp"
         android:textAlignment="center"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

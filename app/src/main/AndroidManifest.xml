@@ -4,8 +4,8 @@
     package="edu.northeastern.numad22fa_mrp">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -18,18 +18,9 @@
         android:theme="@style/Theme.NUMAD22Fa_MRP"
         tools:targetApi="31">
         <activity
-            android:name=".WebActivity"
-            android:exported="false" />
-        <activity
-            android:name=".WeatherCustomLocation"
-            android:exported="false" />
-        <activity
-            android:name=".CheckAnimation"
-            android:exported="false" />
-        <activity
             android:name=".WeatherActivity"
-            android:configChanges="orientation|screenSize"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="orientation|screenSize"/>
         <activity
             android:name=".FinalProject"
             android:exported="false" />
@@ -38,8 +29,8 @@
             android:exported="false" />
         <activity
             android:name=".AtYourService"
-            android:configChanges="orientation|screenSize"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="orientation|screenSize"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">NUMAD22Fa_MRP</string>
     <string name="get_weather">Get Weather</string>
-    <string name="description">Weather App \nDisplays the weather details of the location entered by the user</string>
+    <string name="select_date">Select Date</string>
 </resources>
