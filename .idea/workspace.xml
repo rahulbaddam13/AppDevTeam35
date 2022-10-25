@@ -14,8 +14,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44db1d5b-0156-4a95-9a74-0643834cf2a7" name="Changes" comment="Final Commit Master">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="44db1d5b-0156-4a95-9a74-0643834cf2a7" name="Changes" comment="Added Web Photo Files">
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +71,9 @@
       <recent name="C:\Users\rahul\StudioProjects\AppDevTeam355\app\src\main\java\edu\northeastern\numad22fa_mrp" />
       <recent name="C:\Users\rahul\StudioProjects\AppDevTeam355\app\src\main\res" />
       <recent name="C:\Users\rahul\StudioProjects\AppDevTeam355\app\src\main\res\drawable-v24" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="edu.northeastern.numad22fa_mrp" />
     </key>
   </component>
   <component name="RunManager">
@@ -175,7 +178,21 @@
       <option name="project" value="LOCAL" />
       <updated>1666659779676</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Final Commit Master added retrofit files">
+      <created>1666660173892</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1666660173892</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added Web Photo Files">
+      <created>1666660365723</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1666660365723</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -193,6 +210,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Integrated both the activities" />
     <MESSAGE value="Final Commit Master" />
-    <option name="LAST_COMMIT_MESSAGE" value="Final Commit Master" />
+    <MESSAGE value="Final Commit Master added retrofit files" />
+    <MESSAGE value="Added Web Photo Files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Web Photo Files" />
   </component>
 </project>

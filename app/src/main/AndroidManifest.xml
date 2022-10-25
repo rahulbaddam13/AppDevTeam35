@@ -22,6 +22,10 @@
             android:exported="false"
             android:configChanges="orientation|screenSize"/>
         <activity
+            android:name=".WeatherCustomLocation"
+            android:exported="false"
+            android:configChanges="orientation|screenSize"/>
+        <activity
             android:name=".FinalProject"
             android:exported="false" />
         <activity
