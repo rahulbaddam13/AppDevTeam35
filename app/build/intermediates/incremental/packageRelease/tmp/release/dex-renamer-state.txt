@@ -1,0 +1,7 @@
+#Mon Oct 24 20:14:30 EDT 2022
+base.1=C\:\\Users\\rahul\\StudioProjects\\AppDevTeam355\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes2.dex
+path.1=classes2.dex
+base.0=C\:\\Users\\rahul\\StudioProjects\\AppDevTeam355\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+path.0=classes.dex
