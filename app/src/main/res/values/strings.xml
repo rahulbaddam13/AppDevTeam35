@@ -2,4 +2,7 @@
     <string name="app_name">NUMAD22Fa_MRP</string>
     <string name="get_weather">Get Weather</string>
     <string name="select_date">Select Date</string>
+    <string name="user_name">Enter user name</string>
+    <string name="login_button">Login</string>
+    <string name="intro_text">Create new user / login as existing user</string>
 </resources>
