@@ -4,5 +4,5 @@
     <string name="select_date">Select Date</string>
     <string name="user_name">Enter user name</string>
     <string name="login_button">Login</string>
-    <string name="intro_text">Create new user name or use an existing user name to login and send stickers</string>
+    <string name="intro_text">Create new user / login as existing user</string>
 </resources>

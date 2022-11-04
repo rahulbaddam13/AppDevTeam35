@@ -2,6 +2,9 @@ package edu.northeastern.numad22fa_mrp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -77,26 +80,54 @@ public class StickItToEm extends AppCompatActivity {
     private void addDataToFirebase(String userName) {
         //flag to check if user was created.
         final boolean[] created = {true};
+        final boolean[] exists = {false};
         // below 3 lines of code is used to set
         // data in our object class.
         user = new User(userName);
 
-        // data base reference will sends data to firebase.
-        databaseReference.push().setValue(user).addOnFailureListener(new OnFailureListener() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onFailure(@NonNull Exception e) {
-                //there was an issue
-                created[0] = false;
-                Toast.makeText(StickItToEm.this, "Unable to add user. Please try again later", Toast.LENGTH_SHORT).show();
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                    if (userName.equalsIgnoreCase(data.child("userName").getValue().toString())) {
+                        //user name exists
+                        exists[0] = true;
+                        break;
+                    }
+                }
+
+                if(!exists[0]) {
+                    //user name does not exists, create new
+                    // data base reference will sends data to firebase.
+                    databaseReference.push().setValue(user).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            //there was an issue
+                            created[0] = false;
+                            Toast.makeText(StickItToEm.this, "Unable to add user. Please try again later", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } else {
+                    created[0] = false;
+                }
+
+                if(created[0]) {
+                    // after adding this data we are showing toast message.
+                    Toast.makeText(StickItToEm.this, "New user added!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(StickItToEm.this, "User logged in successfully!", Toast.LENGTH_SHORT).show();
+                }
+                //Move to next activity.
+                Intent clickIntent = new Intent(StickItToEm.this, AllUsersActivity.class);
+                startActivity(clickIntent);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                System.out.println("The read failed: " + error.getCode());
             }
         });
 
-        if(created[0]){
-            // after adding this data we are showing toast message.
-            Toast.makeText(StickItToEm.this, "User added successfully", Toast.LENGTH_SHORT).show();
-
-            //Move to next activity.
-        }
 
     }
 }

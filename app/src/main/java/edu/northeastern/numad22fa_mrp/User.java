@@ -1,15 +1,23 @@
 package edu.northeastern.numad22fa_mrp;
 
+import java.sql.Timestamp;
 import java.util.UUID;
 
 public class User {
     private String userName;
     private String UID;
-    private UUID UUID_1 = UUID.fromString("58e0a7d7-eebc-11d8-9669-0800200c9a66");
 
     public User(String userName) {
         this.userName = userName;
-        this.UID = String.valueOf(UUID_1.timestamp());
+        this.UID = UUID.randomUUID().toString();
+    }
+
+    public User(String UID, String userName) {
+        this.userName = userName;
+        this.UID = UID;
+    }
+
+    public User() {
     }
 
     public String getUserName() {
@@ -24,7 +32,4 @@ public class User {
         this.userName = userName;
     }
 
-    public void setUID(String UID) {
-        this.UID = UID;
-    }
 }
