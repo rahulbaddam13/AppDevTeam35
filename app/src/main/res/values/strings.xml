@@ -5,4 +5,10 @@
     <string name="user_name">Enter user name</string>
     <string name="login_button">Login</string>
     <string name="intro_text">Create new user / login as existing user</string>
+    <item name="happy_fox" type="id"/>
+    <item name="sad_fox" type="id"/>
+    <item name="angry_fox" type="id"/>
+    <item name="hungry_fox" type="id"/>
+    <item name="love_fox" type="id"/>
+    <item name="sick_fox" type="id"/>
 </resources>
