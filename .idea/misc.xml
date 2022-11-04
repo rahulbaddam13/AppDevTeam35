@@ -34,9 +34,11 @@
         <entry key="..\:/Users/rahul/StudioProjects/AppDevTeam355/app/src/main/res/layout/activity_weather.xml" value="0.12952898550724637" />
         <entry key="..\:/Users/rahul/StudioProjects/AppDevTeam355/app/src/main/res/layout/activity_weather_custom.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/rahul/StudioProjects/AppDevTeam355/app/src/main/res/layout/test.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/rahul/StudioProjects/AppDevTeam35T/app/src/main/res/layout/activity_register.xml" value="0.1" />
       </map>
     </option>
   </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
