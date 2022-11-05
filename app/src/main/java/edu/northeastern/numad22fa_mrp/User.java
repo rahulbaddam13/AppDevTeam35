@@ -22,12 +22,12 @@ public class User {
     public User(String userName) {
         this.userName = userName;
         this.UID = UUID.randomUUID().toString();
-        stickerCountMap.put("2131230952", 0l);//happy fox
-        stickerCountMap.put("2131231109", 0l);//sad fox
-        stickerCountMap.put("2131230802", 0l);//angry fox
-        stickerCountMap.put("2131230962", 0l);//hungry fox
-        stickerCountMap.put("2131230996", 0l);//love fox
-        stickerCountMap.put("2131231141", 0l);//sick fox
+        stickerCountMap.put("2131165308", 0l);//happy fox
+        stickerCountMap.put("2131165367", 0l);//sad fox
+        stickerCountMap.put("2131165271", 0l);//angry fox
+        stickerCountMap.put("2131165309", 0l);//hungry fox
+        stickerCountMap.put("2131165325", 0l);//love fox
+        stickerCountMap.put("2131165368", 0l);//sick fox
     }
 
     /**
