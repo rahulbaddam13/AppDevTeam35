@@ -3,8 +3,12 @@
     <string name="get_weather">Get Weather</string>
     <string name="select_date">Select Date</string>
     <string name="user_name">Enter user name</string>
+    <string name="user_hint">Username</string>
     <string name="login_button">Login</string>
     <string name="intro_text">Create new user / login as existing user</string>
+    <string name="add_new_friend_instructions">Add new Friend by Username</string>
+    <string name="your_profile">Your Profile</string>
+    <string name="user_name_hint">Username of Friend to add</string>
     <item name="happy_fox" type="id"/>
     <item name="sad_fox" type="id"/>
     <item name="angry_fox" type="id"/>
