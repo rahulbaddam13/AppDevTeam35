@@ -1,5 +1,7 @@
 package edu.northeastern.numad22fa_mrp;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -10,7 +12,8 @@ public class User {
     private final String userName;
     private final String UID;
     private String currentUserName;
-    private long stickersSent;
+    private Map<String, Long> stickerCountMap= new HashMap<>();
+
 
     /**
      * Constructs a user using the username.
@@ -19,7 +22,12 @@ public class User {
     public User(String userName) {
         this.userName = userName;
         this.UID = UUID.randomUUID().toString();
-        this.stickersSent = 0; //Initially when the user is created, stickers sent is set to 0.
+        stickerCountMap.put("2131230952", 0l);//happy fox
+        stickerCountMap.put("2131231109", 0l);//sad fox
+        stickerCountMap.put("2131230802", 0l);//angry fox
+        stickerCountMap.put("2131230962", 0l);//hungry fox
+        stickerCountMap.put("2131230996", 0l);//love fox
+        stickerCountMap.put("2131231141", 0l);//sick fox
     }
 
     /**
@@ -27,13 +35,13 @@ public class User {
      * @param UID uid of the users.
      * @param userName username of the user.
      * @param currentUserName username of the user logged in at the app.
-     * @param stickersSent number of stickers the current user has used.
      */
-    public User(String UID, String userName, String currentUserName, long stickersSent) {
+
+    public User( String UID, String userName, String currentUserName, Map<String, Long> stickerCountMap) {
         this.userName = userName;
         this.UID = UID;
         this.currentUserName = currentUserName;
-        this.stickersSent = stickersSent;
+        this.stickerCountMap = stickerCountMap;
     }
 
     public String getUserName() {
@@ -48,11 +56,11 @@ public class User {
         return currentUserName;
     }
 
-    public long getStickersSent() {
-        return stickersSent;
+    public Map<String, Long> getStickerCountMap() {
+        return stickerCountMap;
     }
 
-    public void setStickersSent(long stickersSent) {
-        this.stickersSent = stickersSent;
+    public void setStickerCountMap(Map<String, Long> stickerCountMap) {
+        this.stickerCountMap = stickerCountMap;
     }
 }

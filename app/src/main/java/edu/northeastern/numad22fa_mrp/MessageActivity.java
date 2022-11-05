@@ -19,6 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Iterator;
+import java.util.Map;
 
 public class MessageActivity extends AppCompatActivity {
 
@@ -163,8 +164,10 @@ public class MessageActivity extends AppCompatActivity {
                     String currentUserName = getIntent().getExtras().getString("currentUserName");
                     if(currentUserName.equals(next.child("userName").getValue())) {
 
-                        long newStickerValue = (Long) next.child("stickersSent").getValue() + 1;
-                        databaseReference.child("users").child(next.getKey()).child("stickersSent").setValue(newStickerValue).addOnFailureListener(new OnFailureListener() {
+                        Map<String, Long> currentCount = (Map<String, Long>) next.child("stickerCountMap").getValue();
+                        if(currentCount != null)
+                        currentCount.put(chosenImageId+"", currentCount.getOrDefault(chosenImageId+"",0l)+ 1l);
+                        databaseReference.child("users").child(next.getKey()).child("stickerCountMap").setValue(currentCount).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 Toast.makeText(MessageActivity.this, "Unable to send sticker. Please try again later", Toast.LENGTH_SHORT).show();
