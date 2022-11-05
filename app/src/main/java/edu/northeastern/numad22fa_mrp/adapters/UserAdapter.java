@@ -2,6 +2,7 @@ package edu.northeastern.numad22fa_mrp.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -45,9 +46,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder>{
         //on click of each item
         holder.itemView.setOnClickListener(view -> {
             //Move to next activity.
+            Bundle bundle = new Bundle();
+            bundle.putString("uid", users.get(position).getUID());
+            bundle.putString("userName", users.get(position).getUserName());
+            bundle.putString("currentUserName", users.get(position).getCurrentUserName());
+
             Intent clickIntent = new Intent(context, MessageActivity.class);
-            clickIntent.putExtra("uid", users.get(position).getUID());
-            clickIntent.putExtra("userName", users.get(position).getUserName());
+            clickIntent.putExtras(bundle);
             context.startActivity(clickIntent);
         });
     }

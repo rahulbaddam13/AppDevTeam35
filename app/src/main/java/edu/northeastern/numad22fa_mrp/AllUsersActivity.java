@@ -81,8 +81,9 @@ public class AllUsersActivity extends AppCompatActivity {
                     DataSnapshot next = (DataSnapshot) iterator.next();
 
                     //add users other than current user.
-                    if(!getIntent().getExtras().getString("currentUserName").equals(next.child("userName").getValue())) {
-                        User user = new User(next.child("uid").getValue().toString(), next.child("userName").getValue().toString());
+                    String currentUserName = getIntent().getExtras().getString("currentUserName");
+                    if(!currentUserName.equals(next.child("userName").getValue())) {
+                        User user = new User(next.child("uid").getValue().toString(), next.child("userName").getValue().toString(), currentUserName);
                         usersList.add(user);
                     }
 

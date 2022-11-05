@@ -6,15 +6,17 @@ import java.util.UUID;
 public class User {
     private String userName;
     private String UID;
+    private String currentUserName;
 
     public User(String userName) {
         this.userName = userName;
         this.UID = UUID.randomUUID().toString();
     }
 
-    public User(String UID, String userName) {
+    public User(String UID, String userName, String currentUserName) {
         this.userName = userName;
         this.UID = UID;
+        this.currentUserName = currentUserName;
     }
 
     public User() {
@@ -26,6 +28,10 @@ public class User {
 
     public String getUID() {
         return UID;
+    }
+
+    public String getCurrentUserName() {
+        return currentUserName;
     }
 
     public void setUserName(String userName) {
