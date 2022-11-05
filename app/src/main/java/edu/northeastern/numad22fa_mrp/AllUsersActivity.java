@@ -87,12 +87,12 @@ public class AllUsersActivity extends AppCompatActivity {
                     if(!currentUserName.equals(next.child("userName").getValue())) {
 
                         Map<String, Long> stickerMap = new HashMap<>();
-                        stickerMap.put(next.child("stickerCountMap").child("2131230952").getKey(),(Long) next.child("stickerCountMap").child("2131230952").getValue());
-                        stickerMap.put(next.child("stickerCountMap").child("2131231109").getKey(),(Long) next.child("stickerCountMap").child("2131231109").getValue());
-                        stickerMap.put(next.child("stickerCountMap").child("2131230802").getKey(),(Long) next.child("stickerCountMap").child("2131230802").getValue());
-                        stickerMap.put(next.child("stickerCountMap").child("2131230962").getKey(),(Long) next.child("stickerCountMap").child("2131230962").getValue());
-                        stickerMap.put(next.child("stickerCountMap").child("2131230996").getKey(),(Long) next.child("stickerCountMap").child("2131230996").getValue());
-                        stickerMap.put(next.child("stickerCountMap").child("2131231141").getKey(),(Long) next.child("stickerCountMap").child("2131231141").getValue());
+                        stickerMap.put(next.child("stickerCountMap").child("2131165308").getKey(),(Long) next.child("stickerCountMap").child("2131165308").getValue());
+                        stickerMap.put(next.child("stickerCountMap").child("2131165367").getKey(),(Long) next.child("stickerCountMap").child("2131165367").getValue());
+                        stickerMap.put(next.child("stickerCountMap").child("2131165271").getKey(),(Long) next.child("stickerCountMap").child("2131165271").getValue());
+                        stickerMap.put(next.child("stickerCountMap").child("2131165309").getKey(),(Long) next.child("stickerCountMap").child("2131165309").getValue());
+                        stickerMap.put(next.child("stickerCountMap").child("2131165325").getKey(),(Long) next.child("stickerCountMap").child("2131165325").getValue());
+                        stickerMap.put(next.child("stickerCountMap").child("2131165368").getKey(),(Long) next.child("stickerCountMap").child("2131165368").getValue());
 
                         User user = new User(next.child("uid").getValue().toString(), next.child("userName").getValue().toString(), currentUserName, stickerMap);
                         usersList.add(user);
