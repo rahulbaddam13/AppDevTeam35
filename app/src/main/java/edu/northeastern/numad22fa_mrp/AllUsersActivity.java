@@ -15,8 +15,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import edu.northeastern.numad22fa_mrp.adapters.UserAdapter;
 
@@ -83,7 +85,16 @@ public class AllUsersActivity extends AppCompatActivity {
                     //add users other than current user.
                     String currentUserName = getIntent().getExtras().getString("currentUserName");
                     if(!currentUserName.equals(next.child("userName").getValue())) {
-                        User user = new User(next.child("uid").getValue().toString(), next.child("userName").getValue().toString(), currentUserName, (Long) next.child("stickersSent").getValue());
+
+                        Map<String, Long> stickerMap = new HashMap<>();
+                        stickerMap.put(next.child("stickerCountMap").child("2131230952").getKey(),(Long) next.child("stickerCountMap").child("2131230952").getValue());
+                        stickerMap.put(next.child("stickerCountMap").child("2131231109").getKey(),(Long) next.child("stickerCountMap").child("2131231109").getValue());
+                        stickerMap.put(next.child("stickerCountMap").child("2131230802").getKey(),(Long) next.child("stickerCountMap").child("2131230802").getValue());
+                        stickerMap.put(next.child("stickerCountMap").child("2131230962").getKey(),(Long) next.child("stickerCountMap").child("2131230962").getValue());
+                        stickerMap.put(next.child("stickerCountMap").child("2131230996").getKey(),(Long) next.child("stickerCountMap").child("2131230996").getValue());
+                        stickerMap.put(next.child("stickerCountMap").child("2131231141").getKey(),(Long) next.child("stickerCountMap").child("2131231141").getValue());
+
+                        User user = new User(next.child("uid").getValue().toString(), next.child("userName").getValue().toString(), currentUserName, stickerMap);
                         usersList.add(user);
                     }
 
