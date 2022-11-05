@@ -141,12 +141,47 @@ public class MessageActivity extends AppCompatActivity {
             return;
         }
 
-        databaseReference.child("chats").child(chatId).push().setValue(chosenImageId).addOnFailureListener(new OnFailureListener() {
+        //create a chat message object.
+        ChatMessage chatMessage = new ChatMessage(chosenImageId, bundle.getString("currentUserName"));
+
+        databaseReference.child("chats").child(chatId).push().setValue(chatMessage).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(MessageActivity.this, "Unable to send sticker. Please try again later", Toast.LENGTH_SHORT).show();
             }
         });
+
+        // Attach a listener to read the data at our posts reference
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Iterable<DataSnapshot> snapshotIterator = dataSnapshot.child("users").getChildren();
+                Iterator<DataSnapshot> iterator = snapshotIterator.iterator();
+                while (iterator.hasNext()) {
+                    DataSnapshot next = (DataSnapshot) iterator.next();
+
+                    String currentUserName = getIntent().getExtras().getString("currentUserName");
+                    if(currentUserName.equals(next.child("userName").getValue())) {
+
+                        long newStickerValue = (Long) next.child("stickersSent").getValue() + 1;
+                        databaseReference.child("users").child(next.getKey()).child("stickersSent").setValue(newStickerValue).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(MessageActivity.this, "Unable to send sticker. Please try again later", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
+
+
 
 
     }

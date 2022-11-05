@@ -83,7 +83,7 @@ public class AllUsersActivity extends AppCompatActivity {
                     //add users other than current user.
                     String currentUserName = getIntent().getExtras().getString("currentUserName");
                     if(!currentUserName.equals(next.child("userName").getValue())) {
-                        User user = new User(next.child("uid").getValue().toString(), next.child("userName").getValue().toString(), currentUserName);
+                        User user = new User(next.child("uid").getValue().toString(), next.child("userName").getValue().toString(), currentUserName, (Long) next.child("stickersSent").getValue());
                         usersList.add(user);
                     }
 
