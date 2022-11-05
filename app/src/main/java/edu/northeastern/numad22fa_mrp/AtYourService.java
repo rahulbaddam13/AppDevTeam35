@@ -21,6 +21,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 
 public class AtYourService extends AppCompatActivity {
@@ -69,7 +70,9 @@ public class AtYourService extends AppCompatActivity {
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month + 1;
                 DateTimeFormatter dtf = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
-                String selected = year + "-" + month + "-" + day + "T23:59:59";
+
+                String day_edit = String.format(Locale.US,"%02d", day);
+                String selected = year + "-" + month + "-" + day_edit + "T23:59:59";
 
                 try {
                     LocalDateTime date2 = LocalDateTime.parse(selected, dtf);
