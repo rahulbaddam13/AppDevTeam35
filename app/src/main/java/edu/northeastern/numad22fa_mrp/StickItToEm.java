@@ -88,7 +88,7 @@ public class StickItToEm extends AppCompatActivity {
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                for (DataSnapshot data : dataSnapshot.child("users").getChildren()) {
                     if (userName.equalsIgnoreCase(data.child("userName").getValue().toString())) {
                         //user name exists
                         exists[0] = true;
@@ -99,7 +99,7 @@ public class StickItToEm extends AppCompatActivity {
                 if(!exists[0]) {
                     //user name does not exists, create new
                     // data base reference will sends data to firebase.
-                    databaseReference.push().setValue(user).addOnFailureListener(new OnFailureListener() {
+                    databaseReference.child("users").push().setValue(user).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             //there was an issue
@@ -119,6 +119,7 @@ public class StickItToEm extends AppCompatActivity {
                 }
                 //Move to next activity.
                 Intent clickIntent = new Intent(StickItToEm.this, AllUsersActivity.class);
+                clickIntent.putExtra("currentUserName", userName);
                 startActivity(clickIntent);
             }
 
