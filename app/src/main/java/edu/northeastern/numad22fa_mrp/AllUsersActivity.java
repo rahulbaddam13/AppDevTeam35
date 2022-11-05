@@ -75,18 +75,22 @@ public class AllUsersActivity extends AppCompatActivity {
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Iterable<DataSnapshot> snapshotIterator = dataSnapshot.getChildren();
+                Iterable<DataSnapshot> snapshotIterator = dataSnapshot.child("users").getChildren();
                 Iterator<DataSnapshot> iterator = snapshotIterator.iterator();
                 while (iterator.hasNext()) {
                     DataSnapshot next = (DataSnapshot) iterator.next();
-                    User user = new User(next.child("uid").getValue().toString(), next.child("userName").getValue().toString());
-                    usersList.add(user);
+
+                    //add users other than current user.
+                    String currentUserName = getIntent().getExtras().getString("currentUserName");
+                    if(!currentUserName.equals(next.child("userName").getValue())) {
+                        User user = new User(next.child("uid").getValue().toString(), next.child("userName").getValue().toString(), currentUserName, (Long) next.child("stickersSent").getValue());
+                        usersList.add(user);
+                    }
 
                     //Notify the adapter about the newly added item.
                     if(recyclerView != null && recyclerView.getAdapter() != null)
                         recyclerView.getAdapter().notifyItemInserted(recyclerView.getAdapter().getItemCount());
 
-                    System.out.println("Value = " + next.child("userName").getValue());
                 }
             }
 

@@ -21,12 +21,10 @@ import com.google.firebase.database.ValueEventListener;
 
 public class StickItToEm extends AppCompatActivity {
 
-    // creating a variable for our
-    // Firebase Database.
+    // creating a variable for Firebase Database.
     FirebaseDatabase firebaseDatabase;
 
-    // creating a variable for our Database
-    // Reference for Firebase.
+    // creating a variable for reference for Firebase.
     DatabaseReference databaseReference;
 
     // creating a variable for user class
@@ -46,11 +44,10 @@ public class StickItToEm extends AppCompatActivity {
         userNameEdt = findViewById(R.id.editTextUserName);
         loginBtn = findViewById(R.id.loginButton);
 
-        // below line is used to get the
-        // instance of our Firebase database.
+        // instance of the Firebase database.
         firebaseDatabase = FirebaseDatabase.getInstance();
 
-        // below line is used to get reference for our database.
+        // get reference for the database.
         databaseReference = firebaseDatabase.getReference("");
 
         // adding on click listener for our button.
@@ -88,7 +85,7 @@ public class StickItToEm extends AppCompatActivity {
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                for (DataSnapshot data : dataSnapshot.child("users").getChildren()) {
                     if (userName.equalsIgnoreCase(data.child("userName").getValue().toString())) {
                         //user name exists
                         exists[0] = true;
@@ -99,7 +96,7 @@ public class StickItToEm extends AppCompatActivity {
                 if(!exists[0]) {
                     //user name does not exists, create new
                     // data base reference will sends data to firebase.
-                    databaseReference.push().setValue(user).addOnFailureListener(new OnFailureListener() {
+                    databaseReference.child("users").push().setValue(user).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             //there was an issue
@@ -119,6 +116,7 @@ public class StickItToEm extends AppCompatActivity {
                 }
                 //Move to next activity.
                 Intent clickIntent = new Intent(StickItToEm.this, AllUsersActivity.class);
+                clickIntent.putExtra("currentUserName", userName);
                 startActivity(clickIntent);
             }
 
