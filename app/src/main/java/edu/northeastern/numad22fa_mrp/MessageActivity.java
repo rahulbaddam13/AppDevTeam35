@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SyncStatusObserver;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,10 +31,13 @@ public class MessageActivity extends AppCompatActivity {
     // creating a variable for reference for Firebase.
     DatabaseReference databaseReference;
 
+    //sticker chosen by the user to send.
     public static int chosenImageId = 0;
 
+    //bundle with data from previous activity.
     Bundle bundle = null;
 
+    //unique id which represent two users.
     String chatId = null;
 
     @Override
@@ -128,20 +132,94 @@ public class MessageActivity extends AppCompatActivity {
         int imageView6Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/sick_fox" , null, null);
         imageView6.setId(imageView6Id);
 
+        //setting on click listeners, change background color on click
+        imageView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageView1.setBackgroundColor(Color.rgb(218, 246, 169));
+                imageView2.setBackgroundColor(0);
+                imageView3.setBackgroundColor(0);
+                imageView4.setBackgroundColor(0);
+                imageView5.setBackgroundColor(0);
+                imageView6.setBackgroundColor(0);
+            }
+        });
+        imageView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageView1.setBackgroundColor(0);
+                imageView2.setBackgroundColor(Color.rgb(218, 246, 169));
+                imageView3.setBackgroundColor(0);
+                imageView4.setBackgroundColor(0);
+                imageView5.setBackgroundColor(0);
+                imageView6.setBackgroundColor(0);
+            }
+        });
+        imageView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageView1.setBackgroundColor(0);
+                imageView2.setBackgroundColor(0);
+                imageView3.setBackgroundColor(Color.rgb(218, 246, 169));
+                imageView4.setBackgroundColor(0);
+                imageView5.setBackgroundColor(0);
+                imageView6.setBackgroundColor(0);
+            }
+        });
+
+        imageView4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageView1.setBackgroundColor(0);
+                imageView2.setBackgroundColor(0);
+                imageView3.setBackgroundColor(0);
+                imageView4.setBackgroundColor(Color.rgb(218, 246, 169));
+                imageView5.setBackgroundColor(0);
+                imageView6.setBackgroundColor(0);
+            }
+        });
+        imageView5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageView1.setBackgroundColor(0);
+                imageView2.setBackgroundColor(0);
+                imageView3.setBackgroundColor(0);
+                imageView4.setBackgroundColor(0);
+                imageView5.setBackgroundColor(Color.rgb(218, 246, 169));
+                imageView6.setBackgroundColor(0);
+            }
+        });
+        imageView6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageView1.setBackgroundColor(0);
+                imageView2.setBackgroundColor(0);
+                imageView3.setBackgroundColor(0);
+                imageView4.setBackgroundColor(0);
+                imageView5.setBackgroundColor(0);
+                imageView6.setBackgroundColor(Color.rgb(218, 246, 169));
+            }
+        });
+
         sticker.addView(view6);
     }
 
+    /**
+     * Method called when user clicks on the stickers.
+     * @param view current view.
+     */
     public void onStickerClick(View view){
 
         //get the ID of the image clicked.
         int imageID = view.getId();
-
-        //highlight
+        //update chosen image id
         chosenImageId = imageID;
-        System.out.println("chosenImageId" + chosenImageId);
-
     }
 
+    /**
+     * Method called when user clicks on send button.
+     * @param view current view.
+     */
     public void sendButtonClicked(View view){
 
         if(chosenImageId == 0){
@@ -190,9 +268,6 @@ public class MessageActivity extends AppCompatActivity {
                 System.out.println("The read failed: " + databaseError.getCode());
             }
         });
-
-
         Toast.makeText(MessageActivity.this, "Sticker sent", Toast.LENGTH_SHORT).show();
-
     }
 }
