@@ -72,7 +72,8 @@ public class AtYourService extends AppCompatActivity {
                 DateTimeFormatter dtf = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 
                 String day_edit = String.format(Locale.US,"%02d", day);
-                String selected = year + "-" + month + "-" + day_edit + "T23:59:59";
+                String month_edit = String.format(Locale.US, "%02d", month);
+                String selected = year + "-" + month_edit + "-" + day_edit + "T23:59:59";
 
                 try {
                     LocalDateTime date2 = LocalDateTime.parse(selected, dtf);
