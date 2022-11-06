@@ -48,6 +48,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder>{
             holder.displaySticker.setImageResource(R.drawable.love_fox);
         } else if(imageID == 2131165368){
             holder.displaySticker.setImageResource(R.drawable.sick_fox);
+        } else {
+            holder.displaySticker.setImageResource(R.drawable.not_found);
         }
     }
 
