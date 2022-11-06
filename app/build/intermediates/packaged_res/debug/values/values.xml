@@ -9,16 +9,25 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="white">#FFFFFFFF</color>
+    <item name="angry_fox" type="id"/>
+    <item name="happy_fox" type="id"/>
+    <item name="hungry_fox" type="id"/>
+    <item name="love_fox" type="id"/>
+    <item name="sad_fox" type="id"/>
+    <item name="sick_fox" type="id"/>
     <string name="app_name">NUMAD22Fa_MRP</string>
-    <string name="default_web_client_id" translatable="false">729456286612-i81ao137pl18387d05qcp578p4pvo4mj.apps.googleusercontent.com</string>
-    <string name="gcm_defaultSenderId" translatable="false">729456286612</string>
+    <string name="default_web_client_id" translatable="false">81399852867-lgftu8cth4ugu8ionlmlsh8vuf3v3gso.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">81399852867</string>
     <string name="get_weather">Get Weather</string>
-    <string name="google_api_key" translatable="false">AIzaSyB6OPZD59_2Sx2B6PQZI1s4V82VV3YTdwE</string>
-    <string name="google_app_id" translatable="false">1:729456286612:android:0bef9542e9e790345a4d81</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyB6OPZD59_2Sx2B6PQZI1s4V82VV3YTdwE</string>
-    <string name="google_storage_bucket" translatable="false">appdev-b3ea7.appspot.com</string>
-    <string name="project_id" translatable="false">appdev-b3ea7</string>
+    <string name="google_api_key" translatable="false">AIzaSyCDXh_rI4x-YVKi7NLwsZn8uU2KBTcWC30</string>
+    <string name="google_app_id" translatable="false">1:81399852867:android:8ae0c66a5e06315ce609f6</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCDXh_rI4x-YVKi7NLwsZn8uU2KBTcWC30</string>
+    <string name="google_storage_bucket" translatable="false">mad-a8-mrp.appspot.com</string>
+    <string name="intro_text">Create new user / login as existing user</string>
+    <string name="login_button">Login</string>
+    <string name="project_id" translatable="false">mad-a8-mrp</string>
     <string name="select_date">Select Date</string>
+    <string name="user_name">Enter user name</string>
     <style name="LoginTheme" parent="FirebaseUI">
 
 </style>

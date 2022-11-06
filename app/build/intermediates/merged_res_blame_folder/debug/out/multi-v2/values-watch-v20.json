@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "edu.northeastern.numad22fa_mrp.app-mergeDebugResources-40:/values-watch-v20/values-watch-v20.xml",
+            "outputFile": "edu.northeastern.numad22fa_mrp.app-mergeDebugResources-39:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
                     "source": "C:\\Users\\rahul\\.gradle\\caches\\transforms-3\\c75a717e26693d82872a111a6b1129b1\\transformed\\jetified-play-services-auth-19.0.0\\res\\values-watch-v20\\values.xml",

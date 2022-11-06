@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "edu.northeastern.numad22fa_mrp.app-mergeDebugResources-40:/values-h550dp-port-v13/values-h550dp-port-v13.xml",
+            "outputFile": "edu.northeastern.numad22fa_mrp.app-mergeDebugResources-39:/values-h550dp-port-v13/values-h550dp-port-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\rahul\\.gradle\\caches\\transforms-3\\3e4a1bd92ac3e94e06d1be817a78b0ba\\transformed\\material-1.6.1\\res\\values-h550dp-port-v13\\values-h550dp-port-v13.xml",
+                    "source": "C:\\Users\\rahul\\.gradle\\caches\\transforms-3\\b1c8e681aa9ba0a1c8c35b74135f0035\\transformed\\material-1.7.0\\res\\values-h550dp-port-v13\\values-h550dp-port-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

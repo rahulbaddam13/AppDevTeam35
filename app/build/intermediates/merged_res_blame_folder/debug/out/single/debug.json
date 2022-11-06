@@ -1,182 +1,226 @@
 [
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/layout_weather_info.xml.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/layout/weather_info.xml"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\layout_activity_register.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\layout\\activity_register.xml"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/mipmap-xxhdpi_ic_launcher_35.png.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/mipmap-xxhdpi/ic_launcher_35.png"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\drawable-v24_sad_fox.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\drawable-v24\\sad_fox.png"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/layout_activity_home.xml.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/layout/activity_home.xml"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\drawable_ic_launcher_mrp_foreground.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\drawable\\ic_launcher_mrp_foreground.xml"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/drawable-v24_ic_search_foreground.xml.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/drawable-v24/ic_search_foreground.xml"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\anim_rotate.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\anim\\rotate.xml"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/mipmap-mdpi_ic_launcher.png.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/mipmap-mdpi/ic_launcher.png"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\drawable-v24_angry_fox.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\drawable-v24\\angry_fox.png"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/mipmap-mdpi_ic_launcher_35_round.png.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/mipmap-mdpi/ic_launcher_35_round.png"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/xml_data_extraction_rules.xml.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/xml/data_extraction_rules.xml"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\mipmap-mdpi_ic_launcher_35_round.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\mipmap-mdpi\\ic_launcher_35_round.png"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/mipmap-hdpi_ic_launcher_35_round.png.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/mipmap-hdpi/ic_launcher_35_round.png"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\layout_activity_message.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\layout\\activity_message.xml"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/drawable-v24_ic_load_foreground.xml.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/drawable-v24/ic_load_foreground.xml"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\mipmap-anydpi-v26_ic_launcher_35_round.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\mipmap-anydpi-v26\\ic_launcher_35_round.xml"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/mipmap-xxxhdpi/ic_launcher_round.png"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\layout_weather_layout.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\layout\\weather_layout.xml"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/mipmap-xxhdpi_ic_launcher_35_round.png.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/mipmap-xxhdpi/ic_launcher_35_round.png"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/drawable_ic_launcher_35_foreground.xml.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/drawable/ic_launcher_35_foreground.xml"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\layout_activity_weather_custom.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\layout\\activity_weather_custom.xml"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/drawable_ic_launcher_mrp_foreground.xml.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/drawable/ic_launcher_mrp_foreground.xml"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\mipmap-xhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/layout_activity_main.xml.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/layout/activity_main.xml"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\layout_activity_all_users.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\layout\\activity_all_users.xml"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/mipmap-mdpi_ic_launcher_round.png.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/mipmap-mdpi/ic_launcher_round.png"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\layout_activity_final_project.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\layout\\activity_final_project.xml"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/mipmap-hdpi/ic_launcher_round.png"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\drawable-v24_activity_weather_custom.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\drawable-v24\\activity_weather_custom.xml"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/mipmap-xxhdpi/ic_launcher.png"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\mipmap-mdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/mipmap-xxxhdpi_ic_launcher_35_round.png.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/mipmap-xxxhdpi/ic_launcher_35_round.png"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\mipmap-xxxhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/mipmap-xhdpi/ic_launcher.png"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\mipmap-xxhdpi_ic_launcher_35_round.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\mipmap-xxhdpi\\ic_launcher_35_round.png"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/mipmap-hdpi_ic_launcher.png.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/mipmap-hdpi/ic_launcher.png"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\drawable_ic_launcher_35_foreground.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\drawable\\ic_launcher_35_foreground.xml"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/mipmap-xxhdpi_ic_launcher_round.png.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/mipmap-xxhdpi/ic_launcher_round.png"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\mipmap-xhdpi\\ic_launcher.png"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/mipmap-xxxhdpi/ic_launcher.png"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\layout_activity_at_your_service.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\layout\\activity_at_your_service.xml"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/mipmap-hdpi_ic_launcher_35.png.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/mipmap-hdpi/ic_launcher_35.png"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\mipmap-hdpi_ic_launcher_35_round.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\mipmap-hdpi\\ic_launcher_35_round.png"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/layout_activity_weather_custom.xml.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/layout/activity_weather_custom.xml"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\drawable-v24_ic_search_foreground.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\drawable-v24\\ic_search_foreground.xml"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/mipmap-xhdpi_ic_launcher_round.png.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/mipmap-xhdpi/ic_launcher_round.png"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\mipmap-xxhdpi_ic_launcher_35.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\mipmap-xxhdpi\\ic_launcher_35.png"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/layout_weather_city.xml.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/layout/weather_city.xml"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\drawable-v24_hungry_fox.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\drawable-v24\\hungry_fox.png"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/mipmap-anydpi-v26_ic_launcher_35_round.xml.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/mipmap-anydpi-v26/ic_launcher_35_round.xml"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\mipmap-hdpi_ic_launcher_35.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\mipmap-hdpi\\ic_launcher_35.png"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/drawable-v24_wallpaer.jpg.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/drawable-v24/wallpaer.jpg"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\drawable-v24_ic_load_foreground.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\drawable-v24\\ic_load_foreground.xml"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/mipmap-xhdpi_ic_launcher_35.png.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/mipmap-xhdpi/ic_launcher_35.png"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\layout_activity_stick_it_to_em.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\layout\\activity_stick_it_to_em.xml"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/drawable-v24_ic_launcher_foreground.xml.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/drawable-v24/ic_launcher_foreground.xml"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\layout_activity_fire_base_main.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\layout\\activity_fire_base_main.xml"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/layout_activity_fire_base_main.xml.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/layout/activity_fire_base_main.xml"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\mipmap-mdpi\\ic_launcher.png"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/anim_rotate.xml.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/anim/rotate.xml"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\layout_activity_home.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\layout\\activity_home.xml"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/mipmap-mdpi_ic_launcher_35.png.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/mipmap-mdpi/ic_launcher_35.png"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\drawable-v24\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/mipmap-xhdpi_ic_launcher_35_round.png.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/mipmap-xhdpi/ic_launcher_35_round.png"
+        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-41:/layout_activity_message.xml.flat",
+        "source": "edu.northeastern.numad22fa_mrp.app-main-43:/layout/activity_message.xml"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/xml_backup_rules.xml.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/xml/backup_rules.xml"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\layout_item_user.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\layout\\item_user.xml"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/drawable_ic_launcher_background.xml.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/drawable/ic_launcher_background.xml"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\mipmap-xhdpi_ic_launcher_35.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\mipmap-xhdpi\\ic_launcher_35.png"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/mipmap-xxxhdpi_ic_launcher_35.png.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/mipmap-xxxhdpi/ic_launcher_35.png"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\layout_sticker.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\layout\\sticker.xml"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/drawable-v24_activity_weather_custom.xml.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/drawable-v24/activity_weather_custom.xml"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\xml\\backup_rules.xml"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/layout_activity_weather.xml.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/layout/activity_weather.xml"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\drawable-v24_sick_fox.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\drawable-v24\\sick_fox.png"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/layout_activity_final_project.xml.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/layout/activity_final_project.xml"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\drawable-v24_love_fox.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\drawable-v24\\love_fox.png"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/layout_activity_stick_it_to_em.xml.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/layout/activity_stick_it_to_em.xml"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\mipmap-hdpi\\ic_launcher.png"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/layout_weather_layout.xml.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/layout/weather_layout.xml"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\layout_activity_weather.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\layout\\activity_weather.xml"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/layout_activity_register.xml.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/layout/activity_register.xml"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\mipmap-xxhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/mipmap-anydpi-v26_ic_launcher_35.xml.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/mipmap-anydpi-v26/ic_launcher_35.xml"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\mipmap-mdpi_ic_launcher_35.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\mipmap-mdpi\\ic_launcher_35.png"
     },
     {
-        "merged": "edu.northeastern.numad22fa_mrp.app-merged_res-42:/layout_activity_at_your_service.xml.flat",
-        "source": "edu.northeastern.numad22fa_mrp.app-main-44:/layout/activity_at_your_service.xml"
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\layout_weather_city.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\layout\\weather_city.xml"
+    },
+    {
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\mipmap-xhdpi_ic_launcher_35_round.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\mipmap-xhdpi\\ic_launcher_35_round.png"
+    },
+    {
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\layout_weather_info.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\layout\\weather_info.xml"
+    },
+    {
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\drawable-v24_happy_fox.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\drawable-v24\\happy_fox.png"
+    },
+    {
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\drawable-v24_wallpaer.jpg.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\drawable-v24\\wallpaer.jpg"
+    },
+    {
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\mipmap-xxxhdpi_ic_launcher_35_round.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\mipmap-xxxhdpi\\ic_launcher_35_round.png"
+    },
+    {
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\mipmap-anydpi-v26_ic_launcher_35.xml.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\mipmap-anydpi-v26\\ic_launcher_35.xml"
+    },
+    {
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-merged_res-41:\\mipmap-xxxhdpi_ic_launcher_35.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\edu.northeastern.numad22fa_mrp.app-main-43:\\mipmap-xxxhdpi\\ic_launcher_35.png"
     }
 ]

@@ -11,4 +11,8 @@
     <item name="hungry_fox" type="id"/>
     <item name="love_fox" type="id"/>
     <item name="sick_fox" type="id"/>
+
+    <string name="emoji_received_notification">Emoji Received</string>
+    <string name="emoji_notification_channel">STICKER_CHANNEL</string>
+    <string name="key">key=AAAAEvPPL0M:APA91bGj7m23smJAN1Z3GtfasUL9qyaRLVBh52MP4GBuESx1wmySezGPZl2Aba94I8K0FWIIfHprP6VSQi6-fz3oRMtRs08EESPdfbUWpgA54i5x9mcUolDM0J7TL_VW2lBfJXxSdTlG</string>
 </resources>
