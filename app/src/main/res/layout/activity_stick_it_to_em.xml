@@ -47,9 +47,11 @@
         android:text="@string/login_button"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
+        android:onClick="openLogin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextUserName" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextUserName"
+        tools:ignore="OnClick" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,22 +1,34 @@
 package edu.northeastern.numad22fa_mrp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.SyncStatusObserver;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -53,6 +65,7 @@ public class MessageActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
 
     List<ChatMessage> chatMessageList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,6 +132,7 @@ public class MessageActivity extends AppCompatActivity {
                     if(recyclerView != null && recyclerView.getAdapter() != null)
                         recyclerView.getAdapter().notifyItemInserted(recyclerView.getAdapter().getItemCount());
 
+
                 }
             }
 
@@ -126,6 +140,43 @@ public class MessageActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
                 System.out.println("The read failed: " + databaseError.getCode());
             }
+        });
+
+        DatabaseReference messages = databaseReference.child("chats").child(chatId);
+        messages.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                String sender = snapshot.child("sender").getValue(String.class);
+                int image_id = snapshot.child("imageID").getValue(int.class);
+                String receive = snapshot.child("receiver").getValue(String.class);
+                if (sender != bundle.getString("currentUserName") && receive == bundle.getString("userName")){
+                    sendNotification(image_id, sender);
+                }
+
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+
         });
 
     }
@@ -288,7 +339,7 @@ public class MessageActivity extends AppCompatActivity {
         }
 
         //create a chat message object.
-        ChatMessage chatMessage = new ChatMessage(chosenImageId, bundle.getString("currentUserName"));
+        ChatMessage chatMessage = new ChatMessage(chosenImageId, bundle.getString("currentUserName"), bundle.getString("userName"));
 
         databaseReference.child("chats").child(chatId).push().setValue(chatMessage).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -297,12 +348,19 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
+
+
+
+
+
+
         //as soon as the message is sent, add it to the recycler view.
         chatMessageList.add(chatMessage);
 
         //Notify the adapter about the newly added item.
         if(recyclerView != null && recyclerView.getAdapter() != null)
             recyclerView.getAdapter().notifyItemInserted(recyclerView.getAdapter().getItemCount());
+
 
         //update sticker counts
         // Attach a listener to read the data at our posts reference
@@ -337,6 +395,51 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
         Toast.makeText(MessageActivity.this, "Sticker sent", Toast.LENGTH_SHORT).show();
+    }
 
+    Bitmap myBitmap;
+
+    private void sendNotification(int image, String sender) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel =
+                    new NotificationChannel("n", "n", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+
+        switch(image) {
+            case 2131165308:
+                myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.happy_fox);
+                break;
+            case 2131165367:
+                myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.sad_fox);
+                break;
+            case 2131165271:
+                myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.angry_fox);
+                break;
+            case 2131165309:
+                myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.hungry_fox);
+                break;
+            case 2131165325:
+                myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.love_fox);
+                break;
+            case 2131165368:
+                myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.sick_fox);
+                break;
+            default:
+                // should not reach
+        }
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "n")
+                .setContentTitle("MRP")
+                .setSmallIcon(R.mipmap.ic_launcher_35_round)
+                .setContentText(sender + " Sent You:")
+                .setLargeIcon(myBitmap)
+                .setStyle(new NotificationCompat.BigPictureStyle()
+                        .bigPicture(myBitmap)
+                        .bigLargeIcon(null));
+
+        NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this);
+        managerCompat.notify(2, builder.build());
     }
 }

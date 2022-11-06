@@ -34,7 +34,6 @@ public class StickItToEm extends AppCompatActivity {
     // creating variables for
     // EditText and buttons.
     private EditText userNameEdt;
-    private Button loginBtn;
     String userKey;
     private static String TAG = "";
 
@@ -45,7 +44,6 @@ public class StickItToEm extends AppCompatActivity {
 
         // initializing our edittext and button
         userNameEdt = findViewById(R.id.editTextUserName);
-        loginBtn = findViewById(R.id.loginButton);
 
         // instance of the Firebase database.
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -53,29 +51,28 @@ public class StickItToEm extends AppCompatActivity {
         // get reference for the database.
         databaseReference = firebaseDatabase.getReference("");
 
-        // adding on click listener for our button.
-        loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                // getting text from our edittext fields.
-                String userName = userNameEdt.getText().toString();
+    }
 
-                // below line is for checking whether the
-                // edittext fields are empty or not.
-                if (TextUtils.isEmpty(userName)) {
-                    // if the text fields are empty
-                    // then show the below message.
-                    Toast.makeText(StickItToEm.this, "Please enter user name.",
-                            Toast.LENGTH_SHORT).show();
-                } else {
-                    // else call the method to add
-                    // data to our database.
-                    addDataToFirebase(userName);
-                }
+    public void openLogin(View view){
+        int theId = view.getId();
+        if (theId == R.id.loginButton) {
+            // getting text from our edittext fields.
+            String userName = userNameEdt.getText().toString();
+
+            // below line is for checking whether the
+            // edittext fields are empty or not.
+            if (TextUtils.isEmpty(userName)) {
+                // if the text fields are empty
+                // then show the below message.
+                Toast.makeText(StickItToEm.this, "Please enter user name.",
+                        Toast.LENGTH_SHORT).show();
+            } else {
+                // else call the method to add
+                // data to our database.
+                addDataToFirebase(userName);
             }
-        });
-
+        }
     }
     private void addDataToFirebase(String userName) {
         //flag to check if user was created.

@@ -12,6 +12,7 @@ public class ChatMessage {
 
     private String timestamp;
     private String sender;
+    private String receiver;
 
     public ChatMessage(int imageID, String sender) {
         this.imageID = imageID;
@@ -25,6 +26,14 @@ public class ChatMessage {
         this.sender = sender;
     }
 
+
+    public ChatMessage(int imageID, String sender, String receiver) {
+        this.imageID = imageID;
+        this.timestamp = String.valueOf(new Timestamp(System.currentTimeMillis()));
+        this.sender = sender;
+        this.receiver = receiver;
+    }
+
     public long getImageID() {
         return imageID;
     }
@@ -35,5 +44,9 @@ public class ChatMessage {
 
     public String getSender() {
         return sender;
+    }
+
+    public String getReceiver() {
+        return receiver;
     }
 }
