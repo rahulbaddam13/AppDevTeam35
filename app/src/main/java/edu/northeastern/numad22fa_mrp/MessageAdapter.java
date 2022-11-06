@@ -46,6 +46,7 @@ public class MessageAdapter extends RecyclerView.Adapter {
             senderViewHolder.sUserName.setText(chats.get(position).getSender());
             senderViewHolder.senderDate.setText(chats.get(position).getTimestamp());
             long imageID = chats.get(position).getImageID();
+            System.out.println("imageID "+imageID);
             if (imageID == 2131165308) {
                 senderViewHolder.displaySticker.setImageResource(R.drawable.happy_fox);
             } else if (imageID == 2131165367) {
@@ -58,6 +59,8 @@ public class MessageAdapter extends RecyclerView.Adapter {
                 senderViewHolder.displaySticker.setImageResource(R.drawable.love_fox);
             } else if (imageID == 2131165368) {
                 senderViewHolder.displaySticker.setImageResource(R.drawable.sick_fox);
+            } else {
+                senderViewHolder.displaySticker.setImageResource(R.drawable.not_found);
             }
         }
 
@@ -78,6 +81,8 @@ public class MessageAdapter extends RecyclerView.Adapter {
                 receiverViewHolder.displaySticker.setImageResource(R.drawable.love_fox);
             } else if (imageID == 2131165368) {
                 receiverViewHolder.displaySticker.setImageResource(R.drawable.sick_fox);
+            }  else {
+                receiverViewHolder.displaySticker.setImageResource(R.drawable.not_found);
             }
         }
 
