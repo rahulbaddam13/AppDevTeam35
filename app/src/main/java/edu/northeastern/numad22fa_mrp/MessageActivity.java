@@ -2,6 +2,9 @@ package edu.northeastern.numad22fa_mrp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.SyncStatusObserver;
 import android.graphics.Color;
@@ -20,8 +23,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+
+import edu.northeastern.numad22fa_mrp.adapters.ChatAdapter;
+import edu.northeastern.numad22fa_mrp.adapters.UserAdapter;
 
 public class MessageActivity extends AppCompatActivity {
 
@@ -40,6 +49,11 @@ public class MessageActivity extends AppCompatActivity {
     //unique id which represent two users.
     String chatId = null;
 
+    //Recycler View and list of chat
+    private RecyclerView recyclerView;
+
+    List<ChatMessage> chatMessageList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +70,11 @@ public class MessageActivity extends AppCompatActivity {
         TextView displayUserNameTV = (TextView) findViewById(R.id.displayUserName);
         displayUserNameTV.setText(bundle.getString("userName"));
 
+        if(savedInstanceState == null){
+            chatMessageList = new ArrayList<>();
+        } else {
+            //chatMessageList = savedInstanceState.getParcelableArrayList("usersList");
+        }
 
         int compare = bundle.getString("currentUserName").compareTo(bundle.getString("userName"));
         if (compare < 0){
@@ -67,6 +86,47 @@ public class MessageActivity extends AppCompatActivity {
 
         //list all the stickers in horizontal scroll view.
         addStickersList();
+
+        //Link to recycle view.
+        recyclerView = findViewById(R.id.user_recycler_view);
+
+        //Set the layout manager for the recycle view.
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        //Set the custom adapter to the recycle view.
+        recyclerView.setAdapter(new ChatAdapter(chatMessageList, this));
+
+        //Decoration to add line after each item in the view.
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this,
+                DividerItemDecoration.VERTICAL);
+
+        recyclerView.addItemDecoration(dividerItemDecoration);
+
+        // Attach a listener to read the data at our posts reference
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Iterable<DataSnapshot> snapshotIterator = dataSnapshot.child("chats").child(chatId).getChildren();
+                Iterator<DataSnapshot> iterator = snapshotIterator.iterator();
+                while (iterator.hasNext()) {
+                    DataSnapshot next = (DataSnapshot) iterator.next();
+
+                    ChatMessage chatMessage = new ChatMessage((Long)next.child("imageID").getValue(), String.valueOf(next.child("timestamp").getValue()), String.valueOf(next.child("sender").getValue()));
+
+                    chatMessageList.add(chatMessage);
+
+                    //Notify the adapter about the newly added item.
+                    if(recyclerView != null && recyclerView.getAdapter() != null)
+                        recyclerView.getAdapter().notifyItemInserted(recyclerView.getAdapter().getItemCount());
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
 
     }
 
@@ -237,6 +297,14 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
+        //as soon as the message is sent, add it to the recycler view.
+        chatMessageList.add(chatMessage);
+
+        //Notify the adapter about the newly added item.
+        if(recyclerView != null && recyclerView.getAdapter() != null)
+            recyclerView.getAdapter().notifyItemInserted(recyclerView.getAdapter().getItemCount());
+
+        //update sticker counts
         // Attach a listener to read the data at our posts reference
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
