@@ -7,6 +7,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,6 +35,8 @@ public class StickItToEm extends AppCompatActivity {
     // EditText and buttons.
     private EditText userNameEdt;
     private Button loginBtn;
+    String userKey;
+    private static String TAG = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +91,8 @@ public class StickItToEm extends AppCompatActivity {
                 for (DataSnapshot data : dataSnapshot.child("users").getChildren()) {
                     if (userName.equalsIgnoreCase(data.child("userName").getValue().toString())) {
                         //user name exists
+                        userKey = data.getKey();
+                        Log.d(TAG, "Userkey: " + userKey);
                         exists[0] = true;
                         break;
                     }
@@ -96,7 +101,10 @@ public class StickItToEm extends AppCompatActivity {
                 if(!exists[0]) {
                     //user name does not exists, create new
                     // data base reference will sends data to firebase.
-                    databaseReference.child("users").push().setValue(user).addOnFailureListener(new OnFailureListener() {
+                    DatabaseReference db = databaseReference.child("users").push();
+                    userKey = db.getKey();
+                    Log.d(TAG, "Userkey: " + userKey);
+                    db.setValue(user).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             //there was an issue
@@ -117,6 +125,7 @@ public class StickItToEm extends AppCompatActivity {
                 //Move to next activity.
                 Intent clickIntent = new Intent(StickItToEm.this, AllUsersActivity.class);
                 clickIntent.putExtra("currentUserName", userName);
+                clickIntent.putExtra("userKey", userKey);
                 startActivity(clickIntent);
             }
 

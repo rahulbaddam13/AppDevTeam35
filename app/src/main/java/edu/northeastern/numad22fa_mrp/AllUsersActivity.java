@@ -6,7 +6,10 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,11 +38,16 @@ public class AllUsersActivity extends AppCompatActivity {
     List<User> usersList;
 
     ConstraintLayout constraintLayout;
+    String userKey;
+    String currentUserName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_users);
+
+        userKey = getIntent().getExtras().getString("userKey");
+        currentUserName = getIntent().getExtras().getString("currentUserName");
 
         //Instantiate the array list of websites or get from the bundle.
         if(savedInstanceState == null){
@@ -83,7 +91,6 @@ public class AllUsersActivity extends AppCompatActivity {
                     DataSnapshot next = (DataSnapshot) iterator.next();
 
                     //add users other than current user.
-                    String currentUserName = getIntent().getExtras().getString("currentUserName");
                     if(!currentUserName.equals(next.child("userName").getValue())) {
 
                         Map<String, Long> stickerMap = new HashMap<>();
@@ -110,5 +117,15 @@ public class AllUsersActivity extends AppCompatActivity {
                 System.out.println("The read failed: " + databaseError.getCode());
             }
         });
+    }
+
+    public void openProfile(View view) {
+        int theId = view.getId();
+        if (theId == R.id.profile) {
+            Intent intent = new Intent(AllUsersActivity.this, UserProfileActivity.class);
+            intent.putExtra("userKey", userKey);
+            intent.putExtra("username", currentUserName);
+            startActivity(intent);
+        }
     }
 }

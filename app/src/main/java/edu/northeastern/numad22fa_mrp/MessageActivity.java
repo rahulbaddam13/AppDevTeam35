@@ -269,5 +269,6 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
         Toast.makeText(MessageActivity.this, "Sticker sent", Toast.LENGTH_SHORT).show();
+
     }
 }
