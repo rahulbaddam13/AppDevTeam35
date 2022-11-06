@@ -16,6 +16,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -86,7 +87,7 @@ public class MessageActivity extends AppCompatActivity {
         if(savedInstanceState == null){
             chatMessageList = new ArrayList<>();
         } else {
-            //chatMessageList = savedInstanceState.getParcelableArrayList("usersList");
+            chatMessageList = savedInstanceState.getParcelableArrayList("chatMessageList");
         }
 
         int compare = bundle.getString("currentUserName").compareTo(bundle.getString("userName"));
@@ -448,5 +449,12 @@ public class MessageActivity extends AppCompatActivity {
 
         NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this);
         managerCompat.notify(2, builder.build());
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList("chatMessageList",
+                (ArrayList<? extends Parcelable>) chatMessageList);
     }
 }
