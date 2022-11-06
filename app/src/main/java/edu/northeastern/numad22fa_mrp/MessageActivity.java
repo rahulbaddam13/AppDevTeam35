@@ -3,6 +3,8 @@ package edu.northeastern.numad22fa_mrp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SyncStatusObserver;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,10 +31,13 @@ public class MessageActivity extends AppCompatActivity {
     // creating a variable for reference for Firebase.
     DatabaseReference databaseReference;
 
+    //sticker chosen by the user to send.
     public static int chosenImageId = 0;
 
+    //bundle with data from previous activity.
     Bundle bundle = null;
 
+    //unique id which represent two users.
     String chatId = null;
 
     @Override
@@ -75,7 +80,8 @@ public class MessageActivity extends AppCompatActivity {
 
         ImageView imageView1 = view1.findViewById(R.id.stickerImageView);
         imageView1.setImageResource(R.drawable.happy_fox);
-        imageView1.setId(R.id.happy_fox);
+        int imageView1Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/happy_fox" , null, null);
+        imageView1.setId(imageView1Id);
         sticker.addView(view1);
 
         //sad fox sticker
@@ -83,7 +89,8 @@ public class MessageActivity extends AppCompatActivity {
 
         ImageView imageView2 = view2.findViewById(R.id.stickerImageView);
         imageView2.setImageResource(R.drawable.sad_fox);
-        imageView2.setId(R.id.sad_fox);
+        int imageView2Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/sad_fox" , null, null);
+        imageView2.setId(imageView2Id);
 
         sticker.addView(view2);
 
@@ -92,7 +99,8 @@ public class MessageActivity extends AppCompatActivity {
 
         ImageView imageView3 = view3.findViewById(R.id.stickerImageView);
         imageView3.setImageResource(R.drawable.angry_fox);
-        imageView3.setId(R.id.angry_fox);
+        int imageView3Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/angry_fox" , null, null);
+        imageView3.setId(imageView3Id);
 
         sticker.addView(view3);
 
@@ -101,7 +109,8 @@ public class MessageActivity extends AppCompatActivity {
 
         ImageView imageView4 = view4.findViewById(R.id.stickerImageView);
         imageView4.setImageResource(R.drawable.hungry_fox);
-        imageView4.setId(R.id.hungry_fox);
+        int imageView4Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/hungry_fox" , null, null);
+        imageView4.setId(imageView4Id);
 
         sticker.addView(view4);
 
@@ -110,7 +119,8 @@ public class MessageActivity extends AppCompatActivity {
 
         ImageView imageView5 = view5.findViewById(R.id.stickerImageView);
         imageView5.setImageResource(R.drawable.love_fox);
-        imageView5.setId(R.id.love_fox);
+        int imageView5Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/love_fox" , null, null);
+        imageView5.setId(imageView5Id);
 
         sticker.addView(view5);
 
@@ -119,22 +129,97 @@ public class MessageActivity extends AppCompatActivity {
 
         ImageView imageView6 = view6.findViewById(R.id.stickerImageView);
         imageView6.setImageResource(R.drawable.sick_fox);
-        imageView6.setId(R.id.sick_fox);
+        int imageView6Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/sick_fox" , null, null);
+        imageView6.setId(imageView6Id);
+
+        //setting on click listeners, change background color on click
+        imageView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageView1.setBackgroundColor(Color.rgb(218, 246, 169));
+                imageView2.setBackgroundColor(0);
+                imageView3.setBackgroundColor(0);
+                imageView4.setBackgroundColor(0);
+                imageView5.setBackgroundColor(0);
+                imageView6.setBackgroundColor(0);
+            }
+        });
+        imageView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageView1.setBackgroundColor(0);
+                imageView2.setBackgroundColor(Color.rgb(218, 246, 169));
+                imageView3.setBackgroundColor(0);
+                imageView4.setBackgroundColor(0);
+                imageView5.setBackgroundColor(0);
+                imageView6.setBackgroundColor(0);
+            }
+        });
+        imageView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageView1.setBackgroundColor(0);
+                imageView2.setBackgroundColor(0);
+                imageView3.setBackgroundColor(Color.rgb(218, 246, 169));
+                imageView4.setBackgroundColor(0);
+                imageView5.setBackgroundColor(0);
+                imageView6.setBackgroundColor(0);
+            }
+        });
+
+        imageView4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageView1.setBackgroundColor(0);
+                imageView2.setBackgroundColor(0);
+                imageView3.setBackgroundColor(0);
+                imageView4.setBackgroundColor(Color.rgb(218, 246, 169));
+                imageView5.setBackgroundColor(0);
+                imageView6.setBackgroundColor(0);
+            }
+        });
+        imageView5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageView1.setBackgroundColor(0);
+                imageView2.setBackgroundColor(0);
+                imageView3.setBackgroundColor(0);
+                imageView4.setBackgroundColor(0);
+                imageView5.setBackgroundColor(Color.rgb(218, 246, 169));
+                imageView6.setBackgroundColor(0);
+            }
+        });
+        imageView6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageView1.setBackgroundColor(0);
+                imageView2.setBackgroundColor(0);
+                imageView3.setBackgroundColor(0);
+                imageView4.setBackgroundColor(0);
+                imageView5.setBackgroundColor(0);
+                imageView6.setBackgroundColor(Color.rgb(218, 246, 169));
+            }
+        });
 
         sticker.addView(view6);
     }
 
+    /**
+     * Method called when user clicks on the stickers.
+     * @param view current view.
+     */
     public void onStickerClick(View view){
 
         //get the ID of the image clicked.
         int imageID = view.getId();
-
-        //highlight
+        //update chosen image id
         chosenImageId = imageID;
-        System.out.println(imageID);
-
     }
 
+    /**
+     * Method called when user clicks on send button.
+     * @param view current view.
+     */
     public void sendButtonClicked(View view){
 
         if(chosenImageId == 0){
@@ -183,9 +268,6 @@ public class MessageActivity extends AppCompatActivity {
                 System.out.println("The read failed: " + databaseError.getCode());
             }
         });
-
-
-
-
+        Toast.makeText(MessageActivity.this, "Sticker sent", Toast.LENGTH_SHORT).show();
     }
 }
