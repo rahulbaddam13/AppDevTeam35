@@ -1,5 +1,6 @@
 package edu.northeastern.numad22fa_mrp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,10 +44,10 @@ public class AllUsersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_all_users);
 
         //Instantiate the array list of websites or get from the bundle.
-        if(savedInstanceState == null){
+        if (savedInstanceState == null) {
             usersList = new ArrayList<>();
         } else {
-            //usersList = savedInstanceState.getParcelableArrayList("usersList");
+            usersList = savedInstanceState.getParcelableArrayList("usersList");
         }
 
         // below line is used to get the
@@ -73,42 +75,51 @@ public class AllUsersActivity extends AppCompatActivity {
         //Initialize a constraint layout to display the snack bar.
         constraintLayout = (ConstraintLayout) findViewById(R.id.constraintLayout);
 
-        // Attach a listener to read the data at our posts reference
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Iterable<DataSnapshot> snapshotIterator = dataSnapshot.child("users").getChildren();
-                Iterator<DataSnapshot> iterator = snapshotIterator.iterator();
-                while (iterator.hasNext()) {
-                    DataSnapshot next = (DataSnapshot) iterator.next();
+        if (savedInstanceState == null) {
+            // Attach a listener to read the data at our posts reference
+            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Iterable<DataSnapshot> snapshotIterator = dataSnapshot.child("users").getChildren();
+                    Iterator<DataSnapshot> iterator = snapshotIterator.iterator();
+                    while (iterator.hasNext()) {
+                        DataSnapshot next = (DataSnapshot) iterator.next();
 
-                    //add users other than current user.
-                    String currentUserName = getIntent().getExtras().getString("currentUserName");
-                    if(!currentUserName.equals(next.child("userName").getValue())) {
+                        //add users other than current user.
+                        String currentUserName = getIntent().getExtras().getString("currentUserName");
+                        if (!currentUserName.equals(next.child("userName").getValue())) {
 
-                        Map<String, Long> stickerMap = new HashMap<>();
-                        stickerMap.put(next.child("stickerCountMap").child("2131165308").getKey(),(Long) next.child("stickerCountMap").child("2131165308").getValue());
-                        stickerMap.put(next.child("stickerCountMap").child("2131165367").getKey(),(Long) next.child("stickerCountMap").child("2131165367").getValue());
-                        stickerMap.put(next.child("stickerCountMap").child("2131165271").getKey(),(Long) next.child("stickerCountMap").child("2131165271").getValue());
-                        stickerMap.put(next.child("stickerCountMap").child("2131165309").getKey(),(Long) next.child("stickerCountMap").child("2131165309").getValue());
-                        stickerMap.put(next.child("stickerCountMap").child("2131165325").getKey(),(Long) next.child("stickerCountMap").child("2131165325").getValue());
-                        stickerMap.put(next.child("stickerCountMap").child("2131165368").getKey(),(Long) next.child("stickerCountMap").child("2131165368").getValue());
+                            Map<String, Long> stickerMap = new HashMap<>();
+                            stickerMap.put(next.child("stickerCountMap").child("2131165308").getKey(), (Long) next.child("stickerCountMap").child("2131165308").getValue());
+                            stickerMap.put(next.child("stickerCountMap").child("2131165367").getKey(), (Long) next.child("stickerCountMap").child("2131165367").getValue());
+                            stickerMap.put(next.child("stickerCountMap").child("2131165271").getKey(), (Long) next.child("stickerCountMap").child("2131165271").getValue());
+                            stickerMap.put(next.child("stickerCountMap").child("2131165309").getKey(), (Long) next.child("stickerCountMap").child("2131165309").getValue());
+                            stickerMap.put(next.child("stickerCountMap").child("2131165325").getKey(), (Long) next.child("stickerCountMap").child("2131165325").getValue());
+                            stickerMap.put(next.child("stickerCountMap").child("2131165368").getKey(), (Long) next.child("stickerCountMap").child("2131165368").getValue());
 
-                        User user = new User(next.child("uid").getValue().toString(), next.child("userName").getValue().toString(), currentUserName, stickerMap);
-                        usersList.add(user);
+                            User user = new User(next.child("uid").getValue().toString(), next.child("userName").getValue().toString(), currentUserName, stickerMap);
+                            usersList.add(user);
+                        }
+
+                        //Notify the adapter about the newly added item.
+                        if (recyclerView != null && recyclerView.getAdapter() != null)
+                            recyclerView.getAdapter().notifyItemInserted(recyclerView.getAdapter().getItemCount());
+
                     }
-
-                    //Notify the adapter about the newly added item.
-                    if(recyclerView != null && recyclerView.getAdapter() != null)
-                        recyclerView.getAdapter().notifyItemInserted(recyclerView.getAdapter().getItemCount());
-
                 }
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
-            }
-        });
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    System.out.println("The read failed: " + databaseError.getCode());
+                }
+            });
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList("usersList",
+                (ArrayList<? extends Parcelable>) usersList);
     }
 }
