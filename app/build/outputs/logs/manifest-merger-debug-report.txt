@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:2:1-82:12
-INJECTED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:2:1-82:12
-INJECTED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:2:1-82:12
-INJECTED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:2:1-82:12
+ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:2:1-73:12
+INJECTED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:2:1-73:12
+INJECTED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:2:1-73:12
+INJECTED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:2:1-73:12
 MERGED from [com.firebaseui:firebase-ui-auth:7.2.0] C:\Users\rahul\.gradle\caches\transforms-3\bab4656b768538f4e3debf85d6aa7586\transformed\jetified-firebase-ui-auth-7.2.0\AndroidManifest.xml:2:1-109:12
 MERGED from [com.google.android.material:material:1.7.0] C:\Users\rahul\.gradle\caches\transforms-3\b1c8e681aa9ba0a1c8c35b74135f0035\transformed\material-1.7.0\AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\rahul\.gradle\caches\transforms-3\efed057666d96370a0c8772909e812ad\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
@@ -96,22 +96,22 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\User
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\rahul\.gradle\caches\transforms-3\b613636c2cdb56131e5d36b066321b78\transformed\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\rahul\.gradle\caches\transforms-3\f0e82b0d7634eee621ecfa03821e1412\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\rahul\.gradle\caches\transforms-3\b1444217b235776bfe6ca80940418b6f\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:2:1-82:12
-INJECTED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:2:1-82:12
-INJECTED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:2:1-82:12
+INJECTED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:2:1-73:12
+INJECTED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:2:1-73:12
+INJECTED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:2:1-73:12
 	package
 		ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:4:5-45
 		INJECTED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:2:1-82:12
+		ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:2:1-73:12
 		INJECTED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:2:1-82:12
+		ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:2:1-73:12
 		INJECTED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:2:11-69
@@ -172,7 +172,7 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:21.2.0] C:
 	android:name
 		ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:8:22-76
 application
-ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:10:5-80:19
+ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:10:5-71:19
 MERGED from [com.firebaseui:firebase-ui-auth:7.2.0] C:\Users\rahul\.gradle\caches\transforms-3\bab4656b768538f4e3debf85d6aa7586\transformed\jetified-firebase-ui-auth-7.2.0\AndroidManifest.xml:15:5-107:19
 MERGED from [com.firebaseui:firebase-ui-auth:7.2.0] C:\Users\rahul\.gradle\caches\transforms-3\bab4656b768538f4e3debf85d6aa7586\transformed\jetified-firebase-ui-auth-7.2.0\AndroidManifest.xml:15:5-107:19
 MERGED from [com.google.android.material:material:1.7.0] C:\Users\rahul\.gradle\caches\transforms-3\b1c8e681aa9ba0a1c8c35b74135f0035\transformed\material-1.7.0\AndroidManifest.xml:24:5-20
@@ -344,39 +344,27 @@ ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManif
 	android:name
 		ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:55:13-83
 meta-data#com.google.firebase.messaging.default_notification_color
-ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:59:9-61:53
+ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:57:9-59:53
 	android:resource
-		ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:61:13-50
+		ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:59:13-50
 	android:name
-		ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:60:13-84
+		ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:58:13-84
 receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
-ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:64:9-71:20
+ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:62:9-69:20
 MERGED from [com.google.firebase:firebase-messaging:23.1.0] C:\Users\rahul\.gradle\caches\transforms-3\18911bd9099f2b33a4f5335ec0f379c6\transformed\jetified-firebase-messaging-23.1.0\AndroidManifest.xml:31:9-38:20
 MERGED from [com.google.firebase:firebase-messaging:23.1.0] C:\Users\rahul\.gradle\caches\transforms-3\18911bd9099f2b33a4f5335ec0f379c6\transformed\jetified-firebase-messaging-23.1.0\AndroidManifest.xml:31:9-38:20
 	android:exported
-		ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:66:13-36
+		ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:64:13-36
 	android:permission
-		ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:67:13-73
+		ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:65:13-73
 	android:name
-		ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:65:13-78
+		ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:63:13-78
 intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE
-ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:68:13-70:29
+ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:66:13-68:29
 action#com.google.android.c2dm.intent.RECEIVE
-ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:69:17-81
+ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:67:17-81
 	android:name
-		ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:69:25-78
-service#edu.northeastern.numad22fa_mrp.FCMServer
-ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:73:9-79:19
-	android:exported
-		ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:75:13-37
-	android:name
-		ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:74:13-38
-intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
-ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:76:13-78:29
-action#com.google.firebase.MESSAGING_EVENT
-ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:77:17-78
-	android:name
-		ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:77:25-75
+		ADDED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml:67:25-78
 uses-sdk
 INJECTED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\rahul\StudioProjects\AppDevTeam35T\app\src\main\AndroidManifest.xml
@@ -815,6 +803,14 @@ ADDED from [com.google.firebase:firebase-messaging:23.1.0] C:\Users\rahul\.gradl
 		ADDED from [com.google.firebase:firebase-messaging:23.1.0] C:\Users\rahul\.gradle\caches\transforms-3\18911bd9099f2b33a4f5335ec0f379c6\transformed\jetified-firebase-messaging-23.1.0\AndroidManifest.xml:46:13-43
 	android:name
 		ADDED from [com.google.firebase:firebase-messaging:23.1.0] C:\Users\rahul\.gradle\caches\transforms-3\18911bd9099f2b33a4f5335ec0f379c6\transformed\jetified-firebase-messaging-23.1.0\AndroidManifest.xml:45:13-82
+intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
+ADDED from [com.google.firebase:firebase-messaging:23.1.0] C:\Users\rahul\.gradle\caches\transforms-3\18911bd9099f2b33a4f5335ec0f379c6\transformed\jetified-firebase-messaging-23.1.0\AndroidManifest.xml:48:13-50:29
+	android:priority
+		ADDED from [com.google.firebase:firebase-messaging:23.1.0] C:\Users\rahul\.gradle\caches\transforms-3\18911bd9099f2b33a4f5335ec0f379c6\transformed\jetified-firebase-messaging-23.1.0\AndroidManifest.xml:48:28-51
+action#com.google.firebase.MESSAGING_EVENT
+ADDED from [com.google.firebase:firebase-messaging:23.1.0] C:\Users\rahul\.gradle\caches\transforms-3\18911bd9099f2b33a4f5335ec0f379c6\transformed\jetified-firebase-messaging-23.1.0\AndroidManifest.xml:49:17-78
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:23.1.0] C:\Users\rahul\.gradle\caches\transforms-3\18911bd9099f2b33a4f5335ec0f379c6\transformed\jetified-firebase-messaging-23.1.0\AndroidManifest.xml:49:25-75
 meta-data#com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar
 ADDED from [com.google.firebase:firebase-messaging:23.1.0] C:\Users\rahul\.gradle\caches\transforms-3\18911bd9099f2b33a4f5335ec0f379c6\transformed\jetified-firebase-messaging-23.1.0\AndroidManifest.xml:55:13-57:85
 	android:value

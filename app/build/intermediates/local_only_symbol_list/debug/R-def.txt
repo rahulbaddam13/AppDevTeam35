@@ -37,6 +37,9 @@ id date
 id dateView
 id descText
 id description
+id displaySentTime
+id displaySentUserName
+id displayStickers
 id displayUserName
 id editTextUserName
 id edit_first_name
@@ -56,9 +59,15 @@ id love_fox
 id my
 id name
 id progressBar
+id receive
+id receiverImage
+id receiver_date
 id sad_fox
 id search
 id selectDate
+id sender
+id senderImage
+id sender_date
 id sick_fox
 id state
 id stickerImageView
@@ -85,7 +94,10 @@ layout activity_register
 layout activity_stick_it_to_em
 layout activity_weather
 layout activity_weather_custom
+layout item_chat
 layout item_user
+layout receiver_chat_layout
+layout sender_chat_layout
 layout sticker
 layout weather_city
 layout weather_info
@@ -96,6 +108,8 @@ mipmap ic_launcher_35_round
 mipmap ic_launcher_round
 string app_name
 string default_web_client_id
+string emoji_notification_channel
+string emoji_received_notification
 string gcm_defaultSenderId
 string get_weather
 string google_api_key
@@ -103,6 +117,7 @@ string google_app_id
 string google_crash_reporting_api_key
 string google_storage_bucket
 string intro_text
+string key
 string login_button
 string project_id
 string select_date

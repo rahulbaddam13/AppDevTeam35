@@ -2977,6 +2977,9 @@ id disableIntraAutoTransition
 id disablePostScroll
 id disableScroll
 id disjoint
+id displaySentTime
+id displaySentUserName
+id displayStickers
 id displayUserName
 id dragAnticlockwise
 id dragClockwise
@@ -3207,6 +3210,9 @@ id progress_circular
 id progress_horizontal
 id radio
 id ratio
+id receive
+id receiverImage
+id receiver_date
 id rectangles
 id resend_barrier
 id resend_code
@@ -3248,6 +3254,9 @@ id selected
 id selection_type
 id send_code
 id send_sms_tos
+id sender
+id senderImage
+id sender_date
 id sharedValueSet
 id sharedValueUnset
 id shortcut
@@ -3564,6 +3573,7 @@ layout fui_register_email_layout
 layout fui_welcome_back_email_link_prompt_layout
 layout fui_welcome_back_idp_prompt_layout
 layout fui_welcome_back_password_prompt_layout
+layout item_chat
 layout item_user
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
@@ -3628,9 +3638,11 @@ layout notification_template_media
 layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout receiver_chat_layout
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout sender_chat_layout
 layout sticker
 layout support_simple_spinner_dropdown_item
 layout weather_city
@@ -3703,6 +3715,8 @@ string common_signin_button_text
 string common_signin_button_text_long
 string copy_toast_msg
 string default_web_client_id
+string emoji_notification_channel
+string emoji_received_notification
 string error_a11y_label
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
@@ -3820,6 +3834,7 @@ string hide_bottom_view_on_scroll_behavior
 string icon_content_description
 string intro_text
 string item_view_role_description
+string key
 string login_button
 string m3_sys_motion_easing_emphasized
 string m3_sys_motion_easing_emphasized_accelerate

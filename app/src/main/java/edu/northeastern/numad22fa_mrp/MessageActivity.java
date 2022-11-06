@@ -6,9 +6,12 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.SyncStatusObserver;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,21 +19,23 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
-import edu.northeastern.numad22fa_mrp.adapters.ChatAdapter;
-import edu.northeastern.numad22fa_mrp.adapters.UserAdapter;
 
 public class MessageActivity extends AppCompatActivity {
 
@@ -53,6 +58,7 @@ public class MessageActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
 
     List<ChatMessage> chatMessageList;
+    private static final String SERVER_KEY = "key=AAAAEvPPL0M:APA91bGj7m23smJAN1Z3GtfasUL9qyaRLVBh52MP4GBuESx1wmySezGPZl2Aba94I8K0FWIIfHprP6VSQi6-fz3oRMtRs08EESPdfbUWpgA54i5x9mcUolDM0J7TL_VW2lBfJXxSdTlG";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,22 +76,22 @@ public class MessageActivity extends AppCompatActivity {
         TextView displayUserNameTV = (TextView) findViewById(R.id.displayUserName);
         displayUserNameTV.setText(bundle.getString("userName"));
 
-        if(savedInstanceState == null){
+        if (savedInstanceState == null) {
             chatMessageList = new ArrayList<>();
         } else {
             //chatMessageList = savedInstanceState.getParcelableArrayList("usersList");
         }
 
         int compare = bundle.getString("currentUserName").compareTo(bundle.getString("userName"));
-        if (compare < 0){
+        if (compare < 0) {
             chatId = bundle.getString("currentUserName") + bundle.getString("userName");
-        }
-        else if (compare > 0) {
+        } else if (compare > 0) {
             chatId = bundle.getString("userName") + bundle.getString("currentUserName");
         }
 
         //list all the stickers in horizontal scroll view.
         addStickersList();
+        makeNotificationChannel();
 
         //Link to recycle view.
         recyclerView = findViewById(R.id.user_recycler_view);
@@ -94,7 +100,8 @@ public class MessageActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         //Set the custom adapter to the recycle view.
-        recyclerView.setAdapter(new ChatAdapter(chatMessageList, this));
+        //recyclerView.setAdapter(new ChatAdapter(chatMessageList, this));
+        recyclerView.setAdapter(new MessageAdapter(this, chatMessageList));
 
         //Decoration to add line after each item in the view.
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this,
@@ -111,13 +118,15 @@ public class MessageActivity extends AppCompatActivity {
                 while (iterator.hasNext()) {
                     DataSnapshot next = (DataSnapshot) iterator.next();
 
-                    ChatMessage chatMessage = new ChatMessage((Long)next.child("imageID").getValue(), String.valueOf(next.child("timestamp").getValue()), String.valueOf(next.child("sender").getValue()));
+                    ChatMessage chatMessage = new ChatMessage((Long) next.child("imageID").getValue(), String.valueOf(next.child("timestamp").getValue()), String.valueOf(next.child("sender").getValue()));
 
                     chatMessageList.add(chatMessage);
 
                     //Notify the adapter about the newly added item.
-                    if(recyclerView != null && recyclerView.getAdapter() != null)
+                    if (recyclerView != null && recyclerView.getAdapter() != null) {
                         recyclerView.getAdapter().notifyItemInserted(recyclerView.getAdapter().getItemCount());
+                        //  Log.v("View", recyclerView.getAdapter().toString());
+                    }
 
                 }
             }
@@ -130,7 +139,7 @@ public class MessageActivity extends AppCompatActivity {
 
     }
 
-    private void addStickersList(){
+    private void addStickersList() {
         LinearLayout sticker = findViewById(R.id.stickers);
 
         LayoutInflater inflater = LayoutInflater.from(this);
@@ -140,7 +149,7 @@ public class MessageActivity extends AppCompatActivity {
 
         ImageView imageView1 = view1.findViewById(R.id.stickerImageView);
         imageView1.setImageResource(R.drawable.happy_fox);
-        int imageView1Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/happy_fox" , null, null);
+        int imageView1Id = getResources().getIdentifier(getApplicationContext().getPackageName() + ":drawable/happy_fox", null, null);
         imageView1.setId(imageView1Id);
         sticker.addView(view1);
 
@@ -149,7 +158,7 @@ public class MessageActivity extends AppCompatActivity {
 
         ImageView imageView2 = view2.findViewById(R.id.stickerImageView);
         imageView2.setImageResource(R.drawable.sad_fox);
-        int imageView2Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/sad_fox" , null, null);
+        int imageView2Id = getResources().getIdentifier(getApplicationContext().getPackageName() + ":drawable/sad_fox", null, null);
         imageView2.setId(imageView2Id);
 
         sticker.addView(view2);
@@ -159,7 +168,7 @@ public class MessageActivity extends AppCompatActivity {
 
         ImageView imageView3 = view3.findViewById(R.id.stickerImageView);
         imageView3.setImageResource(R.drawable.angry_fox);
-        int imageView3Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/angry_fox" , null, null);
+        int imageView3Id = getResources().getIdentifier(getApplicationContext().getPackageName() + ":drawable/angry_fox", null, null);
         imageView3.setId(imageView3Id);
 
         sticker.addView(view3);
@@ -169,7 +178,7 @@ public class MessageActivity extends AppCompatActivity {
 
         ImageView imageView4 = view4.findViewById(R.id.stickerImageView);
         imageView4.setImageResource(R.drawable.hungry_fox);
-        int imageView4Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/hungry_fox" , null, null);
+        int imageView4Id = getResources().getIdentifier(getApplicationContext().getPackageName() + ":drawable/hungry_fox", null, null);
         imageView4.setId(imageView4Id);
 
         sticker.addView(view4);
@@ -179,7 +188,7 @@ public class MessageActivity extends AppCompatActivity {
 
         ImageView imageView5 = view5.findViewById(R.id.stickerImageView);
         imageView5.setImageResource(R.drawable.love_fox);
-        int imageView5Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/love_fox" , null, null);
+        int imageView5Id = getResources().getIdentifier(getApplicationContext().getPackageName() + ":drawable/love_fox", null, null);
         imageView5.setId(imageView5Id);
 
         sticker.addView(view5);
@@ -189,7 +198,7 @@ public class MessageActivity extends AppCompatActivity {
 
         ImageView imageView6 = view6.findViewById(R.id.stickerImageView);
         imageView6.setImageResource(R.drawable.sick_fox);
-        int imageView6Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/sick_fox" , null, null);
+        int imageView6Id = getResources().getIdentifier(getApplicationContext().getPackageName() + ":drawable/sick_fox", null, null);
         imageView6.setId(imageView6Id);
 
         //setting on click listeners, change background color on click
@@ -278,11 +287,12 @@ public class MessageActivity extends AppCompatActivity {
 
     /**
      * Method called when user clicks on send button.
+     *
      * @param view current view.
      */
-    public void sendButtonClicked(View view){
+    public void sendButtonClicked(View view) {
 
-        if(chosenImageId == 0){
+        if (chosenImageId == 0) {
             Toast.makeText(MessageActivity.this, "Please choose a sticker", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -301,7 +311,7 @@ public class MessageActivity extends AppCompatActivity {
         chatMessageList.add(chatMessage);
 
         //Notify the adapter about the newly added item.
-        if(recyclerView != null && recyclerView.getAdapter() != null)
+        if (recyclerView != null && recyclerView.getAdapter() != null)
             recyclerView.getAdapter().notifyItemInserted(recyclerView.getAdapter().getItemCount());
 
         //update sticker counts
@@ -315,11 +325,11 @@ public class MessageActivity extends AppCompatActivity {
                     DataSnapshot next = (DataSnapshot) iterator.next();
 
                     String currentUserName = getIntent().getExtras().getString("currentUserName");
-                    if(currentUserName.equals(next.child("userName").getValue())) {
+                    if (currentUserName.equals(next.child("userName").getValue())) {
 
                         Map<String, Long> currentCount = (Map<String, Long>) next.child("stickerCountMap").getValue();
-                        if(currentCount != null)
-                        currentCount.put(chosenImageId+"", currentCount.getOrDefault(chosenImageId+"",0l)+ 1l);
+                        if (currentCount != null)
+                            currentCount.put(chosenImageId + "", currentCount.getOrDefault(chosenImageId + "", 0l) + 1l);
                         databaseReference.child("users").child(next.getKey()).child("stickerCountMap").setValue(currentCount).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
@@ -336,6 +346,71 @@ public class MessageActivity extends AppCompatActivity {
                 System.out.println("The read failed: " + databaseError.getCode());
             }
         });
+        sendStickerNotification(bundle.getString("userName"), chosenImageId);
         Toast.makeText(MessageActivity.this, "Sticker sent", Toast.LENGTH_SHORT).show();
     }
+
+    public void makeNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel
+                    ("MRP", bundle.getString("currentUserName"), NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription("Notifications for " + bundle.getString("currentUserName"));
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+            subscribeToMessages();
+        }
+    }
+
+    public void subscribeToMessages() {
+        FirebaseMessaging.getInstance().subscribeToTopic(bundle.getString("currentUserName"))
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        task.isSuccessful();
+                    }
+                });
+    }
+
+    public void sendStickerNotification(String receiver, int sticker) {
+        int img = R.drawable.sad_fox;
+        if (sticker == 2131165308) {
+            img = R.drawable.happy_fox;
+        } else if (sticker == 2131165367) {
+            img = R.drawable.sad_fox;
+        } else if (sticker == 2131165271) {
+            img = R.drawable.angry_fox;
+        } else if (sticker == 2131165309) {
+            img = R.drawable.hungry_fox;
+        } else if (sticker == 2131165325) {
+            img = R.drawable.love_fox;
+        } else if (sticker == 2131165368) {
+            img = R.drawable.sick_fox;
+        }
+
+        int finalImg = img;
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                JSONObject jPayload = new JSONObject();
+                JSONObject jNotification = new JSONObject();
+                try {
+                    jNotification.put("title", "New Sticker from " + bundle.getString("currentUserName"));
+                    jNotification.put("body", R.drawable.sad_fox);
+                    jNotification.put("sound", "default");
+                    jNotification.put("badge", "1");
+
+                    jPayload.put("to", "/topics/" + receiver);
+                    jPayload.put("priority", "high");
+                    jPayload.put("notification", jNotification);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                final String messageResponse = NotificationsUtil.fcmHttpConnection(SERVER_KEY, jPayload);
+                Log.d("Sticker", "STICKER SENT TO " + receiver);
+                Log.d("Sticker", messageResponse);
+            }
+        }).start();
+    }
+
 }

@@ -17,6 +17,8 @@
     <item name="sick_fox" type="id"/>
     <string name="app_name">NUMAD22Fa_MRP</string>
     <string name="default_web_client_id" translatable="false">81399852867-lgftu8cth4ugu8ionlmlsh8vuf3v3gso.apps.googleusercontent.com</string>
+    <string name="emoji_notification_channel">STICKER_CHANNEL</string>
+    <string name="emoji_received_notification">Emoji Received</string>
     <string name="gcm_defaultSenderId" translatable="false">81399852867</string>
     <string name="get_weather">Get Weather</string>
     <string name="google_api_key" translatable="false">AIzaSyCDXh_rI4x-YVKi7NLwsZn8uU2KBTcWC30</string>
@@ -24,6 +26,7 @@
     <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCDXh_rI4x-YVKi7NLwsZn8uU2KBTcWC30</string>
     <string name="google_storage_bucket" translatable="false">mad-a8-mrp.appspot.com</string>
     <string name="intro_text">Create new user / login as existing user</string>
+    <string name="key">key=AAAAEvPPL0M:APA91bGj7m23smJAN1Z3GtfasUL9qyaRLVBh52MP4GBuESx1wmySezGPZl2Aba94I8K0FWIIfHprP6VSQi6-fz3oRMtRs08EESPdfbUWpgA54i5x9mcUolDM0J7TL_VW2lBfJXxSdTlG</string>
     <string name="login_button">Login</string>
     <string name="project_id" translatable="false">mad-a8-mrp</string>
     <string name="select_date">Select Date</string>
