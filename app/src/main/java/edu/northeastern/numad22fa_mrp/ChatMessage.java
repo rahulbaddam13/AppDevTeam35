@@ -7,7 +7,9 @@ import java.sql.Timestamp;
  */
 public class ChatMessage {
 
-    private int imageID;
+    private long imageID;
+
+
     private String timestamp;
     private String sender;
 
@@ -17,7 +19,13 @@ public class ChatMessage {
         this.sender = sender;
     }
 
-    public int getImageID() {
+    public ChatMessage(long imageID, String timestamp, String sender) {
+        this.imageID = imageID;
+        this.timestamp = timestamp;
+        this.sender = sender;
+    }
+
+    public long getImageID() {
         return imageID;
     }
 

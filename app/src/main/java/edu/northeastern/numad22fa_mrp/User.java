@@ -1,5 +1,8 @@
 package edu.northeastern.numad22fa_mrp;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -7,8 +10,20 @@ import java.util.UUID;
 /**
  * Class that represent an user object which includes the user name, UID, currentUserName and number of stickers sent.
  */
-public class User {
+public class User implements Parcelable {
 
+    /**
+     * Implementing Parcelable for data persistence.
+     */
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
     private final String userName;
     private final String UID;
     private String currentUserName;
@@ -62,5 +77,29 @@ public class User {
 
     public void setStickerCountMap(Map<String, Long> stickerCountMap) {
         this.stickerCountMap = stickerCountMap;
+    }
+
+    /**
+     * Construct website object using Parcel.
+     * @param in Parcel object.
+     */
+    public User(Parcel in){
+        this.userName = in.readString();
+        this.UID = in.readString();
+        this.currentUserName = in.readString();
+        in.readMap(this.stickerCountMap, ClassLoader.getSystemClassLoader());
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(this.userName);
+        parcel.writeString(this.UID);
+        parcel.writeString(this.currentUserName);
+        parcel.writeMap(this.stickerCountMap);
     }
 }
