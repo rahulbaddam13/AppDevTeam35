@@ -142,6 +142,8 @@ public class MessageActivity extends AppCompatActivity {
                 imageView4.setBackgroundColor(0);
                 imageView5.setBackgroundColor(0);
                 imageView6.setBackgroundColor(0);
+
+                chosenImageId = view.getId();
             }
         });
         imageView2.setOnClickListener(new View.OnClickListener() {
@@ -153,6 +155,8 @@ public class MessageActivity extends AppCompatActivity {
                 imageView4.setBackgroundColor(0);
                 imageView5.setBackgroundColor(0);
                 imageView6.setBackgroundColor(0);
+
+                chosenImageId = view.getId();
             }
         });
         imageView3.setOnClickListener(new View.OnClickListener() {
@@ -164,6 +168,8 @@ public class MessageActivity extends AppCompatActivity {
                 imageView4.setBackgroundColor(0);
                 imageView5.setBackgroundColor(0);
                 imageView6.setBackgroundColor(0);
+
+                chosenImageId = view.getId();
             }
         });
 
@@ -176,6 +182,8 @@ public class MessageActivity extends AppCompatActivity {
                 imageView4.setBackgroundColor(Color.rgb(218, 246, 169));
                 imageView5.setBackgroundColor(0);
                 imageView6.setBackgroundColor(0);
+
+                chosenImageId = view.getId();
             }
         });
         imageView5.setOnClickListener(new View.OnClickListener() {
@@ -187,6 +195,8 @@ public class MessageActivity extends AppCompatActivity {
                 imageView4.setBackgroundColor(0);
                 imageView5.setBackgroundColor(Color.rgb(218, 246, 169));
                 imageView6.setBackgroundColor(0);
+
+                chosenImageId = view.getId();
             }
         });
         imageView6.setOnClickListener(new View.OnClickListener() {
@@ -198,22 +208,12 @@ public class MessageActivity extends AppCompatActivity {
                 imageView4.setBackgroundColor(0);
                 imageView5.setBackgroundColor(0);
                 imageView6.setBackgroundColor(Color.rgb(218, 246, 169));
+
+                chosenImageId = view.getId();
             }
         });
 
         sticker.addView(view6);
-    }
-
-    /**
-     * Method called when user clicks on the stickers.
-     * @param view current view.
-     */
-    public void onStickerClick(View view){
-
-        //get the ID of the image clicked.
-        int imageID = view.getId();
-        //update chosen image id
-        chosenImageId = imageID;
     }
 
     /**
