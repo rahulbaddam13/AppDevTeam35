@@ -34,7 +34,6 @@
         android:id="@+id/displayUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="cursive"
         android:text=""
         android:textColor="@color/purple_700"
         android:textIsSelectable="false"

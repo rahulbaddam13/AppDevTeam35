@@ -9,11 +9,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.SyncStatusObserver;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -23,7 +20,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,13 +32,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import edu.northeastern.numad22fa_mrp.adapters.ChatAdapter;
-import edu.northeastern.numad22fa_mrp.adapters.UserAdapter;
 
 public class MessageActivity extends AppCompatActivity {
 
@@ -65,6 +59,12 @@ public class MessageActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
 
     List<ChatMessage> chatMessageList;
+    ImageView imageView1;
+    ImageView imageView2;
+    ImageView imageView3;
+    ImageView imageView4;
+    ImageView imageView5;
+    ImageView imageView6;
 
 
     @Override
@@ -189,7 +189,7 @@ public class MessageActivity extends AppCompatActivity {
         //happy fox sticker
         View view1 = inflater.inflate(R.layout.sticker, sticker, false);
 
-        ImageView imageView1 = view1.findViewById(R.id.stickerImageView);
+        imageView1 = view1.findViewById(R.id.stickerImageView);
         imageView1.setImageResource(R.drawable.happy_fox);
         int imageView1Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/happy_fox" , null, null);
         imageView1.setId(imageView1Id);
@@ -198,7 +198,7 @@ public class MessageActivity extends AppCompatActivity {
         //sad fox sticker
         View view2 = inflater.inflate(R.layout.sticker, sticker, false);
 
-        ImageView imageView2 = view2.findViewById(R.id.stickerImageView);
+        imageView2 = view2.findViewById(R.id.stickerImageView);
         imageView2.setImageResource(R.drawable.sad_fox);
         int imageView2Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/sad_fox" , null, null);
         imageView2.setId(imageView2Id);
@@ -208,7 +208,7 @@ public class MessageActivity extends AppCompatActivity {
         //angry fox sticker
         View view3 = inflater.inflate(R.layout.sticker, sticker, false);
 
-        ImageView imageView3 = view3.findViewById(R.id.stickerImageView);
+        imageView3 = view3.findViewById(R.id.stickerImageView);
         imageView3.setImageResource(R.drawable.angry_fox);
         int imageView3Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/angry_fox" , null, null);
         imageView3.setId(imageView3Id);
@@ -218,7 +218,7 @@ public class MessageActivity extends AppCompatActivity {
         //hungry fox sticker
         View view4 = inflater.inflate(R.layout.sticker, sticker, false);
 
-        ImageView imageView4 = view4.findViewById(R.id.stickerImageView);
+        imageView4 = view4.findViewById(R.id.stickerImageView);
         imageView4.setImageResource(R.drawable.hungry_fox);
         int imageView4Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/hungry_fox" , null, null);
         imageView4.setId(imageView4Id);
@@ -228,7 +228,7 @@ public class MessageActivity extends AppCompatActivity {
         //love fox sticker
         View view5 = inflater.inflate(R.layout.sticker, sticker, false);
 
-        ImageView imageView5 = view5.findViewById(R.id.stickerImageView);
+        imageView5 = view5.findViewById(R.id.stickerImageView);
         imageView5.setImageResource(R.drawable.love_fox);
         int imageView5Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/love_fox" , null, null);
         imageView5.setId(imageView5Id);
@@ -238,7 +238,7 @@ public class MessageActivity extends AppCompatActivity {
         //sick fox sticker
         View view6 = inflater.inflate(R.layout.sticker, sticker, false);
 
-        ImageView imageView6 = view6.findViewById(R.id.stickerImageView);
+        imageView6 = view6.findViewById(R.id.stickerImageView);
         imageView6.setImageResource(R.drawable.sick_fox);
         int imageView6Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/sick_fox" , null, null);
         imageView6.setId(imageView6Id);
@@ -329,6 +329,7 @@ public class MessageActivity extends AppCompatActivity {
 
     /**
      * Method called when user clicks on send button.
+     *
      * @param view current view.
      */
     public void sendButtonClicked(View view){
@@ -394,6 +395,12 @@ public class MessageActivity extends AppCompatActivity {
                 System.out.println("The read failed: " + databaseError.getCode());
             }
         });
+        imageView1.setBackgroundColor(0);
+        imageView2.setBackgroundColor(0);
+        imageView3.setBackgroundColor(0);
+        imageView4.setBackgroundColor(0);
+        imageView5.setBackgroundColor(0);
+        imageView6.setBackgroundColor(0);
         Toast.makeText(MessageActivity.this, "Sticker sent", Toast.LENGTH_SHORT).show();
     }
 
