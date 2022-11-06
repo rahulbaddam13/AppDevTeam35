@@ -3,12 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Pranathi/AndroidStudioProjects/AppDevTeam35/app/src/main/res/layout/activity_all_users.xml" value="0.152" />
-        <entry key="..\:/Users/Pranathi/AndroidStudioProjects/AppDevTeam35/app/src/main/res/layout/activity_at_your_service.xml" value="0.11041666666666666" />
-        <entry key="..\:/Users/Pranathi/AndroidStudioProjects/AppDevTeam35/app/src/main/res/layout/activity_message.xml" value="0.10989583333333333" />
-        <entry key="..\:/Users/Pranathi/AndroidStudioProjects/AppDevTeam35/app/src/main/res/layout/activity_stick_it_to_em.xml" value="0.176" />
-        <entry key="..\:/Users/Pranathi/AndroidStudioProjects/AppDevTeam35/app/src/main/res/layout/item_user.xml" value="0.12" />
-        <entry key="..\:/Users/Pranathi/AndroidStudioProjects/AppDevTeam35/app/src/main/res/layout/sticker.xml" value="0.11041666666666666" />
         <entry key="..\:/Users/rahul/AndroidStudioProjects/NUMAD22Fa_MRP/app/src/main/res/layout/activity_at_your_service.xml" value="0.2171875" />
         <entry key="..\:/Users/rahul/AndroidStudioProjects/NUMAD22Fa_MRP/app/src/main/res/layout/activity_check_animation.xml" value="0.1125" />
         <entry key="..\:/Users/rahul/AndroidStudioProjects/NUMAD22Fa_MRP/app/src/main/res/layout/activity_city_finder.xml" value="0.1" />
@@ -40,6 +34,19 @@
         <entry key="..\:/Users/rahul/StudioProjects/AppDevTeam355/app/src/main/res/layout/activity_weather.xml" value="0.12952898550724637" />
         <entry key="..\:/Users/rahul/StudioProjects/AppDevTeam355/app/src/main/res/layout/activity_weather_custom.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/rahul/StudioProjects/AppDevTeam355/app/src/main/res/layout/test.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/rahul/StudioProjects/AppDevTeam35T/app/src/main/res/layout/activity_all_users.xml" value="0.1921875" />
+        <entry key="..\:/Users/rahul/StudioProjects/AppDevTeam35T/app/src/main/res/layout/activity_main.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/rahul/StudioProjects/AppDevTeam35T/app/src/main/res/layout/activity_message.xml" value="0.1" />
+        <entry key="..\:/Users/rahul/StudioProjects/AppDevTeam35T/app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="..\:/Users/rahul/StudioProjects/AppDevTeam35T/app/src/main/res/layout/activity_stick_it_to_em.xml" value="0.1921875" />
+        <entry key="..\:/Users/rahul/StudioProjects/AppDevTeam35T/app/src/main/res/layout/activity_weather_custom.xml" value="0.1921875" />
+        <entry key="..\:/Users/rahul/StudioProjects/AppDevTeam35T/app/src/main/res/layout/item_chat.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/rahul/StudioProjects/AppDevTeam35T/app/src/main/res/layout/item_user.xml" value="0.1546875" />
+        <entry key="..\:/Users/rahul/StudioProjects/AppDevTeam35T/app/src/main/res/layout/layout_user_dialog.xml" value="0.11197916666666667" />
+        <entry key="..\:/Users/rahul/StudioProjects/AppDevTeam35T/app/src/main/res/layout/receiver_chat_layout.xml" value="0.1765625" />
+        <entry key="..\:/Users/rahul/StudioProjects/AppDevTeam35T/app/src/main/res/layout/sender_chat_layout.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/rahul/StudioProjects/AppDevTeam35T/app/src/main/res/layout/sent_number_item.xml" value="0.11197916666666667" />
+        <entry key="..\:/Users/rahul/StudioProjects/AppDevTeam35T/app/src/main/res/layout/sticker.xml" value="0.13020833333333334" />
       </map>
     </option>
   </component>

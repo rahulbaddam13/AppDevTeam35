@@ -9,9 +9,36 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="white">#FFFFFFFF</color>
+    <item name="angry_fox" type="id"/>
+    <item name="happy_fox" type="id"/>
+    <item name="hungry_fox" type="id"/>
+    <item name="love_fox" type="id"/>
+    <item name="sad_fox" type="id"/>
+    <item name="sick_fox" type="id"/>
+    <string name="About">About App</string>
+    <string name="add_new_friend_instructions">Add new Friend by Username</string>
     <string name="app_name">NUMAD22Fa_MRP</string>
-    <string name="description">Weather App \nDisplays the weather details of the location entered by the user</string>
+    <string name="default_web_client_id" translatable="false">81399852867-lgftu8cth4ugu8ionlmlsh8vuf3v3gso.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">81399852867</string>
     <string name="get_weather">Get Weather</string>
+    <string name="google_api_key" translatable="false">AIzaSyCDXh_rI4x-YVKi7NLwsZn8uU2KBTcWC30</string>
+    <string name="google_app_id" translatable="false">1:81399852867:android:8ae0c66a5e06315ce609f6</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCDXh_rI4x-YVKi7NLwsZn8uU2KBTcWC30</string>
+    <string name="google_storage_bucket" translatable="false">mad-a8-mrp.appspot.com</string>
+    <string name="intro_text">Create new user / login as existing user</string>
+    <string name="login_button">Login</string>
+    <string name="madhuri">Madhuri Krishnamurthy</string>
+    <string name="pranathi">Pranathi Alluri</string>
+    <string name="project_id" translatable="false">mad-a8-mrp</string>
+    <string name="rahul">Rahul Baddam</string>
+    <string name="select_date">Select Date</string>
+    <string name="sent_history">Sent Stickers</string>
+    <string name="team35">Team 35: Next Rent</string>
+    <string name="user_hint">Username</string>
+    <string name="user_name">Enter user name</string>
+    <string name="user_name_hint">Username of Friend to add</string>
+    <string name="user_name_sent">Username:</string>
+    <string name="your_profile">Your Profile</string>
     <style name="Theme.NUMAD22Fa_MRP" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         
         <item name="colorPrimary">@color/purple_500</item>

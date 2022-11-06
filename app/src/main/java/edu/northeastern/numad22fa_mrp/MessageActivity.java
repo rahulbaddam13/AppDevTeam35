@@ -99,7 +99,6 @@ public class MessageActivity extends AppCompatActivity {
 
         //list all the stickers in horizontal scroll view.
         addStickersList();
-
         //Link to recycle view.
         recyclerView = findViewById(R.id.user_recycler_view);
 
@@ -107,7 +106,8 @@ public class MessageActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         //Set the custom adapter to the recycle view.
-        recyclerView.setAdapter(new ChatAdapter(chatMessageList, this));
+        //recyclerView.setAdapter(new ChatAdapter(chatMessageList, this));
+        recyclerView.setAdapter(new MessageAdapter(this,chatMessageList));
 
         //Decoration to add line after each item in the view.
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this,
