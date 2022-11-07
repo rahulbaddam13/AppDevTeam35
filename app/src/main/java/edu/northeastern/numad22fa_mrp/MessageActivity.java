@@ -16,6 +16,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -56,7 +57,7 @@ public class MessageActivity extends AppCompatActivity {
     String chatId = null;
 
     //Recycler View and list of chat
-    private RecyclerView recyclerView;
+    private RecyclerView messageRecyclerView;
 
     List<ChatMessage> chatMessageList;
     ImageView imageView1;
@@ -86,7 +87,7 @@ public class MessageActivity extends AppCompatActivity {
         if(savedInstanceState == null){
             chatMessageList = new ArrayList<>();
         } else {
-            //chatMessageList = savedInstanceState.getParcelableArrayList("usersList");
+            chatMessageList = savedInstanceState.getParcelableArrayList("chatMessageList");
         }
 
         int compare = bundle.getString("currentUserName").compareTo(bundle.getString("userName"));
@@ -100,20 +101,20 @@ public class MessageActivity extends AppCompatActivity {
         //list all the stickers in horizontal scroll view.
         addStickersList();
         //Link to recycle view.
-        recyclerView = findViewById(R.id.user_recycler_view);
+        messageRecyclerView = findViewById(R.id.user_recycler_view);
 
         //Set the layout manager for the recycle view.
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        messageRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         //Set the custom adapter to the recycle view.
         //recyclerView.setAdapter(new ChatAdapter(chatMessageList, this));
-        recyclerView.setAdapter(new MessageAdapter(this,chatMessageList));
+        messageRecyclerView.setAdapter(new MessageAdapter(this,chatMessageList));
 
         //Decoration to add line after each item in the view.
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this,
                 DividerItemDecoration.VERTICAL);
 
-        recyclerView.addItemDecoration(dividerItemDecoration);
+        messageRecyclerView.addItemDecoration(dividerItemDecoration);
 
         // Attach a listener to read the data at our posts reference
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -129,8 +130,8 @@ public class MessageActivity extends AppCompatActivity {
                     chatMessageList.add(chatMessage);
 
                     //Notify the adapter about the newly added item.
-                    if(recyclerView != null && recyclerView.getAdapter() != null)
-                        recyclerView.getAdapter().notifyItemInserted(recyclerView.getAdapter().getItemCount());
+                    if(messageRecyclerView != null && messageRecyclerView.getAdapter() != null)
+                        messageRecyclerView.getAdapter().notifyItemInserted(messageRecyclerView.getAdapter().getItemCount());
 
 
                 }
@@ -349,18 +350,12 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-
         //as soon as the message is sent, add it to the recycler view.
         chatMessageList.add(chatMessage);
 
         //Notify the adapter about the newly added item.
-        if(recyclerView != null && recyclerView.getAdapter() != null)
-            recyclerView.getAdapter().notifyItemInserted(recyclerView.getAdapter().getItemCount());
+        if(messageRecyclerView != null && messageRecyclerView.getAdapter() != null)
+            messageRecyclerView.getAdapter().notifyItemInserted(messageRecyclerView.getAdapter().getItemCount());
 
 
         //update sticker counts
@@ -418,7 +413,7 @@ public class MessageActivity extends AppCompatActivity {
             case 2131165308:
                 myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.happy_fox);
                 break;
-            case 2131165367:
+            case 2131165368:
                 myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.sad_fox);
                 break;
             case 2131165271:
@@ -430,7 +425,7 @@ public class MessageActivity extends AppCompatActivity {
             case 2131165325:
                 myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.love_fox);
                 break;
-            case 2131165368:
+            case 2131165369:
                 myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.sick_fox);
                 break;
             default:
@@ -448,5 +443,12 @@ public class MessageActivity extends AppCompatActivity {
 
         NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this);
         managerCompat.notify(2, builder.build());
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList("chatMessageList",
+                (ArrayList<? extends Parcelable>) chatMessageList);
     }
 }

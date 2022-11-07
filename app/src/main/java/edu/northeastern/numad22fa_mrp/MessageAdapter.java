@@ -48,7 +48,7 @@ public class MessageAdapter extends RecyclerView.Adapter {
             long imageID = chats.get(position).getImageID();
             if (imageID == 2131165308) {
                 senderViewHolder.displaySticker.setImageResource(R.drawable.happy_fox);
-            } else if (imageID == 2131165367) {
+            } else if (imageID == 2131165368) {
                 senderViewHolder.displaySticker.setImageResource(R.drawable.sad_fox);
             } else if (imageID == 2131165271) {
                 senderViewHolder.displaySticker.setImageResource(R.drawable.angry_fox);
@@ -56,8 +56,10 @@ public class MessageAdapter extends RecyclerView.Adapter {
                 senderViewHolder.displaySticker.setImageResource(R.drawable.hungry_fox);
             } else if (imageID == 2131165325) {
                 senderViewHolder.displaySticker.setImageResource(R.drawable.love_fox);
-            } else if (imageID == 2131165368) {
+            } else if (imageID == 2131165369) {
                 senderViewHolder.displaySticker.setImageResource(R.drawable.sick_fox);
+            } else {
+                senderViewHolder.displaySticker.setImageResource(R.drawable.not_found);
             }
         }
 
@@ -68,7 +70,7 @@ public class MessageAdapter extends RecyclerView.Adapter {
             long imageID = chats.get(position).getImageID();
             if (imageID == 2131165308) {
                 receiverViewHolder.displaySticker.setImageResource(R.drawable.happy_fox);
-            } else if (imageID == 2131165367) {
+            } else if (imageID == 2131165368) {
                 receiverViewHolder.displaySticker.setImageResource(R.drawable.sad_fox);
             } else if (imageID == 2131165271) {
                 receiverViewHolder.displaySticker.setImageResource(R.drawable.angry_fox);
@@ -76,8 +78,10 @@ public class MessageAdapter extends RecyclerView.Adapter {
                 receiverViewHolder.displaySticker.setImageResource(R.drawable.hungry_fox);
             } else if (imageID == 2131165325) {
                 receiverViewHolder.displaySticker.setImageResource(R.drawable.love_fox);
-            } else if (imageID == 2131165368) {
+            } else if (imageID == 2131165369) {
                 receiverViewHolder.displaySticker.setImageResource(R.drawable.sick_fox);
+            }  else {
+                receiverViewHolder.displaySticker.setImageResource(R.drawable.not_found);
             }
         }
 

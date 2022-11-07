@@ -98,11 +98,11 @@ public class AllUsersActivity extends AppCompatActivity {
 
                             Map<String, Long> stickerMap = new HashMap<>();
                             stickerMap.put(next.child("stickerCountMap").child("2131165308").getKey(), (Long) next.child("stickerCountMap").child("2131165308").getValue());
-                            stickerMap.put(next.child("stickerCountMap").child("2131165367").getKey(), (Long) next.child("stickerCountMap").child("2131165367").getValue());
+                            stickerMap.put(next.child("stickerCountMap").child("2131165368").getKey(), (Long) next.child("stickerCountMap").child("2131165368").getValue());
                             stickerMap.put(next.child("stickerCountMap").child("2131165271").getKey(), (Long) next.child("stickerCountMap").child("2131165271").getValue());
                             stickerMap.put(next.child("stickerCountMap").child("2131165309").getKey(), (Long) next.child("stickerCountMap").child("2131165309").getValue());
                             stickerMap.put(next.child("stickerCountMap").child("2131165325").getKey(), (Long) next.child("stickerCountMap").child("2131165325").getValue());
-                            stickerMap.put(next.child("stickerCountMap").child("2131165368").getKey(), (Long) next.child("stickerCountMap").child("2131165368").getValue());
+                            stickerMap.put(next.child("stickerCountMap").child("2131165369").getKey(), (Long) next.child("stickerCountMap").child("2131165369").getValue());
 
                             User user = new User(next.child("uid").getValue().toString(), next.child("userName").getValue().toString(), currentUserName, stickerMap);
                             usersList.add(user);
