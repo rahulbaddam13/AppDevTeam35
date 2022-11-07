@@ -57,7 +57,7 @@ public class MessageActivity extends AppCompatActivity {
     String chatId = null;
 
     //Recycler View and list of chat
-    private RecyclerView recyclerView;
+    private RecyclerView messageRecyclerView;
 
     List<ChatMessage> chatMessageList;
     ImageView imageView1;
@@ -101,20 +101,20 @@ public class MessageActivity extends AppCompatActivity {
         //list all the stickers in horizontal scroll view.
         addStickersList();
         //Link to recycle view.
-        recyclerView = findViewById(R.id.user_recycler_view);
+        messageRecyclerView = findViewById(R.id.user_recycler_view);
 
         //Set the layout manager for the recycle view.
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        messageRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         //Set the custom adapter to the recycle view.
         //recyclerView.setAdapter(new ChatAdapter(chatMessageList, this));
-        recyclerView.setAdapter(new MessageAdapter(this,chatMessageList));
+        messageRecyclerView.setAdapter(new MessageAdapter(this,chatMessageList));
 
         //Decoration to add line after each item in the view.
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this,
                 DividerItemDecoration.VERTICAL);
 
-        recyclerView.addItemDecoration(dividerItemDecoration);
+        messageRecyclerView.addItemDecoration(dividerItemDecoration);
 
         // Attach a listener to read the data at our posts reference
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -130,8 +130,8 @@ public class MessageActivity extends AppCompatActivity {
                     chatMessageList.add(chatMessage);
 
                     //Notify the adapter about the newly added item.
-                    if(recyclerView != null && recyclerView.getAdapter() != null)
-                        recyclerView.getAdapter().notifyItemInserted(recyclerView.getAdapter().getItemCount());
+                    if(messageRecyclerView != null && messageRecyclerView.getAdapter() != null)
+                        messageRecyclerView.getAdapter().notifyItemInserted(messageRecyclerView.getAdapter().getItemCount());
 
 
                 }
@@ -350,18 +350,12 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-
         //as soon as the message is sent, add it to the recycler view.
         chatMessageList.add(chatMessage);
 
         //Notify the adapter about the newly added item.
-        if(recyclerView != null && recyclerView.getAdapter() != null)
-            recyclerView.getAdapter().notifyItemInserted(recyclerView.getAdapter().getItemCount());
+        if(messageRecyclerView != null && messageRecyclerView.getAdapter() != null)
+            messageRecyclerView.getAdapter().notifyItemInserted(messageRecyclerView.getAdapter().getItemCount());
 
 
         //update sticker counts
