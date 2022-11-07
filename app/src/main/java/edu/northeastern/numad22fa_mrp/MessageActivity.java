@@ -115,7 +115,7 @@ public class MessageActivity extends AppCompatActivity {
 
         recyclerView.addItemDecoration(dividerItemDecoration);
 
-        // Attach a listener to read the data at our posts reference
+        // Attach a listener to read the data at our messages reference
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -149,7 +149,7 @@ public class MessageActivity extends AppCompatActivity {
                 String sender = snapshot.child("sender").getValue(String.class);
                 int image_id = snapshot.child("imageID").getValue(int.class);
                 String receive = snapshot.child("receiver").getValue(String.class);
-                if (sender != bundle.getString("currentUserName") && receive == bundle.getString("userName")){
+                if (sender != bundle.getString("currentUserName") && receive == bundle.getString("currentUserName")){
                     sendNotification(image_id, sender);
                 }
 
