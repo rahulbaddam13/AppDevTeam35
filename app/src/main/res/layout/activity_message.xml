@@ -3,83 +3,74 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MessageActivity">
+    android:layout_height="match_parent">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/layout_group_chat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/displayUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/white"
+            android:textIsSelectable="false"
+            android:textSize="20sp" />
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/user_recycler_view"
-        android:layout_width="378dp"
-        android:layout_height="488dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.297" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="16dp"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintBottom_toTopOf="@+id/text_indicator"
+        app:layout_constraintTop_toBottomOf="@+id/layout_group_chat" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="97dp"
-        android:layout_height="127dp"
-        android:onClick="sendButtonClicked"
-        android:text="Send"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.751"
-        app:layout_constraintStart_toEndOf="@+id/horizontalScrollView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.958" />
+    <TextView
+        android:id="@+id/text_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/view"
+        app:layout_constraintStart_toStartOf="parent" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/displayUserName"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text=""-->
-<!--        android:textColor="@color/purple_700"-->
-<!--        android:textIsSelectable="false"-->
-<!--        android:textSize="25sp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.086"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.043" />-->
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e0e0e0"
+        app:layout_constraintBottom_toTopOf="@+id/layout_gchat_chatbox" />
 
-    <LinearLayout
-        android:id="@+id/top_layout"
+
+    <RelativeLayout
+        android:id="@+id/layout_gchat_chatbox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.086"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/purple_500">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-            <TextView
-                android:id="@+id/displayUserName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:text="Other User"
-                android:textColor="@color/black"
-                android:textSize="25sp"
-                android:background="@drawable/rounded_text"
-                android:textStyle="bold"/>
-        </LinearLayout>
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="sendButtonClicked"
+            android:text="Send" />
 
         <HorizontalScrollView
             android:id="@+id/horizontalScrollView"
-            android:layout_width="280dp"
-            android:layout_height="127dp"
-            android:scrollbars="none"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.061"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.958">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button"
+            app:layout_constraintBottom_toBottomOf="@id/button"
+            app:layout_constraintStart_toStartOf="@id/button"
+            android:scrollbars="none">
 
             <LinearLayout
                 android:id="@+id/stickers"
@@ -88,4 +79,8 @@
                 android:orientation="horizontal" />
         </HorizontalScrollView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
