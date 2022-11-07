@@ -38,7 +38,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder>{
         long imageID = chats.get(position).getImageID();
         if(imageID == 2131165308){
             holder.displaySticker.setImageResource(R.drawable.happy_fox);
-        } else if(imageID == 2131165367){
+        } else if(imageID == 2131165368){
             holder.displaySticker.setImageResource(R.drawable.sad_fox);
         } else if(imageID == 2131165271){
             holder.displaySticker.setImageResource(R.drawable.angry_fox);
@@ -46,7 +46,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder>{
             holder.displaySticker.setImageResource(R.drawable.hungry_fox);
         } else if (imageID == 2131165325){
             holder.displaySticker.setImageResource(R.drawable.love_fox);
-        } else if(imageID == 2131165368){
+        } else if(imageID == 2131165369){
             holder.displaySticker.setImageResource(R.drawable.sick_fox);
         } else {
             holder.displaySticker.setImageResource(R.drawable.not_found);

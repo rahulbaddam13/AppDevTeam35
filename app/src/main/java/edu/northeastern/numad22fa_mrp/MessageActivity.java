@@ -413,7 +413,7 @@ public class MessageActivity extends AppCompatActivity {
             case 2131165308:
                 myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.happy_fox);
                 break;
-            case 2131165367:
+            case 2131165368:
                 myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.sad_fox);
                 break;
             case 2131165271:
@@ -425,7 +425,7 @@ public class MessageActivity extends AppCompatActivity {
             case 2131165325:
                 myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.love_fox);
                 break;
-            case 2131165368:
+            case 2131165369:
                 myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.sick_fox);
                 break;
             default:
