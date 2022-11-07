@@ -11,8 +11,8 @@
 
     <ImageView
         android:id="@+id/stickerImageView"
-        android:layout_width="138dp"
-        android:layout_height="133dp"
+        android:layout_width="119dp"
+        android:layout_height="111dp"
         android:clickable="true"
         android:onClick="onStickerClick" />
 </LinearLayout>

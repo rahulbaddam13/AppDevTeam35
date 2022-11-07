@@ -40,7 +40,7 @@ public class SentAdapter extends RecyclerView.Adapter<SentViewHolder> {
             case "2131165308":
                 holder.sticker.setImageResource(R.drawable.happy_fox);
                 break;
-            case "2131165367":
+            case "2131165368":
                 holder.sticker.setImageResource(R.drawable.sad_fox);
                 break;
             case "2131165271":
@@ -52,7 +52,7 @@ public class SentAdapter extends RecyclerView.Adapter<SentViewHolder> {
             case "2131165325":
                 holder.sticker.setImageResource(R.drawable.love_fox);
                 break;
-            case "2131165368":
+            case "2131165369":
                 holder.sticker.setImageResource(R.drawable.sick_fox);
                 break;
             default:
