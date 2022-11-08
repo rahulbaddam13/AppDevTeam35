@@ -56,7 +56,8 @@ public class SentAdapter extends RecyclerView.Adapter<SentViewHolder> {
                 holder.sticker.setImageResource(R.drawable.sick_fox);
                 break;
             default:
-                // should not reach
+                holder.sticker.setImageResource(R.drawable.not_found);
+                break;
         }
 
 

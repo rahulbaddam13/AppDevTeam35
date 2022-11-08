@@ -17,6 +17,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -58,6 +59,8 @@ public class MessageActivity extends AppCompatActivity {
 
     //Recycler View and list of chat
     private RecyclerView messageRecyclerView;
+
+    MessageAdapter adapter;
 
     List<ChatMessage> chatMessageList;
     ImageView imageView1;
@@ -108,7 +111,8 @@ public class MessageActivity extends AppCompatActivity {
 
         //Set the custom adapter to the recycle view.
         //recyclerView.setAdapter(new ChatAdapter(chatMessageList, this));
-        messageRecyclerView.setAdapter(new MessageAdapter(this,chatMessageList));
+        adapter = new MessageAdapter(this, chatMessageList);
+        messageRecyclerView.setAdapter(adapter);
 
         //Decoration to add line after each item in the view.
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this,
@@ -116,7 +120,7 @@ public class MessageActivity extends AppCompatActivity {
 
         messageRecyclerView.addItemDecoration(dividerItemDecoration);
 
-        // Attach a listener to read the data at our posts reference
+      /*  // Attach a listener to read the data at our messages reference
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -141,24 +145,20 @@ public class MessageActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
                 System.out.println("The read failed: " + databaseError.getCode());
             }
-        });
+        });*/
 
         DatabaseReference messages = databaseReference.child("chats").child(chatId);
         messages.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                String sender = snapshot.child("sender").getValue(String.class);
-                int image_id = snapshot.child("imageID").getValue(int.class);
-                String receive = snapshot.child("receiver").getValue(String.class);
-                if (sender != bundle.getString("currentUserName") && receive == bundle.getString("userName")){
-                    sendNotification(image_id, sender);
-                }
-
+                displayChat(snapshot);
 
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                displayChat(snapshot);
+
 
             }
 
@@ -176,9 +176,8 @@ public class MessageActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-
-
         });
+
 
     }
 
@@ -350,14 +349,6 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
-        //as soon as the message is sent, add it to the recycler view.
-        chatMessageList.add(chatMessage);
-
-        //Notify the adapter about the newly added item.
-        if(messageRecyclerView != null && messageRecyclerView.getAdapter() != null)
-            messageRecyclerView.getAdapter().notifyItemInserted(messageRecyclerView.getAdapter().getItemCount());
-
-
         //update sticker counts
         // Attach a listener to read the data at our posts reference
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -429,7 +420,8 @@ public class MessageActivity extends AppCompatActivity {
                 myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.sick_fox);
                 break;
             default:
-                // should not reach
+                myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.not_found);
+                break;
         }
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "n")
@@ -450,5 +442,19 @@ public class MessageActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         outState.putParcelableArrayList("chatMessageList",
                 (ArrayList<? extends Parcelable>) chatMessageList);
+    }
+
+    private void displayChat(DataSnapshot snapshot){
+        ChatMessage chatMessage = new ChatMessage((Long)snapshot.child("imageID").getValue(), String.valueOf(snapshot.child("timestamp").getValue()), String.valueOf(snapshot.child("sender").getValue()));
+        chatMessageList.add(chatMessage);
+        String sender = snapshot.child("sender").getValue(String.class);
+        int image_id = snapshot.child("imageID").getValue(int.class);
+        String receive = snapshot.child("receiver").getValue(String.class);
+        if (sender == bundle.getString("currentUserName")){
+            sendNotification(image_id, sender);
+        }
+
+        Log.d(" ", "List: " + chatMessageList);
+        adapter.notifyDataSetChanged();
     }
 }
