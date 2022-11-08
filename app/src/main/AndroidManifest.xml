@@ -25,6 +25,7 @@
             android:exported="false" />
         <activity
             android:name=".MessageActivity"
+            android:configChanges="orientation|screenSize"
             android:launchMode="singleTop"
             android:exported="false" />
         <activity
