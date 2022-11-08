@@ -8,9 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+import edu.northeastern.numad22fa_mrp.R;
 
 import edu.northeastern.numad22fa_mrp.ChatMessage;
-import edu.northeastern.numad22fa_mrp.R;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder>{
 

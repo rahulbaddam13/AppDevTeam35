@@ -10,7 +10,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,10 +25,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
-import edu.northeastern.numad22fa_mrp.AllUsersActivity;
 import edu.northeastern.numad22fa_mrp.MessageActivity;
 import edu.northeastern.numad22fa_mrp.R;
-import edu.northeastern.numad22fa_mrp.StickItToEm;
 import edu.northeastern.numad22fa_mrp.User;
 
 public class UserAdapter extends RecyclerView.Adapter<UserViewHolder>{
@@ -52,7 +49,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder>{
     @NonNull
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new UserViewHolder(LayoutInflater.from(context).inflate(R.layout.item_user, null));
+        return new UserViewHolder(LayoutInflater.from(context).inflate(R.layout.item_user_card, parent,false));
     }
 
     @Override
