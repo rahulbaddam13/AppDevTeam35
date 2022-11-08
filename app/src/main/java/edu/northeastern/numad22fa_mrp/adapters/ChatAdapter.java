@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+import edu.northeastern.numad22fa_mrp.R;
 
 import edu.northeastern.numad22fa_mrp.ChatMessage;
 
