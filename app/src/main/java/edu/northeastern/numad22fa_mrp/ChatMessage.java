@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.sql.Timestamp;
+import java.util.Objects;
 
 /**
  * Chat message object which represents a chat by the image ID, time stamp at which the message was sent and who sent it.
@@ -86,5 +87,25 @@ public class ChatMessage implements Parcelable {
         parcel.writeString(timestamp);
         parcel.writeString(sender);
         parcel.writeString(receiver);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (!(o instanceof ChatMessage))
+            return false;
+
+        ChatMessage that = (ChatMessage) o;
+
+        return getImageID() == that.getImageID()
+                && getTimestamp().equals(that.getTimestamp())
+                && getSender().equals(that.getSender())
+                && getReceiver().equals(that.getReceiver());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getImageID(), getTimestamp(), getSender(), getReceiver());
     }
 }

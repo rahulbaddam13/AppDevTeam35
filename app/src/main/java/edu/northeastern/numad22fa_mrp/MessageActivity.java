@@ -181,7 +181,6 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     private void addStickersList(){
@@ -447,6 +446,14 @@ public class MessageActivity extends AppCompatActivity {
         outState.putParcelableArrayList("chatMessageList",
                 (ArrayList<? extends Parcelable>) chatMessageList);
     }
+    @Override
+    protected void onRestoreInstanceState(Bundle state) {
+        super.onRestoreInstanceState(state);
+
+        // Retrieve list state and list/item positions
+        state.putParcelableArrayList("chatMessageList",
+                (ArrayList<? extends Parcelable>) chatMessageList);
+    }
 
     private void displayChatSendNotif(DataSnapshot snapshot) {
 
@@ -456,23 +463,28 @@ public class MessageActivity extends AppCompatActivity {
                     String.valueOf(snapshot.child("timestamp").getValue()),
                     String.valueOf(snapshot.child("sender").getValue()),
                     String.valueOf(snapshot.child("receiver").getValue()));
-            chatMessageList.add(chatMessage);
-            adapter.notifyDataSetChanged();
+            if(!chatMessageList.contains(chatMessage)) {
+                chatMessageList.add(chatMessage);
+
+                if(messageRecyclerView != null && messageRecyclerView.getAdapter() != null)
+                    messageRecyclerView.getAdapter().notifyItemInserted(messageRecyclerView.getAdapter().getItemCount());
+
         /*String sender = snapshot.child("sender").getValue(String.class);
         int image_id = snapshot.child("imageID").getValue(int.class);
         String receive = snapshot.child("receiver").getValue(String.class);*/
 
-            String chatSender = chatMessage.getSender();
-            int image = (int) chatMessage.getImageID();
-            String receive = chatMessage.getReceiver();
-            String key = snapshot.getKey();
+                String chatSender = chatMessage.getSender();
+                int image = (int) chatMessage.getImageID();
+                String receive = chatMessage.getReceiver();
+                String key = snapshot.getKey();
 
-            String current = bundle.getString("currentUserName");
-            String currentStatus = snapshot.child("readStatus").getValue(String.class);
+                String current = bundle.getString("currentUserName");
+                String currentStatus = snapshot.child("readStatus").getValue(String.class);
 
-            if (receive.equalsIgnoreCase(current) && currentStatus.equalsIgnoreCase("unread")) {
-                sendNotification(image, chatSender);
-                messages.child(key).child("readStatus").setValue("read");
+                if (receive.equalsIgnoreCase(current) && currentStatus.equalsIgnoreCase("unread")) {
+                    sendNotification(image, chatSender);
+                    messages.child(key).child("readStatus").setValue("read");
+                }
             }
         }
     }
