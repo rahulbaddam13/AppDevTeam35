@@ -446,6 +446,7 @@ public class MessageActivity extends AppCompatActivity {
 
     private void displayChat(DataSnapshot snapshot){
         ChatMessage chatMessage = new ChatMessage((Long)snapshot.child("imageID").getValue(), String.valueOf(snapshot.child("timestamp").getValue()), String.valueOf(snapshot.child("sender").getValue()));
+        Log.v("ABCD",snapshot.child("imageID").getValue().toString());
         chatMessageList.add(chatMessage);
         String sender = snapshot.child("sender").getValue(String.class);
         int image_id = snapshot.child("imageID").getValue(int.class);
@@ -454,7 +455,7 @@ public class MessageActivity extends AppCompatActivity {
             sendNotification(image_id, sender);
         }
 
-        Log.d(" ", "List: " + chatMessageList);
+        Log.d("ABC", "List: " + chatMessageList);
         adapter.notifyDataSetChanged();
     }
 }
