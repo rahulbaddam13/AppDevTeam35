@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -47,6 +48,7 @@ public class MessageActivity extends AppCompatActivity {
 
     // creating a variable for reference for Firebase.
     DatabaseReference databaseReference;
+    DatabaseReference messages;
 
     //sticker chosen by the user to send.
     public static int chosenImageId = 0;
@@ -103,6 +105,7 @@ public class MessageActivity extends AppCompatActivity {
 
         //list all the stickers in horizontal scroll view.
         addStickersList();
+
         //Link to recycle view.
         messageRecyclerView = findViewById(R.id.user_recycler_view);
 
@@ -120,7 +123,7 @@ public class MessageActivity extends AppCompatActivity {
 
         messageRecyclerView.addItemDecoration(dividerItemDecoration);
 
-      /*  // Attach a listener to read the data at our messages reference
+      /*// Attach a listener to read the data at our messages reference
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -147,17 +150,17 @@ public class MessageActivity extends AppCompatActivity {
             }
         });*/
 
-        DatabaseReference messages = databaseReference.child("chats").child(chatId);
+
+        messages = databaseReference.child("chats").child(chatId);
         messages.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                displayChat(snapshot);
+                displayChatSendNotif(snapshot);
 
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                displayChat(snapshot);
 
 
             }
@@ -340,7 +343,7 @@ public class MessageActivity extends AppCompatActivity {
         }
 
         //create a chat message object.
-        ChatMessage chatMessage = new ChatMessage(chosenImageId, bundle.getString("currentUserName"), bundle.getString("userName"));
+        ChatMessage chatMessage = new ChatMessage(chosenImageId, bundle.getString("currentUserName"), bundle.getString("userName"), "unread");
 
         databaseReference.child("chats").child(chatId).push().setValue(chatMessage).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -390,7 +393,6 @@ public class MessageActivity extends AppCompatActivity {
         Toast.makeText(MessageActivity.this, "Sticker sent", Toast.LENGTH_SHORT).show();
     }
 
-    Bitmap myBitmap;
 
     private void sendNotification(int image, String sender) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
@@ -399,6 +401,8 @@ public class MessageActivity extends AppCompatActivity {
             NotificationManager manager = getSystemService(NotificationManager.class);
             manager.createNotificationChannel(channel);
         }
+
+        Bitmap myBitmap;
 
         switch(image) {
             case 2131165308:
@@ -444,17 +448,28 @@ public class MessageActivity extends AppCompatActivity {
                 (ArrayList<? extends Parcelable>) chatMessageList);
     }
 
-    private void displayChat(DataSnapshot snapshot){
-        ChatMessage chatMessage = new ChatMessage((Long)snapshot.child("imageID").getValue(), String.valueOf(snapshot.child("timestamp").getValue()), String.valueOf(snapshot.child("sender").getValue()));
+    private void displayChatSendNotif(DataSnapshot snapshot) {
+        ChatMessage chatMessage = new ChatMessage((Long) snapshot.child("imageID").getValue(),
+                String.valueOf(snapshot.child("timestamp").getValue()),
+                String.valueOf(snapshot.child("sender").getValue()),
+                String.valueOf(snapshot.child("receiver").getValue()));
         chatMessageList.add(chatMessage);
-        String sender = snapshot.child("sender").getValue(String.class);
+        /*String sender = snapshot.child("sender").getValue(String.class);
         int image_id = snapshot.child("imageID").getValue(int.class);
-        String receive = snapshot.child("receiver").getValue(String.class);
-        if (sender != bundle.getString("currentUserName") && receive == bundle.getString("currentUserName")){
-            sendNotification(image_id, sender);
-        }
+        String receive = snapshot.child("receiver").getValue(String.class);*/
 
-        Log.d(" ", "List: " + chatMessageList);
+        String sender = chatMessage.getSender();
+        int image_id = (int) chatMessage.getImageID();
+        String receive = chatMessage.getReceiver();
+        String key = snapshot.getKey();
         adapter.notifyDataSetChanged();
+
+        String current = bundle.getString("currentUserName");
+        String currentStatus = snapshot.child("readStatus").getValue(String.class);
+
+        if (receive.equalsIgnoreCase(current) && currentStatus.equalsIgnoreCase("unread")) {
+            sendNotification(image_id, sender);
+            messages.child(key).child("readStatus").setValue("read");
+        }
     }
 }

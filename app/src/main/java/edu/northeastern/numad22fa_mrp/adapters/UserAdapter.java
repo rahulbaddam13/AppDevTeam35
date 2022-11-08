@@ -1,14 +1,28 @@
 package edu.northeastern.numad22fa_mrp.adapters;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -22,6 +36,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder>{
 
     private final List<User> users;
     private final Context context;
+    String currentUsername;
+    DatabaseReference messages;
 
     /**
      * Constructs a UserAdapter with the array list of user objects.
@@ -43,19 +59,23 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder>{
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
         holder.userName.setText(users.get(position).getUserName());
 
+        String currentUsername =  users.get(position).getCurrentUserName();
+        String username = users.get(position).getUserName();
+
         //on click of each item
         holder.itemView.setOnClickListener(view -> {
             //Move to next activity.
             Bundle bundle = new Bundle();
             bundle.putString("uid", users.get(position).getUID());
-            bundle.putString("userName", users.get(position).getUserName());
-            bundle.putString("currentUserName", users.get(position).getCurrentUserName());
+            bundle.putString("userName", username);
+            bundle.putString("currentUserName", currentUsername);
 
             Intent clickIntent = new Intent(context, MessageActivity.class);
             clickIntent.putExtras(bundle);
             context.startActivity(clickIntent);
         });
     }
+
 
     @Override
     public int getItemCount() {

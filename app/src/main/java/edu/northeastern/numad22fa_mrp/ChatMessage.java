@@ -30,24 +30,22 @@ public class ChatMessage implements Parcelable {
     private String timestamp;
     private String sender;
     private String receiver;
+    private String readStatus;
 
-    public ChatMessage(int imageID, String sender) {
-        this.imageID = imageID;
-        this.timestamp = String.valueOf(new Timestamp(System.currentTimeMillis()));
-        this.sender = sender;
-    }
 
-    public ChatMessage(long imageID, String timestamp, String sender) {
+    public ChatMessage(long imageID, String timestamp, String sender, String receiver) {
         this.imageID = imageID;
         this.timestamp = timestamp;
         this.sender = sender;
+        this.receiver = receiver;
     }
 
-    public ChatMessage(int imageID, String sender, String receiver) {
+    public ChatMessage(int imageID, String sender, String receiver, String readStatus) {
         this.imageID = imageID;
         this.timestamp = String.valueOf(new Timestamp(System.currentTimeMillis()));
         this.sender = sender;
         this.receiver = receiver;
+        this.readStatus = readStatus;
     }
 
     protected ChatMessage(Parcel in) {
@@ -76,6 +74,10 @@ public class ChatMessage implements Parcelable {
     @Override
     public int describeContents() {
         return 0;
+    }
+
+    public String getReadStatus() {
+        return readStatus;
     }
 
     @Override

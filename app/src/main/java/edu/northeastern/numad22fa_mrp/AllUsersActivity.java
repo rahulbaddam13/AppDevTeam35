@@ -1,18 +1,27 @@
 package edu.northeastern.numad22fa_mrp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.os.Parcelable;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,6 +43,7 @@ public class AllUsersActivity extends AppCompatActivity {
 
     // creating a variable for reference for Firebase.
     DatabaseReference databaseReference;
+    DatabaseReference messages;
 
     private RecyclerView recyclerView;
 
@@ -96,17 +106,58 @@ public class AllUsersActivity extends AppCompatActivity {
                     //add users other than current user.
                     if(!currentUserName.equals(next.child("userName").getValue())) {
 
-                            Map<String, Long> stickerMap = new HashMap<>();
-                            stickerMap.put(next.child("stickerCountMap").child("2131165308").getKey(), (Long) next.child("stickerCountMap").child("2131165308").getValue());
-                            stickerMap.put(next.child("stickerCountMap").child("2131165368").getKey(), (Long) next.child("stickerCountMap").child("2131165368").getValue());
-                            stickerMap.put(next.child("stickerCountMap").child("2131165271").getKey(), (Long) next.child("stickerCountMap").child("2131165271").getValue());
-                            stickerMap.put(next.child("stickerCountMap").child("2131165309").getKey(), (Long) next.child("stickerCountMap").child("2131165309").getValue());
-                            stickerMap.put(next.child("stickerCountMap").child("2131165325").getKey(), (Long) next.child("stickerCountMap").child("2131165325").getValue());
-                            stickerMap.put(next.child("stickerCountMap").child("2131165369").getKey(), (Long) next.child("stickerCountMap").child("2131165369").getValue());
+                        Map<String, Long> stickerMap = new HashMap<>();
+                        stickerMap.put(next.child("stickerCountMap").child("2131165308").getKey(), (Long) next.child("stickerCountMap").child("2131165308").getValue());
+                        stickerMap.put(next.child("stickerCountMap").child("2131165368").getKey(), (Long) next.child("stickerCountMap").child("2131165368").getValue());
+                        stickerMap.put(next.child("stickerCountMap").child("2131165271").getKey(), (Long) next.child("stickerCountMap").child("2131165271").getValue());
+                        stickerMap.put(next.child("stickerCountMap").child("2131165309").getKey(), (Long) next.child("stickerCountMap").child("2131165309").getValue());
+                        stickerMap.put(next.child("stickerCountMap").child("2131165325").getKey(), (Long) next.child("stickerCountMap").child("2131165325").getValue());
+                        stickerMap.put(next.child("stickerCountMap").child("2131165369").getKey(), (Long) next.child("stickerCountMap").child("2131165369").getValue());
 
-                            User user = new User(next.child("uid").getValue().toString(), next.child("userName").getValue().toString(), currentUserName, stickerMap);
-                            usersList.add(user);
+                        User user = new User(next.child("uid").getValue().toString(), next.child("userName").getValue().toString(), currentUserName, stickerMap);
+                        usersList.add(user);
+
+                        String userName = next.child("userName").getValue(String.class);
+                        String chatId = "";
+
+                        int compare = currentUserName.compareTo(userName);
+
+                        if (compare < 0) {
+                            chatId = currentUserName + userName;
+                        } else if (compare > 0) {
+                            chatId = userName + currentUserName;
                         }
+
+                        messages = databaseReference.child("chats").child(chatId);
+                        messages.addChildEventListener(new ChildEventListener() {
+                            @Override
+                            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                                sendNotif(snapshot);
+
+                            }
+
+                            @Override
+                            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+
+                            }
+
+                            @Override
+                            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                            }
+
+                            @Override
+                            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }
 
                         //Notify the adapter about the newly added item.
                         if (recyclerView != null && recyclerView.getAdapter() != null)
@@ -121,6 +172,66 @@ public class AllUsersActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    private void sendNotif(DataSnapshot snapshot) {
+        String sender = snapshot.child("sender").getValue(String.class);
+        int image_id = snapshot.child("imageID").getValue(int.class);
+        String receive = snapshot.child("receiver").getValue(String.class);
+        String key = snapshot.getKey();
+        String currentStatus = snapshot.child("readStatus").getValue(String.class);
+
+        if (receive.equalsIgnoreCase(currentUserName) && currentStatus.equalsIgnoreCase("unread")) {
+            sendNotification(image_id, sender);
+            messages.child(key).child("readStatus").setValue("read");
+        }
+    }
+
+    private void sendNotification(int image_id, String sender) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel =
+                    new NotificationChannel("n", "n", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+
+        Bitmap myBitmap;
+
+        switch(image_id) {
+            case 2131165308:
+                myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.happy_fox);
+                break;
+            case 2131165368:
+                myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.sad_fox);
+                break;
+            case 2131165271:
+                myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.angry_fox);
+                break;
+            case 2131165309:
+                myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.hungry_fox);
+                break;
+            case 2131165325:
+                myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.love_fox);
+                break;
+            case 2131165369:
+                myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.sick_fox);
+                break;
+            default:
+                myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.not_found);
+                break;
+        }
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "n")
+                .setContentTitle("MRP")
+                .setSmallIcon(R.mipmap.ic_launcher_35_round)
+                .setContentText(sender + " Sent You:")
+                .setLargeIcon(myBitmap)
+                .setStyle(new NotificationCompat.BigPictureStyle()
+                        .bigPicture(myBitmap)
+                        .bigLargeIcon(null));
+
+        NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this);
+        managerCompat.notify(2, builder.build());
     }
 
     @Override
