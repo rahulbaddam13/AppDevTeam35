@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -51,6 +52,12 @@ public class AllUsersActivity extends AppCompatActivity {
     ConstraintLayout constraintLayout;
     String userKey;
     String currentUserName;
+    String userName;
+
+    private final int NOTIFICATION_UNIQUE_ID = 13;
+    private static int notigen = 1;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +123,7 @@ public class AllUsersActivity extends AppCompatActivity {
                         User user = new User(next.child("uid").getValue().toString(), next.child("userName").getValue().toString(), currentUserName, stickerMap);
                         usersList.add(user);
 
-                        /*String userName = next.child("userName").getValue(String.class);
+                        userName = next.child("userName").getValue(String.class);
                         String chatId = "";
 
                         int compare = currentUserName.compareTo(userName);
@@ -128,34 +135,34 @@ public class AllUsersActivity extends AppCompatActivity {
                         }
 
                         messages = databaseReference.child("chats").child(chatId);
-                        messages.addChildEventListener(new ChildEventListener() {
-                            @Override
-                            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                                sendNotif(snapshot);
+                            messages.addChildEventListener(new ChildEventListener() {
+                                @Override
+                                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                                    sendNotif(snapshot);
+                                }
 
-                            }
+                                @Override
+                                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                                    sendNotif(snapshot);
 
-                            @Override
-                            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
+                                }
 
-                            }
+                                @Override
+                                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
 
-                            @Override
-                            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                                }
 
-                            }
+                                @Override
+                                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-                            @Override
-                            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                                }
 
-                            }
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-
-                            }
-                        });*/
+                                }
+                            });
                     }
 
                         //Notify the adapter about the newly added item.
@@ -174,13 +181,12 @@ public class AllUsersActivity extends AppCompatActivity {
     }
 
     private void sendNotif(DataSnapshot snapshot) {
-        String sender = snapshot.child("sender").getValue(String.class);
-        int image_id = snapshot.child("imageID").getValue(int.class);
         String receive = snapshot.child("receiver").getValue(String.class);
         String key = snapshot.getKey();
         String currentStatus = snapshot.child("readStatus").getValue(String.class);
-
-        if (receive.equalsIgnoreCase(currentUserName) && currentStatus.equalsIgnoreCase("unread")) {
+        if (receive != null && receive.equalsIgnoreCase(currentUserName) && currentStatus.equalsIgnoreCase("unread")) {
+            String sender = snapshot.child("sender").getValue(String.class);
+            int image_id = snapshot.child("imageID").getValue(int.class);
             sendNotification(image_id, sender);
             messages.child(key).child("readStatus").setValue("read");
         }
@@ -220,17 +226,29 @@ public class AllUsersActivity extends AppCompatActivity {
                 break;
         }
 
+        Intent resultingIntent = new Intent(this, MessageActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("userName", userName);
+        bundle.putString("currentUserName", currentUserName);
+        resultingIntent.putExtras(bundle);
+        PendingIntent pendingIntenet = PendingIntent.getActivity(this,
+                (int) System.currentTimeMillis(),
+                resultingIntent,
+                PendingIntent.FLAG_IMMUTABLE);
+
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "n")
-                .setContentTitle("MRP")
+                .setContentTitle("MRP Sticker Notified!" + Integer.toString(notigen++))
                 .setSmallIcon(R.mipmap.ic_launcher_35_round)
                 .setContentText(sender + " Sent You:")
                 .setLargeIcon(myBitmap)
                 .setStyle(new NotificationCompat.BigPictureStyle()
                         .bigPicture(myBitmap)
-                        .bigLargeIcon(null));
+                        .bigLargeIcon(null))
+                .setAutoCancel(true)
+                .setContentIntent(pendingIntenet);
 
         NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this);
-        managerCompat.notify(2, builder.build());
+        managerCompat.notify(NOTIFICATION_UNIQUE_ID+ notigen, builder.build());
     }
 
     @Override
