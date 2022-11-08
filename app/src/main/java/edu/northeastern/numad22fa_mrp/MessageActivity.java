@@ -160,6 +160,7 @@ public class MessageActivity extends AppCompatActivity {
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                // displayChatSendNotif(snapshot);
 
 
             }
@@ -453,6 +454,7 @@ public class MessageActivity extends AppCompatActivity {
                 String.valueOf(snapshot.child("sender").getValue()),
                 String.valueOf(snapshot.child("receiver").getValue()));
         chatMessageList.add(chatMessage);
+        adapter.notifyDataSetChanged();
         /*String sender = snapshot.child("sender").getValue(String.class);
         int image_id = snapshot.child("imageID").getValue(int.class);
         String receive = snapshot.child("receiver").getValue(String.class);*/
@@ -461,7 +463,6 @@ public class MessageActivity extends AppCompatActivity {
         int image_id = (int) chatMessage.getImageID();
         String receive = chatMessage.getReceiver();
         String key = snapshot.getKey();
-        adapter.notifyDataSetChanged();
 
         String current = bundle.getString("currentUserName");
         String currentStatus = snapshot.child("readStatus").getValue(String.class);

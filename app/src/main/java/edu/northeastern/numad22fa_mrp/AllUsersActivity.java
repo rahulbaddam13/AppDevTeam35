@@ -116,7 +116,7 @@ public class AllUsersActivity extends AppCompatActivity {
                         User user = new User(next.child("uid").getValue().toString(), next.child("userName").getValue().toString(), currentUserName, stickerMap);
                         usersList.add(user);
 
-                        String userName = next.child("userName").getValue(String.class);
+                        /*String userName = next.child("userName").getValue(String.class);
                         String chatId = "";
 
                         int compare = currentUserName.compareTo(userName);
@@ -155,7 +155,7 @@ public class AllUsersActivity extends AppCompatActivity {
                             public void onCancelled(@NonNull DatabaseError error) {
 
                             }
-                        });
+                        });*/
                     }
 
                         //Notify the adapter about the newly added item.
