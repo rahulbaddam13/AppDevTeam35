@@ -450,7 +450,7 @@ public class MessageActivity extends AppCompatActivity {
         String sender = snapshot.child("sender").getValue(String.class);
         int image_id = snapshot.child("imageID").getValue(int.class);
         String receive = snapshot.child("receiver").getValue(String.class);
-        if (sender == bundle.getString("currentUserName")){
+        if (sender != bundle.getString("currentUserName") && receive == bundle.getString("currentUserName")){
             sendNotification(image_id, sender);
         }
 
