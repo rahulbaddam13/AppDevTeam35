@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.graphics.Bitmap;
@@ -183,6 +184,7 @@ public class MessageActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("ResourceType")
     private void addStickersList(){
         LinearLayout sticker = findViewById(R.id.stickers);
 
@@ -193,8 +195,7 @@ public class MessageActivity extends AppCompatActivity {
 
         imageView1 = view1.findViewById(R.id.stickerImageView);
         imageView1.setImageResource(R.drawable.happy_fox);
-        int imageView1Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/happy_fox" , null, null);
-        imageView1.setId(imageView1Id);
+        imageView1.setId(2131165308);
         sticker.addView(view1);
 
         //sad fox sticker
@@ -202,8 +203,7 @@ public class MessageActivity extends AppCompatActivity {
 
         imageView2 = view2.findViewById(R.id.stickerImageView);
         imageView2.setImageResource(R.drawable.sad_fox);
-        int imageView2Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/sad_fox" , null, null);
-        imageView2.setId(imageView2Id);
+        imageView2.setId(2131165368);
 
         sticker.addView(view2);
 
@@ -212,8 +212,7 @@ public class MessageActivity extends AppCompatActivity {
 
         imageView3 = view3.findViewById(R.id.stickerImageView);
         imageView3.setImageResource(R.drawable.angry_fox);
-        int imageView3Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/angry_fox" , null, null);
-        imageView3.setId(imageView3Id);
+        imageView3.setId(2131165271);
 
         sticker.addView(view3);
 
@@ -222,8 +221,7 @@ public class MessageActivity extends AppCompatActivity {
 
         imageView4 = view4.findViewById(R.id.stickerImageView);
         imageView4.setImageResource(R.drawable.hungry_fox);
-        int imageView4Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/hungry_fox" , null, null);
-        imageView4.setId(imageView4Id);
+        imageView4.setId(2131165309);
 
         sticker.addView(view4);
 
@@ -232,8 +230,7 @@ public class MessageActivity extends AppCompatActivity {
 
         imageView5 = view5.findViewById(R.id.stickerImageView);
         imageView5.setImageResource(R.drawable.love_fox);
-        int imageView5Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/love_fox" , null, null);
-        imageView5.setId(imageView5Id);
+        imageView5.setId(2131165325);
 
         sticker.addView(view5);
 
@@ -242,8 +239,7 @@ public class MessageActivity extends AppCompatActivity {
 
         imageView6 = view6.findViewById(R.id.stickerImageView);
         imageView6.setImageResource(R.drawable.sick_fox);
-        int imageView6Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/sick_fox" , null, null);
-        imageView6.setId(imageView6Id);
+        imageView6.setId(2131165369);
 
         //setting on click listeners, change background color on click
         imageView1.setOnClickListener(new View.OnClickListener() {
