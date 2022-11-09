@@ -11,6 +11,9 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
 
     <application
         android:allowBackup="true"
@@ -26,16 +29,23 @@
         android:testOnly="true"
         android:theme="@style/Theme.NUMAD22Fa_MRP" >
         <activity
-            android:name="edu.northeastern.numad22fa_mrp.WebActivity"
+            android:name="edu.northeastern.numad22fa_mrp.AboutAppActivity"
             android:exported="false" />
         <activity
-            android:name="edu.northeastern.numad22fa_mrp.WeatherCustomLocation"
+            android:name="edu.northeastern.numad22fa_mrp.UserProfileActivity"
             android:exported="false" />
         <activity
-            android:name="edu.northeastern.numad22fa_mrp.CheckAnimation"
+            android:name="edu.northeastern.numad22fa_mrp.MessageActivity"
+            android:exported="false" />
+        <activity
+            android:name="edu.northeastern.numad22fa_mrp.AllUsersActivity"
             android:exported="false" />
         <activity
             android:name="edu.northeastern.numad22fa_mrp.WeatherActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
+        <activity
+            android:name="edu.northeastern.numad22fa_mrp.WeatherCustomLocation"
             android:configChanges="orientation|screenSize"
             android:exported="false" />
         <activity
@@ -58,15 +68,52 @@
             </intent-filter>
         </activity>
 
+        <service
+            android:name="com.google.firebase.components.ComponentDiscoveryService"
+            android:directBootAware="true"
+            android:exported="false" >
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+        </service>
+
         <provider
             android:name="com.squareup.picasso.PicassoProvider"
             android:authorities="edu.northeastern.numad22fa_mrp.com.squareup.picasso"
             android:exported="false" />
+        <provider
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            android:authorities="edu.northeastern.numad22fa_mrp.firebaseinitprovider"
+            android:directBootAware="true"
+            android:exported="false"
+            android:initOrder="100" />
 
         <activity
             android:name="com.google.android.gms.common.api.GoogleApiActivity"
             android:exported="false"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <receiver
+            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+            android:enabled="true"
+            android:exported="false" >
+        </receiver>
+
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementService"
+            android:enabled="true"
+            android:exported="false" />
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <meta-data
             android:name="com.google.android.gms.version"

@@ -111,5 +111,4 @@
     <orderEntry type="library" scope="TEST" name="Gradle: com.airbnb.android:lottie:3.4.1@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.squareup.picasso:picasso:2.71828@aar" level="project" />
   </component>
-  <component name="TestModuleProperties" production-module="NUMAD22Fa_MRP.app.main" />
 </module>

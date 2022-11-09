@@ -2,4 +2,24 @@
     <string name="app_name">NUMAD22Fa_MRP</string>
     <string name="get_weather">Get Weather</string>
     <string name="select_date">Select Date</string>
+    <string name="user_name">Enter user name</string>
+    <string name="user_hint">Username</string>
+    <string name="login_button">Login</string>
+    <string name="intro_text">Create new user / login as existing user</string>
+    <string name="add_new_friend_instructions">Add new Friend by Username</string>
+    <string name="your_profile">Your Profile</string>
+    <string name="user_name_hint">Username of Friend to add</string>
+    <string name="sent_history">Sent Stickers</string>
+    <string name="user_name_sent">Username:</string>
+    <string name="About">About App</string>
+    <string name="pranathi">Pranathi Alluri</string>
+    <string name="rahul">Rahul Baddam</string>
+    <string name="madhuri">Madhuri Krishnamurthy</string>
+    <string name="team35">Team 35: Next Rent</string>
+    <item name="happy_fox" type="id" />
+    <item name="sad_fox" type="id" />
+    <item name="angry_fox" type="id" />
+    <item name="hungry_fox" type="id" />
+    <item name="love_fox" type="id" />
+    <item name="sick_fox" type="id" />
 </resources>

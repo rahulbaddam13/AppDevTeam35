@@ -4,8 +4,8 @@
     package="edu.northeastern.numad22fa_mrp">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -18,13 +18,27 @@
         android:theme="@style/Theme.NUMAD22Fa_MRP"
         tools:targetApi="31">
         <activity
+            android:name=".AboutAppActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MessageActivity"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleTop"
+            android:exported="false" />
+        <activity
+            android:name=".AllUsersActivity"
+            android:exported="false" />
+        <activity
             android:name=".WeatherActivity"
-            android:exported="false"
-            android:configChanges="orientation|screenSize"/>
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
         <activity
             android:name=".WeatherCustomLocation"
-            android:exported="false"
-            android:configChanges="orientation|screenSize"/>
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
         <activity
             android:name=".FinalProject"
             android:exported="false" />
@@ -33,8 +47,8 @@
             android:exported="false" />
         <activity
             android:name=".AtYourService"
-            android:exported="false"
-            android:configChanges="orientation|screenSize"/>
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
