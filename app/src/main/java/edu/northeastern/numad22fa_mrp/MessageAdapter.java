@@ -44,7 +44,10 @@ public class MessageAdapter extends RecyclerView.Adapter {
         if (holder.getClass() == SenderViewHolder.class) {
             SenderViewHolder senderViewHolder = (SenderViewHolder) holder;
             senderViewHolder.sUserName.setText(chats.get(position).getSender());
-            senderViewHolder.senderDate.setText(chats.get(position).getTimestamp());
+            String[] time= chats.get(position).getTimestamp().split(" ");
+            senderViewHolder.senderDate.setText(time[0]);
+            senderViewHolder.senderTime.setText(time[1].substring(0, 5));
+//            senderViewHolder.senderDate.setText(chats.get(position).getTimestamp());
             long imageID = chats.get(position).getImageID();
             if (imageID == 2131165308) {
                 senderViewHolder.displaySticker.setImageResource(R.drawable.happy_fox);
@@ -66,7 +69,11 @@ public class MessageAdapter extends RecyclerView.Adapter {
         if (holder.getClass() == ReceiverViewHolder.class) {
             ReceiverViewHolder receiverViewHolder = (ReceiverViewHolder) holder;
             receiverViewHolder.rUserName.setText(chats.get(position).getSender());
-            receiverViewHolder.receiverDate.setText(chats.get(position).getTimestamp());
+            String[] time= chats.get(position).getTimestamp().split(" ");
+//            receiverViewHolder.receiverDate.setText(chats.get(position).getTimestamp());
+            receiverViewHolder.receiverDate.setText(time[0]);
+            receiverViewHolder.receiverTime.setText(time[1].substring(0, 5));
+
             long imageID = chats.get(position).getImageID();
             if (imageID == 2131165308) {
                 receiverViewHolder.displaySticker.setImageResource(R.drawable.happy_fox);
@@ -106,6 +113,7 @@ public class MessageAdapter extends RecyclerView.Adapter {
     class SenderViewHolder extends RecyclerView.ViewHolder {
         TextView sUserName;
         TextView senderDate;
+        TextView senderTime;
         ImageView displaySticker;
 
         public SenderViewHolder(@NonNull View itemView) {
@@ -113,12 +121,14 @@ public class MessageAdapter extends RecyclerView.Adapter {
             sUserName = itemView.findViewById(R.id.sender);
             displaySticker = itemView.findViewById(R.id.senderImage);
             senderDate = itemView.findViewById(R.id.sender_date);
+            senderTime=itemView.findViewById(R.id.sender_time);
         }
     }
 
     class ReceiverViewHolder extends RecyclerView.ViewHolder {
         TextView rUserName;
         TextView receiverDate;
+        TextView receiverTime;
         ImageView displaySticker;
 
         public ReceiverViewHolder(@NonNull View itemView) {
@@ -126,6 +136,7 @@ public class MessageAdapter extends RecyclerView.Adapter {
             rUserName = itemView.findViewById(R.id.receive);
             displaySticker = itemView.findViewById(R.id.receiverImage);
             receiverDate = itemView.findViewById(R.id.receiver_date);
+            receiverTime=itemView.findViewById(R.id.receiver_time);
         }
     }
 }

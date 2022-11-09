@@ -237,7 +237,7 @@ public class AllUsersActivity extends AppCompatActivity {
                 PendingIntent.FLAG_IMMUTABLE);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "n")
-                .setContentTitle("MRP Sticker Notified!" + Integer.toString(notigen++))
+                .setContentTitle("MRP Sticker Notified!")
                 .setSmallIcon(R.mipmap.ic_launcher_35_round)
                 .setContentText(sender + " Sent You:")
                 .setLargeIcon(myBitmap)

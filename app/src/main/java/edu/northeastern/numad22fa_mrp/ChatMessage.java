@@ -4,6 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Objects;
 
 /**
@@ -32,6 +34,9 @@ public class ChatMessage implements Parcelable {
     private String sender;
     private String receiver;
     private String readStatus;
+    DateFormat simpleDateFormat;
+    String sdf;
+
 
 
     public ChatMessage(long imageID, String timestamp, String sender, String receiver) {
@@ -43,7 +48,11 @@ public class ChatMessage implements Parcelable {
 
     public ChatMessage(int imageID, String sender, String receiver, String readStatus) {
         this.imageID = imageID;
-        this.timestamp = String.valueOf(new Timestamp(System.currentTimeMillis()));
+        long millis = System.currentTimeMillis();
+        Timestamp timestamp = new Timestamp(millis);
+        simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        sdf = simpleDateFormat.format(timestamp);
+        this.timestamp = sdf;
         this.sender = sender;
         this.receiver = receiver;
         this.readStatus = readStatus;

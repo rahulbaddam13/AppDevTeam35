@@ -12,10 +12,32 @@
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
         android:text="Name"
+        android:textStyle="bold"
         android:textColor="@color/purple_200"
         app:layout_constraintBottom_toTopOf="@+id/senderImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/send_l"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="5dp"
+        android:background="@drawable/rounded_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+    <TextView
+        android:id="@+id/sender_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:text="date"
+        android:textColor="@color/white"
+        android:textStyle="bold">
+
+    </TextView>
 
     <TextView
         android:id="@+id/sender_date"
@@ -23,17 +45,18 @@
         android:layout_height="wrap_content"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
-        android:text="date"
-        android:textColor="@color/purple_200"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:text="time"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+         />
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/senderImage"
         android:layout_width="147dp"
         android:layout_height="161dp"
         android:layout_gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/sender_date"
+        app:layout_constraintBottom_toTopOf="@+id/send_l"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
