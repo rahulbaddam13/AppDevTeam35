@@ -70,6 +70,7 @@ public class AtYourService extends AppCompatActivity {
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month + 1;
                 DateTimeFormatter dtf = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+
                 String day_edit = String.format(Locale.US,"%02d", day);
                 String month_edit = String.format(Locale.US, "%02d", month);
                 String selected = year + "-" + month_edit + "-" + day_edit + "T23:59:59";
