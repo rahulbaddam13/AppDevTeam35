@@ -244,8 +244,8 @@ public class AllUsersActivity extends AppCompatActivity {
                 .setStyle(new NotificationCompat.BigPictureStyle()
                         .bigPicture(myBitmap)
                         .bigLargeIcon(null))
-                .setAutoCancel(true)
-                .setContentIntent(pendingIntenet);
+                .setAutoCancel(true);
+                //.setContentIntent(pendingIntenet);
 
         NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this);
         managerCompat.notify(NOTIFICATION_UNIQUE_ID+ notigen, builder.build());

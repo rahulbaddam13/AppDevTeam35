@@ -423,7 +423,7 @@ public class MessageActivity extends AppCompatActivity {
                 break;
         }
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "n")
+        /*NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "n")
                 .setContentTitle("MRP")
                 .setSmallIcon(R.mipmap.ic_launcher_35_round)
                 .setContentText(sender + " Sent You:")
@@ -433,7 +433,7 @@ public class MessageActivity extends AppCompatActivity {
                         .bigLargeIcon(null));
 
         NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this);
-        managerCompat.notify(2, builder.build());
+        managerCompat.notify(2, builder.build());*/
     }
 
     @Override
