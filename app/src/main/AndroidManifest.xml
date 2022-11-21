@@ -40,7 +40,7 @@
             android:configChanges="orientation|screenSize"
             android:exported="false" />
         <activity
-            android:name=".FinalProject"
+            android:name=".nextrent.FinalProject"
             android:exported="false" />
         <activity
             android:name=".StickItToEm"

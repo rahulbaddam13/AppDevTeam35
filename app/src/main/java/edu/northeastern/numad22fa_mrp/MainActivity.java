@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import edu.northeastern.numad22fa_mrp.nextrent.FinalProject;
+
 public class MainActivity extends AppCompatActivity {
     private Button atYourService;
     private Button stickItToEm;

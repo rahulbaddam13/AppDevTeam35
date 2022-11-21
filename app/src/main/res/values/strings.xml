@@ -16,6 +16,10 @@
     <string name="rahul">Rahul Baddam</string>
     <string name="madhuri">Madhuri Krishnamurthy</string>
     <string name="team35">Team 35: Next Rent</string>
+    <string name="final_app_name">NEXT RENT</string>
+    <string name="login_seeker_btn">Property seeker</string>
+    <string name="login_owner_btn">Property owner</string>
+    <string name="login_as">I am a..</string>
     <item name="happy_fox" type="id" />
     <item name="sad_fox" type="id" />
     <item name="angry_fox" type="id" />
