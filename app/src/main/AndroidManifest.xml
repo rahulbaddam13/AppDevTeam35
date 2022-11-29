@@ -18,6 +18,12 @@
         android:theme="@style/Theme.NUMAD22Fa_MRP"
         tools:targetApi="31">
         <activity
+            android:name=".nextrent.PropertyManagerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".nextrent.PropertySeekerActivity"
+            android:exported="false" />
+        <activity
             android:name=".AboutAppActivity"
             android:exported="false" />
         <activity
@@ -26,8 +32,8 @@
         <activity
             android:name=".MessageActivity"
             android:configChanges="orientation|screenSize"
-            android:launchMode="singleTop"
-            android:exported="false" />
+            android:exported="false"
+            android:launchMode="singleTop" />
         <activity
             android:name=".AllUsersActivity"
             android:exported="false" />

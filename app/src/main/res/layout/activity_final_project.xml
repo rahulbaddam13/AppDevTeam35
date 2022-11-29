@@ -4,23 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".nextrent.FinalProject">
 
 
     <TextView
         android:id="@+id/appName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/final_app_name"
         android:fontFamily="@font/marcellussc"
-        android:textSize="50sp"
+        android:text="@string/final_app_name"
         android:textColor="@color/black"
+        android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.193" />
+        app:layout_constraintVertical_bias="0.097" />
 
     <TextView
         android:id="@+id/appTagline"
@@ -29,10 +28,28 @@
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appName"
-        app:layout_constraintVertical_bias="0.111" />
+        app:layout_constraintVertical_bias="0.037" />
+
+    <EditText
+        android:id="@+id/edittext_username"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/custom_edit_text"
+        android:hint="@string/user_name"
+        android:inputType="textShortMessage"
+        android:padding="15dp"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.418" />
 
     <TextView
         android:id="@+id/appQuestion"
@@ -44,31 +61,32 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/seekerButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.954" />
+        app:layout_constraintVertical_bias="0.95" />
 
     <Button
         android:id="@+id/seekerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login_seeker_btn"
         android:background="@drawable/custom_button"
+        android:onClick="onClickTypeOfUser"
+        android:text="@string/login_seeker_btn"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.76" />
+        app:layout_constraintVertical_bias="0.669" />
 
     <Button
         android:id="@+id/managerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login_owner_btn"
         android:background="@drawable/custom_button"
+        android:onClick="onClickTypeOfUser"
+        android:text="@string/login_owner_btn"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
