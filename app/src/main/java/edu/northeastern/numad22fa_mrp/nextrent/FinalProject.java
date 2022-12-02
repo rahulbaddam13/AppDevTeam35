@@ -104,9 +104,6 @@ public class FinalProject extends AppCompatActivity {
 
                 addDataToFirebase(user);
 
-                Intent clickIntent = new Intent(FinalProject.this, PropertySeekerActivity.class);
-                clickIntent.putExtra("currentUserName", user.getUserName());
-                startActivity(clickIntent);
             } else if (buttonId == R.id.managerButton) {
 
                 // create a user object of manager type.
@@ -129,8 +126,8 @@ public class FinalProject extends AppCompatActivity {
      */
     private void addDataToFirebase(NextRentUser user) {
         //flag to check if user was created.
-        final boolean[] created = {true};
-        final boolean[] exists = {false};
+        boolean[] created = {true};
+        boolean[] exists = {false};
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -164,8 +161,22 @@ public class FinalProject extends AppCompatActivity {
                 if (created[0]) {
                     // after adding this data we are showing toast message.
                     Toast.makeText(FinalProject.this, "New user added!", Toast.LENGTH_SHORT).show();
+
+                    if("seekers".equalsIgnoreCase(user.getUserType())){
+                        //New user, navigate to survey page.
+                        Intent clickIntent = new Intent(FinalProject.this, SeekerSurveyActivity.class);
+                        startActivity(clickIntent);
+                    }
+
                 } else {
                     Toast.makeText(FinalProject.this, "User logged in successfully!", Toast.LENGTH_SHORT).show();
+
+                    if("seekers".equalsIgnoreCase(user.getUserType())){
+                        //Already registered user, navigate to property lists page.
+                        Intent clickIntent = new Intent(FinalProject.this, PropertySeekerActivity.class);
+                        clickIntent.putExtra("currentUserName", user.getUserName());
+                        startActivity(clickIntent);
+                    }
                 }
             }
 
@@ -174,6 +185,7 @@ public class FinalProject extends AppCompatActivity {
                 System.out.println("The read failed: " + error.getCode());
             }
         });
+
     }
 
     /**

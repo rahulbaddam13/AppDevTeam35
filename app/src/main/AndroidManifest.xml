@@ -18,7 +18,10 @@
         android:theme="@style/Theme.NUMAD22Fa_MRP"
         tools:targetApi="31">
         <activity
-            android:name=".AddNewProperty"
+            android:name=".nextrent.SeekerSurveyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".nextrent.AddNewProperty"
             android:exported="false" />
         <activity
             android:name=".nextrent.PropertyManagerActivity"

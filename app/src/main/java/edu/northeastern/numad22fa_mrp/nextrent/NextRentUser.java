@@ -10,6 +10,7 @@ public class NextRentUser {
     private String UID;
     private String userName;
     private String userType;
+    private Preference myPreference;
 
     /**
      *
