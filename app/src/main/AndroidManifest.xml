@@ -7,6 +7,11 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,6 +22,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NUMAD22Fa_MRP"
         tools:targetApi="31">
+        <activity
+            android:name=".MainScreen"
+            android:exported="false" />
+        <activity
+            android:name=".AddPropertyAddress"
+            android:exported="false" />
+        <activity
+            android:name=".PropertyDetails"
+            android:exported="false" />
+        <activity
+            android:name=".PropertyList"
+            android:exported="false" />
+        <activity
+            android:name=".AddProperty"
+            android:exported="false" />
+        <activity
+            android:name=".OwnerHomePage"
+            android:exported="false" />
+        <activity
+            android:name=".OwnerLogin"
+            android:exported="false" />
+        <activity
+            android:name=".OwnerRegister"
+            android:exported="false" />
         <activity
             android:name=".nextrent.SeekerSurveyActivity"
             android:exported="false" />
