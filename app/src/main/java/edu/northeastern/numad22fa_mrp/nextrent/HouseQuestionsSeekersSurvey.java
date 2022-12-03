@@ -7,16 +7,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.NumberPicker;
 
 import edu.northeastern.numad22fa_mrp.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link BasicQuestionsSeekerSurvey#newInstance} factory method to
+ * Use the {@link HouseQuestionsSeekersSurvey#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BasicQuestionsSeekerSurvey extends Fragment {
+public class HouseQuestionsSeekersSurvey extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,10 +26,7 @@ public class BasicQuestionsSeekerSurvey extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private NumberPicker picker;
-    private String[] pickerVal = new String[82];
-
-    public BasicQuestionsSeekerSurvey() {
+    public HouseQuestionsSeekersSurvey() {
         // Required empty public constructor
     }
 
@@ -40,11 +36,11 @@ public class BasicQuestionsSeekerSurvey extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment BasicQuestionsSeekerSurvey.
+     * @return A new instance of fragment HouseQuestionsSeekersSurvey.
      */
     // TODO: Rename and change types and number of parameters
-    public static BasicQuestionsSeekerSurvey newInstance(String param1, String param2) {
-        BasicQuestionsSeekerSurvey fragment = new BasicQuestionsSeekerSurvey();
+    public static HouseQuestionsSeekersSurvey newInstance(String param1, String param2) {
+        HouseQuestionsSeekersSurvey fragment = new HouseQuestionsSeekersSurvey();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -64,26 +60,7 @@ public class BasicQuestionsSeekerSurvey extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.fragment_basic_questions_seeker_survey, container, false);
-
-        //age picker
-        /*picker = view.findViewById(R.id.age_number_picker);
-        picker.setMaxValue(83);
-        picker.setMinValue(0);
-        int j = 0;
-        for(int i = 18; i <= 100; i++,j++){
-            pickerVal[j] = String.valueOf(i);
-        }
-        picker.setDisplayedValues(pickerVal);
-        picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-                int valuePicker = picker.getValue();
-                System.out.println("picker value "+ valuePicker + "");
-            }
-        });*/
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_basic_questions_seeker_survey, container, false);
+        return inflater.inflate(R.layout.fragment_house_questions_seekers_survey, container, false);
     }
 }

@@ -20,7 +20,6 @@ import edu.northeastern.numad22fa_mrp.R;
 public class SeekerSurveyActivity extends AppCompatActivity {
 
     private NumberPicker picker;
-    private String[] pickerVal = new String[82];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,28 +30,14 @@ public class SeekerSurveyActivity extends AppCompatActivity {
 
         ScreenSlidePagerAdapter pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(), getLifecycle());
         pagerAdapter.addFragment(new BasicQuestionsSeekerSurvey());
-        //pagerAdapter.addFragment(new RegisterFragment());
+        pagerAdapter.addFragment(new HouseQuestionsSeekersSurvey());
+        pagerAdapter.addFragment(new RoommateQuestionsSeekersSurvey());
 
         // set Orientation in your ViewPager2
         viewPager.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
         viewPager.setAdapter(pagerAdapter);
 
-        //age picker
-        picker = findViewById(R.id.age_number_picker);
-        picker.setMaxValue(200);
-        picker.setMinValue(18);
-        int j = 0;
-        for(int i = 18; i < 100; i++,j++){
-            pickerVal[j] = String.valueOf(i);
-        }
-        picker.setDisplayedValues(pickerVal);
-        picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-                int valuePicker = picker.getValue();
-                System.out.println("picker value "+ valuePicker + "");
-            }
-        });
+
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStateAdapter {
