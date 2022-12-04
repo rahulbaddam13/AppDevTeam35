@@ -51,4 +51,12 @@ public class PropertySeekerActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        startActivity(new Intent(PropertySeekerActivity.this, FinalProject.class));
+        finish();
+    }
+
 }

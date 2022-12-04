@@ -47,4 +47,12 @@ public class SeekerProfileActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        startActivity(new Intent(SeekerProfileActivity.this, FinalProject.class));
+        finish();
+    }
 }

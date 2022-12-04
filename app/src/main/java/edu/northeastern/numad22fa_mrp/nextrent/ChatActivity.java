@@ -47,4 +47,12 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        startActivity(new Intent(ChatActivity.this, FinalProject.class));
+        finish();
+    }
 }
