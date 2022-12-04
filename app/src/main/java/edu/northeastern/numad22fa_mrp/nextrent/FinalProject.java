@@ -28,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import edu.northeastern.numad22fa_mrp.AllUsersActivity;
+import edu.northeastern.numad22fa_mrp.OwnerRegister;
 import edu.northeastern.numad22fa_mrp.R;
 import edu.northeastern.numad22fa_mrp.StickItToEm;
 import edu.northeastern.numad22fa_mrp.User;
@@ -111,7 +112,7 @@ public class FinalProject extends AppCompatActivity {
 
                 addDataToFirebase(user);
 
-                Intent clickIntent = new Intent(FinalProject.this, PropertyManagerActivity.class);
+                Intent clickIntent = new Intent(FinalProject.this, OwnerRegister.class);
                 clickIntent.putExtra("currentUserName", user.getUserName());
                 startActivity(clickIntent);
             }
@@ -132,7 +133,7 @@ public class FinalProject extends AppCompatActivity {
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot data : dataSnapshot.child("nextrentusers").child(user.getUserType()).getChildren()) {
+                for (DataSnapshot data : dataSnapshot.child(user.getUserType()).getChildren()) {
                     if (user.getUserName().equalsIgnoreCase(data.child("userName").getValue().toString())) {
                         //user name exists
                         userKey = data.getKey();
@@ -144,7 +145,7 @@ public class FinalProject extends AppCompatActivity {
                 if (!exists[0]) {
                     //user name does not exists, create new
                     // data base reference will sends data to firebase.
-                    DatabaseReference db = databaseReference.child("nextrentusers").child(user.getUserType()).push();
+                    DatabaseReference db = databaseReference.child(user.getUserType()).push();
                     userKey = db.getKey();
                     db.setValue(user).addOnFailureListener(new OnFailureListener() {
                         @Override

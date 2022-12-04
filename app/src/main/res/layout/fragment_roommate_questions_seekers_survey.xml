@@ -14,19 +14,124 @@
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch1" />
+        app:layout_constraintTop_toBottomOf="@+id/roommateSwitch"
+        app:layout_constraintVertical_bias="0.958" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/roommateSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Are you looking for roommates?"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.144" />
+        app:layout_constraintVertical_bias="0.102" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/roommateSurveyLayout"
+        android:layout_width="match_parent"
+        android:layout_height="610dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/roommateSwitch"
+        app:layout_constraintVertical_bias="0.118">
+
+        <TextView
+            android:id="@+id/numberOfRoommates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number of roommates you are looking for?"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.295"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.045" />
+
+        <Spinner
+            android:id="@+id/numberOfRoommatesSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.115"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/numberOfRoommates"
+            app:layout_constraintVertical_bias="0.032" />
+
+        <TextView
+            android:id="@+id/typeOfRoommates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="What type of roommates are you comfortable with?"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.471"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/numberOfRoommatesSpinner"
+            app:layout_constraintVertical_bias="0.043" />
+
+        <RadioGroup
+            android:id="@+id/typeOfRoommatesRG"
+            android:layout_width="320dp"
+            android:layout_height="63dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.452"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/typeOfRoommates"
+            app:layout_constraintVertical_bias="0.04">
+
+            <CheckBox
+                android:id="@+id/roommateType1"
+                android:layout_width="85dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Male" />
+
+            <CheckBox
+                android:id="@+id/roommateType2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Female" />
+
+            <CheckBox
+                android:id="@+id/roommateType3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Other" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.098"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/typeOfRoommatesRG"
+            app:layout_constraintVertical_bias="0.138" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup3"
+            android:layout_width="320dp"
+            android:layout_height="141dp"
+            tools:layout_editor_absoluteX="36dp"
+            tools:layout_editor_absoluteY="340dp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
