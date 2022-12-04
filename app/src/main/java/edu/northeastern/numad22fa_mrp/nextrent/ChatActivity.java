@@ -12,17 +12,17 @@ import com.google.android.material.navigation.NavigationBarView;
 
 import edu.northeastern.numad22fa_mrp.R;
 
-public class SeekerProfileActivity extends AppCompatActivity {
+public class ChatActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_seeker_profile);
+        setContentView(R.layout.activity_chat);
 
         //Bottom navigation bar.
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         //Choose home by default.
-        bottomNavigationView.setSelectedItemId(R.id.page_profile);
+        bottomNavigationView.setSelectedItemId(R.id.page_chat);
         // Perform item selected listener
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -37,10 +37,10 @@ public class SeekerProfileActivity extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.page_chat:
-                        startActivity(new Intent(getApplicationContext(),ChatActivity.class));
-                        overridePendingTransition(0,0);
                         return true;
                     case R.id.page_profile:
+                        startActivity(new Intent(getApplicationContext(),SeekerProfileActivity.class));
+                        overridePendingTransition(0,0);
                         return true;
                 }
                 return false;
