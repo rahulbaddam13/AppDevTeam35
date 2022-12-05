@@ -104,4 +104,9 @@ public class Property {
         this.state = state;
         this.type = type;
     }
+//remove
+    public Property(String rentPerRoom, String houseLocation) {
+        this.rentPerRoom = rentPerRoom;
+        this.houseLocation = houseLocation;
+    }
 }

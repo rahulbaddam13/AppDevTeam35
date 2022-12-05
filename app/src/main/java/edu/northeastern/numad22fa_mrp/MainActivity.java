@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openProject() {
-        Intent intent = new Intent(this, MainScreen.class);
+        Intent intent = new Intent(this, FinalProject.class);
         startActivity(intent);
     }
 

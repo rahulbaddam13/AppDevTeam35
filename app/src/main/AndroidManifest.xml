@@ -25,6 +25,15 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAstRLiJWR9LOpxICg2CdXkGFbTZSV41BA" />
         <activity
+            android:name=".nextrent.ChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".nextrent.FavoritesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".nextrent.SeekerProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainScreen"
             android:exported="false" />
         <activity

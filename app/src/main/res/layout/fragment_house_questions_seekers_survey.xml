@@ -14,18 +14,23 @@
         android:text="Enter the locations in which you are interested"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintHorizontal_bias="0.201"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.04" />
 
     <EditText
         android:id="@+id/editTextTextLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/custom_edit_text"
+        android:hint="City"
+        android:padding="15dp"
+        android:textSize="15sp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Location"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.059"
@@ -57,10 +62,10 @@
         android:text="What type of house are you looking for?"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintHorizontal_bias="0.152"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2"
-        app:layout_constraintVertical_bias="0.132" />
+        app:layout_constraintVertical_bias="0.134" />
 
     <RadioGroup
         android:id="@+id/radioGroup2"
@@ -69,10 +74,10 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/typeOfHouseTextView"
-        app:layout_constraintVertical_bias="0.054">
+        app:layout_constraintVertical_bias="0.037">
 
         <RadioGroup
             android:layout_width="223dp"
@@ -126,8 +131,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="What's your price range?"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="570dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.096"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NumberOfBathroomTextView"
+        app:layout_constraintVertical_bias="0.269" />
 
     <TextView
         android:id="@+id/minimumPriceTextView"
@@ -136,10 +145,10 @@
         android:text="Minimum"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.147"
+        app:layout_constraintHorizontal_bias="0.232"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/priceRangeTextView"
-        app:layout_constraintVertical_bias="0.136" />
+        app:layout_constraintVertical_bias="0.139" />
 
     <TextView
         android:id="@+id/maximumPriceTextView"
@@ -148,10 +157,10 @@
         android:text="Maximum"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.731"
+        app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toEndOf="@+id/minimumPriceTextView"
         app:layout_constraintTop_toBottomOf="@+id/priceRangeTextView"
-        app:layout_constraintVertical_bias="0.136" />
+        app:layout_constraintVertical_bias="0.139" />
 
     <TextView
         android:id="@+id/NumberOfBedroomTextView"
@@ -160,10 +169,10 @@
         android:text="Number of bedrooms : "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.059"
+        app:layout_constraintHorizontal_bias="0.093"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup2"
-        app:layout_constraintVertical_bias="0.083" />
+        app:layout_constraintVertical_bias="0.082" />
 
     <TextView
         android:id="@+id/NumberOfBathroomTextView"
@@ -172,15 +181,15 @@
         android:text="Number of bathrooms : "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintHorizontal_bias="0.095"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NumberOfBedroomTextView"
-        app:layout_constraintVertical_bias="0.156" />
+        app:layout_constraintVertical_bias="0.211" />
 
     <RadioGroup
         android:id="@+id/bedroomRadioGroup"
-        android:layout_width="214dp"
-        android:layout_height="69dp"
+        android:layout_width="212dp"
+        android:layout_height="52dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -211,15 +220,15 @@
 
     <RadioGroup
         android:id="@+id/bathroomRadioGroup"
-        android:layout_width="212dp"
-        android:layout_height="59dp"
+        android:layout_width="216dp"
+        android:layout_height="51dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintHorizontal_bias="0.617"
         app:layout_constraintStart_toEndOf="@+id/NumberOfBathroomTextView"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup2"
-        app:layout_constraintVertical_bias="0.318">
+        app:layout_constraintTop_toBottomOf="@+id/bedroomRadioGroup"
+        app:layout_constraintVertical_bias="0.076">
 
 
         <RadioButton
@@ -243,6 +252,31 @@
 
     </RadioGroup>
 
+    <Spinner
+        android:id="@+id/minimumPriceSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/minimumPriceTextView"
+        app:layout_constraintVertical_bias="0.298" />
+
+    <Spinner
+        android:id="@+id/maximumPriceSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.573"
+        app:layout_constraintStart_toEndOf="@+id/minimumPriceSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/maximumPriceTextView"
+        app:layout_constraintVertical_bias="0.298" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
