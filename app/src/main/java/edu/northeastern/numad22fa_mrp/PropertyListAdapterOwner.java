@@ -42,6 +42,7 @@ public class PropertyListAdapterOwner extends RecyclerView.Adapter<PropertyListA
         holder.noOfRoom.setText(model.getNoOfRoom());
         holder.country.setText(model.getCountry());
         holder.state.setText(model.getState());
+        holder.type.setText(model.getType());
         Glide.with(context).load(model.getHouseImage()).into(holder.houseImg);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +59,7 @@ public class PropertyListAdapterOwner extends RecyclerView.Adapter<PropertyListA
                 intent.putExtra("userId", model.getUserId());
                 intent.putExtra("country",model.getCountry());
                 intent.putExtra("state",model.getState());
+                intent.putExtra("type",model.getType());
                 context.startActivity(intent);
             }
         });
@@ -69,7 +71,7 @@ public class PropertyListAdapterOwner extends RecyclerView.Adapter<PropertyListA
     }
 
     static class PropertyViewHolder extends RecyclerView.ViewHolder {
-        TextView noOfRoom, rentPerRoom, location, unit, country,state;
+        TextView noOfRoom, rentPerRoom, location, unit, country,state,type;
         ImageView houseImg;
 
         public PropertyViewHolder(@NonNull View itemView) {
@@ -81,6 +83,7 @@ public class PropertyListAdapterOwner extends RecyclerView.Adapter<PropertyListA
             //unit = itemView.findViewById(R.id.tv_unit);
             country= itemView.findViewById(R.id.tv_country);
             state = itemView.findViewById(R.id.tv_state);
+            type = itemView.findViewById(R.id.tv_type);
 
         }
     }

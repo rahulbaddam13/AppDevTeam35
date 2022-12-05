@@ -2,7 +2,7 @@ package edu.northeastern.numad22fa_mrp;
 
 public class Property {
     String houseId, noOfRoom, rentPerRoom, houseDescription, houseLocation;
-    String houseImage, userId, country,state;
+    String houseImage, userId, country,state,type;
 
 
     public String getHouseImage() {
@@ -82,9 +82,17 @@ public class Property {
     public Property() {
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public Property(String houseId, String noOfRoom, String rentPerRoom,
                     String houseDescription, String houseLocation, String houseImage,
-                    String userId, String country, String state) {
+                    String userId, String country, String state, String type) {
         this.houseId = houseId;
         this.noOfRoom = noOfRoom;
         this.rentPerRoom = rentPerRoom;
@@ -94,5 +102,6 @@ public class Property {
         this.userId = userId;
         this.country=country;
         this.state = state;
+        this.type = type;
     }
 }

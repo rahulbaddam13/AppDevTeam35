@@ -44,10 +44,8 @@ public class AddProperty extends AppCompatActivity {
 
     EditText houseId, et_houseLocation, noOfRoom, rentPerRoom, houseDescription;
     Button add;
-    TextView loc,unitNumber,state,country;
+    TextView loc,unitNumber,state,country,type;
     ImageView houseImg;
-
-
     private static final int STORAGE_PERMISSION_CODE = 100;
     StorageReference storageReference;
     public static final int IMAGE_REQUEST = 1;
@@ -66,21 +64,21 @@ public class AddProperty extends AppCompatActivity {
         noOfRoom = findViewById(R.id.et_noOfRoom);
         rentPerRoom = findViewById(R.id.et_rentPerRoom);
         houseDescription = findViewById(R.id.et_houseDescription);
-//        country = findViewById(R.id.et_country);
+//      country = findViewById(R.id.et_country);
         add = findViewById(R.id.btn_addHouse);
         loc = findViewById(R.id.et_Loc);
         String data = getIntent().getExtras().getString("location");
         loc.setText(data);
-        Log.v("RahulL",loc.getText().toString());
         state = findViewById(R.id.et_state);
         String stateD = getIntent().getExtras().getString("state");
         state.setText(stateD);
-        Log.v("RahulS",state.getText().toString());
         country = findViewById(R.id.et_country);
         String countryD = getIntent().getExtras().getString("country");
         country.setText(countryD);
-        Log.v("RahulC",country.getText().toString());
-        //unitNumber = findViewById(R.id.et_unit);
+        type = findViewById(R.id.et_type);
+        String typeD = getIntent().getExtras().getString("type");
+        type.setText(typeD);
+//        unitNumber = findViewById(R.id.et_unit);
 //        String data1 = getIntent().getExtras().getString("unit");
 //        unitNumber.setText(data1);
 
@@ -112,7 +110,8 @@ public class AddProperty extends AppCompatActivity {
                 String image = imageString;
                 createProperty(houseId,loc.getText().toString(),
                         noOfRoom, rentPerRoom, houseDescription,
-                        country.getText().toString(),state.getText().toString(), image);
+                        country.getText().toString(),state.getText().toString(),type.getText().toString(),
+                        image);
             }
         });
 
@@ -121,7 +120,7 @@ public class AddProperty extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void createProperty(String houseId, String houseLocation, String noOfRoom,
                                 String rentPerRoom, String houseDescription,String country,
-                                String state, String image) {
+                                String state,String type, String image) {
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         assert firebaseUser != null;
         String userId = firebaseUser.getUid();
@@ -138,7 +137,10 @@ public class AddProperty extends AppCompatActivity {
         hashMap.put("userId", userId);
         hashMap.put("country",country);
         hashMap.put("state",state);
-        databaseReference.push().setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+        hashMap.put("type",type);
+
+
+        databaseReference.child(houseId).setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 progressDialog.dismiss();

@@ -44,4 +44,6 @@
         android:padding="2dp"
         tools:listitem="@layout/property_card" />
 
+
+
 </RelativeLayout>
