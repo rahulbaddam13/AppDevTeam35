@@ -95,4 +95,9 @@ public class Property {
         this.country=country;
         this.state = state;
     }
+//remove
+    public Property(String rentPerRoom, String houseLocation) {
+        this.rentPerRoom = rentPerRoom;
+        this.houseLocation = houseLocation;
+    }
 }
