@@ -170,6 +170,7 @@ public class PropertyDetails extends AppCompatActivity {
     private void deleteProperty() {
 
         reference.setValue(null);
+        Toast.makeText(this, "Property Deleted", Toast.LENGTH_SHORT).show();
         finish();
     }
 
@@ -203,6 +204,8 @@ public class PropertyDetails extends AppCompatActivity {
 
         if (isRoomsChanged() || isRentChanged() || isLocationChanged() || isStateChanged() || isCountryChanged()) {
             Toast.makeText(this, "Property Details updated", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, PropertyList.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             finish();
 
         } else {

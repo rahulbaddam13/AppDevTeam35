@@ -1,14 +1,20 @@
 package edu.northeastern.numad22fa_mrp;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -23,6 +29,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.Continuation;
@@ -38,7 +45,12 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class AddProperty extends AppCompatActivity {
 
@@ -53,6 +65,13 @@ public class AddProperty extends AppCompatActivity {
     private String imageString;
     private StorageTask<UploadTask.TaskSnapshot> uploadTask;
     private ProgressDialog progressDialog;
+    Button img;
+    int CAMERA_REQUEST_CODE = 102;
+    int CAMERA_PERM_CODE = 101;
+    String currentPhotoPath;
+    private Button galleryButton;
+    private Button cameraButton;
+    private AlertDialog imgDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,27 +97,25 @@ public class AddProperty extends AppCompatActivity {
         type = findViewById(R.id.et_type);
         String typeD = getIntent().getExtras().getString("type");
         type.setText(typeD);
-//        unitNumber = findViewById(R.id.et_unit);
-//        String data1 = getIntent().getExtras().getString("unit");
-//        unitNumber.setText(data1);
+
+        
 
 
         storageReference = FirebaseStorage.getInstance().getReference().child("Uploads");
 
+
         houseImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, STORAGE_PERMISSION_CODE);
+                createDialog();
             }
         });
 
         progressDialog = new ProgressDialog(AddProperty.this);
 
         add.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-//                progressDialog.setMessage("Adding the Property");
                 progressDialog.setTitle("Adding...");
                 progressDialog.setCanceledOnTouchOutside(false);
                 progressDialog.show();
@@ -117,7 +134,39 @@ public class AddProperty extends AppCompatActivity {
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void createDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View view = LayoutInflater.from(this).inflate(R.layout.add_photo, null);
+        cameraButton = view.findViewById(R.id.add_photo_camera);
+        galleryButton = view.findViewById(R.id.add_button_gallery);
+
+        cameraButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                askCameraPermission();
+            }
+
+        });
+        galleryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, STORAGE_PERMISSION_CODE);
+            }
+
+        });
+
+        builder.setTitle("Add a photo");
+        builder.setView(view);
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+
+            }
+        });
+
+        imgDialog = builder.create();
+        imgDialog.getWindow().setLayout(300, 150);
+        imgDialog.show();
+    }
     private void createProperty(String houseId, String houseLocation, String noOfRoom,
                                 String rentPerRoom, String houseDescription,String country,
                                 String state,String type, String image) {
@@ -169,39 +218,30 @@ public class AddProperty extends AppCompatActivity {
         return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
     }
 
-    private void uploadImage() {
+    private void uploadImg() {
         final ProgressDialog pd = new ProgressDialog(AddProperty.this);
         pd.setMessage("Uploading...");
         pd.show();
         if (imageUri != null) {
             final StorageReference fileReference = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
             uploadTask = fileReference.putFile(imageUri);
-            uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                @Override
-                public Task<Uri> then(@NonNull Task task) throws Exception {
-                    if (!task.isSuccessful()) throw task.getException();
-                    return fileReference.getDownloadUrl();
-                }
-            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-                @Override
-                public void onComplete(@NonNull Task<Uri> task) {
-                    if (task.isSuccessful()) {
-                        try {
-                            Uri downloadingUri = task.getResult();
-                            Log.d("TAG", "onComplete: uri completed");
-                            String mUri = downloadingUri.toString();
-                            imageString = mUri;
-                            Glide.with(AddProperty.this).load(imageUri).into(houseImg);
-                        } catch (Exception e) {
-                            Log.d("TAG1", "error Message: " + e.getMessage());
-                            Toast.makeText(AddProperty.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                        pd.dismiss();
-                    } else {
-                        Toast.makeText(AddProperty.this, "Failed here", Toast.LENGTH_SHORT).show();
-                        pd.dismiss();
+            uploadTask.continueWithTask(task -> {
+                if (!task.isSuccessful()) throw Objects.requireNonNull(task.getException());
+                return fileReference.getDownloadUrl();
+            }).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    try {
+                        Uri downloadingUri = task.getResult();
+                        String mUri = downloadingUri.toString();
+                        imageString = mUri;
+                        Glide.with(AddProperty.this).load(imageUri).into(houseImg);
+                    } catch (Exception e) {
+                        Toast.makeText(AddProperty.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
+                } else {
+                    Toast.makeText(AddProperty.this, "Failed here", Toast.LENGTH_SHORT).show();
                 }
+                pd.dismiss();
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
@@ -214,22 +254,42 @@ public class AddProperty extends AppCompatActivity {
         }
     }
 
+
     @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CAMERA_REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                File f = new File(currentPhotoPath);
+                Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+                imageUri = Uri.fromFile(f);
+                mediaScanIntent.setData(imageUri);
+                this.sendBroadcast(mediaScanIntent);
+                if (uploadTask != null && uploadTask.isInProgress()) {
+                    Toast.makeText(AddProperty.this, "Upload in progress", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    uploadImg();
+                    imgDialog.cancel();
+                }
+
+            }
+        }
 
         if (requestCode == IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             imageUri = data.getData();
             if (uploadTask != null && uploadTask.isInProgress()) {
                 Toast.makeText(AddProperty.this, "Upload in progress", Toast.LENGTH_SHORT).show();
             } else {
-                uploadImage();
+                uploadImg();
+                imgDialog.cancel();
             }
         }
     }
 
+
+
     public void checkPermission(String permission, int requestCode) {
-        // Checking if permission is not granted
         if (ContextCompat.checkSelfPermission(AddProperty.this, permission) == PackageManager.PERMISSION_DENIED) {
             ActivityCompat.requestPermissions(AddProperty.this, new String[]{permission}, requestCode);
         } else {
@@ -253,5 +313,65 @@ public class AddProperty extends AppCompatActivity {
                 Toast.makeText(AddProperty.this, "Storage Permission Denied", Toast.LENGTH_SHORT).show();
             }
         }
+        if(requestCode == CAMERA_PERM_CODE){
+            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                dispatchTakePictureIntent();
+                Toast.makeText(AddProperty.this, "Camera Permission Granted", Toast.LENGTH_SHORT).show();
+
+            }
+            else{
+                Toast.makeText(this, "Camera Permission Denied", Toast.LENGTH_SHORT).show();
+            }
+        }
+
     }
+
+
+    private void askCameraPermission() {
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA}, CAMERA_PERM_CODE);
+        }
+        else{
+            dispatchTakePictureIntent();
+        }
+    }
+
+    private void dispatchTakePictureIntent() {
+
+
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            File photoF = null;
+            try {
+                photoF = createImageFile();
+            } catch (IOException ex) {
+
+            }
+
+            if (photoF != null) {
+
+                Uri photoURI = FileProvider.getUriForFile(this,
+                        "edu.northeastern.numad22fa_mrp.fileprovider",
+                        photoF);
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                startActivityForResult(takePictureIntent, CAMERA_REQUEST_CODE);
+            }
+
+        }
+    }
+
+    private File createImageFile() throws IOException {
+        @SuppressLint("SimpleDateFormat") String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imgName = "JPEG_" + timeStamp + "_";
+        File storageD = this.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File imageF = File.createTempFile(
+                imgName,
+                ".jpg",
+                storageD
+        );
+        currentPhotoPath = imageF.getAbsolutePath();
+        return imageF;
+    }
+
+
 }
