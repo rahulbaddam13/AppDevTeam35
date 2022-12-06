@@ -26,6 +26,14 @@
     <item name="hungry_fox" type="id" />
     <item name="love_fox" type="id" />
     <item name="sick_fox" type="id" />
+    <string-array name="propertyType">
+        <item>Single-family home</item>
+        <item>Low-rise apartment building</item>
+        <item>Large apartment community</item>
+        <item>Townhouse</item>
+        <item>Duplex</item>
+        <item>Condo</item>
+    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
