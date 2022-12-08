@@ -175,7 +175,7 @@ public class FinalProject extends AppCompatActivity {
                     if("seekers".equalsIgnoreCase(user.getUserType())){
                         //Already registered user, navigate to property lists page.
                         Intent clickIntent = new Intent(FinalProject.this, PropertySeekerActivity.class);
-                        clickIntent.putExtra("currentUserName", user.getUserName());
+                        clickIntent.putExtra("currentUserID", user.getUID());
                         startActivity(clickIntent);
                     }
                 }

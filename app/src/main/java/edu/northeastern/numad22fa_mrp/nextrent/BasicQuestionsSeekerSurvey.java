@@ -68,9 +68,9 @@ public class BasicQuestionsSeekerSurvey extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_basic_questions_seeker_survey, container, false);
 
-        EditText fullName = view.findViewById(R.id.seekerFullName);
+        /*EditText fullName = view.findViewById(R.id.seekerFullName);
         EditText emailID = view.findViewById(R.id.seekerEmailID);
-        EditText phoneNumber = view.findViewById(R.id.seekerPhoneNumber);
+        EditText phoneNumber = view.findViewById(R.id.seekerPhoneNumber);*/
         //age picker
         /*picker = view.findViewById(R.id.age_number_picker);
         picker.setMaxValue(83);

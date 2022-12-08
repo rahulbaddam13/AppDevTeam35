@@ -30,6 +30,9 @@ public class Preference {
     List<String> typeOfRoommates;
     boolean pets;
 
+    public Preference() {
+    }
+
     public Preference(String UID, String fullName, String emailID, String phoneNumber,
                       String legalSex, int age, List<String> locations, List<String> typeOfHouse,
                       int numberOfBedrooms, int numberOfBathrooms, int minimumPrice,

@@ -16,7 +16,7 @@ import edu.northeastern.numad22fa_mrp.Property;
 import edu.northeastern.numad22fa_mrp.R;
 import edu.northeastern.numad22fa_mrp.adapters.ChatViewHolder;
 
-public class PropertyListAdapterSeeker extends RecyclerView.Adapter<PropertyListAdapterSeeker.PropertyListViewHolder> {
+public class PropertyListAdapterSeeker extends RecyclerView.Adapter<PropertyListAdapterSeeker.PropertyListViewHolder>{
 
     private Context context;
     private ArrayList<Property> properties = new ArrayList<>();
@@ -39,6 +39,8 @@ public class PropertyListAdapterSeeker extends RecyclerView.Adapter<PropertyList
 
         holder.location.setText(model.getHouseLocation());
         holder.rentPerRoom.setText(model.getRentPerRoom());
+
+        //holder.itemView.setOnClickListener();
 
     }
 

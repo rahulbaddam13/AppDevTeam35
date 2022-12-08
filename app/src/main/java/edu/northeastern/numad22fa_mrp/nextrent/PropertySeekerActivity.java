@@ -4,13 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.database.ChildEventListener;
@@ -44,6 +47,10 @@ public class PropertySeekerActivity extends AppCompatActivity {
     // creating a variable for reference for Firebase.
     DatabaseReference databaseReference;
     DatabaseReference properties;
+
+    //bundle with data from previous activity.
+    Bundle bundle = null;
+    String currentUserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +88,10 @@ public class PropertySeekerActivity extends AppCompatActivity {
 
 
         propertyRecyclerView.addItemDecoration(dividerItemDecoration);
+
+        //get the user ID
+        bundle = getIntent().getExtras();
+        currentUserId = bundle.getString("currentUserID");
 
         // instance of the Firebase database.
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -124,7 +135,45 @@ public class PropertySeekerActivity extends AppCompatActivity {
             }
         });
 
-        properties = databaseReference.child(OwnerRegister.HOUSES);
+        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.UP | ItemTouchHelper.DOWN) {
+
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                if(direction == ItemTouchHelper.UP){
+                    Toast.makeText(PropertySeekerActivity.this, "Added to favorites!",
+                            Toast.LENGTH_SHORT).show();
+                    //Add property to favorites.
+                    String propertyID = propertiesList.get(viewHolder.getBindingAdapterPosition()).getHouseId();
+                    DatabaseReference db = databaseReference.child("seekers").child(currentUserId).child("favorites").push();
+                    db.setValue(propertyID).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            //there was an issue
+                            Toast.makeText(PropertySeekerActivity.this, "Unable to add user. Please try again later", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+                else if (direction == ItemTouchHelper.DOWN){
+                    Toast.makeText(PropertySeekerActivity.this, "Property removed.",
+                            Toast.LENGTH_SHORT).show();
+                }
+                //remove from list
+                propertiesList.remove(viewHolder.getBindingAdapterPosition());
+                if(propertyRecyclerView != null && propertyRecyclerView.getAdapter() != null) {
+                    propertyRecyclerView.getAdapter().notifyItemRemoved(propertyRecyclerView.getAdapter().getItemCount());
+                    propertyRecyclerView.getAdapter().notifyItemRangeChanged(viewHolder.getBindingAdapterPosition(), propertyRecyclerView.getAdapter().getItemCount());
+                }
+            }
+        };
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
+        itemTouchHelper.attachToRecyclerView(propertyRecyclerView);
+
+            properties = databaseReference.child(OwnerRegister.HOUSES);
         properties.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -152,7 +201,7 @@ public class PropertySeekerActivity extends AppCompatActivity {
             }
         });
 
-
+        //propertyRecyclerView.setOnTouchListener();
 
         //Bottom navigation bar.
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
