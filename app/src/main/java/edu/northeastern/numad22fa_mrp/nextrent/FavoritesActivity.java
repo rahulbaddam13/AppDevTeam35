@@ -35,7 +35,8 @@ public class FavoritesActivity extends AppCompatActivity {
                     case R.id.page_favorites:
                         return true;
                     case R.id.page_chat:
-                        //openFragment(SubscriptionsFragment.newInstance("",""));
+                        startActivity(new Intent(getApplicationContext(),ChatActivity.class));
+                        overridePendingTransition(0,0);
                         return true;
                     case R.id.page_profile:
                         startActivity(new Intent(getApplicationContext(),SeekerProfileActivity.class));

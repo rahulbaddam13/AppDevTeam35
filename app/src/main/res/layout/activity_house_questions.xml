@@ -21,8 +21,8 @@
 
     <EditText
         android:id="@+id/editTextTextLocation"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="279dp"
+        android:layout_height="48dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/custom_edit_text"
@@ -38,23 +38,6 @@
         app:layout_constraintTop_toBottomOf="@+id/enterLocationTextView"
         app:layout_constraintVertical_bias="0.028" />
 
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.457"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextLocation"
-        app:layout_constraintVertical_bias="0.03">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical" />
-    </HorizontalScrollView>
-
     <TextView
         android:id="@+id/typeOfHouseTextView"
         android:layout_width="wrap_content"
@@ -64,8 +47,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.152"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2"
-        app:layout_constraintVertical_bias="0.134" />
+        app:layout_constraintTop_toBottomOf="@+id/locationChipGroup"
+        app:layout_constraintVertical_bias="0.061" />
 
     <RadioGroup
         android:id="@+id/radioGroup2"
@@ -273,6 +256,7 @@
         android:id="@+id/surveySubmitBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="submitPreferenceBtn"
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/maximumPriceSpinner"
@@ -280,6 +264,32 @@
         app:layout_constraintStart_toEndOf="@+id/minimumPriceSpinner"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/locationChipGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.425"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.196">
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <Button
+        android:id="@+id/addLocationBtn"
+        android:layout_width="85dp"
+        android:layout_height="54dp"
+        android:onClick="addChipToGroup"
+        android:text="Add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextLocation"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.097" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

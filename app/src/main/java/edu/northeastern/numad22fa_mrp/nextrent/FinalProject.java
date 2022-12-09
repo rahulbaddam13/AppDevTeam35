@@ -165,7 +165,8 @@ public class FinalProject extends AppCompatActivity {
 
                     if("seekers".equalsIgnoreCase(user.getUserType())){
                         //New user, navigate to survey page.
-                        Intent clickIntent = new Intent(FinalProject.this, SeekerSurveyActivity.class);
+                        Intent clickIntent = new Intent(FinalProject.this, BasicQuestionsActivity.class);
+                        clickIntent.putExtra("userKey", userKey);
                         startActivity(clickIntent);
                     }
 
@@ -175,7 +176,7 @@ public class FinalProject extends AppCompatActivity {
                     if("seekers".equalsIgnoreCase(user.getUserType())){
                         //Already registered user, navigate to property lists page.
                         Intent clickIntent = new Intent(FinalProject.this, PropertySeekerActivity.class);
-                        clickIntent.putExtra("currentUserName", user.getUserName());
+                        clickIntent.putExtra("userKey", userKey);
                         startActivity(clickIntent);
                     }
                 }

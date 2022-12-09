@@ -1,7 +1,6 @@
 package edu.northeastern.numad22fa_mrp.nextrent;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,16 +10,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 import edu.northeastern.numad22fa_mrp.Property;
-import edu.northeastern.numad22fa_mrp.PropertyContents;
-//import edu.northeastern.numad22fa_mrp.PropertyContentsSeeker;
-import edu.northeastern.numad22fa_mrp.PropertyContentsSeeker;
 import edu.northeastern.numad22fa_mrp.R;
 import edu.northeastern.numad22fa_mrp.adapters.ChatViewHolder;
 
-public class PropertyListAdapterSeeker extends RecyclerView.Adapter<PropertyListAdapterSeeker.PropertyListViewHolder> {
+public class PropertyListAdapterSeeker extends RecyclerView.Adapter<PropertyListAdapterSeeker.PropertyListViewHolder>{
 
     private Context context;
     private ArrayList<Property> properties = new ArrayList<>();
@@ -41,27 +41,16 @@ public class PropertyListAdapterSeeker extends RecyclerView.Adapter<PropertyList
     public void onBindViewHolder(@NonNull PropertyListViewHolder holder, int position) {
         Property model = properties.get(position);
 
+        Glide.with(context).load(model.getHouseImage()).into(holder.houseImg);
         holder.location.setText(model.getHouseLocation());
+        holder.state.setText(model.getState());
+        holder.country.setText(model.getCountry());
+        holder.numberOfBeds.setText(model.getNoOfRoom());
+        holder.numberOfBaths.setText(model.getNoOfRoom());//change to bathroom count
+        holder.propertyType.setText(model.getType());
         holder.rentPerRoom.setText(model.getRentPerRoom());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Intent intent = new Intent(context, PropertyEditDetails.class);
-                Intent intent = new Intent(context, PropertyContentsSeeker.class);
-                intent.putExtra("houseId", model.getHouseId());
-                intent.putExtra("noOfRoom", model.getNoOfRoom());
-                intent.putExtra("rentPerRoom", model.getRentPerRoom());
-                intent.putExtra("houseDescription", model.getHouseDescription());
-                intent.putExtra("houseLocation", model.getHouseLocation());
-                intent.putExtra("houseImage", model.getHouseImage());
-                intent.putExtra("userId", model.getUserId());
-                intent.putExtra("country",model.getCountry());
-                intent.putExtra("state",model.getState());
-                intent.putExtra("type",model.getType());
-                context.startActivity(intent);
-            }
-        });
+        //holder.itemView.setOnClickListener();
 
     }
 
@@ -74,12 +63,21 @@ public class PropertyListAdapterSeeker extends RecyclerView.Adapter<PropertyList
     }
 
     static class PropertyListViewHolder extends RecyclerView.ViewHolder {
-        TextView noOfRoom, rentPerRoom, location, unit, country,state;
         ImageView houseImg;
+        TextView location, state, country;
+        TextView description;
+        TextView numberOfBeds, numberOfBaths, propertyType;
+        TextView rentPerRoom;
 
         public PropertyListViewHolder(@NonNull View itemView) {
             super(itemView);
+            houseImg = itemView.findViewById(R.id.prop_image);
             location = itemView.findViewById(R.id.property_address);
+            state = itemView.findViewById(R.id.prop_state_tv);
+            country = itemView.findViewById(R.id.prop_country_tv);
+            numberOfBeds = itemView.findViewById(R.id.number_of_beds);
+            numberOfBaths = itemView.findViewById(R.id.number_of_baths);
+            propertyType = itemView.findViewById(R.id.prop_type_tv);
             rentPerRoom = itemView.findViewById(R.id.property_rent);
         }
     }

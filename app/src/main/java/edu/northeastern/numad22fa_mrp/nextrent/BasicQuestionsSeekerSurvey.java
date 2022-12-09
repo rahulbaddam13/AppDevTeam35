@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.NumberPicker;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import edu.northeastern.numad22fa_mrp.R;
 
@@ -29,7 +31,7 @@ public class BasicQuestionsSeekerSurvey extends Fragment {
     private String mParam2;
 
     private NumberPicker picker;
-    private String[] pickerVal = new String[82];
+    private String[] pickerVal = new String[83];
 
     public BasicQuestionsSeekerSurvey() {
         // Required empty public constructor
@@ -68,25 +70,35 @@ public class BasicQuestionsSeekerSurvey extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_basic_questions_seeker_survey, container, false);
 
-        EditText fullName = view.findViewById(R.id.seekerFullName);
-        EditText emailID = view.findViewById(R.id.seekerEmailID);
-        EditText phoneNumber = view.findViewById(R.id.seekerPhoneNumber);
+        EditText fullName = view.findViewById(R.id.editTextSeekerFullName);
+        EditText emailID = view.findViewById(R.id.editTextSeekerEmail);
+        EditText phoneNumber = view.findViewById(R.id.editTextSeekerPhoneNumber);
+
+        RadioGroup legalSexRG = (RadioGroup) view.findViewById(R.id.radioGroupLegalSex);
+        final String[] legalSex = new String[1];
+        legalSexRG.setOnCheckedChangeListener((group, checkedId) -> {
+            // do operations specific to this selection
+            RadioButton radioButton = (RadioButton) view.findViewById(checkedId);
+            legalSex[0] = radioButton.getText().toString();
+        });
+
         //age picker
-        /*picker = view.findViewById(R.id.age_number_picker);
-        picker.setMaxValue(83);
-        picker.setMinValue(0);
+        picker = view.findViewById(R.id.age_number_picker);
         int j = 0;
         for(int i = 18; i <= 100; i++,j++){
             pickerVal[j] = String.valueOf(i);
         }
+        picker.setMinValue(18);
+        picker.setMaxValue(pickerVal.length - 1);
         picker.setDisplayedValues(pickerVal);
+
         picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker numberPicker, int i, int i1) {
                 int valuePicker = picker.getValue();
                 System.out.println("picker value "+ valuePicker + "");
             }
-        });*/
+        });
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_basic_questions_seeker_survey, container, false);
     }

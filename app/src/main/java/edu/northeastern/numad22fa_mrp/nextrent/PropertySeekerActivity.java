@@ -4,13 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.database.ChildEventListener;
@@ -22,9 +25,12 @@ import com.google.firebase.database.ValueEventListener;
 
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
+import edu.northeastern.numad22fa_mrp.MessageActivity;
 import edu.northeastern.numad22fa_mrp.MessageAdapter;
 import edu.northeastern.numad22fa_mrp.OwnerRegister;
 import edu.northeastern.numad22fa_mrp.Property;
@@ -44,6 +50,12 @@ public class PropertySeekerActivity extends AppCompatActivity {
     // creating a variable for reference for Firebase.
     DatabaseReference databaseReference;
     DatabaseReference properties;
+
+    //bundle with data from previous activity.
+    Bundle bundle = null;
+    String userKey;
+
+    Set<String> myFavoritePropertiesList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,12 +94,40 @@ public class PropertySeekerActivity extends AppCompatActivity {
 
         propertyRecyclerView.addItemDecoration(dividerItemDecoration);
 
+        //get the user ID
+        bundle = getIntent().getExtras();
+        userKey = bundle.getString("userKey");
+
         // instance of the Firebase database.
         firebaseDatabase = FirebaseDatabase.getInstance();
 
         // get reference for the database.
         databaseReference = firebaseDatabase.getReference("");
 
+
+        //make a list of all the favorite properties of the user.
+        //Instantiate the array list of favorite properties or get from the bundle.
+        if(savedInstanceState == null){
+            myFavoritePropertiesList = new HashSet<>();
+        } else {
+            //myFavoritePropertiesList = savedInstanceState.getParcelableArrayList("chatMessageList");
+        }
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Iterable<DataSnapshot> snapshotIterator = dataSnapshot.child("seekers").child(userKey).child("favorites").getChildren();
+                Iterator<DataSnapshot> iterator = snapshotIterator.iterator();
+                while (iterator.hasNext()) {
+                    DataSnapshot next = (DataSnapshot) iterator.next();
+                    myFavoritePropertiesList.add(next.getValue().toString());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                System.out.println("The read failed: " + error.getCode());
+            }
+        });
 
         // Attach a listener to read the data at our messages reference
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -104,15 +144,25 @@ public class PropertySeekerActivity extends AppCompatActivity {
                         DataSnapshot next = (DataSnapshot) iterator2.next();
 
                         //Without filtering - might have to apply filter here?
-                        Property article = new Property(String.valueOf(next.child("rentPerRoom").getValue()), String.valueOf(next.child("houseLocation").getValue()));
-                        /*Property article = new Property(String.valueOf(next.child("houseId").getValue()), String.valueOf(next.child("noOfRoom").getValue()), String.valueOf(next.child("rentPerRoom").getValue()),
-                                String.valueOf(next.child("houseDescription").getValue()), String.valueOf(next.child("houseLocation").getValue()), String.valueOf(next.child("houseImage").getValue()),
-                                String.valueOf(next.child("userId").getValue()), String.valueOf(next.child("country").getValue()), String.valueOf(next.child("state").getValue()));*/
-                        propertiesList.add(article);
+                        Property article = new Property(String.valueOf(next.child("houseId").getValue()),
+                                String.valueOf(next.child("noOfRoom").getValue()),
+                                String.valueOf(next.child("rentPerRoom").getValue()),
+                                String.valueOf(next.child("houseDescription").getValue()),
+                                String.valueOf(next.child("houseLocation").getValue()),
+                                String.valueOf(next.child("houseImage").getValue()),
+                                String.valueOf(next.child("userId").getValue()),
+                                String.valueOf(next.child("country").getValue()),
+                                String.valueOf(next.child("state").getValue()),
+                                String.valueOf(next.child("type").getValue()));
 
-                        //Notify the adapter about the newly added item.
-                        if(propertyRecyclerView != null && propertyRecyclerView.getAdapter() != null)
-                            propertyRecyclerView.getAdapter().notifyItemInserted(propertyRecyclerView.getAdapter().getItemCount());
+                        //check if the property is already a favorite property of the user, add to list only if its not.
+                        if(!myFavoritePropertiesList.contains(article.getHouseId())){
+                            propertiesList.add(article);
+
+                            //Notify the adapter about the newly added item.
+                            if(propertyRecyclerView != null && propertyRecyclerView.getAdapter() != null)
+                                propertyRecyclerView.getAdapter().notifyItemInserted(propertyRecyclerView.getAdapter().getItemCount());
+                        }
 
                     }
                 }
@@ -124,7 +174,48 @@ public class PropertySeekerActivity extends AppCompatActivity {
             }
         });
 
-        properties = databaseReference.child(OwnerRegister.HOUSES);
+        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.UP | ItemTouchHelper.DOWN) {
+
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                if(direction == ItemTouchHelper.DOWN){
+                    Toast.makeText(PropertySeekerActivity.this, "Added to favorites!",
+                            Toast.LENGTH_SHORT).show();
+                    //Add property to favorites.
+
+                    String propertyID = propertiesList.get(viewHolder.getBindingAdapterPosition()).getHouseId();
+
+                    DatabaseReference db =databaseReference.child("seekers").child(userKey).child("favorites").push();
+
+                    db.setValue(propertyID).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(PropertySeekerActivity.this, "Unable to add to favorites", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                }
+                else if (direction == ItemTouchHelper.UP){
+                    Toast.makeText(PropertySeekerActivity.this, "Property removed.",
+                            Toast.LENGTH_SHORT).show();
+                }
+                //remove from list
+                propertiesList.remove(viewHolder.getBindingAdapterPosition());
+                if(propertyRecyclerView != null && propertyRecyclerView.getAdapter() != null) {
+                    propertyRecyclerView.getAdapter().notifyItemRemoved(propertyRecyclerView.getAdapter().getItemCount());
+                    propertyRecyclerView.getAdapter().notifyItemRangeChanged(viewHolder.getBindingAdapterPosition(), propertyRecyclerView.getAdapter().getItemCount());
+                }
+            }
+        };
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
+        itemTouchHelper.attachToRecyclerView(propertyRecyclerView);
+
+            properties = databaseReference.child(OwnerRegister.HOUSES);
         properties.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -152,7 +243,7 @@ public class PropertySeekerActivity extends AppCompatActivity {
             }
         });
 
-
+        //propertyRecyclerView.setOnTouchListener();
 
         //Bottom navigation bar.
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -166,7 +257,9 @@ public class PropertySeekerActivity extends AppCompatActivity {
                     case R.id.page_home:
                         return true;
                     case R.id.page_favorites:
-                        startActivity(new Intent(getApplicationContext(),FavoritesActivity.class));
+                        Intent clickIntent = new Intent(PropertySeekerActivity.this, FavoritesActivity.class);
+                        clickIntent.putExtra("userKey", userKey);
+                        startActivity(clickIntent);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.page_chat:
