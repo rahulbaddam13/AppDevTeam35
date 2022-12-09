@@ -31,7 +31,6 @@ public class SeekerSurveyActivity extends AppCompatActivity {
         ScreenSlidePagerAdapter pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(), getLifecycle());
         pagerAdapter.addFragment(new BasicQuestionsSeekerSurvey());
         pagerAdapter.addFragment(new HouseQuestionsSeekersSurvey());
-        pagerAdapter.addFragment(new RoommateQuestionsSeekersSurvey());
 
         // set Orientation in your ViewPager2
         viewPager.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);

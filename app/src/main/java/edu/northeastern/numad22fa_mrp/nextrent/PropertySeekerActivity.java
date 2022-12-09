@@ -25,9 +25,12 @@ import com.google.firebase.database.ValueEventListener;
 
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
+import edu.northeastern.numad22fa_mrp.MessageActivity;
 import edu.northeastern.numad22fa_mrp.MessageAdapter;
 import edu.northeastern.numad22fa_mrp.OwnerRegister;
 import edu.northeastern.numad22fa_mrp.Property;
@@ -50,7 +53,9 @@ public class PropertySeekerActivity extends AppCompatActivity {
 
     //bundle with data from previous activity.
     Bundle bundle = null;
-    String currentUserId;
+    String userKey;
+
+    Set<String> myFavoritePropertiesList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +96,7 @@ public class PropertySeekerActivity extends AppCompatActivity {
 
         //get the user ID
         bundle = getIntent().getExtras();
-        currentUserId = bundle.getString("currentUserID");
+        userKey = bundle.getString("userKey");
 
         // instance of the Firebase database.
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -99,6 +104,30 @@ public class PropertySeekerActivity extends AppCompatActivity {
         // get reference for the database.
         databaseReference = firebaseDatabase.getReference("");
 
+
+        //make a list of all the favorite properties of the user.
+        //Instantiate the array list of favorite properties or get from the bundle.
+        if(savedInstanceState == null){
+            myFavoritePropertiesList = new HashSet<>();
+        } else {
+            //myFavoritePropertiesList = savedInstanceState.getParcelableArrayList("chatMessageList");
+        }
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Iterable<DataSnapshot> snapshotIterator = dataSnapshot.child("seekers").child(userKey).child("favorites").getChildren();
+                Iterator<DataSnapshot> iterator = snapshotIterator.iterator();
+                while (iterator.hasNext()) {
+                    DataSnapshot next = (DataSnapshot) iterator.next();
+                    myFavoritePropertiesList.add(next.getValue().toString());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                System.out.println("The read failed: " + error.getCode());
+            }
+        });
 
         // Attach a listener to read the data at our messages reference
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -125,11 +154,15 @@ public class PropertySeekerActivity extends AppCompatActivity {
                                 String.valueOf(next.child("country").getValue()),
                                 String.valueOf(next.child("state").getValue()),
                                 String.valueOf(next.child("type").getValue()));
-                        propertiesList.add(article);
 
-                        //Notify the adapter about the newly added item.
-                        if(propertyRecyclerView != null && propertyRecyclerView.getAdapter() != null)
-                            propertyRecyclerView.getAdapter().notifyItemInserted(propertyRecyclerView.getAdapter().getItemCount());
+                        //check if the property is already a favorite property of the user, add to list only if its not.
+                        if(!myFavoritePropertiesList.contains(article.getHouseId())){
+                            propertiesList.add(article);
+
+                            //Notify the adapter about the newly added item.
+                            if(propertyRecyclerView != null && propertyRecyclerView.getAdapter() != null)
+                                propertyRecyclerView.getAdapter().notifyItemInserted(propertyRecyclerView.getAdapter().getItemCount());
+                        }
 
                     }
                 }
@@ -154,15 +187,18 @@ public class PropertySeekerActivity extends AppCompatActivity {
                     Toast.makeText(PropertySeekerActivity.this, "Added to favorites!",
                             Toast.LENGTH_SHORT).show();
                     //Add property to favorites.
+
                     String propertyID = propertiesList.get(viewHolder.getBindingAdapterPosition()).getHouseId();
-                    DatabaseReference db = databaseReference.child("seekers").child(currentUserId).child("favorites").push();
+
+                    DatabaseReference db =databaseReference.child("seekers").child(userKey).child("favorites").push();
+
                     db.setValue(propertyID).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            //there was an issue
-                            Toast.makeText(PropertySeekerActivity.this, "Unable to add user. Please try again later", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PropertySeekerActivity.this, "Unable to add to favorites", Toast.LENGTH_SHORT).show();
                         }
                     });
+
                 }
                 else if (direction == ItemTouchHelper.UP){
                     Toast.makeText(PropertySeekerActivity.this, "Property removed.",
@@ -221,7 +257,9 @@ public class PropertySeekerActivity extends AppCompatActivity {
                     case R.id.page_home:
                         return true;
                     case R.id.page_favorites:
-                        startActivity(new Intent(getApplicationContext(),FavoritesActivity.class));
+                        Intent clickIntent = new Intent(PropertySeekerActivity.this, FavoritesActivity.class);
+                        clickIntent.putExtra("userKey", userKey);
+                        startActivity(clickIntent);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.page_chat:

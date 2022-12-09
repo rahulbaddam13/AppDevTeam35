@@ -26,11 +26,11 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/custom_edit_text"
+        android:ems="10"
         android:hint="City"
+        android:inputType="textPersonName"
         android:padding="15dp"
         android:textSize="15sp"
-        android:ems="10"
-        android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.059"
@@ -69,8 +69,8 @@
 
     <RadioGroup
         android:id="@+id/radioGroup2"
-        android:layout_width="394dp"
-        android:layout_height="154dp"
+        android:layout_width="389dp"
+        android:layout_height="113dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,31 +80,26 @@
         app:layout_constraintVertical_bias="0.037">
 
         <RadioGroup
-            android:layout_width="223dp"
-            android:layout_height="147dp">
+            android:layout_width="224dp"
+            android:layout_height="wrap_content">
 
             <CheckBox
-                android:id="@+id/single_family_home_chkbox"
+                android:id="@+id/apartment_chkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Single-family home" />
+                android:text="Apartment" />
+
 
             <CheckBox
-                android:id="@+id/low_rise_apartment_chkbox"
-                android:layout_width="221dp"
-                android:layout_height="50dp"
-                android:text="Low-rise apartment building" />
-
-            <CheckBox
-                android:id="@+id/apartment_community_chkbox"
+                android:id="@+id/condo_chkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Large apartment community" />
+                android:text="Condo" />
         </RadioGroup>
 
         <RadioGroup
-            android:layout_width="160dp"
-            android:layout_height="149dp">
+            android:layout_width="158dp"
+            android:layout_height="wrap_content">
 
             <CheckBox
                 android:id="@+id/townhouse_chkbox"
@@ -118,11 +113,6 @@
                 android:layout_height="wrap_content"
                 android:text="Duplex" />
 
-            <CheckBox
-                android:id="@+id/condo_chkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Condo" />
         </RadioGroup>
     </RadioGroup>
 
@@ -136,7 +126,7 @@
         app:layout_constraintHorizontal_bias="0.096"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NumberOfBathroomTextView"
-        app:layout_constraintVertical_bias="0.269" />
+        app:layout_constraintVertical_bias="0.121" />
 
     <TextView
         android:id="@+id/minimumPriceTextView"
@@ -145,10 +135,10 @@
         android:text="Minimum"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.232"
+        app:layout_constraintHorizontal_bias="0.173"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/priceRangeTextView"
-        app:layout_constraintVertical_bias="0.139" />
+        app:layout_constraintVertical_bias="0.142" />
 
     <TextView
         android:id="@+id/maximumPriceTextView"
@@ -260,10 +250,10 @@
         android:spinnerMode="dropdown"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintHorizontal_bias="0.184"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/minimumPriceTextView"
-        app:layout_constraintVertical_bias="0.298" />
+        app:layout_constraintVertical_bias="0.176" />
 
     <Spinner
         android:id="@+id/maximumPriceSpinner"
@@ -276,7 +266,20 @@
         app:layout_constraintHorizontal_bias="0.573"
         app:layout_constraintStart_toEndOf="@+id/minimumPriceSpinner"
         app:layout_constraintTop_toBottomOf="@+id/maximumPriceTextView"
-        app:layout_constraintVertical_bias="0.298" />
+        app:layout_constraintVertical_bias="0.184" />
+
+
+    <Button
+        android:id="@+id/surveySubmitBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/maximumPriceSpinner"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toEndOf="@+id/minimumPriceSpinner"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
