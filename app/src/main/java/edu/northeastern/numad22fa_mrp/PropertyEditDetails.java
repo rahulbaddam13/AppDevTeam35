@@ -4,37 +4,24 @@ import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-public class PropertyDetails extends AppCompatActivity {
+public class PropertyEditDetails extends AppCompatActivity {
     TextView tv_houseDesc;
     ImageView iv_houseImage;
     DatabaseReference reference;
@@ -44,18 +31,17 @@ public class PropertyDetails extends AppCompatActivity {
     TextView roomsTv, stateTv, countryTv, typeTv, locationTv, rent;
     String houseId, noOfRoom, rentPerRoom, houseDescription, houseLocation, country, type, state;
     Button bLocation;
-    String lat,longi;
-    Double latitude,longitude;
-
-
+    String lat, longi;
+    Double latitude, longitude;
+    Boolean updateStatus;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_property_details);
+        setContentView(R.layout.activity_property_edit_details);
 
-        bLocation= findViewById(R.id.getLocation);
+        bLocation = findViewById(R.id.getLocation);
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         assert firebaseUser != null;
@@ -101,24 +87,23 @@ public class PropertyDetails extends AppCompatActivity {
         _state = state;
         _country = country;
 
+        updateStatus = false;
+
         Geocoder geocoder = new Geocoder(this);
         List<Address> addressList;
 
         try {
-            addressList= geocoder.getFromLocationName(houseLocation,1);
-            if(addressList!=null) {
+            addressList = geocoder.getFromLocationName(houseLocation, 1);
+            if (addressList != null) {
                 latitude = addressList.get(0).getLatitude();
                 longitude = addressList.get(0).getLongitude();
                 //intent1.putExtra("houseImage", houseImage);
                 tv_houseDesc.setText(String.valueOf(latitude) + " x " + String.valueOf(longitude));
             }
 
-        }
-
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-        }
-        catch (IndexOutOfBoundsException e) {
+        } catch (IndexOutOfBoundsException e) {
             bLocation.setVisibility(View.GONE);
             tv_houseDesc.setText("no location");
             Toast.makeText(this, "Location is Not Accurate to Track", Toast.LENGTH_SHORT).show();
@@ -126,12 +111,13 @@ public class PropertyDetails extends AppCompatActivity {
         }
 
         //tv_houseDesc.setText(houseDescription);
-        Glide.with(PropertyDetails.this).load(houseImage).into(iv_houseImage);
+        Glide.with(PropertyEditDetails.this).load(houseImage).into(iv_houseImage);
 
         updateB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 update();
+                updateStatusCheck();
 
             }
         });
@@ -146,7 +132,7 @@ public class PropertyDetails extends AppCompatActivity {
         bLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(PropertyDetails.this, ViewLocation.class);
+                Intent intent1 = new Intent(PropertyEditDetails.this, ViewLocation.class);
                 intent1.putExtra("houseId", houseId);
                 intent1.putExtra("noOfRoom", noOfRoom);
                 intent1.putExtra("rentPerRoom", rentPerRoom);
@@ -163,8 +149,6 @@ public class PropertyDetails extends AppCompatActivity {
         });
 
     }
-
-
 
 
     private void deleteProperty() {
@@ -202,91 +186,44 @@ public class PropertyDetails extends AppCompatActivity {
     //
     public void update() {
 
-        if (isRoomsChanged() || isRentChanged() || isLocationChanged() || isStateChanged() || isCountryChanged()) {
+        if (!_country.equals(countryTv.getText().toString())) {
+            reference.child("country").setValue(countryTv.getText().toString());
+            updateStatus = true;
+
+        }
+        if (!_state.equals(stateTv.getText().toString())) {
+            reference.child("state").setValue(stateTv.getText().toString());
+            updateStatus = true;
+        }
+        if (!_location.equals(locationTv.getText().toString())) {
+            reference.child("houseLocation").setValue(locationTv.getText().toString());
+            updateStatus = true;
+        }
+        if (!_rent.equals(rent.getText().toString())) {
+            reference.child("rentPerRoom").setValue(rent.getText().toString());
+            updateStatus = true;
+        }
+        if (!_rooms.equals(roomsTv.getText().toString())) {
+            reference.child("noOfRoom").setValue(roomsTv.getText().toString());
+            updateStatus = true;
+        }
+
+
+    }
+
+    private void updateStatusCheck() {
+        if (updateStatus) {
             Toast.makeText(this, "Property Details updated", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, PropertyList.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             finish();
-
         } else {
             Toast.makeText(this, "No Update made", Toast.LENGTH_SHORT).show();
+
         }
     }
-
-
-    private boolean isCountryChanged() {
-        if (!_country.equals(countryTv.getText().toString())) {
-            reference.child("country").setValue(countryTv.getText().toString());
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private boolean isStateChanged() {
-        if (!_state.equals(stateTv.getText().toString())) {
-            reference.child("state").setValue(stateTv.getText().toString());
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private boolean isLocationChanged() {
-        if (!_location.equals(locationTv.getText().toString())) {
-            reference.child("houseLocation").setValue(locationTv.getText().toString());
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private boolean isRentChanged() {
-        if (!_rent.equals(rent.getText().toString())) {
-            reference.child("rentPerRoom").setValue(rent.getText().toString());
-            return true;
-        } else {
-            return false;
-        }
-
-    }
-
-    private boolean isRoomsChanged() {
-        if (!_rooms.equals(roomsTv.getText().toString())) {
-            reference.child("noOfRoom").setValue(roomsTv.getText().toString());
-            return true;
-        } else {
-            return false;
-        }
-
-    }
-
 
 }
 
 
-
-    //
-////        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-////        assert firebaseUser != null;
-////        String userId = firebaseUser.getUid();
-////
-////
-////        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child(OwnerRegister.HOUSES).child(userId);
-////        String key = databaseReference.getKey();
-////        HashMap<String, String> hashMap = new HashMap<>();
-////        hashMap.put("noOfRoom", str);
-////        databaseReference.push().setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-////            @Override
-////            public void onComplete(@NonNull Task<Void> task) {
-////                if (task.isSuccessful()) {
-////                    Toast.makeText(PropertyDetails.this, "Success", Toast.LENGTH_SHORT).show();
-////                } else {
-////                    Toast.makeText(PropertyDetails.this, "Failed", Toast.LENGTH_SHORT).show();
-////                }
-////            }
-////        });
-//
-//    }
-//
 
