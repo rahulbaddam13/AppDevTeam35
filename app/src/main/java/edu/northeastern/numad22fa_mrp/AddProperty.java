@@ -50,6 +50,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Objects;
 
 public class AddProperty extends AppCompatActivity {
@@ -79,7 +80,7 @@ public class AddProperty extends AppCompatActivity {
         setContentView(R.layout.activity_add_property);
 
         houseImg = findViewById(R.id.iv_houseImage);
-        houseId = findViewById(R.id.et_houseId);
+//        houseId = findViewById(R.id.et_houseId);
         noOfRoom = findViewById(R.id.et_noOfRoom);
         rentPerRoom = findViewById(R.id.et_rentPerRoom);
         houseDescription = findViewById(R.id.et_houseDescription);
@@ -98,7 +99,7 @@ public class AddProperty extends AppCompatActivity {
         String typeD = getIntent().getExtras().getString("type");
         type.setText(typeD);
 
-        
+
 
 
         storageReference = FirebaseStorage.getInstance().getReference().child("Uploads");
@@ -119,7 +120,8 @@ public class AddProperty extends AppCompatActivity {
                 progressDialog.setTitle("Adding...");
                 progressDialog.setCanceledOnTouchOutside(false);
                 progressDialog.show();
-                String houseId = AddProperty.this.houseId.getText().toString();
+//                String houseId = AddProperty.this.houseId.getText().toString();
+                String houseId = Long.toString(System.currentTimeMillis());
                 String noOfRoom = AddProperty.this.noOfRoom.getText().toString();
                 String rentPerRoom = AddProperty.this.rentPerRoom.getText().toString();
                 String houseDescription = AddProperty.this.houseDescription.getText().toString();

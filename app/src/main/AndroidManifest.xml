@@ -6,17 +6,19 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
-
     <queries>
         <intent>
             <action android:name="android.intent.action.VIEW" />
+
             <data android:scheme="http" />
         </intent>
         <intent>
@@ -26,11 +28,12 @@
             <action android:name="android.intent.action.GET_CONTENT" />
         </intent>
     </queries>
-
     <queries>
         <intent>
             <action android:name="android.intent.action.VIEW" />
+
             <category android:name="android.intent.category.BROWSABLE" />
+
             <data android:scheme="https" />
         </intent>
     </queries>
@@ -45,9 +48,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NUMAD22Fa_MRP"
         tools:targetApi="31">
+        <activity
+            android:name=".ContactOwner"
+            android:exported="false" />
+        <activity
+            android:name=".PropertyContentsSeeker"
+            android:exported="false" />
+        <activity
+            android:name=".PropertyContents"
+            android:exported="false" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAstRLiJWR9LOpxICg2CdXkGFbTZSV41BA" />
+
         <activity
             android:name=".nextrent.ChatActivity"
             android:exported="false" />
@@ -64,7 +78,7 @@
             android:name=".AddPropertyAddress"
             android:exported="false" />
         <activity
-            android:name=".PropertyDetails"
+            android:name=".PropertyEditDetails"
             android:exported="false" />
         <activity
             android:name=".PropertyList"
@@ -129,7 +143,6 @@
             android:name=".ViewLocation"
             android:configChanges="orientation|screenSize"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -139,6 +152,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="edu.northeastern.numad22fa_mrp.fileprovider"
@@ -148,16 +162,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-
-<!--        <provider-->
-<!--            android:name="androidx.core.content.FileProvider"-->
-<!--            android:authorities="net.smallacademy.android.fileprovider"-->
-<!--            android:exported="false"-->
-<!--            android:grantUriPermissions="true">-->
-<!--            <meta-data-->
-<!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
-<!--                android:resource="@xml/file_paths"></meta-data>-->
-<!--        </provider>-->
     </application>
 
 </manifest>

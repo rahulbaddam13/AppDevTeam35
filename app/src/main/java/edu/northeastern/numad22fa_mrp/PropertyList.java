@@ -19,12 +19,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class PropertyList extends AppCompatActivity {
 
     private RecyclerView rv;
     private PropertyListAdapterOwner adapter;
     private ArrayList<Property> propertyList = new ArrayList<>();
+
+    DatabaseReference databaseReference;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference reference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +39,7 @@ public class PropertyList extends AppCompatActivity {
 
         rv = findViewById(R.id.recyclerView);
         rv.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(PropertyList.this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(PropertyList.this,LinearLayoutManager.VERTICAL,true);
         rv.setLayoutManager(linearLayoutManager);
         getAllProperties();
 
@@ -45,7 +51,7 @@ public class PropertyList extends AppCompatActivity {
         assert firebaseUser != null;
         String userId = firebaseUser.getUid();
         firebaseUser.getUid();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(OwnerRegister.HOUSES).child(userId);
+        reference = FirebaseDatabase.getInstance().getReference().child(OwnerRegister.HOUSES).child(userId);
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -53,6 +59,7 @@ public class PropertyList extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Property article = dataSnapshot.getValue(Property.class);
                     propertyList.add(article);
+
                 }
                 adapter = new PropertyListAdapterOwner(PropertyList.this, propertyList);
                 rv.setAdapter(adapter);
@@ -63,5 +70,13 @@ public class PropertyList extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onRestart()
+    {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
     }
 }

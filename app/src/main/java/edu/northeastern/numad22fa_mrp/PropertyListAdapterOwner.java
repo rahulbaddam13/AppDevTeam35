@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,7 +36,9 @@ public class PropertyListAdapterOwner extends RecyclerView.Adapter<PropertyListA
 
     @Override
     public void onBindViewHolder(@NonNull PropertyViewHolder holder, int position) {
+
         Property model = properties.get(position);
+        Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
 
         holder.location.setText(model.getHouseLocation());
         //holder.unit.setText(model.getUnit());
@@ -45,11 +49,12 @@ public class PropertyListAdapterOwner extends RecyclerView.Adapter<PropertyListA
         holder.type.setText(model.getType());
         Glide.with(context).load(model.getHouseImage()).into(holder.houseImg);
 
+        holder.itemView.startAnimation(animation);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, PropertyDetails.class);
-
+                //Intent intent = new Intent(context, PropertyEditDetails.class);
+                Intent intent = new Intent(context, PropertyContents.class);
                 intent.putExtra("houseId", model.getHouseId());
                 intent.putExtra("noOfRoom", model.getNoOfRoom());
                 intent.putExtra("rentPerRoom", model.getRentPerRoom());

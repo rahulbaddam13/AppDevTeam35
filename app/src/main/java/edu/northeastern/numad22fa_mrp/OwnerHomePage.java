@@ -30,6 +30,7 @@ public class OwnerHomePage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(OwnerHomePage.this, AddPropertyAddress.class));
+                overridePendingTransition( android.R.anim.fade_in,android.R.anim.fade_out);
             }
         });
     }

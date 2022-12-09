@@ -1,6 +1,7 @@
 package edu.northeastern.numad22fa_mrp.nextrent;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import edu.northeastern.numad22fa_mrp.Property;
+import edu.northeastern.numad22fa_mrp.PropertyContents;
+//import edu.northeastern.numad22fa_mrp.PropertyContentsSeeker;
+import edu.northeastern.numad22fa_mrp.PropertyContentsSeeker;
 import edu.northeastern.numad22fa_mrp.R;
 import edu.northeastern.numad22fa_mrp.adapters.ChatViewHolder;
 
@@ -39,6 +43,25 @@ public class PropertyListAdapterSeeker extends RecyclerView.Adapter<PropertyList
 
         holder.location.setText(model.getHouseLocation());
         holder.rentPerRoom.setText(model.getRentPerRoom());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Intent intent = new Intent(context, PropertyEditDetails.class);
+                Intent intent = new Intent(context, PropertyContentsSeeker.class);
+                intent.putExtra("houseId", model.getHouseId());
+                intent.putExtra("noOfRoom", model.getNoOfRoom());
+                intent.putExtra("rentPerRoom", model.getRentPerRoom());
+                intent.putExtra("houseDescription", model.getHouseDescription());
+                intent.putExtra("houseLocation", model.getHouseLocation());
+                intent.putExtra("houseImage", model.getHouseImage());
+                intent.putExtra("userId", model.getUserId());
+                intent.putExtra("country",model.getCountry());
+                intent.putExtra("state",model.getState());
+                intent.putExtra("type",model.getType());
+                context.startActivity(intent);
+            }
+        });
 
     }
 
