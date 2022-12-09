@@ -72,6 +72,14 @@
             android:name=".nextrent.SeekerProfileActivity"
             android:exported="false" />
         <activity
+            android:name=".nextrent.BasicQuestionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".nextrent.HouseQuestionsActivity"
+            android:exported="false" />
+
+
+        <activity
             android:name=".MainScreen"
             android:exported="false" />
         <activity
