@@ -10,6 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 import edu.northeastern.numad22fa_mrp.Property;
@@ -37,7 +41,13 @@ public class PropertyListAdapterSeeker extends RecyclerView.Adapter<PropertyList
     public void onBindViewHolder(@NonNull PropertyListViewHolder holder, int position) {
         Property model = properties.get(position);
 
+        Glide.with(context).load(model.getHouseImage()).into(holder.houseImg);
         holder.location.setText(model.getHouseLocation());
+        holder.state.setText(model.getState());
+        holder.country.setText(model.getCountry());
+        holder.numberOfBeds.setText(model.getNoOfRoom());
+        holder.numberOfBaths.setText(model.getNoOfRoom());//change to bathroom count
+        holder.propertyType.setText(model.getType());
         holder.rentPerRoom.setText(model.getRentPerRoom());
 
         //holder.itemView.setOnClickListener();
@@ -53,12 +63,21 @@ public class PropertyListAdapterSeeker extends RecyclerView.Adapter<PropertyList
     }
 
     static class PropertyListViewHolder extends RecyclerView.ViewHolder {
-        TextView noOfRoom, rentPerRoom, location, unit, country,state;
         ImageView houseImg;
+        TextView location, state, country;
+        TextView description;
+        TextView numberOfBeds, numberOfBaths, propertyType;
+        TextView rentPerRoom;
 
         public PropertyListViewHolder(@NonNull View itemView) {
             super(itemView);
+            houseImg = itemView.findViewById(R.id.prop_image);
             location = itemView.findViewById(R.id.property_address);
+            state = itemView.findViewById(R.id.prop_state_tv);
+            country = itemView.findViewById(R.id.prop_country_tv);
+            numberOfBeds = itemView.findViewById(R.id.number_of_beds);
+            numberOfBaths = itemView.findViewById(R.id.number_of_baths);
+            propertyType = itemView.findViewById(R.id.prop_type_tv);
             rentPerRoom = itemView.findViewById(R.id.property_rent);
         }
     }

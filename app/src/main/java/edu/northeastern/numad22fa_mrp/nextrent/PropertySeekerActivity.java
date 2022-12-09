@@ -115,10 +115,16 @@ public class PropertySeekerActivity extends AppCompatActivity {
                         DataSnapshot next = (DataSnapshot) iterator2.next();
 
                         //Without filtering - might have to apply filter here?
-                        Property article = new Property(String.valueOf(next.child("rentPerRoom").getValue()), String.valueOf(next.child("houseLocation").getValue()));
-                        /*Property article = new Property(String.valueOf(next.child("houseId").getValue()), String.valueOf(next.child("noOfRoom").getValue()), String.valueOf(next.child("rentPerRoom").getValue()),
-                                String.valueOf(next.child("houseDescription").getValue()), String.valueOf(next.child("houseLocation").getValue()), String.valueOf(next.child("houseImage").getValue()),
-                                String.valueOf(next.child("userId").getValue()), String.valueOf(next.child("country").getValue()), String.valueOf(next.child("state").getValue()));*/
+                        Property article = new Property(String.valueOf(next.child("houseId").getValue()),
+                                String.valueOf(next.child("noOfRoom").getValue()),
+                                String.valueOf(next.child("rentPerRoom").getValue()),
+                                String.valueOf(next.child("houseDescription").getValue()),
+                                String.valueOf(next.child("houseLocation").getValue()),
+                                String.valueOf(next.child("houseImage").getValue()),
+                                String.valueOf(next.child("userId").getValue()),
+                                String.valueOf(next.child("country").getValue()),
+                                String.valueOf(next.child("state").getValue()),
+                                String.valueOf(next.child("type").getValue()));
                         propertiesList.add(article);
 
                         //Notify the adapter about the newly added item.
@@ -144,7 +150,7 @@ public class PropertySeekerActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                if(direction == ItemTouchHelper.UP){
+                if(direction == ItemTouchHelper.DOWN){
                     Toast.makeText(PropertySeekerActivity.this, "Added to favorites!",
                             Toast.LENGTH_SHORT).show();
                     //Add property to favorites.
@@ -158,7 +164,7 @@ public class PropertySeekerActivity extends AppCompatActivity {
                         }
                     });
                 }
-                else if (direction == ItemTouchHelper.DOWN){
+                else if (direction == ItemTouchHelper.UP){
                     Toast.makeText(PropertySeekerActivity.this, "Property removed.",
                             Toast.LENGTH_SHORT).show();
                 }
