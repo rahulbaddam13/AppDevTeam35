@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".nextrent.HouseQuestionsSeekersSurvey">
+
+
+    <TextView
+        android:id="@+id/enterLocationTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter the locations in which you are interested"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.201"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.04" />
+
+    <EditText
+        android:id="@+id/editTextTextLocation"
+        android:layout_width="279dp"
+        android:layout_height="48dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/custom_edit_text"
+        android:ems="10"
+        android:hint="City"
+        android:inputType="textPersonName"
+        android:padding="15dp"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.059"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterLocationTextView"
+        app:layout_constraintVertical_bias="0.028" />
+
+    <TextView
+        android:id="@+id/typeOfHouseTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What type of house are you looking for?"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.152"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationChipGroup"
+        app:layout_constraintVertical_bias="0.061" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="389dp"
+        android:layout_height="113dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/typeOfHouseTextView"
+        app:layout_constraintVertical_bias="0.037">
+
+        <RadioGroup
+            android:layout_width="224dp"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/apartment_chkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Apartment" />
+
+
+            <CheckBox
+                android:id="@+id/condo_chkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Condo" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:layout_width="158dp"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/townhouse_chkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Townhouse" />
+
+            <CheckBox
+                android:id="@+id/duplex_chkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Duplex" />
+
+        </RadioGroup>
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/priceRangeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What's your price range?"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.096"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NumberOfBathroomTextView"
+        app:layout_constraintVertical_bias="0.121" />
+
+    <TextView
+        android:id="@+id/minimumPriceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Minimum"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.173"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/priceRangeTextView"
+        app:layout_constraintVertical_bias="0.142" />
+
+    <TextView
+        android:id="@+id/maximumPriceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Maximum"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintStart_toEndOf="@+id/minimumPriceTextView"
+        app:layout_constraintTop_toBottomOf="@+id/priceRangeTextView"
+        app:layout_constraintVertical_bias="0.139" />
+
+    <TextView
+        android:id="@+id/NumberOfBedroomTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number of bedrooms : "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup2"
+        app:layout_constraintVertical_bias="0.082" />
+
+    <TextView
+        android:id="@+id/NumberOfBathroomTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number of bathrooms : "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NumberOfBedroomTextView"
+        app:layout_constraintVertical_bias="0.211" />
+
+    <RadioGroup
+        android:id="@+id/bedroomRadioGroup"
+        android:layout_width="212dp"
+        android:layout_height="52dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintStart_toEndOf="@+id/NumberOfBedroomTextView"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup2"
+        app:layout_constraintVertical_bias="0.068">
+
+        <RadioButton
+            android:id="@+id/oneBedroom"
+            android:layout_width="63dp"
+            android:layout_height="wrap_content"
+            android:text="1" />
+
+        <RadioButton
+            android:id="@+id/twoToThreeBedrooms"
+            android:layout_width="76dp"
+            android:layout_height="wrap_content"
+            android:text="2 - 3" />
+
+        <RadioButton
+            android:id="@+id/moreBedrooms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="> 4" />
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/bathroomRadioGroup"
+        android:layout_width="216dp"
+        android:layout_height="51dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.617"
+        app:layout_constraintStart_toEndOf="@+id/NumberOfBathroomTextView"
+        app:layout_constraintTop_toBottomOf="@+id/bedroomRadioGroup"
+        app:layout_constraintVertical_bias="0.076">
+
+
+        <RadioButton
+            android:id="@+id/oneBathroom"
+            android:layout_width="63dp"
+            android:layout_height="wrap_content"
+            android:text="1" />
+
+        <RadioButton
+            android:id="@+id/twoToThreeBathrooms"
+            android:layout_width="76dp"
+            android:layout_height="wrap_content"
+            android:text="2 - 3" />
+
+        <RadioButton
+            android:id="@+id/moreBathrooms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="> 4" />
+
+
+    </RadioGroup>
+
+    <Spinner
+        android:id="@+id/minimumPriceSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.184"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/minimumPriceTextView"
+        app:layout_constraintVertical_bias="0.176" />
+
+    <Spinner
+        android:id="@+id/maximumPriceSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.573"
+        app:layout_constraintStart_toEndOf="@+id/minimumPriceSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/maximumPriceTextView"
+        app:layout_constraintVertical_bias="0.184" />
+
+
+    <Button
+        android:id="@+id/surveySubmitBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="submitPreferenceBtn"
+        android:text="Submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/maximumPriceSpinner"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toEndOf="@+id/minimumPriceSpinner"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/locationChipGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.425"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.196">
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <Button
+        android:id="@+id/addLocationBtn"
+        android:layout_width="85dp"
+        android:layout_height="54dp"
+        android:onClick="addChipToGroup"
+        android:text="Add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextLocation"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.097" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

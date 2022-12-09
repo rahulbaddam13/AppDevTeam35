@@ -34,6 +34,31 @@
         <item>Duplex</item>
         <item>Condo</item>
     </string-array>
+    <string-array name="min_price_array">
+        <item>$0</item>
+        <item>$200</item>
+        <item>$400</item>
+        <item>$600</item>
+        <item>$800</item>
+        <item>$1000</item>
+        <item>$1200</item>
+        <item>$1400</item>
+        <item>$1600</item>
+        <item>$1800</item>
+    </string-array>
+    <string-array name="max_price_array">
+        <item>$2000</item>
+        <item>$2200</item>
+        <item>$2400</item>
+        <item>$2600</item>
+        <item>$2800</item>
+        <item>$3000</item>
+        <item>$3500</item>
+        <item>$4000</item>
+        <item>$4500</item>
+        <item>$5000</item>
+        <item>Any</item>
+    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

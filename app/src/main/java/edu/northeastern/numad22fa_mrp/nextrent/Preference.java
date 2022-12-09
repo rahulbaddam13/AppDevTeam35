@@ -7,8 +7,6 @@ import java.util.List;
  */
 public class Preference {
 
-    private String UID;
-
     //Basic information.
     String fullName;
     String emailID;
@@ -19,26 +17,18 @@ public class Preference {
     //Information related to housing.
     List<String> locations;
     List<String> typeOfHouse;
-    int numberOfBedrooms;
-    int numberOfBathrooms;
+    String numberOfBedrooms;
+    String numberOfBathrooms;
     int minimumPrice;
     int maximumPrice;
-
-    //Roommate Information.
-    boolean roommates;
-    int numberOfRoommates;
-    List<String> typeOfRoommates;
-    boolean pets;
 
     public Preference() {
     }
 
-    public Preference(String UID, String fullName, String emailID, String phoneNumber,
+    public Preference(String fullName, String emailID, String phoneNumber,
                       String legalSex, int age, List<String> locations, List<String> typeOfHouse,
-                      int numberOfBedrooms, int numberOfBathrooms, int minimumPrice,
-                      int maximumPrice, boolean roommates, int numberOfRoommates,
-                      List<String> typeOfRoommates, boolean pets) {
-        this.UID = UID;
+                      String numberOfBedrooms, String numberOfBathrooms, int minimumPrice,
+                      int maximumPrice) {
         this.fullName = fullName;
         this.emailID = emailID;
         this.phoneNumber = phoneNumber;
@@ -50,15 +40,8 @@ public class Preference {
         this.numberOfBathrooms = numberOfBathrooms;
         this.minimumPrice = minimumPrice;
         this.maximumPrice = maximumPrice;
-        this.roommates = roommates;
-        this.numberOfRoommates = numberOfRoommates;
-        this.typeOfRoommates = typeOfRoommates;
-        this.pets = pets;
     }
 
-    public String getUID() {
-        return UID;
-    }
 
     public String getFullName() {
         return fullName;
@@ -116,19 +99,19 @@ public class Preference {
         this.typeOfHouse = typeOfHouse;
     }
 
-    public int getNumberOfBedrooms() {
+    public String getNumberOfBedrooms() {
         return numberOfBedrooms;
     }
 
-    public void setNumberOfBedrooms(int numberOfBedrooms) {
+    public void setNumberOfBedrooms(String numberOfBedrooms) {
         this.numberOfBedrooms = numberOfBedrooms;
     }
 
-    public int getNumberOfBathrooms() {
+    public String getNumberOfBathrooms() {
         return numberOfBathrooms;
     }
 
-    public void setNumberOfBathrooms(int numberOfBathrooms) {
+    public void setNumberOfBathrooms(String numberOfBathrooms) {
         this.numberOfBathrooms = numberOfBathrooms;
     }
 
@@ -148,35 +131,4 @@ public class Preference {
         this.maximumPrice = maximumPrice;
     }
 
-    public boolean isRoommates() {
-        return roommates;
-    }
-
-    public void setRoommates(boolean roommates) {
-        this.roommates = roommates;
-    }
-
-    public int getNumberOfRoommates() {
-        return numberOfRoommates;
-    }
-
-    public void setNumberOfRoommates(int numberOfRoommates) {
-        this.numberOfRoommates = numberOfRoommates;
-    }
-
-    public List<String> getTypeOfRoommates() {
-        return typeOfRoommates;
-    }
-
-    public void setTypeOfRoommates(List<String> typeOfRoommates) {
-        this.typeOfRoommates = typeOfRoommates;
-    }
-
-    public boolean isPets() {
-        return pets;
-    }
-
-    public void setPets(boolean pets) {
-        this.pets = pets;
-    }
 }
