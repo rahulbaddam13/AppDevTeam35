@@ -58,6 +58,7 @@ public class BasicQuestionsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent clickIntent = new Intent(BasicQuestionsActivity.this, UserAvatarActivity.class);
+                clickIntent.putExtra("userKey", userKey);
                 startActivity(clickIntent);
             }
         });
@@ -117,7 +118,7 @@ public class BasicQuestionsActivity extends AppCompatActivity {
                             //move to next screen with the data.
                             Intent clickIntent = new Intent(BasicQuestionsActivity.this, HouseQuestionsActivity.class);
                             clickIntent.putExtra("userKey", userKey);
-                            clickIntent.putExtra("avatarId", avatar.getId());
+                            clickIntent.putExtra("avatarId", String.valueOf(avatar.getId()));
                             clickIntent.putExtra("seekerFullName", seekerFullName);
                             clickIntent.putExtra("seekerEmailId", seekerEmailId);
                             clickIntent.putExtra("seekerPhone", seekerPhone);

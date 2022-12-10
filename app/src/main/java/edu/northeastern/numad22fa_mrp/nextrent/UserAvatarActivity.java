@@ -14,11 +14,17 @@ public class UserAvatarActivity extends AppCompatActivity {
 
     private ImageView avatar;
     private ImageView imageView1, imageView2, imageView3, imageView4, imageView5, imageView6;
+    //bundle with data from previous activity.
+    Bundle bundle = null;
+    String userKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_avatar);
+
+        bundle = getIntent().getExtras();
+        userKey = bundle.getString("userKey");
 
         avatar = (ImageView) findViewById(R.id.user_avatar);
 
@@ -28,6 +34,7 @@ public class UserAvatarActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(UserAvatarActivity.this, BasicQuestionsActivity.class);
                 intent.putExtra("imageId", R.drawable.avatar_girl);
+                intent.putExtra("userKey", userKey);
                 startActivity(intent);
                 finish();
             }
@@ -39,6 +46,7 @@ public class UserAvatarActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(UserAvatarActivity.this, BasicQuestionsActivity.class);
                 intent.putExtra("imageId", R.drawable.boy_avatar);
+                intent.putExtra("userKey", userKey);
                 startActivity(intent);
                 finish();
             }
@@ -49,6 +57,7 @@ public class UserAvatarActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(UserAvatarActivity.this, BasicQuestionsActivity.class);
                 intent.putExtra("imageId", R.drawable.punk_avatar);
+                intent.putExtra("userKey", userKey);
                 startActivity(intent);
                 finish();
             }
@@ -59,6 +68,7 @@ public class UserAvatarActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(UserAvatarActivity.this, BasicQuestionsActivity.class);
                 intent.putExtra("imageId", R.drawable.emo_girl_avatar);
+                intent.putExtra("userKey", userKey);
                 startActivity(intent);
                 finish();
             }
@@ -69,6 +79,7 @@ public class UserAvatarActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(UserAvatarActivity.this, BasicQuestionsActivity.class);
                 intent.putExtra("imageId", R.drawable.girl_two_avatar);
+                intent.putExtra("userKey", userKey);
                 startActivity(intent);
                 finish();
             }
@@ -79,6 +90,7 @@ public class UserAvatarActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(UserAvatarActivity.this, BasicQuestionsActivity.class);
                 intent.putExtra("imageId", R.drawable.boy_two_avatar);
+                intent.putExtra("userKey", userKey);
                 startActivity(intent);
                 finish();
             }
