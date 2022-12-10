@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -23,6 +25,7 @@ public class BasicQuestionsActivity extends AppCompatActivity {
     private NumberPicker picker;
     private String[] pickerVal = new String[83];
 
+    private ImageView avatar;
     private EditText fullName;
     private EditText emailID;
     private EditText phoneNumber;
@@ -43,7 +46,21 @@ public class BasicQuestionsActivity extends AppCompatActivity {
         fullName = findViewById(R.id.editTextSeekerFullName);
         emailID = findViewById(R.id.editTextSeekerEmail);
         phoneNumber= findViewById(R.id.editTextSeekerPhoneNumber);
+        avatar = findViewById(R.id.user_avatar);
+        if(bundle.getInt("imageId") == 0){
+            avatar.setImageResource(R.drawable.user_profile_default);
+        } else {
+            avatar.setImageResource(bundle.getInt("imageId"));
+        }
 
+        //on click of avatar
+        avatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent clickIntent = new Intent(BasicQuestionsActivity.this, UserAvatarActivity.class);
+                startActivity(clickIntent);
+            }
+        });
         RadioGroup legalSexRG  = (RadioGroup) findViewById(R.id.radioGroupLegalSex);
         legalSexRG.setOnCheckedChangeListener((group, checkedId) -> {
             // do operations specific to this selection
@@ -100,6 +117,7 @@ public class BasicQuestionsActivity extends AppCompatActivity {
                             //move to next screen with the data.
                             Intent clickIntent = new Intent(BasicQuestionsActivity.this, HouseQuestionsActivity.class);
                             clickIntent.putExtra("userKey", userKey);
+                            clickIntent.putExtra("avatarId", avatar.getId());
                             clickIntent.putExtra("seekerFullName", seekerFullName);
                             clickIntent.putExtra("seekerEmailId", seekerEmailId);
                             clickIntent.putExtra("seekerPhone", seekerPhone);

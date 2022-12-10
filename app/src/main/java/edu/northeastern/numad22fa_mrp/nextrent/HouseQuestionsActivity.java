@@ -52,7 +52,7 @@ public class HouseQuestionsActivity extends AppCompatActivity {
 
     //bundle with data from previous activity.
     Bundle bundle = null;
-    String userKey, seekerFullName, seekerEmailId, seekerPhone, legalSex, age;
+    String userKey, avatarId, seekerFullName, seekerEmailId, seekerPhone, legalSex, age;
 
     // creating a variable for Firebase Database.
     FirebaseDatabase firebaseDatabase;
@@ -74,6 +74,7 @@ public class HouseQuestionsActivity extends AppCompatActivity {
         //Get data from previous.
         bundle = getIntent().getExtras();
         userKey = bundle.getString("userKey");
+        avatarId = bundle.getString("avatarId");
         seekerFullName = bundle.getString("seekerFullName");
         seekerEmailId = bundle.getString("seekerEmailId");
         seekerPhone = bundle.getString("seekerPhone");
@@ -199,7 +200,7 @@ public class HouseQuestionsActivity extends AppCompatActivity {
         }
 
         //Create preference object.
-        Preference myPref = new Preference(seekerFullName, seekerEmailId, seekerPhone, legalSex,
+        Preference myPref = new Preference(avatarId, seekerFullName, seekerEmailId, seekerPhone, legalSex,
                 Integer.parseInt(age), myPreferredLocations, myPreferredHouseType,
                 numOfBeds, numOfBaths, Integer.parseInt(minPrice.substring(1)), Integer.parseInt(maxPrice.substring(1)));
 

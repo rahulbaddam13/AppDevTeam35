@@ -7,6 +7,7 @@ import java.util.List;
  */
 public class Preference {
 
+    String avatarID;
     //Basic information.
     String fullName;
     String emailID;
@@ -25,10 +26,13 @@ public class Preference {
     public Preference() {
     }
 
-    public Preference(String fullName, String emailID, String phoneNumber,
-                      String legalSex, int age, List<String> locations, List<String> typeOfHouse,
-                      String numberOfBedrooms, String numberOfBathrooms, int minimumPrice,
+    public Preference(String avatarID, String fullName,
+                      String emailID, String phoneNumber,
+                      String legalSex, int age, List<String> locations,
+                      List<String> typeOfHouse, String numberOfBedrooms,
+                      String numberOfBathrooms, int minimumPrice,
                       int maximumPrice) {
+        this.avatarID = avatarID;
         this.fullName = fullName;
         this.emailID = emailID;
         this.phoneNumber = phoneNumber;
@@ -42,6 +46,13 @@ public class Preference {
         this.maximumPrice = maximumPrice;
     }
 
+    public String getAvatarID() {
+        return avatarID;
+    }
+
+    public void setAvatarID(String avatarID) {
+        this.avatarID = avatarID;
+    }
 
     public String getFullName() {
         return fullName;
