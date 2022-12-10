@@ -14,10 +14,18 @@ import edu.northeastern.numad22fa_mrp.R;
 
 public class FavoritesActivity extends AppCompatActivity {
 
+    //bundle with data from previous activity.
+    Bundle bundle = null;
+    String userKey;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites);
+
+        //get the user ID
+        bundle = getIntent().getExtras();
+        userKey = bundle.getString("userKey");
 
         //Bottom navigation bar.
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -29,7 +37,9 @@ public class FavoritesActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.page_home:
-                        startActivity(new Intent(getApplicationContext(),PropertySeekerActivity.class));
+                        Intent clickIntent = new Intent(FavoritesActivity.this, PropertySeekerActivity.class);
+                        clickIntent.putExtra("userKey", userKey);
+                        startActivity(clickIntent);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.page_favorites:

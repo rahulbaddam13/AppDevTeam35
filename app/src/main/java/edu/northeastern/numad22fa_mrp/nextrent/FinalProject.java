@@ -105,16 +105,6 @@ public class FinalProject extends AppCompatActivity {
 
                 addDataToFirebase(user);
 
-            } else if (buttonId == R.id.managerButton) {
-
-                // create a user object of manager type.
-                user = new NextRentUser(userName, "managers");
-
-                addDataToFirebase(user);
-
-                Intent clickIntent = new Intent(FinalProject.this, OwnerRegister.class);
-                clickIntent.putExtra("currentUserName", user.getUserName());
-                startActivity(clickIntent);
             }
         }
 
