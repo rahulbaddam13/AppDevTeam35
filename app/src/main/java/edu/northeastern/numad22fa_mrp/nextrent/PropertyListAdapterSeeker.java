@@ -1,6 +1,8 @@
 package edu.northeastern.numad22fa_mrp.nextrent;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +17,11 @@ import com.bumptech.glide.Glide;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import edu.northeastern.numad22fa_mrp.Property;
+import edu.northeastern.numad22fa_mrp.PropertyContents;
+import edu.northeastern.numad22fa_mrp.PropertyContentsSeeker;
 import edu.northeastern.numad22fa_mrp.R;
 import edu.northeastern.numad22fa_mrp.adapters.ChatViewHolder;
 
@@ -49,6 +54,7 @@ public class PropertyListAdapterSeeker extends RecyclerView.Adapter<PropertyList
         holder.numberOfBaths.setText(model.getNoOfRoom());//change to bathroom count
         holder.propertyType.setText(model.getType());
         holder.rentPerRoom.setText(model.getRentPerRoom());
+
 
         //holder.itemView.setOnClickListener();
 

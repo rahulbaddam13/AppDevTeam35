@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -19,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 public class PropertyList extends AppCompatActivity {
@@ -30,6 +32,7 @@ public class PropertyList extends AppCompatActivity {
     DatabaseReference databaseReference;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference reference;
+    FloatingActionButton floating;
 
 
     @Override
@@ -39,9 +42,18 @@ public class PropertyList extends AppCompatActivity {
 
         rv = findViewById(R.id.recyclerView);
         rv.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(PropertyList.this,LinearLayoutManager.VERTICAL,true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(PropertyList.this,LinearLayoutManager.VERTICAL,false);
         rv.setLayoutManager(linearLayoutManager);
+        floating = findViewById(R.id.floatingAdd);
         getAllProperties();
+        floating.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(PropertyList.this, AddPropertyAddress.class));
+                overridePendingTransition( android.R.anim.fade_in,android.R.anim.fade_out);
+
+            }
+        });
 
     }
 
@@ -59,6 +71,7 @@ public class PropertyList extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Property article = dataSnapshot.getValue(Property.class);
                     propertyList.add(article);
+                    Collections.reverse(propertyList);
 
                 }
                 adapter = new PropertyListAdapterOwner(PropertyList.this, propertyList);

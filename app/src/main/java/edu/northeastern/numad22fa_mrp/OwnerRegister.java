@@ -16,11 +16,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class OwnerRegister extends AppCompatActivity {
@@ -30,7 +32,7 @@ public class OwnerRegister extends AppCompatActivity {
 
     TextView login;
     Button register;
-    EditText email, password, confirmPassword, username;
+    EditText email, password, confirmPassword, username,phoneNumber;
     FirebaseAuth mAuth;
     FirebaseUser mUser;
     DatabaseReference databaseReference;
@@ -52,6 +54,7 @@ public class OwnerRegister extends AppCompatActivity {
         confirmPassword = findViewById(R.id.et_confirmPassword);
         register = findViewById(R.id.btn_register);
         login = findViewById(R.id.tv_loginButton);
+        phoneNumber = findViewById(R.id.et_phoneNumber);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
 
@@ -78,14 +81,18 @@ public class OwnerRegister extends AppCompatActivity {
         String passwordStr = this.password.getText().toString();
         String confirmPasswordStr = this.confirmPassword.getText().toString();
         String username = this.username.getText().toString();
+        String phone = this.phoneNumber.getText().toString();
 
         if (emailStr.isEmpty()) {
             this.email.setError("Please Enter Email");
         } else if (!pattern.matcher(emailStr).matches()) {
             this.email.setError("Please Enter a valid Email");
-        } else if (passwordStr.isEmpty()) {
+        }  else if(phone.length() != 10){
+            this.phoneNumber.setError("Please Enter a 10 digit phone number");
+        }else if (passwordStr.isEmpty()) {
             this.password.setError("Please Enter Password");
-        } else if (passwordStr.length() < 6) {
+        }
+        else if (passwordStr.length() < 6) {
             this.password.setError("Password should be more than six characters");
         } else if (!confirmPasswordStr.equals(passwordStr)) {
             this.confirmPassword.setError("Password doesn't matches");
@@ -105,6 +112,8 @@ public class OwnerRegister extends AppCompatActivity {
 
                         databaseReference = FirebaseDatabase.getInstance().getReference().child(OwnerRegister.OWNER).child(userId);
                         HashMap<String, String> hashMap = new HashMap<>();
+                        hashMap.put("email",emailStr);
+                        hashMap.put("phoneNumber",phone);
                         hashMap.put("id", userId);
                         hashMap.put("username", username);
                         hashMap.put("imageUrl", "default");
@@ -123,7 +132,15 @@ public class OwnerRegister extends AppCompatActivity {
                         Toast.makeText(OwnerRegister.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                     } else {
                         progressDialog.dismiss();
-                        Toast.makeText(OwnerRegister.this, "Registration Failed", Toast.LENGTH_SHORT).show();
+                        try {
+                            throw Objects.requireNonNull(task.getException());
+                        } catch(FirebaseAuthUserCollisionException e) {
+
+                            Toast.makeText(getApplicationContext(), "Email already taken!", Toast.LENGTH_SHORT).show();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        //Toast.makeText(OwnerRegister.this, "Email Already Existing, please Log In", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -131,7 +148,7 @@ public class OwnerRegister extends AppCompatActivity {
     }
 
     private void navigateOwnerToHomePage() {
-        Intent intent = new Intent(OwnerRegister.this, OwnerHomePage.class);
+        Intent intent = new Intent(OwnerRegister.this, PropertyList.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
 

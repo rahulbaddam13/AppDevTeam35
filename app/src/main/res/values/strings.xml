@@ -27,9 +27,7 @@
     <item name="love_fox" type="id" />
     <item name="sick_fox" type="id" />
     <string-array name="propertyType">
-        <item>Single-family home</item>
-        <item>Low-rise apartment building</item>
-        <item>Large apartment community</item>
+        <item>Apartment</item>
         <item>Townhouse</item>
         <item>Duplex</item>
         <item>Condo</item>

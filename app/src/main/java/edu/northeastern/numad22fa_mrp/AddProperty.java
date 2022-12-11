@@ -14,6 +14,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.MimeTypeMap;
@@ -55,7 +56,7 @@ import java.util.Objects;
 
 public class AddProperty extends AppCompatActivity {
 
-    EditText houseId, et_houseLocation, noOfRoom, rentPerRoom, houseDescription;
+    EditText houseId, et_houseLocation, noOfRoom, rentPerRoom, houseDescription,baths;
     Button add;
     TextView loc,unitNumber,state,country,type;
     ImageView houseImg;
@@ -84,20 +85,22 @@ public class AddProperty extends AppCompatActivity {
         noOfRoom = findViewById(R.id.et_noOfRoom);
         rentPerRoom = findViewById(R.id.et_rentPerRoom);
         houseDescription = findViewById(R.id.et_houseDescription);
+        baths = findViewById(R.id.et_bath);
 //      country = findViewById(R.id.et_country);
         add = findViewById(R.id.btn_addHouse);
-        loc = findViewById(R.id.et_Loc);
-        String data = getIntent().getExtras().getString("location");
-        loc.setText(data);
-        state = findViewById(R.id.et_state);
+//        loc = findViewById(R.id.et_Loc);
+        String cityD = getIntent().getExtras().getString("location");
+//        loc.setText(data);
+//        state = findViewById(R.id.et_state);
         String stateD = getIntent().getExtras().getString("state");
-        state.setText(stateD);
-        country = findViewById(R.id.et_country);
+//        state.setText(stateD);
+//        country = findViewById(R.id.et_country);
         String countryD = getIntent().getExtras().getString("country");
-        country.setText(countryD);
-        type = findViewById(R.id.et_type);
+//        country.setText(countryD);
+//        type = findViewById(R.id.et_type);
         String typeD = getIntent().getExtras().getString("type");
-        type.setText(typeD);
+//        type.setText(typeD);
+        String addressD = getIntent().getExtras().getString("address");
 
 
 
@@ -117,20 +120,32 @@ public class AddProperty extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressDialog.setTitle("Adding...");
-                progressDialog.setCanceledOnTouchOutside(false);
-                progressDialog.show();
+                if (noOfRoom.getText().toString().isEmpty()) {
+                    noOfRoom.setError("Please Enter Number of Rooms");
+                }  else if (baths.getText().toString().isEmpty()) {
+                    baths.setError("Please Enter the Number of Baths");
+                } else if (rentPerRoom.getText().toString().isEmpty()) {
+                    rentPerRoom.setError("Please Enter the Rent");
+                }
+                else {
+                    progressDialog.setTitle("Adding...");
+                    progressDialog.setCanceledOnTouchOutside(false);
+                    progressDialog.show();
 //                String houseId = AddProperty.this.houseId.getText().toString();
-                String houseId = Long.toString(System.currentTimeMillis());
-                String noOfRoom = AddProperty.this.noOfRoom.getText().toString();
-                String rentPerRoom = AddProperty.this.rentPerRoom.getText().toString();
-                String houseDescription = AddProperty.this.houseDescription.getText().toString();
-                //String country = AddProperty.this.country.getText().toString();
-                String image = imageString;
-                createProperty(houseId,loc.getText().toString(),
-                        noOfRoom, rentPerRoom, houseDescription,
-                        country.getText().toString(),state.getText().toString(),type.getText().toString(),
-                        image);
+                    String houseId = Long.toString(System.currentTimeMillis());
+                    String noOfRoom = AddProperty.this.noOfRoom.getText().toString();
+                    String rentPerRoom = AddProperty.this.rentPerRoom.getText().toString();
+                    String houseDescription = AddProperty.this.houseDescription.getText().toString();
+                    String baths = AddProperty.this.baths.getText().toString();
+                    //String country = AddProperty.this.country.getText().toString();
+                    String image = imageString;
+//                createProperty(houseId,loc.getText().toString(),
+//                        noOfRoom, rentPerRoom, houseDescription,
+//                        country.getText().toString(),state.getText().toString(),type.getText().toString(),
+//                        image);
+                    createProperty(houseId, cityD, noOfRoom, rentPerRoom,
+                            houseDescription, countryD, stateD, typeD, addressD, baths, image);
+                }
             }
         });
 
@@ -171,7 +186,7 @@ public class AddProperty extends AppCompatActivity {
     }
     private void createProperty(String houseId, String houseLocation, String noOfRoom,
                                 String rentPerRoom, String houseDescription,String country,
-                                String state,String type, String image) {
+                                String state,String type,String address,String baths, String image) {
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         assert firebaseUser != null;
         String userId = firebaseUser.getUid();
@@ -189,6 +204,9 @@ public class AddProperty extends AppCompatActivity {
         hashMap.put("country",country);
         hashMap.put("state",state);
         hashMap.put("type",type);
+        hashMap.put("baths",baths);
+        hashMap.put("address",address);
+
 
 
         databaseReference.child(houseId).setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -198,6 +216,9 @@ public class AddProperty extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     Toast.makeText(AddProperty.this, "Property Added Successfully", Toast.LENGTH_SHORT).show();
                     imageString = "";
+                    Intent intent = new Intent(AddProperty.this, PropertyList.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    finish();
                 } else {
                     Toast.makeText(AddProperty.this, "Failed", Toast.LENGTH_SHORT).show();
                 }
