@@ -10,10 +10,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.database.ChildEventListener;
@@ -43,6 +49,7 @@ public class PropertySeekerActivity extends AppCompatActivity {
     ArrayList<Property> propertiesList;
     // Linear Layout Manager
     LinearLayoutManager horizontalLayout;
+    private ImageView  emptyView;
 
     // creating a variable for Firebase Database.
     FirebaseDatabase firebaseDatabase;
@@ -56,6 +63,7 @@ public class PropertySeekerActivity extends AppCompatActivity {
     String userKey;
 
     Set<String> myFavoritePropertiesList;
+    Preference currentUserPreference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +79,10 @@ public class PropertySeekerActivity extends AppCompatActivity {
 
         //Link to recycle view.
         propertyRecyclerView = findViewById(R.id.property_list_recycler_view);
+
+        //get the empty message
+        emptyView = (ImageView) findViewById(R.id.empty_view);
+
 
         //Set the layout manager for the recycle view.
         // Set Horizontal Layout Manager
@@ -129,6 +141,19 @@ public class PropertySeekerActivity extends AppCompatActivity {
             }
         });
 
+        databaseReference.child("seekers").child(userKey).child("myPreference").addValueEventListener(new ValueEventListener(){
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                currentUserPreference = snapshot.getValue(Preference.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                System.out.println("The read failed: " + error.getCode());
+            }
+        });
+
         // Attach a listener to read the data at our messages reference
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -158,14 +183,75 @@ public class PropertySeekerActivity extends AppCompatActivity {
 
                         //check if the property is already a favorite property of the user, add to list only if its not.
                         if(!myFavoritePropertiesList.contains(article.getHouseId())){
-                            propertiesList.add(article);
 
-                            //Notify the adapter about the newly added item.
-                            if(propertyRecyclerView != null && propertyRecyclerView.getAdapter() != null)
-                                propertyRecyclerView.getAdapter().notifyItemInserted(propertyRecyclerView.getAdapter().getItemCount());
+                            //preference filtering.
+                            //based on - location, min price, max price, type of house, number of bedrooms.
+                            if(currentUserPreference != null) {
+                                if ((currentUserPreference.getLocations().contains(article.getHouseLocation()))) {
+
+                                    //price
+                                    if (currentUserPreference.getMinimumPrice() <= Integer.parseInt(article.getRentPerRoom().substring(1))
+                                            && currentUserPreference.getMaximumPrice() >= Integer.parseInt(article.getRentPerRoom().substring(1))) {
+
+                                        //type of house (if the property does not have a type specified, still display it)
+                                        if (article.getType() == null || article.getType().isEmpty()
+                                                || (currentUserPreference.getTypeOfHouse().contains(article.getType()))) {
+
+                                            boolean addProperty = false;
+                                            //number of bedrooms
+                                            if ("1".equalsIgnoreCase(currentUserPreference.getNumberOfBedrooms())) {
+                                                if (article.getNoOfRoom().equalsIgnoreCase("1")) {
+                                                    addProperty = true;
+                                                }
+
+                                            } else if ("2 - 3".equalsIgnoreCase(currentUserPreference.getNumberOfBedrooms())) {
+                                                if (article.getNoOfRoom().equalsIgnoreCase("2")
+                                                        || article.getNoOfRoom().equalsIgnoreCase("3")) {
+                                                    addProperty = true;
+                                                }
+
+                                            } else if ("> 4".equalsIgnoreCase(currentUserPreference.getNumberOfBedrooms())) {
+                                                if (Integer.parseInt(article.getNoOfRoom()) >= 4) {
+                                                    addProperty = true;
+                                                }
+                                            } else if (currentUserPreference.getNumberOfBedrooms() == null
+                                                    || currentUserPreference.getNumberOfBedrooms().isEmpty()) {
+                                                addProperty = true;
+                                            }
+
+                                            if (addProperty) {
+                                                propertiesList.add(article);
+
+                                                //Notify the adapter about the newly added item.
+                                                if (propertyRecyclerView != null && propertyRecyclerView.getAdapter() != null)
+                                                    propertyRecyclerView.getAdapter().notifyItemInserted(propertyRecyclerView.getAdapter().getItemCount());
+                                            }
+
+                                        }
+
+                                    }
+
+                                }
+                            } else {
+                                //current object was null
+                                propertiesList.add(article);
+
+                                //Notify the adapter about the newly added item.
+                                if (propertyRecyclerView != null && propertyRecyclerView.getAdapter() != null)
+                                    propertyRecyclerView.getAdapter().notifyItemInserted(propertyRecyclerView.getAdapter().getItemCount());
+                            }
+
                         }
 
                     }
+                }
+                if (propertiesList.isEmpty()) {
+                    propertyRecyclerView.setVisibility(View.GONE);
+                    emptyView.setVisibility(View.VISIBLE);
+                }
+                else {
+                    propertyRecyclerView.setVisibility(View.VISIBLE);
+                    emptyView.setVisibility(View.GONE);
                 }
             }
 
@@ -268,13 +354,16 @@ public class PropertySeekerActivity extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.page_profile:
-                        startActivity(new Intent(getApplicationContext(),SeekerProfileActivity.class));
-                        overridePendingTransition(0,0);
+                        Intent clickIntent4 = new Intent(PropertySeekerActivity.this, SeekerProfileActivity.class);
+                        clickIntent4.putExtra("userKey", userKey);
+                        startActivity(clickIntent4);
                         return true;
                 }
                 return false;
             }
         });
+
+
 
     }
 

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".nextrent.SeekerProfileActivity">
 
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="0dp"
@@ -17,5 +18,379 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_navigation_menu" />
+
+
+    <RelativeLayout
+        android:layout_marginBottom="53sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <TextView
+                    android:id="@+id/profileFullNameDisplay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Full Name"
+                    android:layout_gravity="center_horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profileUserNameDisplay"
+                    app:layout_constraintVertical_bias="0.41" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Location"
+                        android:textColor="@color/headings"
+                        android:textSize="13sp" />
+
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/profileLocationCG"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <Button
+                            android:id="@+id/profileAddPropBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="onFabPopupWindowClick"
+                            android:text="Add" />
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="15dp"
+                            android:background="@color/grey" />
+
+
+                    </com.google.android.material.chip.ChipGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Type of house"
+                        android:textColor="@color/headings"
+                        android:textSize="13sp" />
+
+                    <RadioGroup
+                        android:id="@+id/profileTypeOfHouseRG"
+                        android:layout_width="389dp"
+                        android:layout_height="113dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/typeOfHouseTextView"
+                        app:layout_constraintVertical_bias="0.037">
+
+                        <RadioGroup
+                            android:layout_width="224dp"
+                            android:layout_height="wrap_content">
+
+                            <CheckBox
+                                android:id="@+id/profile_apartment_chkbox"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Apartment" />
+
+
+                            <CheckBox
+                                android:id="@+id/profile_condo_chkbox"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Condo" />
+                        </RadioGroup>
+
+                        <RadioGroup
+                            android:layout_width="158dp"
+                            android:layout_height="wrap_content">
+
+                            <CheckBox
+                                android:id="@+id/profile_townhouse_chkbox"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Townhouse" />
+
+                            <CheckBox
+                                android:id="@+id/profile_duplex_chkbox"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Duplex" />
+
+                        </RadioGroup>
+                    </RadioGroup>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@color/grey" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Number of bedrooms"
+                        android:textColor="@color/headings"
+                        android:textSize="13sp" />
+
+                    <RadioGroup
+                        android:id="@+id/profileBedroomRadioGroup"
+                        android:layout_width="212dp"
+                        android:layout_height="52dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.567"
+                        app:layout_constraintStart_toEndOf="@+id/NumberOfBedroomTextView"
+                        app:layout_constraintTop_toBottomOf="@+id/radioGroup2"
+                        app:layout_constraintVertical_bias="0.068">
+
+                        <RadioButton
+                            android:id="@+id/profileOneBedroom"
+                            android:layout_width="60dp"
+                            android:layout_height="52dp"
+                            android:text="1" />
+
+                        <RadioButton
+                            android:id="@+id/profileTwoToThreeBedrooms"
+                            android:layout_width="85dp"
+                            android:layout_height="match_parent"
+                            android:text="2 - 3" />
+
+                        <RadioButton
+                            android:id="@+id/profileMoreBedrooms"
+                            android:layout_width="69dp"
+                            android:layout_height="52dp"
+                            android:text="> 4" />
+
+                    </RadioGroup>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@color/grey" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Number of bedrooms"
+                        android:textColor="@color/headings"
+                        android:textSize="13sp" />
+
+                    <RadioGroup
+                        android:id="@+id/profileBathroomRadioGroup"
+                        android:layout_width="216dp"
+                        android:layout_height="51dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.617"
+                        app:layout_constraintStart_toEndOf="@+id/NumberOfBathroomTextView"
+                        app:layout_constraintTop_toBottomOf="@+id/bedroomRadioGroup"
+                        app:layout_constraintVertical_bias="0.076">
+
+
+                        <RadioButton
+                            android:id="@+id/profileOneBathroom"
+                            android:layout_width="63dp"
+                            android:layout_height="wrap_content"
+                            android:text="1" />
+
+                        <RadioButton
+                            android:id="@+id/profileTwoToThreeBathrooms"
+                            android:layout_width="76dp"
+                            android:layout_height="wrap_content"
+                            android:text="2 - 3" />
+
+                        <RadioButton
+                            android:id="@+id/profileMoreBathrooms"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="> 4" />
+
+
+                    </RadioGroup>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@color/grey" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Price Range"
+                        android:textColor="@color/headings"
+                        android:textSize="13sp" />
+
+                    <Spinner
+                        android:id="@+id/profileMinimumPriceSpinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:drawable/btn_dropdown"
+                        android:spinnerMode="dropdown"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.184"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/minimumPriceTextView"
+                        app:layout_constraintVertical_bias="0.176" />
+
+                    <Spinner
+                        android:id="@+id/profileMaximumPriceSpinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:drawable/btn_dropdown"
+                        android:spinnerMode="dropdown"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.573"
+                        app:layout_constraintStart_toEndOf="@+id/minimumPriceSpinner"
+                        app:layout_constraintTop_toBottomOf="@+id/maximumPriceTextView"
+                        app:layout_constraintVertical_bias="0.184" />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@color/grey" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Email"
+                        android:textColor="@color/headings"
+                        android:textSize="13sp" />
+
+                    <EditText
+                        android:id="@+id/profileEmailET"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="joey@sharenofood.com"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@color/grey" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Phone"
+                        android:textColor="@color/headings"
+                        android:textSize="13sp" />
+
+                    <EditText
+                        android:id="@+id/profilePhoneET"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="+1-202-555-0157"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+
+
+                    <Button
+                        android:id="@+id/profileUpdateBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Update profile" />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@color/grey" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

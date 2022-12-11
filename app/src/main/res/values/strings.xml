@@ -55,7 +55,6 @@
         <item>$4000</item>
         <item>$4500</item>
         <item>$5000</item>
-        <item>Any</item>
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
