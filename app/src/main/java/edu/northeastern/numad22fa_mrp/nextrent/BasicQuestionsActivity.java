@@ -31,7 +31,6 @@ public class BasicQuestionsActivity extends AppCompatActivity {
     private EditText emailID;
     private EditText phoneNumber;
     final String[] legalSex = new String[1];
-    private String agePicker;
     private Button nextBtn;
     //bundle with data from previous activity.
     Bundle bundle = null;
@@ -72,7 +71,7 @@ public class BasicQuestionsActivity extends AppCompatActivity {
         });
 
         //age picker
-        picker = (NumberPicker) findViewById(R.id.age_number_picker);
+        /*picker = (NumberPicker) findViewById(R.id.age_number_picker);
         int j = 0;
         for(int i = 18; i <= 100; i++,j++){
             pickerVal[j] = String.valueOf(i);
@@ -86,7 +85,7 @@ public class BasicQuestionsActivity extends AppCompatActivity {
             public void onValueChange(NumberPicker numberPicker, int i, int i1) {
                 agePicker = String.valueOf(picker.getValue());
             }
-        });
+        });*/
 
         nextBtn = (Button) findViewById(R.id.nextBtn);
         nextBtn.setOnClickListener(new View.OnClickListener() {
@@ -105,7 +104,6 @@ public class BasicQuestionsActivity extends AppCompatActivity {
                     clickIntent.putExtra("seekerEmailId", seekerEmailId);
                     clickIntent.putExtra("seekerPhone", seekerPhone);
                     clickIntent.putExtra("legalSex",legalSex[0]);
-                    clickIntent.putExtra("age", agePicker);
                     startActivity(clickIntent);
 
             }

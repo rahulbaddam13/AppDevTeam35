@@ -132,6 +132,7 @@ public class HouseQuestionsActivity extends AppCompatActivity {
                 R.array.max_price_array, android.R.layout.simple_spinner_item);
         // Apply the adapter to the spinner
         maximumPriceSpinner.setAdapter(adapter2);
+        maximumPriceSpinner.setSelection(9);
         maximumPriceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -140,17 +141,12 @@ public class HouseQuestionsActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                maxPrice = Long.MAX_VALUE+"";
+                maxPrice = "5000";
             }
         });
 
-        if(savedInstanceState == null){
             myPreferredLocations = new ArrayList<>();
             myPreferredHouseType = new ArrayList<>();
-        } else {
-            //myPreferredLocations = savedInstanceState.getParcelableArrayList("chatMessageList");
-        }
-
     }
 
     /**

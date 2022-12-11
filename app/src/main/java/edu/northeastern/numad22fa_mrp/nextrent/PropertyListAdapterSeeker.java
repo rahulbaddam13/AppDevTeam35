@@ -47,17 +47,14 @@ public class PropertyListAdapterSeeker extends RecyclerView.Adapter<PropertyList
         Property model = properties.get(position);
 
         Glide.with(context).load(model.getHouseImage()).into(holder.houseImg);
-        holder.location.setText(model.getHouseLocation());
+        holder.city.setText(model.getHouseLocation());
+        holder.address.setText(model.getAddress());
         holder.state.setText(model.getState());
         holder.country.setText(model.getCountry());
         holder.numberOfBeds.setText(model.getNoOfRoom());
-        holder.numberOfBaths.setText(model.getNoOfRoom());//change to bathroom count
+        holder.numberOfBaths.setText(model.getBaths());
         holder.propertyType.setText(model.getType());
         holder.rentPerRoom.setText(model.getRentPerRoom());
-
-
-        //holder.itemView.setOnClickListener();
-
     }
 
     @Override
@@ -70,15 +67,15 @@ public class PropertyListAdapterSeeker extends RecyclerView.Adapter<PropertyList
 
     static class PropertyListViewHolder extends RecyclerView.ViewHolder {
         ImageView houseImg;
-        TextView location, state, country;
-        TextView description;
+        TextView address ,city, state, country;
         TextView numberOfBeds, numberOfBaths, propertyType;
         TextView rentPerRoom;
 
         public PropertyListViewHolder(@NonNull View itemView) {
             super(itemView);
             houseImg = itemView.findViewById(R.id.prop_image);
-            location = itemView.findViewById(R.id.property_address);
+            address = itemView.findViewById(R.id.property_address);
+            city = itemView.findViewById(R.id.prop_city_tv);
             state = itemView.findViewById(R.id.prop_state_tv);
             country = itemView.findViewById(R.id.prop_country_tv);
             numberOfBeds = itemView.findViewById(R.id.number_of_beds);

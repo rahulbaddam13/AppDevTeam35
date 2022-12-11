@@ -201,7 +201,7 @@ public class ChatActivity extends AppCompatActivity {
     public void onBackPressed()
     {
         super.onBackPressed();
-        startActivity(new Intent(ChatActivity.this, FinalProject.class));
+        startActivity(new Intent(ChatActivity.this, PropertySeekerActivity.class));
         finish();
     }
 }

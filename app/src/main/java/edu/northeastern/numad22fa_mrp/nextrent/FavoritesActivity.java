@@ -137,7 +137,7 @@ public class FavoritesActivity extends AppCompatActivity {
     public void onBackPressed()
     {
         super.onBackPressed();
-        startActivity(new Intent(FavoritesActivity.this, FinalProject.class));
+        startActivity(new Intent(FavoritesActivity.this, PropertySeekerActivity.class));
         finish();
     }
 }

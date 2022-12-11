@@ -171,43 +171,47 @@ public class SeekerProfileActivity extends AppCompatActivity {
                 userEmailET.setText(currentUserPreference.getEmailID());
                 userPhoneET.setText(currentUserPreference.getPhoneNumber());
 
-                List<String> myLocs = currentUserPreference.getLocations();
-                for(String loc : myLocs){
-                    Chip chip = new Chip(context);
-                    chip.setText(loc);
-                    chip.setChipBackgroundColorResource(R.color.purple_200);
-                    chip.setCloseIconVisible(true);
-                    chip.setTextColor(getResources().getColor(R.color.white));
+                if(currentUserPreference.getLocations() != null) {
+                    List<String> myLocs = currentUserPreference.getLocations();
+                    for (String loc : myLocs) {
+                        Chip chip = new Chip(context);
+                        chip.setText(loc);
+                        chip.setChipBackgroundColorResource(R.color.purple_200);
+                        chip.setCloseIconVisible(true);
+                        chip.setTextColor(getResources().getColor(R.color.white));
 
-                    //add chip into the chip group
-                    chipGroup.addView(chip);
-                    finalPropList.add(loc);
+                        //add chip into the chip group
+                        chipGroup.addView(chip);
+                        finalPropList.add(loc);
 
-                    //on close of each chip
-                    chip.setOnCloseIconClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            chipGroup.removeView(chip);
-                            finalPropList.remove(loc);
-                        }
-                    });
+                        //on close of each chip
+                        chip.setOnCloseIconClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                chipGroup.removeView(chip);
+                                finalPropList.remove(loc);
+                            }
+                        });
+                    }
                 }
 
-                List<String> type = currentUserPreference.getTypeOfHouse();
-                for(String houseType : type){
-                    switch (houseType){
-                        case "Apartment":
-                            apartment.setChecked(true);
-                            break;
-                        case "Townhouse":
-                            townhouse.setChecked(true);
-                            break;
-                        case "Condo":
-                            condo.setChecked(true);
-                            break;
-                        case "Duplex":
-                            duplex.setChecked(true);
-                            break;
+                if(currentUserPreference.getTypeOfHouse() != null) {
+                    List<String> type = currentUserPreference.getTypeOfHouse();
+                    for (String houseType : type) {
+                        switch (houseType) {
+                            case "Apartment":
+                                apartment.setChecked(true);
+                                break;
+                            case "Townhouse":
+                                townhouse.setChecked(true);
+                                break;
+                            case "Condo":
+                                condo.setChecked(true);
+                                break;
+                            case "Duplex":
+                                duplex.setChecked(true);
+                                break;
+                        }
                     }
                 }
 
@@ -426,7 +430,7 @@ public class SeekerProfileActivity extends AppCompatActivity {
     public void onBackPressed()
     {
         super.onBackPressed();
-        startActivity(new Intent(SeekerProfileActivity.this, FinalProject.class));
+        startActivity(new Intent(SeekerProfileActivity.this, PropertySeekerActivity.class));
         finish();
     }
 }

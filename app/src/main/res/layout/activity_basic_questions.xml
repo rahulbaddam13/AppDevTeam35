@@ -184,36 +184,6 @@
             app:layout_constraintVertical_bias="0.044" />
 
         <TextView
-            android:id="@+id/ageTextView"
-            android:layout_width="55dp"
-            android:layout_height="35dp"
-            android:fontFamily="@font/questrialregular"
-            android:text="Age"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.053"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroupLegalSex"
-            app:layout_constraintVertical_bias="0.122" />
-
-        <NumberPicker
-            android:id="@+id/age_number_picker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/questrialregular"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.434"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ageTextView"
-            app:layout_constraintVertical_bias="0.0"></NumberPicker>
-
-        <TextView
             android:id="@+id/avatar_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -231,15 +201,14 @@
             android:id="@+id/nextBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:backgroundTint="@color/btnclr"
             android:text="Next"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.826"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/age_number_picker"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toBottomOf="@+id/radioGroupLegalSex"
+            app:layout_constraintVertical_bias="0.27" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
