@@ -64,7 +64,6 @@ public class PropertyContentsSeeker extends AppCompatActivity {
         address = intent.getStringExtra("address");
         baths = intent.getStringExtra("baths");
 
-        Log.v("Baths",baths);
 
 
 //        reference = FirebaseDatabase.getInstance().getReference().child(OwnerRegister.HOUSES).child(userId).child(houseId);

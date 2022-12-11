@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import edu.northeastern.numad22fa_mrp.PropertyContentsSeeker;
 import edu.northeastern.numad22fa_mrp.R;
 
 public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolder>{
@@ -54,17 +55,40 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
 
         loadPropertyDetails(prop, holder);
 
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(context, PropDetailsActivity.class);
+//                intent.putExtra("houseId",prop.getHouseID());
+//                intent.putExtra("ownerId", prop.getUserID());
+//                context.startActivity(intent);
+//
+//
+//            }
+//        });
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, PropDetailsActivity.class);
-                intent.putExtra("houseId",prop.getHouseID());
-                intent.putExtra("ownerId", prop.getUserID());
+            public void onClick(View v) {
+                //Intent intent = new Intent(context, PropertyEditDetails.class);
+                Intent intent = new Intent(context, PropertyContentsSeeker.class);
+                intent.putExtra("houseId", prop.getHouseID());
+                intent.putExtra("noOfRoom", prop.getRooms());
+                intent.putExtra("rentPerRoom", prop.getRent());
+                intent.putExtra("houseDescription", prop.getDescription());
+                intent.putExtra("houseLocation", prop.getLocation());
+                intent.putExtra("houseImage", prop.getImage());
+                intent.putExtra("userId", prop.getUserID());
+                intent.putExtra("country",prop.getCountry());
+                intent.putExtra("state",prop.getState());
+                intent.putExtra("type",prop.getType());
+                intent.putExtra("address",prop.getAddress());
+                intent.putExtra("baths",prop.getBaths());
                 context.startActivity(intent);
-
-
             }
         });
+
+
 
         holder.more.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,6 +201,8 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
                         String description = snapshot.child("houseDescription").getValue().toString();
                         String type = snapshot.child("type").getValue().toString();
                         String room = snapshot.child("noOfRoom").getValue().toString();
+                        String addressLine = snapshot.child("address").getValue().toString();
+                        String baths = snapshot.child("baths").getValue().toString();
 
                         prop.setCountry(country);
                         prop.setDescription(description);
@@ -186,6 +212,8 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
                         prop.setRooms(room);
                         prop.setType(type);
                         prop.setState(state);
+                        prop.setAddress(addressLine);
+                        prop.setBaths(baths);
 
                         holder.beds.setText(room);
                         holder.housetype.setText(type);

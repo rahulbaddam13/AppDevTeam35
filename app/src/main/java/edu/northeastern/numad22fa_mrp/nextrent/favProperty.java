@@ -1,10 +1,10 @@
 package edu.northeastern.numad22fa_mrp.nextrent;
 
 public class favProperty {
-    String country, description, houseID, image, location, rooms, rent, state, type, userID;
+    String country, description, houseID, image, location, rooms, rent, state, type, userID,address,baths;
 
     public favProperty(String country, String description, String houseID, String image,
-                       String location, String rooms, String rent, String state, String type, String userID) {
+                       String location, String rooms, String rent, String state, String type, String userID,String address,String baths) {
         this.country = country;
         this.description = description;
         this.houseID = houseID;
@@ -15,13 +15,15 @@ public class favProperty {
         this.state = state;
         this.type = type;
         this.userID = userID;
+        this.address = address;
+        this.baths = baths;
     }
 
     public favProperty() {
     }
 
     public favProperty(String country, String description,
-                       String image, String location, String rooms, String rent, String state, String type) {
+                       String image, String location, String rooms, String rent, String state, String type,String address, String baths) {
         this.country = country;
         this.description = description;
         this.image = image;
@@ -30,6 +32,8 @@ public class favProperty {
         this.rent = rent;
         this.state = state;
         this.type = type;
+        this.address = address;
+        this.baths =baths;
     }
 
     public String getCountry() {
@@ -112,8 +116,20 @@ public class favProperty {
         this.userID = userID;
     }
 
+    public String getBaths() {
+        return baths;
+    }
+
+    public void setBaths(String baths) {
+        this.baths = baths;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getAddress() {
-        String address = location + ", " + state + ", " + country;
-        return address;
+//        String address = location + ", " + state + ", " + country;
+        return this.address;
     }
 }
