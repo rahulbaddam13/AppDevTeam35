@@ -1,5 +1,6 @@
 package edu.northeastern.numad22fa_mrp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -11,11 +12,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class PropertyListAdapterOwner extends RecyclerView.Adapter<PropertyListAdapterOwner.PropertyViewHolder> {
 
@@ -44,8 +48,8 @@ public class PropertyListAdapterOwner extends RecyclerView.Adapter<PropertyListA
         //holder.unit.setText(model.getUnit());
         holder.rentPerRoom.setText(model.getRentPerRoom());
         holder.noOfRoom.setText(model.getNoOfRoom());
-        holder.country.setText(model.getCountry());
-        holder.state.setText(model.getState());
+//        holder.country.setText(model.getCountry());
+//        holder.state.setText(model.getState());
         holder.type.setText(model.getType());
         Glide.with(context).load(model.getHouseImage()).into(holder.houseImg);
 
@@ -55,6 +59,7 @@ public class PropertyListAdapterOwner extends RecyclerView.Adapter<PropertyListA
             public void onClick(View v) {
                 //Intent intent = new Intent(context, PropertyEditDetails.class);
                 Intent intent = new Intent(context, PropertyContents.class);
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context,holder.houseImg, Objects.requireNonNull(ViewCompat.getTransitionName(holder.houseImg)));
                 intent.putExtra("houseId", model.getHouseId());
                 intent.putExtra("noOfRoom", model.getNoOfRoom());
                 intent.putExtra("rentPerRoom", model.getRentPerRoom());
@@ -65,7 +70,9 @@ public class PropertyListAdapterOwner extends RecyclerView.Adapter<PropertyListA
                 intent.putExtra("country",model.getCountry());
                 intent.putExtra("state",model.getState());
                 intent.putExtra("type",model.getType());
-                context.startActivity(intent);
+                intent.putExtra("address",model.getAddress());
+                intent.putExtra("baths",model.getBaths());
+                context.startActivity(intent,options.toBundle());
             }
         });
     }
@@ -86,8 +93,8 @@ public class PropertyListAdapterOwner extends RecyclerView.Adapter<PropertyListA
             rentPerRoom = itemView.findViewById(R.id.tv_rentPerRoom);
             location = itemView.findViewById(R.id.tv_location);
             //unit = itemView.findViewById(R.id.tv_unit);
-            country= itemView.findViewById(R.id.tv_country);
-            state = itemView.findViewById(R.id.tv_state);
+//            country= itemView.findViewById(R.id.tv_country);
+//            state = itemView.findViewById(R.id.tv_state);
             type = itemView.findViewById(R.id.tv_type);
 
         }

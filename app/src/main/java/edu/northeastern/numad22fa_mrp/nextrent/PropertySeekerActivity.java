@@ -153,7 +153,8 @@ public class PropertySeekerActivity extends AppCompatActivity {
                                 String.valueOf(next.child("userId").getValue()),
                                 String.valueOf(next.child("country").getValue()),
                                 String.valueOf(next.child("state").getValue()),
-                                String.valueOf(next.child("type").getValue()));
+                                String.valueOf(next.child("type").getValue()),String.valueOf(next.child("baths").getValue()),
+                                String.valueOf(next.child("address").getValue()));
 
                         //check if the property is already a favorite property of the user, add to list only if its not.
                         if(!myFavoritePropertiesList.contains(article.getHouseId())){

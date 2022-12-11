@@ -36,7 +36,7 @@ public class ViewLocation extends AppCompatActivity {
 
     Double latitude;
     Double longitude;
-    String houseId, noOfRoom, rentPerRoom, houseDescription, houseLocation, country, type, state;
+    String houseId, noOfRoom, rentPerRoom, houseDescription, houseLocation, add;
     Double longi,lati;
     String lo,la;
 
@@ -53,11 +53,7 @@ public class ViewLocation extends AppCompatActivity {
         rentPerRoom = intent.getStringExtra("rentPerRoom");
         houseDescription = intent.getStringExtra("houseDescription");
         houseLocation = intent.getStringExtra("houseLocation");
-//        String houseImage = intent.getStringExtra("houseImage");
-//        String user = intent.getStringExtra("userId");
-//        country = intent.getStringExtra("country");
-//        state = intent.getStringExtra("state");
-//        type = intent.getStringExtra("type");
+        add = intent.getStringExtra("address");
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -70,7 +66,6 @@ public class ViewLocation extends AppCompatActivity {
 //        longi = intent.getDoubleExtra("longitude",13.13);
         la = intent.getStringExtra("latitude");
         lo = intent.getStringExtra("longitude");
-        Log.v("Reddy",la + " "+ lo);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ActivityCompat.checkSelfPermission(ViewLocation.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
@@ -106,10 +101,9 @@ public class ViewLocation extends AppCompatActivity {
                 smf_googleMap.getMapAsync(new OnMapReadyCallback() {
                     @Override
                     public void onMapReady(@NonNull GoogleMap googleMap) {
-                        String address = houseLocation;
+                        String address = add +" ,"+houseLocation;
                         lati = Double.valueOf(la);
                         longi = Double.valueOf(lo);
-                        Log.v("Reddyy",lati +" "+ longi);
                         LatLng latLng = new LatLng(lati, longi);
 
                         MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("Your destination is here..");

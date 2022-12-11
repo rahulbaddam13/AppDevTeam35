@@ -1,57 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp">
+    android:background="@drawable/gradient_color">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_marginTop="0dp"
-        android:background="@color/black">
+        android:layout_height="match_parent"
+        android:padding="8dp">
 
-        <RelativeLayout
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical">
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginTop="0dp"
+            android:background="#e6e6fa">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/marcellussc"
-                android:text="Next Rent"
-                android:textColor="@color/purple_200"
-                android:textSize="32sp"
-                android:textStyle="bold" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
 
-        </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/marcellussc"
+                    android:text="Next Rent"
+                    android:textColor="@color/purple_500"
+                    android:textSize="35sp"
+                    android:textStyle="bold" />
 
-    </androidx.appcompat.widget.Toolbar>
+            </RelativeLayout>
 
-
-    <ImageView
-        android:id="@+id/iv_houseImage"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_below="@id/toolbar"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_launcher_background"/>
+        </androidx.appcompat.widget.Toolbar>
 
 
+        <ImageView
+            android:id="@+id/iv_houseImage"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_below="@id/toolbar"
+            android:layout_marginTop="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_image_add_foreground" />
 
-    <TextView
-        android:id="@+id/et_country"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/iv_houseImage"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/black"
-        android:textSize="16sp" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/et_country"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/iv_houseImage"-->
+<!--        android:layout_marginLeft="20dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginRight="20dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="16sp" />-->
 
 
 <!--    <EditText-->
@@ -68,93 +73,122 @@
 <!--        android:textSize="16sp" />-->
 
 
-    <TextView
-        android:id="@+id/et_Loc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/et_country"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/black"
-        android:textSize="16sp" />
+<!--    <TextView-->
+<!--        android:id="@+id/et_Loc"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/et_country"-->
+<!--        android:layout_marginLeft="20dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginRight="20dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="16sp" />-->
 
 
-    <EditText
-        android:id="@+id/et_noOfRoom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/et_Loc"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:hint="Enter number of Room"
-        android:inputType="number"
-        android:textColor="@color/black"
-        android:textSize="16sp" />
+        <EditText
+            android:id="@+id/et_noOfRoom"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/iv_houseImage"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_entries"
+            android:hint="Enter number of Room"
+            android:inputType="number"
+            android:padding="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="#696969"
+            android:textSize="16sp" />
 
-    <EditText
-        android:id="@+id/et_rentPerRoom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/et_noOfRoom"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:hint="Enter Rent"
-        android:inputType="number"
-        android:textColor="@color/black"
-        android:textSize="16sp" />
+        <EditText
+            android:id="@+id/et_bath"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/et_noOfRoom"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_entries"
+            android:hint="Enter number of Bathrooms"
+            android:inputType="number"
+            android:padding="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="#696969"
+            android:textSize="16sp" />
 
-    <EditText
-        android:id="@+id/et_houseDescription"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_below="@id/et_rentPerRoom"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:hint="Additional Notes"
-        android:lines="5"
-        android:textColor="@color/black"
-        android:textSize="16sp" />
+        <EditText
+            android:id="@+id/et_rentPerRoom"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/et_bath"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_entries"
+            android:hint="Enter Rent"
+            android:inputType="number"
+            android:padding="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="#696969"
+            android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/et_state"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/et_houseDescription"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/black"
-        android:textSize="16sp" />
-    <TextView
-        android:id="@+id/et_type"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/et_state"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/black"
-        android:textSize="16sp" />
+        <EditText
+            android:id="@+id/et_houseDescription"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/et_rentPerRoom"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_entries"
+            android:hint="Additional Notes"
+            android:lines="5"
+            android:padding="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="#696969"
+            android:textSize="16sp" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/et_state"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/et_houseDescription"-->
+<!--        android:layout_marginLeft="20dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginRight="20dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="16sp" />-->
+<!--    <TextView-->
+<!--        android:id="@+id/et_type"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/et_state"-->
+<!--        android:layout_marginLeft="20dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginRight="20dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="16sp" />-->
 
 
-    <Button
-        android:id="@+id/btn_addHouse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/et_type"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="20dp"
-        android:text="Add House"
-        android:textSize="16sp" />
+        <Button
+            android:id="@+id/btn_addHouse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_houseDescription"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@color/purple_200"
+            android:text="Add House"
+            android:textSize="16sp" />
 
 </RelativeLayout>
+</ScrollView>

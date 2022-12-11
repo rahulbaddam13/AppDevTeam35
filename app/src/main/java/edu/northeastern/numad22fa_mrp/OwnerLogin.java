@@ -100,9 +100,7 @@ public class OwnerLogin extends AppCompatActivity {
     }
 
     private void navigateOwnerToHomePage() {
-        Intent intent = new Intent(OwnerLogin.this, OwnerHomePage.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+        startActivity(new Intent(OwnerLogin.this, PropertyList.class));
 
     }
 }

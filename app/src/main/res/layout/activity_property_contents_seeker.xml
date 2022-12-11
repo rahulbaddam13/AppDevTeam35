@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -19,10 +19,10 @@
 
             <ImageView
                 android:id="@+id/house_image_s"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:paddingBottom="10dp"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
                 android:layout_centerInParent="true"
+                android:paddingBottom="10dp"
                 android:src="@drawable/ic_launcher_background" />
         </RelativeLayout>
 
@@ -30,7 +30,7 @@
         android:id="@+id/cardLinear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-10dp"
+        android:layout_marginTop="-20dp"
         android:paddingTop="20dp"
         android:background="#ffffff">
         <com.google.android.material.card.MaterialCardView
@@ -45,37 +45,54 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="5dp">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                <TextView
+                    android:id="@+id/rooms_label_s"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/happy_fox">
-
-                </ImageView>
-
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/marcellussc"
+                    android:includeFontPadding="false"
+                    android:text="Beds"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
                 <TextView
                     android:id="@+id/rooms_tv_s"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/rooms_label_s"
                     android:layout_centerInParent="true"
+                    android:layout_marginBottom="10dp"
                     android:fontFamily="@font/marcellussc"
                     android:includeFontPadding="false"
-                    android:text="2"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:text="5"
+                    android:textColor="#483d8b"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/rooms_label"
+                    android:id="@+id/bath_label_s"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/rooms_tv_s"
-                    android:layout_centerHorizontal="true"
+                    android:layout_centerInParent="true"
                     android:fontFamily="@font/marcellussc"
                     android:includeFontPadding="false"
-                    android:text="Rooms"
+                    android:text="Bath"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/bath_tv_s"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/bath_label_s"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/marcellussc"
+                    android:includeFontPadding="false"
+                    android:text="3"
+                    android:textColor="#483d8b"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
             </RelativeLayout>
@@ -97,10 +114,10 @@
                 android:padding="5dp">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/happy_fox">
+                    android:src="@drawable/coin">
 
                 </ImageView>
 
@@ -113,7 +130,8 @@
                     android:includeFontPadding="false"
                     android:text="$1000"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/rent_label"
@@ -125,7 +143,7 @@
                     android:includeFontPadding="false"
                     android:text="Rent"
                     android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textSize="18sp"  />
 
             </RelativeLayout>
 
@@ -145,10 +163,10 @@
                 android:padding="5dp">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/happy_fox">
+                    android:src="@drawable/property">
 
                 </ImageView>
 
@@ -159,12 +177,13 @@
                     android:layout_centerInParent="true"
                     android:fontFamily="@font/marcellussc"
                     android:includeFontPadding="false"
-                    android:text="Condo"
+                    android:text="Townhouse"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/type_Label"
+                    android:id="@+id/type_Label_s"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/type_tv_s"
@@ -173,7 +192,7 @@
                     android:includeFontPadding="false"
                     android:text="Type"
                     android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textSize="17sp" />
 
             </RelativeLayout>
 
@@ -187,6 +206,25 @@
         android:orientation="vertical"
         android:padding="20dp"
         android:background="#ffffff">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Address">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/address_tv_s"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:backgroundTint="#bebebe"
+                android:textColor="@color/black"
+                android:text="123 abc street">
+
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
 
 
         <com.google.android.material.textfield.TextInputLayout

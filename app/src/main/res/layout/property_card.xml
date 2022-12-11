@@ -18,6 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/gradient_two"
             android:orientation="vertical">
 
             <LinearLayout
@@ -34,7 +35,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:padding="5dp"
-                    android:src="@drawable/ic_launcher_background" />
+                    android:src="@drawable/ic_launcher_background"
+                    android:transitionName="imageTransition"/>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -53,37 +55,40 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:ellipsize="end"
+                            android:fontFamily="@font/marcellussc"
                             android:padding="5dp"
-                            android:textStyle="italic"
                             android:text="Rooms :"
-                            android:textColor="@color/white"
-                            android:textSize="15dp" />
+                            android:textColor="@color/black"
+                            android:textSize="17dp"
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/tv_noOfRooms"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:ellipsize="end"
+                            android:fontFamily="@font/marcellussc"
                             android:padding="5dp"
                             android:text="2"
-                            android:textStyle="bold"
-                            android:textColor="@color/white"
-                            android:textSize="15dp" />
+                            android:textColor="@color/black"
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
+
                         <View
                             android:layout_width="0dp"
                             android:layout_height="0dp"
-                            android:layout_weight="1"
-                            />
-<!--                        <Button-->
-<!--                            android:id="@+id/editButton"-->
-<!--                            android:layout_width="fill_parent"-->
-<!--                            android:layout_height="35dp"-->
-<!--                            android:textAlignment="textStart"-->
-<!--                            android:text="Edit"-->
-<!--                            android:drawableRight="@drawable/ic_search_foreground"-->
-<!--                            android:textSize="12sp"-->
-<!--                            android:textStyle="bold"-->
-<!--                            android:background="@android:color/transparent">-->
-<!--                        </Button>-->
+                            android:layout_weight="1" />
+                        <!--                        <Button-->
+                        <!--                            android:id="@+id/editButton"-->
+                        <!--                            android:layout_width="fill_parent"-->
+                        <!--                            android:layout_height="35dp"-->
+                        <!--                            android:textAlignment="textStart"-->
+                        <!--                            android:text="Edit"-->
+                        <!--                            android:drawableRight="@drawable/ic_search_foreground"-->
+                        <!--                            android:textSize="12sp"-->
+                        <!--                            android:textStyle="bold"-->
+                        <!--                            android:background="@android:color/transparent">-->
+                        <!--                        </Button>-->
 
 
                     </LinearLayout>
@@ -93,28 +98,32 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
+
                         <TextView
                             android:id="@+id/rentPerRoomLabel"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:ellipsize="end"
+                            android:fontFamily="@font/marcellussc"
                             android:padding="5dp"
-                            android:textStyle="italic"
-                            android:text="Rent in $:"
-                            android:textColor="@color/white"
-                            android:textSize="15dp" />
+                            android:text="Rent :"
+                            android:textColor="@color/black"
+                            android:textSize="17dp"
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/tv_rentPerRoom"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:ellipsize="end"
+                            android:fontFamily="@font/marcellussc"
                             android:padding="5dp"
                             android:text="2000"
-                            android:textStyle="bold"
-                            android:textColor="@color/white"
-                            android:textSize="15dp" />
+                            android:textColor="@color/black"
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -128,95 +137,100 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:ellipsize="end"
+                            android:fontFamily="@font/marcellussc"
                             android:padding="5dp"
-                            android:textStyle="italic"
-                            android:text="Address : "
-                            android:textColor="@color/white"
-                            android:textSize="15dp" />
+                            android:text="City: "
+                            android:textColor="@color/black"
+                            android:textSize="17dp"
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/tv_location"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:ellipsize="end"
+                            android:fontFamily="@font/marcellussc"
                             android:padding="5dp"
-                            android:textStyle="bold"
                             android:text="Boston"
-                            android:textColor="@color/white"
-                            android:textSize="15dp" />
+                            android:textColor="@color/black"
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
+                    <!--                    <LinearLayout-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:orientation="horizontal">-->
+                    <!--                        <TextView-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:layout_weight="1"-->
+                    <!--                            android:ellipsize="end"-->
+                    <!--                            android:padding="5dp"-->
+                    <!--                            android:textStyle="italic"-->
+                    <!--                            android:text="State : "-->
+                    <!--                            android:textColor="@color/white"-->
+                    <!--                            android:textSize="15dp" />-->
+
+                    <!--                        <TextView-->
+                    <!--                            android:id="@+id/tv_state"-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:layout_weight="1"-->
+                    <!--                            android:ellipsize="end"-->
+                    <!--                            android:padding="5dp"-->
+                    <!--                            android:textStyle="bold"-->
+                    <!--                            android:text="MA"-->
+                    <!--                            android:textColor="@color/white"-->
+                    <!--                            android:textSize="15dp" />-->
+
+                    <!--                    </LinearLayout>-->
+                    <!--                    <LinearLayout-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:orientation="horizontal">-->
+                    <!--                        <TextView-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:layout_weight="1"-->
+                    <!--                            android:ellipsize="end"-->
+                    <!--                            android:padding="5dp"-->
+                    <!--                            android:textStyle="italic"-->
+                    <!--                            android:text="Country : "-->
+                    <!--                            android:textColor="@color/white"-->
+                    <!--                            android:textSize="15dp" />-->
+
+                    <!--                        <TextView-->
+                    <!--                            android:id="@+id/tv_country"-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:layout_weight="1"-->
+                    <!--                            android:ellipsize="end"-->
+                    <!--                            android:padding="5dp"-->
+                    <!--                            android:textStyle="bold"-->
+                    <!--                            android:text="USA"-->
+                    <!--                            android:textColor="@color/white"-->
+                    <!--                            android:textSize="15dp" />-->
+
+                    <!--                    </LinearLayout>-->
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:ellipsize="end"
+                            android:fontFamily="@font/marcellussc"
                             android:padding="5dp"
-                            android:textStyle="italic"
-                            android:text="State : "
-                            android:textColor="@color/white"
-                            android:textSize="15dp" />
-
-                        <TextView
-                            android:id="@+id/tv_state"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:ellipsize="end"
-                            android:padding="5dp"
-                            android:textStyle="bold"
-                            android:text="MA"
-                            android:textColor="@color/white"
-                            android:textSize="15dp" />
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:ellipsize="end"
-                            android:padding="5dp"
-                            android:textStyle="italic"
-                            android:text="Country : "
-                            android:textColor="@color/white"
-                            android:textSize="15dp" />
-
-                        <TextView
-                            android:id="@+id/tv_country"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:ellipsize="end"
-                            android:padding="5dp"
-                            android:textStyle="bold"
-                            android:text="USA"
-                            android:textColor="@color/white"
-                            android:textSize="15dp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:ellipsize="end"
-                            android:padding="5dp"
-                            android:textStyle="italic"
                             android:text="Type : "
-                            android:textColor="@color/white"
-                            android:textSize="15dp" />
+                            android:textColor="@color/black"
+                            android:textSize="17dp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/tv_type"
@@ -224,11 +238,12 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:ellipsize="end"
+                            android:fontFamily="@font/marcellussc"
                             android:padding="5dp"
-                            android:textStyle="bold"
                             android:text="Condo"
-                            android:textColor="@color/white"
-                            android:textSize="15dp" />
+                            android:textColor="@color/black"
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -238,33 +253,32 @@
                         android:orientation="horizontal">
 
                     </LinearLayout>
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:gravity="right">-->
-<!--                        <View-->
-<!--                            android:layout_width="0dp"-->
-<!--                            android:layout_height="0dp"-->
-<!--                            android:layout_weight="1"-->
-<!--                            />-->
-<!--                        <Button-->
-<!--                            android:id="@+id/editProperty"-->
-<!--                            android:layout_width="101dp"-->
-<!--                            android:layout_height="35dp"-->
-<!--                            android:background="@drawable/edit_text"-->
-<!--                            android:drawableRight="@android:drawable/ic_menu_edit"-->
-<!--                            android:text="Edit"-->
-<!--                            android:textAllCaps="false" />-->
 
-<!--                    </LinearLayout>-->
+
+                    <!--                    <LinearLayout-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:gravity="right">-->
+                    <!--                        <View-->
+                    <!--                            android:layout_width="0dp"-->
+                    <!--                            android:layout_height="0dp"-->
+                    <!--                            android:layout_weight="1"-->
+                    <!--                            />-->
+                    <!--                        <Button-->
+                    <!--                            android:id="@+id/editProperty"-->
+                    <!--                            android:layout_width="101dp"-->
+                    <!--                            android:layout_height="35dp"-->
+                    <!--                            android:background="@drawable/edit_text"-->
+                    <!--                            android:drawableRight="@android:drawable/ic_menu_edit"-->
+                    <!--                            android:text="Edit"-->
+                    <!--                            android:textAllCaps="false" />-->
+
+                    <!--                    </LinearLayout>-->
 
                 </LinearLayout>
 
 
-
             </LinearLayout>
-
-
 
 
         </LinearLayout>

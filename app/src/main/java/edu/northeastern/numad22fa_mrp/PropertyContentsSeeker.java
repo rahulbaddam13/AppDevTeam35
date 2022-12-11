@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -29,16 +30,13 @@ public class PropertyContentsSeeker extends AppCompatActivity {
     TextView tv_houseDesc;
     ImageView iv_houseImage;
     DatabaseReference reference;
-    String _rooms, _rent, _location, _state, _country;
-    Button updateB;
-    Button _delete;
-    TextView roomsTv,typeTv, rent;
-    String houseId, noOfRoom, rentPerRoom, houseDescription, houseLocation, country, type, state;
+    TextView roomsTv,typeTv, rent,bathTv;
+    String houseId, noOfRoom, rentPerRoom, houseDescription, houseLocation, country, type, state,address,baths;
     Button bLocation;
     String lat, longi;
     Double latitude, longitude;
     Boolean updateStatus;
-    TextInputEditText stateTv, countryTv,locationTv,houseDesc;
+    TextInputEditText stateTv, countryTv,locationTv,houseDesc,addressTv;
     Button contactOwner;
 
 
@@ -63,6 +61,11 @@ public class PropertyContentsSeeker extends AppCompatActivity {
         country = intent.getStringExtra("country");
         state = intent.getStringExtra("state");
         type = intent.getStringExtra("type");
+        address = intent.getStringExtra("address");
+        baths = intent.getStringExtra("baths");
+
+        Log.v("Baths",baths);
+
 
 //        reference = FirebaseDatabase.getInstance().getReference().child(OwnerRegister.HOUSES).child(userId).child(houseId);
         iv_houseImage = findViewById(R.id.house_image_s);
@@ -76,11 +79,14 @@ public class PropertyContentsSeeker extends AppCompatActivity {
         typeTv = findViewById(R.id.type_tv_s);
         bLocation = findViewById(R.id.getLoc_s);
         contactOwner = findViewById(R.id.contactOwner);
+        addressTv = findViewById(R.id.address_tv_s);
+        bathTv = findViewById(R.id.bath_tv_s);
 
         locationTv.setEnabled(false);
         countryTv.setEnabled(false);
         stateTv.setEnabled(false);
         houseDesc.setEnabled(false);
+        addressTv.setEnabled(false);
 
 
 
@@ -88,7 +94,7 @@ public class PropertyContentsSeeker extends AppCompatActivity {
         List<Address> addressList;
 
         try {
-            addressList = geocoder.getFromLocationName(houseLocation, 1);
+            addressList = geocoder.getFromLocationName(address + "," + houseLocation, 1);
             if (addressList != null) {
                 latitude = addressList.get(0).getLatitude();
                 longitude = addressList.get(0).getLongitude();
@@ -104,23 +110,7 @@ public class PropertyContentsSeeker extends AppCompatActivity {
             Toast.makeText(this, "Location is Not Accurate to Track", Toast.LENGTH_SHORT).show();
 
         }
-        try {
-            addressList = geocoder.getFromLocationName(houseLocation, 1);
-            if (addressList != null) {
-                latitude = addressList.get(0).getLatitude();
-                longitude = addressList.get(0).getLongitude();
-                //intent1.putExtra("houseImage", houseImage);
-                //tv_houseDesc.setText(String.valueOf(latitude) + " x " + String.valueOf(longitude));
-            }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (IndexOutOfBoundsException e) {
-            bLocation.setVisibility(View.GONE);
-            //tv_houseDesc.setText("no location");
-            Toast.makeText(this, "Location is Not Accurate to Track", Toast.LENGTH_SHORT).show();
-
-        }
 
         Glide.with(PropertyContentsSeeker.this).load(houseImage).into(iv_houseImage);
 
@@ -131,6 +121,8 @@ public class PropertyContentsSeeker extends AppCompatActivity {
         countryTv.setText(country);
         typeTv.setText(type);
         houseDesc.setText(houseDescription);
+        addressTv.setText(address);
+        bathTv.setText(baths);
 
         bLocation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,16 +143,18 @@ public class PropertyContentsSeeker extends AppCompatActivity {
             }
         });
 
-//        contactOwner.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent2 = new Intent(PropertyContentsSeeker.this, ContactOwner.class);
-//                intent2.putExtra("houseId", houseId);
-//                intent2.putExtra("houseDescription", houseDescription);
-//                startActivity(intent2);
-//
-//            }
-//        });
+        contactOwner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(PropertyContentsSeeker.this, ContactOwner.class);
+                intent2.putExtra("houseId", houseId);
+                intent2.putExtra("houseDescription", houseDescription);
+                intent2.putExtra("houseLocation", houseLocation);
+                intent2.putExtra("address",address);
+                startActivity(intent2);
+
+            }
+        });
 
     }
 
