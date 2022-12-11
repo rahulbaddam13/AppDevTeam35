@@ -189,8 +189,8 @@ public class PropertySeekerActivity extends AppCompatActivity {
                                 if ((currentUserPreference.getLocations().contains(article.getHouseLocation()))) {
 
                                     //price
-                                    if (currentUserPreference.getMinimumPrice() <= Integer.parseInt(article.getRentPerRoom())
-                                            && currentUserPreference.getMaximumPrice() >= Integer.parseInt(article.getRentPerRoom())) {
+                                    if (currentUserPreference.getMinimumPrice() <= Integer.parseInt(article.getRentPerRoom().substring(1))
+                                            && currentUserPreference.getMaximumPrice() >= Integer.parseInt(article.getRentPerRoom().substring(1))) {
 
                                         //type of house (if the property does not have a type specified, still display it)
                                         if (article.getType() == null || article.getType().isEmpty()

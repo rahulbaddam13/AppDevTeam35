@@ -20,68 +20,14 @@
         app:menu="@menu/bottom_navigation_menu" />
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/grad"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-
-
-        <ImageView
-            android:id="@+id/userProfileAvatar"
-            android:layout_width="108dp"
-            android:layout_height="99dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.156"
-            tools:srcCompat="@tools:sample/avatars" />
-
-        <TextView
-            android:id="@+id/profileUserNameDisplay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="UserName"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/userProfileAvatar"
-            app:layout_constraintVertical_bias="0.41" />
-
-        <TextView
-            android:id="@+id/profileFullNameDisplay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Full Name"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profileUserNameDisplay"
-            app:layout_constraintVertical_bias="0.41" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <RelativeLayout
+        android:layout_marginBottom="53sp"
         android:layout_width="match_parent"
-        android:layout_height="475dp"
-        tools:layout_editor_absoluteX="-2dp"
-        tools:layout_editor_absoluteY="199dp">
+        android:layout_height="match_parent">
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="0dp">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -96,6 +42,20 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
+
+                <TextView
+                    android:id="@+id/profileFullNameDisplay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Full Name"
+                    android:layout_gravity="center_horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profileUserNameDisplay"
+                    app:layout_constraintVertical_bias="0.41" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -116,10 +76,11 @@
                         android:layout_height="match_parent">
 
                         <Button
-                            android:id="@+id/button5"
+                            android:id="@+id/profileAddPropBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Button" />
+                            android:onClick="onFabPopupWindowClick"
+                            android:text="Add" />
 
 
                         <View
@@ -411,11 +372,13 @@
                         android:textColor="#000000"
                         android:textSize="18sp" />
 
+
                     <Button
-                        android:id="@+id/button2"
+                        android:id="@+id/profileUpdateBtn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Button" />
+                        android:text="Update profile" />
+
 
                     <View
                         android:layout_width="match_parent"
@@ -427,7 +390,6 @@
 
             </LinearLayout>
         </ScrollView>
-
     </RelativeLayout>
 
 
