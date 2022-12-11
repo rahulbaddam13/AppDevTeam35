@@ -14,10 +14,15 @@
         android:padding="10dp"
         app:cardCornerRadius="10dp">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/shareHouseInfo">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -28,7 +33,7 @@
                 android:weightSum="2">
 
                 <ImageView
-                    android:id="@+id/fav_image"
+                    android:id="@+id/sharedImageview"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -48,7 +53,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/favRent"
+                            android:id="@+id/sharedRent"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:ellipsize="end"
@@ -57,7 +62,7 @@
                             android:text="Rent in $:"
                             android:textSize="15dp" />
                         <TextView
-                            android:id="@+id/rentHeading"
+                            android:id="@+id/sharedRentTv"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:ellipsize="end"
@@ -91,7 +96,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
                         <TextView
-                            android:id="@+id/favRooms"
+                            android:id="@+id/sharedRooms"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -101,7 +106,7 @@
                             android:text="Rooms:"
                             android:textSize="15dp" />
                         <TextView
-                            android:id="@+id/bedTv"
+                            android:id="@+id/sharedRoomsTV"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -128,7 +133,7 @@
                             android:text="Address : "
                             android:textSize="15dp" />
                         <TextView
-                            android:id="@+id/favAddress"
+                            android:id="@+id/sharedAddressTV"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -154,7 +159,7 @@
                             android:textSize="15dp" />
 
                         <TextView
-                            android:id="@+id/favStateTV"
+                            android:id="@+id/sharedStateTV"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -180,7 +185,7 @@
                             android:textSize="15dp" />
 
                         <TextView
-                            android:id="@+id/favCountryTv"
+                            android:id="@+id/sharedCountryTv"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -207,7 +212,7 @@
                             android:textSize="15dp" />
 
                         <TextView
-                            android:id="@+id/houseTypeTv"
+                            android:id="@+id/sharedTypeTv"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -247,14 +252,6 @@
 
                 </LinearLayout>
 
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_more"
-                    android:padding="10dp"
-                    android:id="@+id/moreBtn"
-                    android:background="@android:color/transparent"/>
-
 
 
             </LinearLayout>
@@ -263,6 +260,59 @@
 
 
         </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/likeShareLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/shareHouseInfo"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/likesTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="# of Likes"
+                    android:textColor="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/shareCommentsTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textEnd"
+                    android:gravity="end"
+                    android:textColor="@color/colorPrimary"
+                    android:text="# of Comments" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/likeShareLayout"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/likeBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:drawableLeft="@drawable/ic_like"
+                    android:text="LIKE"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+
+
+
+        </RelativeLayout>
+
 
     </androidx.cardview.widget.CardView>
 

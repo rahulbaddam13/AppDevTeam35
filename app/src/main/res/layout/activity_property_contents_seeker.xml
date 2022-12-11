@@ -1,10 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PropertyContents">
+
+    <RelativeLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/purple_700"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PROPERTY DETAILS"
+            android:textColor="@color/white"
+            style="bold"
+            android:layout_centerInParent="true"
+            android:textSize="20sp"/>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:layout_below="@+id/topBar">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,18 +47,15 @@
         android:orientation="vertical">
 
         <RelativeLayout
+            android:id="@+id/propImage"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:background="#b0c4de"
-            android:padding="20dp">
+            android:layout_height="300dp">
 
             <ImageView
-                android:id="@+id/house_image_s"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:paddingBottom="10dp"
-                android:layout_centerInParent="true"
-                android:src="@drawable/ic_launcher_background" />
+                android:id="@+id/house_img_s"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/angry_fox"/>
         </RelativeLayout>
 
     <LinearLayout
@@ -301,4 +333,5 @@
     </LinearLayout>
 
     </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</RelativeLayout>

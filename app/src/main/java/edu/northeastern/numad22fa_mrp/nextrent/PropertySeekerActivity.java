@@ -31,6 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -275,10 +276,16 @@ public class PropertySeekerActivity extends AppCompatActivity {
                     //Add property to favorites.
 
                     String propertyID = propertiesList.get(viewHolder.getBindingAdapterPosition()).getHouseId();
+                    String ownerID = propertiesList.get(viewHolder.getBindingAdapterPosition()).getUserId();
+
+                    HashMap<String, String> favMap = new HashMap<>();
+                    favMap.put("propID",propertyID);
+                    favMap.put("owner", ownerID);
+
 
                     DatabaseReference db =databaseReference.child("seekers").child(userKey).child("favorites").push();
 
-                    db.setValue(propertyID).addOnFailureListener(new OnFailureListener() {
+                    db.setValue(favMap).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(PropertySeekerActivity.this, "Unable to add to favorites", Toast.LENGTH_SHORT).show();
