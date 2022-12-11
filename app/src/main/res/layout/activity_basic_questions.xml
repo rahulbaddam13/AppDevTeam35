@@ -1,195 +1,246 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".nextrent.BasicQuestionsSeekerSurvey">
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_marginBottom="20dp"
+    android:fillViewport="true">
 
-
-    <TextView
-        android:id="@+id/seekerFullName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="What's your name?"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.068"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.075" />
-
-    <EditText
-        android:id="@+id/editTextSeekerFullName"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
-        android:background="@drawable/custom_edit_text"
-        android:ems="10"
-        android:hint="Full Name"
-        android:inputType="textPersonName"
-        android:padding="15dp"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekerFullName"
-        app:layout_constraintVertical_bias="0.031" />
-
-
-    <TextView
-        android:id="@+id/seekerEmailID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="What's your email ID?"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.071"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSeekerFullName"
-        app:layout_constraintVertical_bias="0.033" />
-
-    <EditText
-        android:id="@+id/editTextSeekerEmail"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/custom_edit_text"
-        android:ems="10"
-        android:hint="Email ID"
-        android:inputType="textPersonName"
-        android:padding="15dp"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.084"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekerEmailID"
-        app:layout_constraintVertical_bias="0.051" />
-
-    <TextView
-        android:id="@+id/seekerPhoneNumber"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="What's your phone number?"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.084"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSeekerEmail"
-        app:layout_constraintVertical_bias="0.039" />
+        tools:context=".nextrent.BasicQuestionsSeekerSurvey">
 
-    <EditText
-        android:id="@+id/editTextSeekerPhoneNumber"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/custom_edit_text"
-        android:ems="10"
-        android:hint="Phone"
-        android:inputType="textPersonName"
-        android:padding="15dp"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.084"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekerPhoneNumber"
-        app:layout_constraintVertical_bias="0.051" />
-
-    <RadioGroup
-        android:id="@+id/radioGroupLegalSex"
-        android:layout_width="371dp"
-        android:layout_height="63dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/legalSexTextView"
-        app:layout_constraintVertical_bias="0.044">
-
-        <RadioButton
-            android:id="@+id/radioButtonMale"
-            android:layout_width="121dp"
+        <TextView
+            android:id="@+id/seekerFullName"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Male" />
+            android:fontFamily="@font/questrialregular"
+            android:text="What's your name?"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.068"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.075" />
 
-        <RadioButton
-            android:id="@+id/radioButtonFemale"
+        <EditText
+            android:id="@+id/editTextSeekerFullName"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/custom_edit_text"
+            android:ems="10"
+            android:hint="Full Name"
+            android:inputType="textPersonName"
+            android:padding="15dp"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekerFullName"
+            app:layout_constraintVertical_bias="0.031" />
+
+
+        <TextView
+            android:id="@+id/seekerEmailID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/questrialregular"
+            android:text="What's your email ID?"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.071"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextSeekerFullName"
+            app:layout_constraintVertical_bias="0.033" />
+
+        <EditText
+            android:id="@+id/editTextSeekerEmail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/custom_edit_text"
+            android:ems="10"
+            android:hint="Email ID"
+            android:inputType="textPersonName"
+            android:padding="15dp"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.325"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekerEmailID"
+            app:layout_constraintVertical_bias="0.037" />
+
+        <TextView
+            android:id="@+id/seekerPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/questrialregular"
+            android:text="What's your phone number?"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.084"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextSeekerEmail"
+            app:layout_constraintVertical_bias="0.039" />
+
+        <EditText
+            android:id="@+id/editTextSeekerPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/custom_edit_text"
+            android:ems="10"
+            android:hint="Phone"
+            android:inputType="textPersonName"
+            android:padding="15dp"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.084"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekerPhoneNumber"
+            app:layout_constraintVertical_bias="0.051" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupLegalSex"
+            android:layout_width="371dp"
+            android:layout_height="63dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/legalSexTextView"
+            app:layout_constraintVertical_bias="0.044">
+
+            <RadioButton
+                android:id="@+id/radioButtonMale"
+                android:layout_width="121dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/questrialregular"
+                android:text="Male"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/radioButtonFemale"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/questrialregular"
+                android:text="Female"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/radioButtonOthers"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/questrialregular"
+                android:text="Others"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/legalSexTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/questrialregular"
+            android:text="Legal Sex"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.057"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextSeekerPhoneNumber"
+            app:layout_constraintVertical_bias="0.054" />
+
+        <ImageView
+            android:id="@+id/user_avatar"
             android:layout_width="130dp"
+            android:layout_height="145dp"
+            android:src="@drawable/user_profile_default"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.558"
+            app:layout_constraintStart_toEndOf="@+id/editTextSeekerFullName"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.044" />
+
+        <TextView
+            android:id="@+id/ageTextView"
+            android:layout_width="55dp"
+            android:layout_height="35dp"
+            android:fontFamily="@font/questrialregular"
+            android:text="Age"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.053"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroupLegalSex"
+            app:layout_constraintVertical_bias="0.122" />
+
+        <NumberPicker
+            android:id="@+id/age_number_picker"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Female" />
+            android:layout_weight="1"
+            android:fontFamily="@font/questrialregular"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.434"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ageTextView"
+            app:layout_constraintVertical_bias="0.0"></NumberPicker>
 
-        <RadioButton
-            android:id="@+id/radioButtonOthers"
-            android:layout_width="120dp"
+        <TextView
+            android:id="@+id/avatar_info"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Others" />
-    </RadioGroup>
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/questrialregular"
+            android:text="Click image to change avatar"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.792"
+            app:layout_constraintStart_toEndOf="@+id/seekerEmailID"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/legalSexTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Legal Sex"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.057"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSeekerPhoneNumber"
-        app:layout_constraintVertical_bias="0.054" />
+        <Button
+            android:id="@+id/nextBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/btnclr"
+            android:text="Next"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.826"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/age_number_picker"
+            app:layout_constraintVertical_bias="1.0" />
 
-    <ImageView
-        android:id="@+id/user_avatar"
-        android:layout_width="130dp"
-        android:layout_height="145dp"
-        android:src="@drawable/user_profile_default"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.558"
-        app:layout_constraintStart_toEndOf="@+id/editTextSeekerFullName"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.044" />
 
-    <TextView
-        android:id="@+id/ageTextView"
-        android:layout_width="40dp"
-        android:layout_height="18dp"
-        android:text="Age"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.053"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroupLegalSex"
-        app:layout_constraintVertical_bias="0.122" />
-
-    <NumberPicker
-        android:id="@+id/age_number_picker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.463"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ageTextView"
-        app:layout_constraintVertical_bias="0.0"></NumberPicker>
-
-    <TextView
-        android:id="@+id/avatar_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Click image to change avatar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.792"
-        app:layout_constraintStart_toEndOf="@+id/seekerEmailID"
-        app:layout_constraintTop_toBottomOf="@+id/avatar"
-        app:layout_constraintVertical_bias="0.0" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

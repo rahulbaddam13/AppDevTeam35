@@ -16,6 +16,7 @@ public class NextRentUser {
     private String userType;
     private Preference myPreference;
     private List<String> favorites;
+    private int propPoints;
 
     /**
      *
@@ -28,6 +29,7 @@ public class NextRentUser {
         this.userType = userType;
         this.myPreference = new Preference();
         this.favorites = new ArrayList<>();
+        this.propPoints = 0;
     }
 
     public String getUID() {
@@ -58,5 +60,12 @@ public class NextRentUser {
         this.favorites = favoritePropertyList;
     }
 
+    public int getPropPoints() {
+        return propPoints;
+    }
+
+    public void setPropPoints(int propPoints) {
+        this.propPoints = propPoints;
+    }
 }
 

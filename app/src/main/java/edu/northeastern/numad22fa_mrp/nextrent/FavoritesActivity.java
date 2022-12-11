@@ -24,6 +24,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import edu.northeastern.numad22fa_mrp.R;
+import edu.northeastern.numad22fa_mrp.UserProfileActivity;
 
 public class FavoritesActivity extends AppCompatActivity {
 
@@ -81,11 +82,15 @@ public class FavoritesActivity extends AppCompatActivity {
                     case R.id.page_favorites:
                         return true;
                     case R.id.page_chat:
-                        startActivity(new Intent(getApplicationContext(),ChatActivity.class));
+                        Intent clickIntent = new Intent(FavoritesActivity.this, ChatActivity.class);
+                        clickIntent.putExtra("userKey", userKey);
+                        startActivity(clickIntent);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.page_profile:
-                        startActivity(new Intent(getApplicationContext(),SeekerProfileActivity.class));
+                        Intent clickIntent1 = new Intent(FavoritesActivity.this, UserProfileActivity.class);
+                        clickIntent1.putExtra("userKey", userKey);
+                        startActivity(clickIntent1);
                         overridePendingTransition(0,0);
                         return true;
                 }

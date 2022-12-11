@@ -67,15 +67,6 @@ public class FinalProject extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference("");
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if (ContextCompat.checkSelfPermission(
-                FinalProject.this, Manifest.permission.ACCESS_COARSE_LOCATION) ==
-                PackageManager.PERMISSION_DENIED) {
-            askLocationPermissions();
-        }
-    }
 
     /**
      * A public method that is called when button is clicked in the Main Activity.
@@ -87,23 +78,24 @@ public class FinalProject extends AppCompatActivity {
         // getting text from our edittext fields.
         String userName = userNameEdt.getText().toString();
 
-        // below line is for checking whether the
-        // edittext fields are empty or not.
-        if (TextUtils.isEmpty(userName)) {
-            // if the text fields are empty
-            // then show the below message.
-            Toast.makeText(FinalProject.this, "Please enter user name!",
-                    Toast.LENGTH_SHORT).show();
-        } else {
             //get the ID of the button clicked in the view.
             int buttonId = view.getId();
 
             if (buttonId == R.id.seekerButton) {
 
-                // create a user object of seeker type.
-                user = new NextRentUser(userName, "seekers");
+                // below line is for checking whether the
+                // edittext fields are empty or not.
+                if (TextUtils.isEmpty(userName)) {
+                    // if the text fields are empty
+                    // then show the below message.
+                    Toast.makeText(FinalProject.this, "Please enter user name!",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    // create a user object of seeker type.
+                    user = new NextRentUser(userName, "seekers");
 
-                addDataToFirebase(user);
+                    addDataToFirebase(user);
+                }
 
             }  else if (buttonId == R.id.managerButton) {
 
@@ -114,8 +106,6 @@ public class FinalProject extends AppCompatActivity {
                 clickIntent.putExtra("currentUserName", user.getUserName());
                 startActivity(clickIntent);
             }
-        }
-
     }
 
     /**
@@ -188,50 +178,4 @@ public class FinalProject extends AppCompatActivity {
 
     }
 
-    /**
-     * Method to request location permission from user.
-     */
-    private void askLocationPermissions() {
-        // Check Permissions
-        if (ContextCompat.checkSelfPermission(
-                this,Manifest.permission.ACCESS_COARSE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED){
-            if (ActivityCompat.shouldShowRequestPermissionRationale(FinalProject.this,
-                    Manifest.permission.ACCESS_COARSE_LOCATION)) {
-                new AlertDialog.Builder(this)
-                        .setTitle("Required Location Permission")
-                        .setMessage("You have to give this permission to access this feature")
-                        .setPositiveButton("OK", (dialogInterface, i) -> ActivityCompat.requestPermissions(FinalProject.this,
-                                new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
-                                REQUEST_CODE))
-                        .setNegativeButton("Cancel", (dialogInterface, i) -> dialogInterface.dismiss())
-                        .create()
-                        .show();
-            } else {
-                ActivityCompat.requestPermissions(FinalProject.this,
-                        new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_CODE);
-            }
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if(requestCode == REQUEST_CODE){
-            if(grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                //checkSettingsAndStartLocationUpdates();
-            } else {
-                new AlertDialog.Builder(this)
-                        .setTitle("Required Location Permission")
-                        .setMessage("You have to give location permission to access this feature")
-                        .setPositiveButton("OK", (dialogInterface, i) -> ActivityCompat.requestPermissions(FinalProject.this,
-                                new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
-                                REQUEST_CODE))
-                        .setNegativeButton("Cancel", (dialogInterface, i) -> dialogInterface.dismiss())
-                        .create()
-                        .show();
-            }
-
-        }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
 }

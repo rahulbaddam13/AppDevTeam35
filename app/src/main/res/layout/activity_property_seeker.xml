@@ -7,6 +7,29 @@
     android:background="#E4E4E4"
     tools:context=".nextrent.PropertySeekerActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:paddingBottom="3dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/displayPropPointsTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/white"
+            android:textIsSelectable="false"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/rounded_text"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
 
     <!--EditText
         android:id="@+id/editTextZipCode"
@@ -47,6 +70,7 @@
         android:layout_gravity="center_vertical"
         android:scrollbars="horizontal"
         app:layout_constrainedHeight="true"
+        app:layout_constraintTop_toBottomOf="@+id/appBar"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

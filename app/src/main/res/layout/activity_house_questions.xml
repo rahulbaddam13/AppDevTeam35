@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_marginBottom="20dp"
+    android:fillViewport="true">
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,13 +20,16 @@
         android:id="@+id/enterLocationTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter the locations in which you are interested"
+        android:fontFamily="@font/questrialregular"
+        android:text="Enter the locations"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.201"
+        app:layout_constraintHorizontal_bias="0.071"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.04" />
+        app:layout_constraintVertical_bias="0.037" />
 
     <EditText
         android:id="@+id/editTextTextLocation"
@@ -33,22 +45,25 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.059"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enterLocationTextView"
-        app:layout_constraintVertical_bias="0.028" />
+        app:layout_constraintVertical_bias="0.021" />
 
     <TextView
         android:id="@+id/typeOfHouseTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/questrialregular"
         android:text="What type of house are you looking for?"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.152"
+        app:layout_constraintHorizontal_bias="0.095"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/locationChipGroup"
-        app:layout_constraintVertical_bias="0.061" />
+        app:layout_constraintVertical_bias="0.08" />
 
     <RadioGroup
         android:id="@+id/radioGroup2"
@@ -57,10 +72,10 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.436"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/typeOfHouseTextView"
-        app:layout_constraintVertical_bias="0.037">
+        app:layout_constraintVertical_bias="0.058">
 
         <RadioGroup
             android:layout_width="224dp"
@@ -70,14 +85,20 @@
                 android:id="@+id/apartment_chkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Apartment" />
+                android:fontFamily="@font/questrialregular"
+                android:text="Apartment"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
 
 
             <CheckBox
                 android:id="@+id/condo_chkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Condo" />
+                android:fontFamily="@font/questrialregular"
+                android:text="Condo"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
         </RadioGroup>
 
         <RadioGroup
@@ -88,13 +109,19 @@
                 android:id="@+id/townhouse_chkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Townhouse" />
+                android:fontFamily="@font/questrialregular"
+                android:text="Townhouse"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
 
             <CheckBox
                 android:id="@+id/duplex_chkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Duplex" />
+                android:fontFamily="@font/questrialregular"
+                android:text="Duplex"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
 
         </RadioGroup>
     </RadioGroup>
@@ -103,19 +130,25 @@
         android:id="@+id/priceRangeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/questrialregular"
         android:text="What's your price range?"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.096"
+        app:layout_constraintHorizontal_bias="0.08"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NumberOfBathroomTextView"
-        app:layout_constraintVertical_bias="0.121" />
+        app:layout_constraintTop_toBottomOf="@+id/bathroomRadioGroup"
+        app:layout_constraintVertical_bias="0.105" />
 
     <TextView
         android:id="@+id/minimumPriceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/questrialregular"
         android:text="Minimum"
+        android:textColor="@color/black"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.173"
@@ -127,7 +160,10 @@
         android:id="@+id/maximumPriceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/questrialregular"
         android:text="Maximum"
+        android:textColor="@color/black"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.567"
@@ -139,25 +175,31 @@
         android:id="@+id/NumberOfBedroomTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/questrialregular"
         android:text="Number of bedrooms : "
+        android:textColor="@color/black"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintHorizontal_bias="0.082"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup2"
-        app:layout_constraintVertical_bias="0.082" />
+        app:layout_constraintVertical_bias="0.029" />
 
     <TextView
         android:id="@+id/NumberOfBathroomTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/questrialregular"
         android:text="Number of bathrooms : "
+        android:textColor="@color/black"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.095"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NumberOfBedroomTextView"
-        app:layout_constraintVertical_bias="0.211" />
+        app:layout_constraintTop_toBottomOf="@+id/bedroomRadioGroup"
+        app:layout_constraintVertical_bias="0.064" />
 
     <RadioGroup
         android:id="@+id/bedroomRadioGroup"
@@ -166,28 +208,37 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.567"
-        app:layout_constraintStart_toEndOf="@+id/NumberOfBedroomTextView"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup2"
-        app:layout_constraintVertical_bias="0.068">
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NumberOfBedroomTextView"
+        app:layout_constraintVertical_bias="0.021">
 
         <RadioButton
             android:id="@+id/oneBedroom"
             android:layout_width="63dp"
             android:layout_height="wrap_content"
-            android:text="1" />
+            android:fontFamily="@font/questrialregular"
+            android:text="1"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
 
         <RadioButton
             android:id="@+id/twoToThreeBedrooms"
             android:layout_width="76dp"
             android:layout_height="wrap_content"
-            android:text="2 - 3" />
+            android:fontFamily="@font/questrialregular"
+            android:text="2 - 3"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
 
         <RadioButton
             android:id="@+id/moreBedrooms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="> 4" />
+            android:fontFamily="@font/questrialregular"
+            android:text="> 4"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
 
     </RadioGroup>
 
@@ -198,29 +249,38 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.617"
-        app:layout_constraintStart_toEndOf="@+id/NumberOfBathroomTextView"
-        app:layout_constraintTop_toBottomOf="@+id/bedroomRadioGroup"
-        app:layout_constraintVertical_bias="0.076">
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NumberOfBathroomTextView"
+        app:layout_constraintVertical_bias="0.036">
 
 
         <RadioButton
             android:id="@+id/oneBathroom"
             android:layout_width="63dp"
             android:layout_height="wrap_content"
-            android:text="1" />
+            android:fontFamily="@font/questrialregular"
+            android:text="1"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
 
         <RadioButton
             android:id="@+id/twoToThreeBathrooms"
             android:layout_width="76dp"
             android:layout_height="wrap_content"
-            android:text="2 - 3" />
+            android:fontFamily="@font/questrialregular"
+            android:text="2 - 3"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
 
         <RadioButton
             android:id="@+id/moreBathrooms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="> 4" />
+            android:fontFamily="@font/questrialregular"
+            android:text="> 4"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
 
 
     </RadioGroup>
@@ -258,11 +318,12 @@
         android:layout_height="wrap_content"
         android:onClick="submitPreferenceBtn"
         android:text="Submit"
+        android:backgroundTint="@color/btnclr"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/maximumPriceSpinner"
         app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toEndOf="@+id/minimumPriceSpinner"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/priceRangeTextView"
         app:layout_constraintVertical_bias="0.976" />
 
     <com.google.android.material.chip.ChipGroup
@@ -271,10 +332,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.425"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.196">
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextLocation"
+        app:layout_constraintVertical_bias="0.032">
 
     </com.google.android.material.chip.ChipGroup>
 
@@ -284,12 +345,14 @@
         android:layout_height="54dp"
         android:onClick="addChipToGroup"
         android:text="Add"
+        android:backgroundTint="@color/btnclr"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintHorizontal_bias="0.407"
         app:layout_constraintStart_toEndOf="@+id/editTextTextLocation"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.097" />
+        app:layout_constraintVertical_bias="0.089" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -80,6 +80,9 @@ public class HouseQuestionsActivity extends AppCompatActivity {
         seekerPhone = bundle.getString("seekerPhone");
         legalSex = bundle.getString("legalSex");
         age = bundle.getString("age");
+        if(age == null){
+            age = "18";
+        }
 
 
         location = (EditText) findViewById(R.id.editTextTextLocation);
@@ -218,38 +221,4 @@ public class HouseQuestionsActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event)
-    {
-        switch(event.getAction())
-        {
-            case MotionEvent.ACTION_DOWN:
-                x1 = event.getX();
-                break;
-            case MotionEvent.ACTION_UP:
-                x2 = event.getX();
-                float deltaX = x2 - x1;
-
-                if (Math.abs(deltaX) > MIN_DISTANCE)
-                {
-                    // Left to Right swipe action
-                    if (x2 > x1)
-                    {
-                        Intent clickIntent = new Intent(HouseQuestionsActivity.this, BasicQuestionsActivity.class);
-                        startActivity(clickIntent);
-                    }// Right to left swipe action
-                    else
-                    {
-
-                    }
-
-                }
-                else
-                {
-                    // consider as something else - a screen tap for example
-                }
-                break;
-        }
-        return super.onTouchEvent(event);
-    }
 }

@@ -65,23 +65,25 @@ public class PropertySeekerActivity extends AppCompatActivity {
     Set<String> myFavoritePropertiesList;
     Preference currentUserPreference;
 
+    int propPoints = 0;
+    private TextView displayPropPointsTV;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_property_seeker);
 
         //Instantiate the array list of properties or get from the bundle.
-        if(savedInstanceState == null){
-            propertiesList = new ArrayList<>();
-        } else {
-            //propertiesList = savedInstanceState.getParcelableArrayList("chatMessageList");
-        }
+        propertiesList = new ArrayList<>();
+
 
         //Link to recycle view.
         propertyRecyclerView = findViewById(R.id.property_list_recycler_view);
 
         //get the empty message
         emptyView = (ImageView) findViewById(R.id.empty_view);
+
+        displayPropPointsTV = (TextView) findViewById(R.id.displayPropPointsTV);
 
 
         //Set the layout manager for the recycle view.
@@ -116,14 +118,9 @@ public class PropertySeekerActivity extends AppCompatActivity {
         // get reference for the database.
         databaseReference = firebaseDatabase.getReference("");
 
+        //get favorites
+        myFavoritePropertiesList = new HashSet<>();
 
-        //make a list of all the favorite properties of the user.
-        //Instantiate the array list of favorite properties or get from the bundle.
-        if(savedInstanceState == null){
-            myFavoritePropertiesList = new HashSet<>();
-        } else {
-            //myFavoritePropertiesList = savedInstanceState.getParcelableArrayList("chatMessageList");
-        }
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -284,6 +281,20 @@ public class PropertySeekerActivity extends AppCompatActivity {
                             Toast.makeText(PropertySeekerActivity.this, "Unable to add to favorites", Toast.LENGTH_SHORT).show();
                         }
                     });
+                    databaseReference.child("seekers").child(userKey).child("propPoints").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            propPoints = snapshot.getValue(Integer.class);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                    propPoints++;
+                    databaseReference.child("seekers").child(userKey).child("propPoints").setValue(propPoints);
+                    displayPropPointsTV.setText(propPoints);
 
                 }
                 else if (direction == ItemTouchHelper.UP){
@@ -349,7 +360,9 @@ public class PropertySeekerActivity extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.page_chat:
-                        startActivity(new Intent(getApplicationContext(),ChatActivity.class));
+                        Intent clickIntent3 = new Intent(PropertySeekerActivity.this, ChatActivity.class);
+                        clickIntent3.putExtra("userKey", userKey);
+                        startActivity(clickIntent3);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.page_profile:

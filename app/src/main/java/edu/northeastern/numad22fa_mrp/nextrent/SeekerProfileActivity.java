@@ -259,15 +259,21 @@ public class SeekerProfileActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.page_home:
-                        startActivity(new Intent(getApplicationContext(),PropertySeekerActivity.class));
+                        Intent clickIntent1 = new Intent(SeekerProfileActivity.this, PropertySeekerActivity.class);
+                        clickIntent1.putExtra("userKey", userKey);
+                        startActivity(clickIntent1);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.page_favorites:
-                        startActivity(new Intent(getApplicationContext(),FavoritesActivity.class));
+                        Intent clickIntent2 = new Intent(SeekerProfileActivity.this, FavoritesActivity.class);
+                        clickIntent2.putExtra("userKey", userKey);
+                        startActivity(clickIntent2);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.page_chat:
-                        startActivity(new Intent(getApplicationContext(),ChatActivity.class));
+                        Intent clickIntent3 = new Intent(SeekerProfileActivity.this, ChatActivity.class);
+                        clickIntent3.putExtra("userKey", userKey);
+                        startActivity(clickIntent3);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.page_profile:

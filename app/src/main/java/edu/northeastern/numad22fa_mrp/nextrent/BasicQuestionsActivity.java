@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
@@ -31,6 +32,7 @@ public class BasicQuestionsActivity extends AppCompatActivity {
     private EditText phoneNumber;
     final String[] legalSex = new String[1];
     private String agePicker;
+    private Button nextBtn;
     //bundle with data from previous activity.
     Bundle bundle = null;
     String userKey;
@@ -85,57 +87,28 @@ public class BasicQuestionsActivity extends AppCompatActivity {
                 agePicker = String.valueOf(picker.getValue());
             }
         });
-    }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event)
-    {
-        switch(event.getAction())
-        {
-            case MotionEvent.ACTION_DOWN:
-                x1 = event.getX();
-                break;
-            case MotionEvent.ACTION_UP:
-                x2 = event.getX();
-                float deltaX = x2 - x1;
+        nextBtn = (Button) findViewById(R.id.nextBtn);
+        nextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Get the values,do validation.
+                String seekerFullName = fullName.getText().toString();
+                String seekerEmailId = emailID.getText().toString();
+                String seekerPhone = phoneNumber.getText().toString();
 
-                if (Math.abs(deltaX) > MIN_DISTANCE)
-                {
-                    // Left to Right swipe action
-                    if (x2 > x1)
-                    {
-                        //Do nothing
-                    }// Right to left swipe action
-                    else
-                    {
-                        //Get the values,do validation.
-                        String seekerFullName = fullName.getText().toString();
-                        String seekerEmailId = emailID.getText().toString();
-                        String seekerPhone = phoneNumber.getText().toString();
-                        if(seekerFullName.isEmpty()){
-                            fullName.setBackgroundColor(Color.parseColor("#ff8282"));
-                        } else {
-                            //move to next screen with the data.
-                            Intent clickIntent = new Intent(BasicQuestionsActivity.this, HouseQuestionsActivity.class);
-                            clickIntent.putExtra("userKey", userKey);
-                            clickIntent.putExtra("avatarId", String.valueOf(avatar.getId()));
-                            clickIntent.putExtra("seekerFullName", seekerFullName);
-                            clickIntent.putExtra("seekerEmailId", seekerEmailId);
-                            clickIntent.putExtra("seekerPhone", seekerPhone);
-                            clickIntent.putExtra("legalSex",legalSex[0]);
-                            clickIntent.putExtra("age", agePicker);
-                            startActivity(clickIntent);
-                        }
+                    //move to next screen with the data.
+                    Intent clickIntent = new Intent(BasicQuestionsActivity.this, HouseQuestionsActivity.class);
+                    clickIntent.putExtra("userKey", userKey);
+                    clickIntent.putExtra("avatarId", String.valueOf(avatar.getId()));
+                    clickIntent.putExtra("seekerFullName", seekerFullName);
+                    clickIntent.putExtra("seekerEmailId", seekerEmailId);
+                    clickIntent.putExtra("seekerPhone", seekerPhone);
+                    clickIntent.putExtra("legalSex",legalSex[0]);
+                    clickIntent.putExtra("age", agePicker);
+                    startActivity(clickIntent);
 
-                    }
-
-                }
-                else
-                {
-                    // consider as something else - a screen tap for example
-                }
-                break;
-        }
-        return super.onTouchEvent(event);
+            }
+        });
     }
 }
