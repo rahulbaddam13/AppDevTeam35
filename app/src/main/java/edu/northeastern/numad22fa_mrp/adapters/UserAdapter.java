@@ -66,6 +66,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder>{
             bundle.putString("uid", users.get(position).getUID());
             bundle.putString("userName", username);
             bundle.putString("currentUserName", currentUsername);
+            bundle.putString("source", "button");
 
             Intent clickIntent = new Intent(context, MessageActivity.class);
             clickIntent.putExtras(bundle);
