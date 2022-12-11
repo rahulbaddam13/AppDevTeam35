@@ -67,7 +67,6 @@ public class PropertySeekerActivity extends AppCompatActivity {
     Preference currentUserPreference;
 
     int propPoints = 0;
-    private TextView displayPropPointsTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,9 +82,6 @@ public class PropertySeekerActivity extends AppCompatActivity {
 
         //get the empty message
         emptyView = (ImageView) findViewById(R.id.empty_view);
-
-        displayPropPointsTV = (TextView) findViewById(R.id.displayPropPointsTV);
-
 
         //Set the layout manager for the recycle view.
         // Set Horizontal Layout Manager
@@ -129,7 +125,7 @@ public class PropertySeekerActivity extends AppCompatActivity {
                 Iterator<DataSnapshot> iterator = snapshotIterator.iterator();
                 while (iterator.hasNext()) {
                     DataSnapshot next = (DataSnapshot) iterator.next();
-                    myFavoritePropertiesList.add(next.getValue().toString());
+                    myFavoritePropertiesList.add(next.child("propID").getValue().toString());
                 }
             }
 
@@ -184,15 +180,25 @@ public class PropertySeekerActivity extends AppCompatActivity {
 
                             //preference filtering.
                             //based on - location, min price, max price, type of house, number of bedrooms.
-                            if(currentUserPreference != null) {
-                                if ((currentUserPreference.getLocations().contains(article.getHouseLocation()))) {
+
+                            //if currentpref is null, display everything.
+                            if(currentUserPreference == null){
+                                propertiesList.add(article);
+
+                                //Notify the adapter about the newly added item.
+                                if (propertyRecyclerView != null && propertyRecyclerView.getAdapter() != null)
+                                    propertyRecyclerView.getAdapter().notifyItemInserted(propertyRecyclerView.getAdapter().getItemCount());
+
+                            } else {
+
+                                if (currentUserPreference.getLocations() == null || (currentUserPreference.getLocations().contains(article.getHouseLocation()))) {
 
                                     //price
-                                    if (currentUserPreference.getMinimumPrice() <= Integer.parseInt(article.getRentPerRoom().substring(1))
-                                            && currentUserPreference.getMaximumPrice() >= Integer.parseInt(article.getRentPerRoom().substring(1))) {
+                                    if (currentUserPreference.getMinimumPrice() <= Integer.parseInt(article.getRentPerRoom())
+                                            && currentUserPreference.getMaximumPrice() >= Integer.parseInt(article.getRentPerRoom())) {
 
                                         //type of house (if the property does not have a type specified, still display it)
-                                        if (article.getType() == null || article.getType().isEmpty()
+                                        if (article.getType() == null || currentUserPreference.getTypeOfHouse() == null
                                                 || (currentUserPreference.getTypeOfHouse().contains(article.getType()))) {
 
                                             boolean addProperty = false;
@@ -212,8 +218,7 @@ public class PropertySeekerActivity extends AppCompatActivity {
                                                 if (Integer.parseInt(article.getNoOfRoom()) >= 4) {
                                                     addProperty = true;
                                                 }
-                                            } else if (currentUserPreference.getNumberOfBedrooms() == null
-                                                    || currentUserPreference.getNumberOfBedrooms().isEmpty()) {
+                                            } else {
                                                 addProperty = true;
                                             }
 
@@ -228,15 +233,8 @@ public class PropertySeekerActivity extends AppCompatActivity {
                                         }
 
                                     }
-
                                 }
-                            } else {
-                                //current object was null
-                                propertiesList.add(article);
 
-                                //Notify the adapter about the newly added item.
-                                if (propertyRecyclerView != null && propertyRecyclerView.getAdapter() != null)
-                                    propertyRecyclerView.getAdapter().notifyItemInserted(propertyRecyclerView.getAdapter().getItemCount());
                             }
 
                         }
@@ -302,7 +300,6 @@ public class PropertySeekerActivity extends AppCompatActivity {
                     });
                     propPoints++;
                     databaseReference.child("seekers").child(userKey).child("propPoints").setValue(propPoints);
-                    displayPropPointsTV.setText(propPoints);
 
                 }
                 else if (direction == ItemTouchHelper.UP){
