@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.graphics.Bitmap;
@@ -182,9 +181,9 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
+
     }
 
-    @SuppressLint("ResourceType")
     private void addStickersList(){
         LinearLayout sticker = findViewById(R.id.stickers);
 
@@ -195,7 +194,8 @@ public class MessageActivity extends AppCompatActivity {
 
         imageView1 = view1.findViewById(R.id.stickerImageView);
         imageView1.setImageResource(R.drawable.happy_fox);
-        imageView1.setId(2131165308);
+        int imageView1Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/happy_fox" , null, null);
+        imageView1.setId(imageView1Id);
         sticker.addView(view1);
 
         //sad fox sticker
@@ -203,7 +203,8 @@ public class MessageActivity extends AppCompatActivity {
 
         imageView2 = view2.findViewById(R.id.stickerImageView);
         imageView2.setImageResource(R.drawable.sad_fox);
-        imageView2.setId(2131165368);
+        int imageView2Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/sad_fox" , null, null);
+        imageView2.setId(imageView2Id);
 
         sticker.addView(view2);
 
@@ -212,7 +213,8 @@ public class MessageActivity extends AppCompatActivity {
 
         imageView3 = view3.findViewById(R.id.stickerImageView);
         imageView3.setImageResource(R.drawable.angry_fox);
-        imageView3.setId(2131165271);
+        int imageView3Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/angry_fox" , null, null);
+        imageView3.setId(imageView3Id);
 
         sticker.addView(view3);
 
@@ -221,7 +223,8 @@ public class MessageActivity extends AppCompatActivity {
 
         imageView4 = view4.findViewById(R.id.stickerImageView);
         imageView4.setImageResource(R.drawable.hungry_fox);
-        imageView4.setId(2131165309);
+        int imageView4Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/hungry_fox" , null, null);
+        imageView4.setId(imageView4Id);
 
         sticker.addView(view4);
 
@@ -230,7 +233,8 @@ public class MessageActivity extends AppCompatActivity {
 
         imageView5 = view5.findViewById(R.id.stickerImageView);
         imageView5.setImageResource(R.drawable.love_fox);
-        imageView5.setId(2131165325);
+        int imageView5Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/love_fox" , null, null);
+        imageView5.setId(imageView5Id);
 
         sticker.addView(view5);
 
@@ -239,7 +243,8 @@ public class MessageActivity extends AppCompatActivity {
 
         imageView6 = view6.findViewById(R.id.stickerImageView);
         imageView6.setImageResource(R.drawable.sick_fox);
-        imageView6.setId(2131165369);
+        int imageView6Id = getResources().getIdentifier(getApplicationContext().getPackageName()+":drawable/sick_fox" , null, null);
+        imageView6.setId(imageView6Id);
 
         //setting on click listeners, change background color on click
         imageView1.setOnClickListener(new View.OnClickListener() {
@@ -423,7 +428,7 @@ public class MessageActivity extends AppCompatActivity {
                 break;
         }
 
-        /*NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "n")
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "n")
                 .setContentTitle("MRP")
                 .setSmallIcon(R.mipmap.ic_launcher_35_round)
                 .setContentText(sender + " Sent You:")
@@ -433,21 +438,13 @@ public class MessageActivity extends AppCompatActivity {
                         .bigLargeIcon(null));
 
         NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this);
-        managerCompat.notify(2, builder.build());*/
+        managerCompat.notify(2, builder.build());
     }
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putParcelableArrayList("chatMessageList",
-                (ArrayList<? extends Parcelable>) chatMessageList);
-    }
-    @Override
-    protected void onRestoreInstanceState(Bundle state) {
-        super.onRestoreInstanceState(state);
-
-        // Retrieve list state and list/item positions
-        state.putParcelableArrayList("chatMessageList",
                 (ArrayList<? extends Parcelable>) chatMessageList);
     }
 
@@ -459,28 +456,23 @@ public class MessageActivity extends AppCompatActivity {
                     String.valueOf(snapshot.child("timestamp").getValue()),
                     String.valueOf(snapshot.child("sender").getValue()),
                     String.valueOf(snapshot.child("receiver").getValue()));
-            if(!chatMessageList.contains(chatMessage)) {
-                chatMessageList.add(chatMessage);
-
-                if(messageRecyclerView != null && messageRecyclerView.getAdapter() != null)
-                    messageRecyclerView.getAdapter().notifyItemInserted(messageRecyclerView.getAdapter().getItemCount());
-
+            chatMessageList.add(chatMessage);
+            adapter.notifyDataSetChanged();
         /*String sender = snapshot.child("sender").getValue(String.class);
         int image_id = snapshot.child("imageID").getValue(int.class);
         String receive = snapshot.child("receiver").getValue(String.class);*/
 
-                String chatSender = chatMessage.getSender();
-                int image = (int) chatMessage.getImageID();
-                String receive = chatMessage.getReceiver();
-                String key = snapshot.getKey();
+            String chatSender = chatMessage.getSender();
+            int image = (int) chatMessage.getImageID();
+            String receive = chatMessage.getReceiver();
+            String key = snapshot.getKey();
 
-                String current = bundle.getString("currentUserName");
-                String currentStatus = snapshot.child("readStatus").getValue(String.class);
+            String current = bundle.getString("currentUserName");
+            String currentStatus = snapshot.child("readStatus").getValue(String.class);
 
-                if (receive.equalsIgnoreCase(current) && currentStatus.equalsIgnoreCase("unread")) {
-                    sendNotification(image, chatSender);
-                    messages.child(key).child("readStatus").setValue("read");
-                }
+            if (receive.equalsIgnoreCase(current) && currentStatus.equalsIgnoreCase("unread")) {
+                sendNotification(image, chatSender);
+                messages.child(key).child("readStatus").setValue("read");
             }
         }
     }
