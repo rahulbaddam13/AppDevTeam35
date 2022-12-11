@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_two"
     tools:context=".nextrent.SeekerProfileActivity">
 
 
@@ -66,8 +67,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Location"
+                        android:textStyle="bold"
                         android:textColor="@color/headings"
-                        android:textSize="13sp" />
+                        android:textSize="15sp" />
 
 
                     <com.google.android.material.chip.ChipGroup
@@ -105,7 +107,8 @@
                         android:layout_height="wrap_content"
                         android:text="Type of house"
                         android:textColor="@color/headings"
-                        android:textSize="13sp" />
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
 
                     <RadioGroup
                         android:id="@+id/profileTypeOfHouseRG"
@@ -126,6 +129,7 @@
                             <CheckBox
                                 android:id="@+id/profile_apartment_chkbox"
                                 android:layout_width="wrap_content"
+                                android:textColor="@color/black"
                                 android:layout_height="wrap_content"
                                 android:text="Apartment" />
 
@@ -133,6 +137,7 @@
                             <CheckBox
                                 android:id="@+id/profile_condo_chkbox"
                                 android:layout_width="wrap_content"
+                                android:textColor="@color/black"
                                 android:layout_height="wrap_content"
                                 android:text="Condo" />
                         </RadioGroup>
@@ -144,12 +149,14 @@
                             <CheckBox
                                 android:id="@+id/profile_townhouse_chkbox"
                                 android:layout_width="wrap_content"
+                                android:textColor="@color/black"
                                 android:layout_height="wrap_content"
                                 android:text="Townhouse" />
 
                             <CheckBox
                                 android:id="@+id/profile_duplex_chkbox"
                                 android:layout_width="wrap_content"
+                                android:textColor="@color/black"
                                 android:layout_height="wrap_content"
                                 android:text="Duplex" />
 
@@ -175,7 +182,8 @@
                         android:layout_height="wrap_content"
                         android:text="Number of bedrooms"
                         android:textColor="@color/headings"
-                        android:textSize="13sp" />
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
 
                     <RadioGroup
                         android:id="@+id/profileBedroomRadioGroup"
@@ -193,18 +201,21 @@
                             android:id="@+id/profileOneBedroom"
                             android:layout_width="60dp"
                             android:layout_height="52dp"
+                            android:textColor="@color/black"
                             android:text="1" />
 
                         <RadioButton
                             android:id="@+id/profileTwoToThreeBedrooms"
                             android:layout_width="85dp"
                             android:layout_height="match_parent"
+                            android:textColor="@color/black"
                             android:text="2 - 3" />
 
                         <RadioButton
                             android:id="@+id/profileMoreBedrooms"
                             android:layout_width="69dp"
                             android:layout_height="52dp"
+                            android:textColor="@color/black"
                             android:text="> 4" />
 
                     </RadioGroup>
@@ -228,7 +239,8 @@
                         android:layout_height="wrap_content"
                         android:text="Number of bedrooms"
                         android:textColor="@color/headings"
-                        android:textSize="13sp" />
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
 
                     <RadioGroup
                         android:id="@+id/profileBathroomRadioGroup"
@@ -247,18 +259,21 @@
                             android:id="@+id/profileOneBathroom"
                             android:layout_width="63dp"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:text="1" />
 
                         <RadioButton
                             android:id="@+id/profileTwoToThreeBathrooms"
                             android:layout_width="76dp"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:text="2 - 3" />
 
                         <RadioButton
                             android:id="@+id/profileMoreBathrooms"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:text="> 4" />
 
 
@@ -283,7 +298,8 @@
                         android:layout_height="wrap_content"
                         android:text="Price Range"
                         android:textColor="@color/headings"
-                        android:textSize="13sp" />
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
 
                     <Spinner
                         android:id="@+id/profileMinimumPriceSpinner"
@@ -331,7 +347,8 @@
                         android:layout_height="wrap_content"
                         android:text="Email"
                         android:textColor="@color/headings"
-                        android:textSize="13sp" />
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
 
                     <EditText
                         android:id="@+id/profileEmailET"
@@ -360,8 +377,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Phone"
+                        android:textStyle="bold"
                         android:textColor="@color/headings"
-                        android:textSize="13sp" />
+                        android:textSize="15sp" />
 
                     <EditText
                         android:id="@+id/profilePhoneET"

@@ -90,95 +90,95 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
 
 
 
-        holder.more.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                List<String> groups = new ArrayList<String>();
-                boolean[] checkedItems = new boolean[groups.size()];
-                HashMap<String, String> groupIds = new HashMap<>();
-
-                FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-                assert firebaseUser != null;
-                String userId = firebaseUser.getUid();
-
-                DatabaseReference db = FirebaseDatabase.getInstance().getReference("Groups");
-                db.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        groups.clear();
-                        for (DataSnapshot ds: snapshot.getChildren()){
-                            if(ds.child("members").child(userId).exists()) {
-                                String gName = ds.child("title").getValue().toString();
-                                String gId = ds.child("groupId").getValue().toString();
-                                groupIds.put(gName, gId);
-                                groups.add(gName);
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-                CharSequence[] chars = groups.toArray(new CharSequence[groups.size()]);
-
-
-                builder.setTitle("Add Property to Group");
-                builder.setMultiChoiceItems(chars, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i, boolean b) {
-                        checkedItems[i] = b;
-                        String current = groups.get(i);
-                    }
-                });
-
-                builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int which) {
-                        for (int i=0; i<checkedItems.length; i++){
-                            boolean checked = checkedItems[i];
-                            HashMap<String, String> houses = new HashMap<>();
-                            houses.put("houseId",prop.getHouseID());
-                            houses.put("ownerId", prop.getUserID());
-                            houses.put("numLikes", "0");
-                            houses.put("numComments", "0");
-                            if (checked) {
-                                String groupID = groupIds.get(groups.get(i));
-                                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("groups");
-                                ref.child(groupID).child("sharedHouses").addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                        for (DataSnapshot ds: snapshot.getChildren()){
-                                            if (ds.child(prop.getHouseID()).exists()){
-                                                Toast.makeText(context, "Property already exists in group", Toast.LENGTH_SHORT).show();
-                                            } else {
-                                                ref.child(groupID).child("sharedHouses").child(prop.getHouseID())
-                                                        .setValue(houses).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                            @Override
-                                                            public void onSuccess(Void unused) {
-                                                            }
-                                                        });
-                                            }
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-
-                                    }
-                                });
-
-                            }
-
-                        }
-
-                    }
-                });
-            }
-        });
+//        holder.more.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+//                List<String> groups = new ArrayList<String>();
+//                boolean[] checkedItems = new boolean[groups.size()];
+//                HashMap<String, String> groupIds = new HashMap<>();
+//
+//                FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+//                assert firebaseUser != null;
+//                String userId = firebaseUser.getUid();
+//
+//                DatabaseReference db = FirebaseDatabase.getInstance().getReference("Groups");
+//                db.addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        groups.clear();
+//                        for (DataSnapshot ds: snapshot.getChildren()){
+//                            if(ds.child("members").child(userId).exists()) {
+//                                String gName = ds.child("title").getValue().toString();
+//                                String gId = ds.child("groupId").getValue().toString();
+//                                groupIds.put(gName, gId);
+//                                groups.add(gName);
+//                            }
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                });
+//
+//                CharSequence[] chars = groups.toArray(new CharSequence[groups.size()]);
+//
+//
+//                builder.setTitle("Add Property to Group");
+//                builder.setMultiChoiceItems(chars, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i, boolean b) {
+//                        checkedItems[i] = b;
+//                        String current = groups.get(i);
+//                    }
+//                });
+//
+//                builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int which) {
+//                        for (int i=0; i<checkedItems.length; i++){
+//                            boolean checked = checkedItems[i];
+//                            HashMap<String, String> houses = new HashMap<>();
+//                            houses.put("houseId",prop.getHouseID());
+//                            houses.put("ownerId", prop.getUserID());
+//                            houses.put("numLikes", "0");
+//                            houses.put("numComments", "0");
+//                            if (checked) {
+//                                String groupID = groupIds.get(groups.get(i));
+//                                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("groups");
+//                                ref.child(groupID).child("sharedHouses").addValueEventListener(new ValueEventListener() {
+//                                    @Override
+//                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                                        for (DataSnapshot ds: snapshot.getChildren()){
+//                                            if (ds.child(prop.getHouseID()).exists()){
+//                                                Toast.makeText(context, "Property already exists in group", Toast.LENGTH_SHORT).show();
+//                                            } else {
+//                                                ref.child(groupID).child("sharedHouses").child(prop.getHouseID())
+//                                                        .setValue(houses).addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                                            @Override
+//                                                            public void onSuccess(Void unused) {
+//                                                            }
+//                                                        });
+//                                            }
+//                                        }
+//                                    }
+//
+//                                    @Override
+//                                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                                    }
+//                                });
+//
+//                            }
+//
+//                        }
+//
+//                    }
+//                });
+//            }
+//        });
 
 
 
@@ -218,8 +218,8 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
                         holder.beds.setText(room);
                         holder.housetype.setText(type);
                         holder.address.setText(address);
-                        holder.state.setText(state);
-                        holder.country.setText(country);
+//                        holder.state.setText(state);
+//                        holder.country.setText(country);
                         holder.rent.setText(rent);
                         Glide.with(context).load(image).into(holder.housePic);
 
@@ -252,9 +252,9 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
             address = itemView.findViewById(R.id.favAddress);
             housetype = itemView.findViewById(R.id.houseTypeTv);
             beds = itemView.findViewById(R.id.bedTv);
-            more = itemView.findViewById(R.id.moreBtn);
-            state = itemView.findViewById(R.id.favCountryTv);
-            country = itemView.findViewById(R.id.favStateTV);
+//            more = itemView.findViewById(R.id.moreBtn);
+//            state = itemView.findViewById(R.id.favCountryTv);
+//            country = itemView.findViewById(R.id.favStateTV);
 
 
         }

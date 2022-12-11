@@ -17,6 +17,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/gradient_two"
             android:orientation="vertical">
 
             <LinearLayout
@@ -52,19 +53,24 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:ellipsize="end"
+                            android:fontFamily="@font/marcellussc"
                             android:padding="5dp"
-                            android:textStyle="italic"
-                            android:text="Rent in $:"
-                            android:textSize="15dp" />
+                            android:text="Rent:"
+                            android:textColor="@color/black"
+                            android:textSize="17dp"
+                            android:textStyle="bold" />
                         <TextView
                             android:id="@+id/rentHeading"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:ellipsize="end"
+                            android:fontFamily="@font/marcellussc"
                             android:padding="5dp"
                             android:text="2000"
-                            android:textStyle="bold"
-                            android:textSize="15dp" />
+                            android:textColor="@color/black"
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
                         <View
                             android:layout_width="0dp"
                             android:layout_height="0dp"
@@ -94,22 +100,24 @@
                             android:id="@+id/favRooms"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:ellipsize="end"
+                            android:fontFamily="@font/marcellussc"
                             android:padding="5dp"
-                            android:textStyle="italic"
-                            android:text="Rooms:"
-                            android:textSize="15dp" />
+                            android:text="Rooms :"
+                            android:textColor="@color/black"
+                            android:textSize="17dp"
+                            android:textStyle="bold" />
                         <TextView
                             android:id="@+id/bedTv"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:ellipsize="end"
+                            android:fontFamily="@font/marcellussc"
                             android:padding="5dp"
                             android:text="2"
-                            android:textStyle="bold"
-                            android:textSize="15dp" />
+                            android:textColor="@color/black"
+                            android:textSize="16dp"
+                            android:textStyle="bold"/>
 
                     </LinearLayout>
 
@@ -123,74 +131,27 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:ellipsize="end"
+                            android:fontFamily="@font/marcellussc"
                             android:padding="5dp"
-                            android:textStyle="italic"
-                            android:text="Address : "
-                            android:textSize="15dp" />
+                            android:text="City: "
+                            android:textColor="@color/black"
+                            android:textSize="17dp"
+                            android:textStyle="bold" />
                         <TextView
                             android:id="@+id/favAddress"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:ellipsize="end"
+                            android:fontFamily="@font/marcellussc"
                             android:padding="5dp"
-                            android:textStyle="bold"
                             android:text="Boston"
-                            android:textSize="15dp" />
+                            android:textColor="@color/black"
+                            android:textSize="16dp"
+                            android:textStyle="bold"/>
 
                     </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:ellipsize="end"
-                            android:padding="5dp"
-                            android:textStyle="italic"
-                            android:text="State : "
-                            android:textSize="15dp" />
 
-                        <TextView
-                            android:id="@+id/favStateTV"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:ellipsize="end"
-                            android:padding="5dp"
-                            android:textStyle="bold"
-                            android:text="MA"
-                            android:textSize="15dp" />
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:ellipsize="end"
-                            android:padding="5dp"
-                            android:textStyle="italic"
-                            android:text="Country : "
-                            android:textSize="15dp" />
-
-                        <TextView
-                            android:id="@+id/favCountryTv"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:ellipsize="end"
-                            android:padding="5dp"
-                            android:textStyle="bold"
-                            android:text="USA"
-                            android:textSize="15dp" />
-
-                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -201,10 +162,12 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:ellipsize="end"
+                            android:fontFamily="@font/marcellussc"
                             android:padding="5dp"
-                            android:textStyle="italic"
                             android:text="Type : "
-                            android:textSize="15dp" />
+                            android:textColor="@color/black"
+                            android:textSize="17dp"
+                            android:textStyle="bold"/>
 
                         <TextView
                             android:id="@+id/houseTypeTv"
@@ -212,10 +175,12 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:ellipsize="end"
+                            android:fontFamily="@font/marcellussc"
                             android:padding="5dp"
-                            android:textStyle="bold"
                             android:text="Condo"
-                            android:textSize="15dp" />
+                            android:textColor="@color/black"
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -247,13 +212,13 @@
 
                 </LinearLayout>
 
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_more"
-                    android:padding="10dp"
-                    android:id="@+id/moreBtn"
-                    android:background="@android:color/transparent"/>
+<!--                <ImageButton-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:src="@drawable/ic_more"-->
+<!--                    android:padding="10dp"-->
+<!--                    android:id="@+id/moreBtn"-->
+<!--                    android:background="@android:color/transparent"/>-->
 
 
 
