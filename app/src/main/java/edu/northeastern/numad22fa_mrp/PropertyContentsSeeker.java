@@ -68,7 +68,7 @@ public class PropertyContentsSeeker extends AppCompatActivity {
 
 
 //        reference = FirebaseDatabase.getInstance().getReference().child(OwnerRegister.HOUSES).child(userId).child(houseId);
-        iv_houseImage = findViewById(R.id.house_img_s);
+        iv_houseImage = findViewById(R.id.house_image_s);
 
         houseDesc = findViewById(R.id.houseDescription_s);
         roomsTv = findViewById(R.id.rooms_tv_s);
