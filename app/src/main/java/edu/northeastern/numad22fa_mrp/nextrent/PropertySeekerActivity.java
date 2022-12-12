@@ -110,6 +110,7 @@ public class PropertySeekerActivity extends AppCompatActivity {
 
         //get the user ID
         bundle = getIntent().getExtras();
+        if(bundle != null)
         userKey = bundle.getString("userKey"); // this isue
 
         // instance of the Firebase database.
