@@ -1,3 +1,11 @@
+// References : https://developer.android.com/develop/ui/views/animations/transitions/start-activity
+//https://www.youtube.com/watch?v=DkSlk03-opA
+//https://mikescamell.com/shared-element-transitions-part-4-recyclerview/
+//https://stackoverflow.com/questions/27438145/out-of-memory-error-java-heap-memory-on-android-studio
+//https://stackoverflow.com/questions/11188398/how-to-change-the-spinner-background-in-android
+//https://projectgurukul.org/android-project-house-rental-management-app/
+// https://www.youtube.com/watch?v=eAooM-F1X9c&list=PLlxmoA0rQ-Lzd9-NUrP5Wi18OMi4R-zs_&index=28
+
 package edu.northeastern.numad22fa_mrp;
 
 import android.content.Intent;

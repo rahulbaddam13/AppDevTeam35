@@ -1,3 +1,5 @@
+//Reference : https://developer.android.com/training/basics/intents/sending
+//https://stackoverflow.com/questions/2734749/opening-an-email-client-on-clicking-a-button
 package edu.northeastern.numad22fa_mrp;
 
 import androidx.annotation.NonNull;
