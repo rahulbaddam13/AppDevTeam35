@@ -274,12 +274,6 @@ public class SeekerProfileActivity extends AppCompatActivity {
                         startActivity(clickIntent2);
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.page_chat:
-                        Intent clickIntent3 = new Intent(SeekerProfileActivity.this, ChatActivity.class);
-                        clickIntent3.putExtra("userKey", userKey);
-                        startActivity(clickIntent3);
-                        overridePendingTransition(0,0);
-                        return true;
                     case R.id.page_profile:
                         return true;
                 }

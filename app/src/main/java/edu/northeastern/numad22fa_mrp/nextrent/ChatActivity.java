@@ -78,7 +78,6 @@ public class ChatActivity extends AppCompatActivity {
         //Bottom navigation bar.
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         //Choose home by default.
-        bottomNavigationView.setSelectedItemId(R.id.page_chat);
         // Perform item selected listener
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -95,8 +94,6 @@ public class ChatActivity extends AppCompatActivity {
                         clickIntent2.putExtra("userKey", userKey);
                         startActivity(clickIntent2);
                         overridePendingTransition(0,0);
-                        return true;
-                    case R.id.page_chat:
                         return true;
                     case R.id.page_profile:
                         Intent clickIntent3 = new Intent(ChatActivity.this, SeekerProfileActivity.class);

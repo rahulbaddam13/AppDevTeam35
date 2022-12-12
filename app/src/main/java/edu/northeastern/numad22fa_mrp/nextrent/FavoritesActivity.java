@@ -83,12 +83,6 @@ public class FavoritesActivity extends AppCompatActivity {
                         return true;
                     case R.id.page_favorites:
                         return true;
-                    case R.id.page_chat:
-                        Intent chatIntent = new Intent(getApplicationContext(),ChatActivity.class);
-                        chatIntent.putExtra("userKey", userKey);
-                        startActivity(chatIntent);
-                        overridePendingTransition(0,0);
-                        return true;
                     case R.id.page_profile:
                         Intent clickIntent1 = new Intent(FavoritesActivity.this, SeekerProfileActivity.class);
                         clickIntent1.putExtra("userKey", userKey);
