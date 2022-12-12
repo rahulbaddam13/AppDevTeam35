@@ -9,6 +9,7 @@ import edu.northeastern.numad22fa_mrp.R;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -36,9 +37,11 @@ public class GroupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group);
 
-        groupId = getIntent().getExtras().getString("groupID");
+        groupId = getIntent().getExtras().getString("groupId");
 
         groupName = findViewById(R.id.dispGroupName);
+
+        shareProps = new ArrayList<>();
 
         rv = findViewById(R.id.sharedPropRV);
         adapter = new SharedPropAdapter(GroupActivity.this, shareProps, groupId);
@@ -84,8 +87,9 @@ public class GroupActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         shareProps.clear();
+                        Log.d("", snapshot.toString());
                         for (DataSnapshot ds: snapshot.getChildren()){
-                            String house = ds.child("houseID").getValue().toString();
+                            String house = ds.child("houseId").getValue().toString();
                             String owner = ds.child("ownerId").getValue().toString();
                             String likes = ds.child("numLikes").getValue().toString();
                             String comments = ds.child("numComments").getValue().toString();

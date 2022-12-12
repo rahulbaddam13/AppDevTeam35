@@ -2,6 +2,7 @@ package edu.northeastern.numad22fa_mrp.nextrent;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ public class SharedPropAdapter extends RecyclerView.Adapter<SharedPropAdapter.Sh
     Boolean mProcessLike = false;
     DatabaseReference sharedHouseRef;
     String userId;
+    String houseId;
 
     public SharedPropAdapter(Context context, ArrayList<SharedProperty> shared, String groupId) {
         this.context = context;
@@ -65,15 +67,15 @@ public class SharedPropAdapter extends RecyclerView.Adapter<SharedPropAdapter.Sh
             public void onClick(View view) {
                 int pLikes = Integer.parseInt(sharedProp.getLikes());
                 mProcessLike = true;
-                String houseId = sharedProp.getHouseId();
+                houseId = sharedProp.getHouseId();
 
                 FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
                 assert firebaseUser != null;
                 userId = firebaseUser.getUid();
 
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference("groups");
-                sharedHouseRef = ref.child(groupId).child("sharedHouses").child(houseId);
-                        sharedHouseRef.child("likedUsers")
+                sharedHouseRef = ref.child(groupId).child("sharedHouses");
+                        sharedHouseRef.child(houseId).child("likedUsers")
                                 .addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -114,18 +116,39 @@ public class SharedPropAdapter extends RecyclerView.Adapter<SharedPropAdapter.Sh
     }
 
     private void setLikes(SharedPropHolder holder) {
-        sharedHouseRef.child("likedUsers").addValueEventListener(new ValueEventListener() {
+        DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("groups");
+        ref2.child(groupId).child("sharedHouses");
+        ref2.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.child(userId).exists()) {
-                    holder.like.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like_black, 0, 0, 0);
-                    holder.like.setText("Liked");
+                for(DataSnapshot snap: snapshot.getChildren()){
+                    if(snap.hasChild("likedUser")) {
+                        ref2.child(houseId).child("likedUsers").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.child(userId).exists()) {
+                                    holder.like.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like_black, 0, 0, 0);
+                                    holder.like.setText("Liked");
 
-                } else {
-                    holder.like.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like, 0, 0, 0);
-                    holder.like.setText("Like");
+                                } else {
+                                    holder.like.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like, 0, 0, 0);
+                                    holder.like.setText("Like");
 
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+                    } else {
+                        holder.like.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like, 0, 0, 0);
+                        holder.like.setText("Like");
+                    }
                 }
+
             }
 
             @Override
@@ -139,6 +162,9 @@ public class SharedPropAdapter extends RecyclerView.Adapter<SharedPropAdapter.Sh
     private void loadPropertyDetails(SharedProperty sharedProp, SharedPropHolder holder) {
         String owner = sharedProp.getOwnerId();
         String house = sharedProp.getHouseId();
+        Log.d("", owner);
+        Log.d("", house);
+
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("houses");
         reference.child(owner).child(house)

@@ -59,85 +59,19 @@ public class ChatActivity extends AppCompatActivity {
         groupsRecyclerView.setLayoutManager(layoutManager);
         groupsRecyclerView.setAdapter(adapter);
 
+        bundle = getIntent().getExtras();
+        userKey = bundle.getString("userKey");
+
         loadGroups();
 
         button = findViewById(R.id.addGroup);
-        button.setOnClickListener((view) -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(ChatActivity.this);
-            builder.setTitle("Create New Group");
-
-            bundle = getIntent().getExtras();
-            userKey = bundle.getString("userKey");
-
-            View groupDialog = getLayoutInflater().inflate(R.layout.add_group_dialog, null);
-
-            EditText eName = groupDialog.findViewById(R.id.addGroupName);
-            EditText eDesc = groupDialog.findViewById(R.id.addGroupDescription);
-            String gName = eName.getText().toString().trim();
-            String gDesc = eDesc.getText().toString().trim();
-            String time = String.valueOf(System.currentTimeMillis());
-
-
-
-            builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    if (TextUtils.isEmpty(gName)){
-                        Toast.makeText(ChatActivity.this,
-                                "Please enter group title...",
-                                Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-
-                    Group newGroup = new Group(time, gName, gDesc);
-                     if(groupList.contains(newGroup)) {
-                         Snackbar.make(view, "Not added: Duplicate entry", Snackbar.LENGTH_LONG)
-                                 .setAction("Action",null).show();
-                     }
-                     else {
-                         groupList.add(newGroup);
-                         HashMap<String, String> groupMap = new HashMap<>();
-                         groupMap.put("groupId", time);
-                         groupMap.put("title", gName);
-                         groupMap.put("description", gDesc);
-
-                         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("groups");
-                         ref.child(time).setValue(groupMap)
-                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                     @Override
-                                     public void onSuccess(Void unused) {
-                                         HashMap<String, String> memberMap = new HashMap<>();
-                                         memberMap.put("uid", userKey);
-
-                                         DatabaseReference memberRef = FirebaseDatabase.getInstance()
-                                                 .getReference("groups");
-                                         memberRef.child(time).child("members").child(userKey)
-                                                 .setValue(memberMap)
-                                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                     @Override
-                                                     public void onSuccess(Void unused) {
-
-                                                     }
-                                                 });
-
-                                     }
-                                          });
-                         adapter.notifyItemInserted(groupList.size()-1);
-                         Snackbar.make(view, "Not added: Duplicate entry", Snackbar.LENGTH_LONG)
-                                 .setAction("Action",null).show();
-                     }
-
-                }
-            });
-
-            builder.setNegativeButton("Cancel", (dialog, i) -> {
-                Snackbar.make(view, "Group was not added", Snackbar.LENGTH_LONG)
-                        .setAction("Action",null).show();
-            });
-
-            builder.setView(groupDialog);
-            AlertDialog dialog = builder.create();
-            dialog.show();
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent groups = new Intent(ChatActivity.this, GroupCreateActivity.class);
+                groups.putExtra("userKey", userKey);
+                startActivity(groups);
+            }
         });
 
         //Bottom navigation bar.
@@ -183,7 +117,11 @@ public class ChatActivity extends AppCompatActivity {
                 groupList.clear();
                 for (DataSnapshot ds: snapshot.getChildren()){
                     if(ds.child("members").child(userKey).exists()) {
-                        Group g = ds.getValue(Group.class);
+                        String name = ds.child("title").getValue().toString();
+                        String description = ds.child("description").getValue().toString();
+                        String groupID = ds.child("groupId").getValue().toString();
+
+                        Group g = new Group(groupID, name, description);
                         groupList.add(g);
                         adapter.notifyItemInserted(groupList.size() - 1);
                     }
