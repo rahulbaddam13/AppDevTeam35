@@ -94,7 +94,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
 
 
 
-        holder.more.setOnClickListener(new View.OnClickListener() {
+        /*holder.more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, PickGroupActivity.class);
@@ -103,7 +103,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
                 intent.putExtra("userKey",userKey);
                 context.startActivity(intent);
             }
-        });
+        });*/
 
 
 
@@ -176,7 +176,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
             address = itemView.findViewById(R.id.favAddress);
             housetype = itemView.findViewById(R.id.houseTypeTv);
             beds = itemView.findViewById(R.id.bedTv);
-            more = itemView.findViewById(R.id.moreBtn);
+            //more = itemView.findViewById(R.id.moreBtn);
 
 
         }
