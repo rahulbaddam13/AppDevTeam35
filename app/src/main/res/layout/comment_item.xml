@@ -21,7 +21,6 @@
                 android:layout_height="wrap_content"
                 android:text="Username"
                 android:textSize="16sp"
-                android:textColor="@color/black"
                 android:textStyle="bold"/>
 
         </LinearLayout>
@@ -36,7 +35,6 @@
                 android:id="@+id/commentMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:text="This is actual comment" />
 
         </LinearLayout>

@@ -33,13 +33,14 @@ public class SharedPropAdapter extends RecyclerView.Adapter<SharedPropAdapter.Sh
     String groupId;
     Boolean mProcessLike = false;
     DatabaseReference sharedHouseRef;
-    String userId;
     String houseId;
+    String userId;
 
-    public SharedPropAdapter(Context context, ArrayList<SharedProperty> shared, String groupId) {
+    public SharedPropAdapter(Context context, ArrayList<SharedProperty> shared, String groupId, String userID) {
         this.context = context;
         this.shared = shared;
         this.groupId = groupId;
+        this.userId = userID;
     }
 
     @NonNull
@@ -55,52 +56,47 @@ public class SharedPropAdapter extends RecyclerView.Adapter<SharedPropAdapter.Sh
         SharedProperty sharedProp = shared.get(position);
         loadPropertyDetails(sharedProp, holder);
 
-        String pLikes = sharedProp.getLikes();
+        /*String pLikes = sharedProp.getLikes();
         holder.likes.setText(pLikes + " Likes");
-        setLikes(holder);
         String pComments = sharedProp.getComments();
-        holder.comments.setText(pComments + " Comments");
+        holder.comments.setText(pComments + " Comments");*/
 
 
-        holder.like.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int pLikes = Integer.parseInt(sharedProp.getLikes());
-                mProcessLike = true;
-                houseId = sharedProp.getHouseId();
-
-                FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-                assert firebaseUser != null;
-                userId = firebaseUser.getUid();
-
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("groups");
-                sharedHouseRef = ref.child(groupId).child("sharedHouses");
-                        sharedHouseRef.child(houseId).child("likedUsers")
-                                .addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                if(mProcessLike) {
-                                    if (snapshot.child(userId).exists()){
-                                        sharedHouseRef.child("numLikes").setValue("" + (pLikes - 1));
-                                        sharedHouseRef.child("likedUsers").child(userId).removeValue();
-                                        mProcessLike = false;
-                                    } else {
-                                        sharedHouseRef.child("numLikes").setValue("" + (pLikes + 1));
-                                        sharedHouseRef.child("likedUsers").child(userId).setValue("Liked");
-                                        mProcessLike = false;
-
-                                    }
-                                }
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-
-                            }
-                        });
-
-            }
-        });
+//        holder.like.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                int pLikes = Integer.parseInt(sharedProp.getLikes());
+//                mProcessLike = true;
+//                houseId = sharedProp.getHouseId();
+//
+//                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("groups");
+//                sharedHouseRef = ref.child(groupId).child("sharedHouses");
+//                        sharedHouseRef.child(houseId).child("likedUsers")
+//                                .addValueEventListener(new ValueEventListener() {
+//                            @Override
+//                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                                if(mProcessLike) {
+//                                    if (snapshot.child(userId).exists()){
+//                                        sharedHouseRef.child(houseId).child("numLikes").setValue("" + (pLikes - 1));
+//                                        sharedHouseRef.child(houseId).child("likedUsers").child(userId).removeValue();
+//                                        mProcessLike = false;
+//                                    } else {
+//                                        sharedHouseRef.child(houseId).child("numLikes").setValue("" + (pLikes + 1));
+//                                        sharedHouseRef.child(houseId).child("likedUsers").child(userId).setValue("Liked");
+//                                        mProcessLike = false;
+//
+//                                    }
+//                                }
+//                            }
+//
+//                            @Override
+//                            public void onCancelled(@NonNull DatabaseError error) {
+//
+//                            }
+//                        });
+//
+//            }
+//        });
 
        holder.itemView.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -109,55 +105,13 @@ public class SharedPropAdapter extends RecyclerView.Adapter<SharedPropAdapter.Sh
                intent.putExtra("houseId", sharedProp.getHouseId());
                intent.putExtra("owner", sharedProp.getOwnerId());
                intent.putExtra("group", groupId);
+               intent.putExtra("userKey", userId);
                context.startActivity(intent);
            }
        });
 
     }
 
-    private void setLikes(SharedPropHolder holder) {
-        DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("groups");
-        ref2.child(groupId).child("sharedHouses");
-        ref2.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot snap: snapshot.getChildren()){
-                    if(snap.hasChild("likedUser")) {
-                        ref2.child(houseId).child("likedUsers").addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                if (snapshot.child(userId).exists()) {
-                                    holder.like.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like_black, 0, 0, 0);
-                                    holder.like.setText("Liked");
-
-                                } else {
-                                    holder.like.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like, 0, 0, 0);
-                                    holder.like.setText("Like");
-
-                                }
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-
-                            }
-                        });
-
-                    } else {
-                        holder.like.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like, 0, 0, 0);
-                        holder.like.setText("Like");
-                    }
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-    }
 
     private void loadPropertyDetails(SharedProperty sharedProp, SharedPropHolder holder) {
         String owner = sharedProp.getOwnerId();
@@ -172,7 +126,7 @@ public class SharedPropAdapter extends RecyclerView.Adapter<SharedPropAdapter.Sh
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         String rent = snapshot.child("rentPerRoom").getValue().toString();
-                        String address = snapshot.child("houseLocation").getValue().toString();
+                        String address = snapshot.child("address").getValue().toString();
                         String state = snapshot.child("state").getValue().toString();
                         String country = snapshot.child("country").getValue().toString();
                         String image = snapshot.child("houseImage").getValue().toString();
@@ -218,9 +172,9 @@ public class SharedPropAdapter extends RecyclerView.Adapter<SharedPropAdapter.Sh
             this.houseType = itemView.findViewById(R.id.sharedTypeTv);
             this.beds = itemView.findViewById(R.id.sharedRoomsTV);
             this.housePic = itemView.findViewById(R.id.sharedImageview);
-            this.likes = itemView.findViewById(R.id.likesTv);
+           /* this.likes = itemView.findViewById(R.id.likesTv);
             this.comments = itemView.findViewById(R.id.shareCommentsTV);
-            this.like = itemView.findViewById(R.id.likeBtn);
+            this.like = itemView.findViewById(R.id.likeBtn);*/
         }
     }
 }

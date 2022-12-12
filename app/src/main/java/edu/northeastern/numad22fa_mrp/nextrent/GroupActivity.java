@@ -27,6 +27,7 @@ public class GroupActivity extends AppCompatActivity {
     ImageButton addMember;
     TextView groupName;
     String groupId;
+    String userId;
 
     ArrayList<SharedProperty> shareProps;
     SharedPropAdapter adapter;
@@ -38,13 +39,15 @@ public class GroupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_group);
 
         groupId = getIntent().getExtras().getString("groupId");
+        Log.d("", groupId);
+        userId = getIntent().getExtras().getString("userKey");
 
         groupName = findViewById(R.id.dispGroupName);
 
         shareProps = new ArrayList<>();
 
         rv = findViewById(R.id.sharedPropRV);
-        adapter = new SharedPropAdapter(GroupActivity.this, shareProps, groupId);
+        adapter = new SharedPropAdapter(GroupActivity.this, shareProps, groupId, userId);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         rv.setLayoutManager(layoutManager);
         rv.setAdapter(adapter);

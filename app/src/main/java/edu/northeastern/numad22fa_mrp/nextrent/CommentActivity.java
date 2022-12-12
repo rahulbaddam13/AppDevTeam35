@@ -6,9 +6,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,10 +30,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
+import java.net.CookieManager;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
+import edu.northeastern.numad22fa_mrp.ContactOwner;
+import edu.northeastern.numad22fa_mrp.PropertyContentsSeeker;
 import edu.northeastern.numad22fa_mrp.R;
+import edu.northeastern.numad22fa_mrp.ViewLocation;
 
 public class CommentActivity extends AppCompatActivity {
     ImageView housePic;
@@ -38,7 +47,6 @@ public class CommentActivity extends AppCompatActivity {
     Button like, owner, location;
 
     EditText commentsEt;
-    ImageButton sendBtn;
 
     String house;
     String ownerId;
@@ -46,8 +54,13 @@ public class CommentActivity extends AppCompatActivity {
     String userId;
     String userName;
     String likesInfo;
+    String roomInfo, rentInfo;
 
-    RecyclerView rv;
+    String lat, longi;
+    Double latitude, longitude;
+
+    String descriptionInfo, addressInfo, locationInfo;
+
     private ArrayList<Comment> commentList;
     private AdapterComment adapter;
 
@@ -66,6 +79,7 @@ public class CommentActivity extends AppCompatActivity {
         house = intent.getStringExtra("houseId");
         ownerId = intent.getStringExtra("owner");
         group = intent.getStringExtra("group");
+        userId = intent.getStringExtra("userKey");
 
         housePic = findViewById(R.id.commentImageview);
         rent = findViewById(R.id.commentRentTv);
@@ -74,48 +88,34 @@ public class CommentActivity extends AppCompatActivity {
         country = findViewById(R.id.commentCountryTv);
         state = findViewById(R.id.commentStateTV);
         description = findViewById(R.id.commentDescription);
-        likes = findViewById(R.id.commentLikesTv);
+        /*likes = findViewById(R.id.commentLikesTv);
         comments = findViewById(R.id.commentsTV);
-        like = findViewById(R.id.CommentLikeBtn);
+        like = findViewById(R.id.CommentLikeBtn);*/
         owner = findViewById(R.id.CommentContactOwnerBtn);
-        location = findViewById(R.id.CommentGetLocationBtn);
         houseType = findViewById(R.id.commentTypeTv);
 
-        commentsEt = findViewById(R.id.commentEt);
-        sendBtn = findViewById(R.id.sendBtn);
-
-        rv = findViewById(R.id.commentsRV);
-
-        commentList = new ArrayList<>();
+        /*commentList = new ArrayList<>();
         adapter = new AdapterComment(CommentActivity.this, commentList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         rv.setLayoutManager(layoutManager);
-        rv.setAdapter(adapter);
-
-
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        assert firebaseUser != null;
-        userId = firebaseUser.getUid();
+        rv.setAdapter(adapter);*/
 
         loadHouseInfo();
-        loadLikes();
         loadUserInfo();
-        setLikes();
-        loadComments();
 
-        sendBtn.setOnClickListener(new View.OnClickListener() {
+        owner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                postComment();
+                Intent intent2 = new Intent(CommentActivity.this, ContactOwner.class);
+                intent2.putExtra("houseId", house);
+                intent2.putExtra("houseDescription", descriptionInfo);
+                intent2.putExtra("houseLocation", locationInfo);
+                intent2.putExtra("address", addressInfo);
+                intent2.putExtra("userKey",userId);
+                startActivity(intent2);
             }
         });
 
-        like.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                likePost();
-            }
-        });
 
     }
 
@@ -127,6 +127,7 @@ public class CommentActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         commentList.clear();
                         for (DataSnapshot ds: snapshot.getChildren()){
+                            Log.d("", snapshot.toString());
                             String commentInfo = ds.child("comment").getValue().toString();
                             String commentUser = ds.child("userName").getValue().toString();
                             String timeComment = ds.child("time").getValue().toString();
@@ -136,8 +137,8 @@ public class CommentActivity extends AppCompatActivity {
                             Comment comment = new Comment(commentUserID, commentID, timeComment,
                                     commentInfo, commentUser);
 
-                            commentList.add(comment);
-                            adapter.notifyItemInserted(commentList.size() - 1);
+                            commentList.add(0,comment);
+                            adapter.notifyItemInserted(0);
                         }
 
 
@@ -214,7 +215,7 @@ public class CommentActivity extends AppCompatActivity {
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        userName = snapshot.child(userId).child("userName").getValue().toString();
+                        userName = snapshot.child(userId).child("uid").getValue().toString();
 
                     }
 
@@ -246,7 +247,6 @@ public class CommentActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Void unused) {
                 commentsEt.setText("");
-                updateCommentCount();
             }
         });
     }
@@ -298,14 +298,15 @@ public class CommentActivity extends AppCompatActivity {
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        String rentInfo = snapshot.child("rentPerRoom").getValue().toString();
-                        String addressInfo = snapshot.child("houseLocation").getValue().toString();
+                        rentInfo = snapshot.child("rentPerRoom").getValue().toString();
+                        addressInfo = snapshot.child("address").getValue().toString();
                         String stateInfo = snapshot.child("state").getValue().toString();
                         String countryInfo = snapshot.child("country").getValue().toString();
                         String imageInfo = snapshot.child("houseImage").getValue().toString();
-                        String descriptionInfo = snapshot.child("houseDescription").getValue().toString();
+                        descriptionInfo = snapshot.child("houseDescription").getValue().toString();
                         String typeInfo = snapshot.child("type").getValue().toString();
-                        String roomInfo = snapshot.child("noOfRoom").getValue().toString();
+                        roomInfo = snapshot.child("noOfRoom").getValue().toString();
+                        locationInfo = snapshot.child("houseLocation").getValue().toString();
 
                         rent.setText(rentInfo);
                         address.setText(addressInfo);

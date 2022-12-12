@@ -18,10 +18,12 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupViewHol
 
     private Context context;
     private ArrayList<Group> groups;
+    private String userKey;
 
-    public GroupAdapter(Context context, ArrayList<Group> groups) {
+    public GroupAdapter(Context context, ArrayList<Group> groups, String userKey) {
         this.context = context;
         this.groups = groups;
+        this.userKey = userKey;
     }
 
     @NonNull
@@ -42,6 +44,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupViewHol
             public void onClick(View view) {
                 Intent intent = new Intent(context, GroupActivity.class);
                 intent.putExtra("groupId", group.getGroupID());
+                intent.putExtra("userKey", userKey);
                 context.startActivity(intent);
             }
         });

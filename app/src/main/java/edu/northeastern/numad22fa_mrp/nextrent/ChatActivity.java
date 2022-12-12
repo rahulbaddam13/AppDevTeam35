@@ -54,13 +54,14 @@ public class ChatActivity extends AppCompatActivity {
         groupList = new ArrayList<>();
         groupsRecyclerView = findViewById(R.id.recyclerView);
 
-        adapter = new GroupAdapter(this, groupList);
+        bundle = getIntent().getExtras();
+        userKey = bundle.getString("userKey");
+
+        adapter = new GroupAdapter(this, groupList, userKey);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         groupsRecyclerView.setLayoutManager(layoutManager);
         groupsRecyclerView.setAdapter(adapter);
 
-        bundle = getIntent().getExtras();
-        userKey = bundle.getString("userKey");
 
         loadGroups();
 

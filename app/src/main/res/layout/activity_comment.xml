@@ -9,8 +9,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="5dp"
-        android:layout_above="@id/createComment">
+        android:layout_margin="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -143,10 +142,10 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:ellipsize="end"
                                         android:padding="5dp"
                                         android:text="Address : "
                                         android:textSize="15dp"
+                                        android:maxLines="1"
                                         android:textStyle="italic" />
 
                                     <TextView
@@ -288,7 +287,7 @@
                         android:layout_margin="10dp"
                         android:text="Description" />
 
-                    <LinearLayout
+                    <!--<LinearLayout
                         android:id="@+id/likeCommentLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -315,24 +314,24 @@
                             android:textColor="@color/colorPrimary" />
 
 
-                    </LinearLayout>
+                    </LinearLayout>-->
 
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/likeCommentLayout"
+                        android:layout_below="@id/commentDescription"
                         android:gravity="center"
                         android:orientation="horizontal">
 
-                        <Button
+                        <!--<Button
                             android:id="@+id/CommentLikeBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="3dp"
                             android:layout_weight="1"
                             android:drawableLeft="@drawable/ic_like"
-                            android:text="Like" />
+                            android:text="Like" />-->
 
                         <Button
                             android:id="@+id/CommentContactOwnerBtn"
@@ -340,15 +339,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="3dp"
                             android:layout_weight="1"
-                            android:text="Owner" />
-
-                        <Button
-                            android:id="@+id/CommentGetLocationBtn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="3dp"
-                            android:layout_weight="1"
-                            android:text="Location" />
+                            android:text="Contact Owner" />
 
                     </LinearLayout>
 
@@ -358,7 +349,7 @@
 
             </androidx.cardview.widget.CardView>
 
-            <TextView
+           <!-- <TextView
                 android:id="@+id/commentText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -367,20 +358,19 @@
                 android:drawableLeft="@drawable/ic_comment"
                 android:drawablePadding="5dp"
                 android:padding="2dp"
-                android:text="Comments"
-                android:textColor="@color/black" />
+                android:text="Comments"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/commentsRV"/>
+                android:id="@+id/commentsRV"/>-->
 
         </LinearLayout>
 
 
     </androidx.core.widget.NestedScrollView>
 
-    <RelativeLayout
+   <!-- <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -394,7 +384,6 @@
             android:padding="10dp"
             android:hint="Enter Comment ..."
             android:inputType="textCapSentences|textMultiLine"
-            android:background="@color/white"
             android:layout_toStartOf="@id/sendBtn"/>
 
         <ImageButton
@@ -402,11 +391,11 @@
             android:src="@drawable/ic_send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
             android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
             android:layout_alignParentEnd="true"/>
 
 
-    </RelativeLayout>
+    </RelativeLayout>-->
 
 </RelativeLayout>
