@@ -49,13 +49,14 @@ public class FavoritesActivity extends AppCompatActivity {
         rv = findViewById(R.id.favRecycler);
 
         favProps = new ArrayList<>();
-        adapter = new FavoritesAdapter(FavoritesActivity.this, favProps);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        rv.setLayoutManager(layoutManager);
-        rv.setAdapter(adapter);
+
 
         bundle = getIntent().getExtras();
         userKey = bundle.getString("userKey");
+        adapter = new FavoritesAdapter(FavoritesActivity.this, favProps,userKey);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        rv.setLayoutManager(layoutManager);
+        rv.setAdapter(adapter);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         db = firebaseDatabase.getReference("");

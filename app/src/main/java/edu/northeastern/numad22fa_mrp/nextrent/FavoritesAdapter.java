@@ -35,10 +35,12 @@ import edu.northeastern.numad22fa_mrp.R;
 public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolder>{
     private Context context;
     private ArrayList<favProperty> favProps;
+    String userKey;
 
-    public FavoritesAdapter(Context context, ArrayList<favProperty> favProps) {
+    public FavoritesAdapter(Context context, ArrayList<favProperty> favProps,String userKey) {
         this.context = context;
         this.favProps = favProps;
+        this.userKey = userKey;
     }
 
     @NonNull
@@ -84,6 +86,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
                 intent.putExtra("type",prop.getType());
                 intent.putExtra("address",prop.getAddress());
                 intent.putExtra("baths",prop.getBaths());
+                intent.putExtra("userKey",userKey);
                 context.startActivity(intent);
             }
         });

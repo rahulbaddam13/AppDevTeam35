@@ -23,15 +23,20 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Iterator;
 import java.util.Objects;
 
+import edu.northeastern.numad22fa_mrp.nextrent.Preference;
+
 public class ContactOwner extends AppCompatActivity {
 
     TextView ownerName,ownerEmail,phoneNumber;
     String houseId,houseDescription,location,address;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference, databaseReference2;
     FirebaseDatabase firebaseDatabase;
     String user;
     Button send,call;
-    String subject, body,number;
+    String subject, body,number,userKey;
+    Preference currentUserPreference;
+    String name,gender,userNumber,email;
+    String x, y,i, j;
 
 
     @Override
@@ -45,8 +50,8 @@ public class ContactOwner extends AppCompatActivity {
         houseDescription = intent.getStringExtra("houseDescription");
         location = intent.getStringExtra("houseLocation");
         address = intent.getStringExtra("address");
+        userKey = intent.getStringExtra("userKey");
         ownerName = findViewById(R.id.ownerName);
-        //ownerName.setText(houseId);
         ownerEmail = findViewById(R.id.ownerEmail);
         phoneNumber = findViewById(R.id.phoneNumber);
         send = findViewById(R.id.sendMail);
@@ -54,6 +59,40 @@ public class ContactOwner extends AppCompatActivity {
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("");
+        databaseReference2 = firebaseDatabase.getReference("");
+        databaseReference2.child("seekers").child(userKey).child("myPreference").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                currentUserPreference = snapshot.getValue(Preference.class);
+                assert currentUserPreference != null;
+                x = currentUserPreference.getFullName();
+                if(x!= null){
+                    name = x;
+                }
+                y = currentUserPreference.getPhoneNumber();
+                if(y!= null){
+                    userNumber = y;
+                }
+                i = currentUserPreference.getEmailID();
+                if(i!= null){
+                    email = i;
+                }
+                j = currentUserPreference.getLegalSex();
+                if(j!= null){
+                    gender = j;
+                }
+                body = "Hey Next Rent Manager," + System.lineSeparator()+System.lineSeparator() + "I really loved your property at "+address+". I would like to submit " +
+                        "an application for this property."+System.lineSeparator()+System.lineSeparator()+"The following are my application details :"+ System.lineSeparator()+System.lineSeparator()+
+                        "Full Name : "+x +System.lineSeparator()+ "Gender : "+ j+System.lineSeparator()+"You can reach me at : "+y+System.lineSeparator()+" Or email me at: "+i+System.lineSeparator()+System.lineSeparator()+
+                        "Thank you, Cheers";
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -114,9 +153,7 @@ public class ContactOwner extends AppCompatActivity {
         });
 
         subject = "I am interested in your property at "+ address;
-        body = "It is a long established fact that a reader will be distracted" +
-                " by the readable content of a page when looking at its layout." +
-                " The point of using Lorem Ipsum is that it has a more-or-less normal distribution";
+
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

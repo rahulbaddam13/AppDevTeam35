@@ -38,6 +38,7 @@ public class PropertyContentsSeeker extends AppCompatActivity {
     Boolean updateStatus;
     TextInputEditText stateTv, countryTv,locationTv,houseDesc,addressTv;
     Button contactOwner;
+    String userKey;
 
 
     @Override
@@ -45,9 +46,6 @@ public class PropertyContentsSeeker extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_property_contents_seeker);
 
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        assert firebaseUser != null;
-        String userId = firebaseUser.getUid();
 
 
         Intent intent = getIntent();
@@ -63,6 +61,7 @@ public class PropertyContentsSeeker extends AppCompatActivity {
         type = intent.getStringExtra("type");
         address = intent.getStringExtra("address");
         baths = intent.getStringExtra("baths");
+        userKey = intent.getStringExtra("userKey");
 
 
 
@@ -150,6 +149,7 @@ public class PropertyContentsSeeker extends AppCompatActivity {
                 intent2.putExtra("houseDescription", houseDescription);
                 intent2.putExtra("houseLocation", houseLocation);
                 intent2.putExtra("address",address);
+                intent2.putExtra("userKey",userKey);
                 startActivity(intent2);
 
             }
