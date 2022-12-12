@@ -4,7 +4,7 @@ public class Group {
     private String GroupID, name, description;
 
     public Group(String groupID, String name, String description) {
-        GroupID = groupID;
+        this.GroupID = groupID;
         this.name = name;
         this.description = description;
     }
@@ -14,7 +14,7 @@ public class Group {
     }
 
     public void setGroupID(String groupID) {
-        GroupID = groupID;
+        this.GroupID = groupID;
     }
 
     public String getName() {

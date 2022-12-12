@@ -16,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class AllMembersActivity extends AppCompatActivity {
 
@@ -78,7 +79,7 @@ public class AllMembersActivity extends AppCompatActivity {
              public void onDataChange(@NonNull DataSnapshot snapshot) {
                  members.clear();
                  for (DataSnapshot ds: snapshot.getChildren()){
-                     String id = ds.child("uid").getValue().toString();
+                     String id = ds.getKey();
                      String name = ds.child("userName").getValue().toString();
                      if (!currentMembers.contains(id)){
                          Member mem = new Member(name, id);

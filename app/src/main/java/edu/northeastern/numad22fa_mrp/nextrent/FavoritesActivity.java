@@ -48,15 +48,16 @@ public class FavoritesActivity extends AppCompatActivity {
 
         rv = findViewById(R.id.favRecycler);
 
+        userKey = getIntent().getStringExtra("userKey");
+
         favProps = new ArrayList<>();
-
-
-        bundle = getIntent().getExtras();
-        userKey = bundle.getString("userKey");
-        adapter = new FavoritesAdapter(FavoritesActivity.this, favProps,userKey);
+        adapter = new FavoritesAdapter(FavoritesActivity.this, favProps, userKey);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         rv.setLayoutManager(layoutManager);
         rv.setAdapter(adapter);
+
+        bundle = getIntent().getExtras();
+        userKey = bundle.getString("userKey");
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         db = firebaseDatabase.getReference("");
@@ -89,7 +90,7 @@ public class FavoritesActivity extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.page_profile:
-                        Intent clickIntent1 = new Intent(FavoritesActivity.this, SeekerProfileActivity.class);
+                        Intent clickIntent1 = new Intent(FavoritesActivity.this, UserProfileActivity.class);
                         clickIntent1.putExtra("userKey", userKey);
                         startActivity(clickIntent1);
                         overridePendingTransition(0,0);
