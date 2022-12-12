@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +24,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -379,7 +382,12 @@ public class PropertySeekerActivity extends AppCompatActivity {
                 return false;
             }
         });
-
+        Snackbar snack = Snackbar.make(findViewById(android.R.id.content), "Swipe down on property to add to favorites, swipe up to remove", Snackbar.LENGTH_LONG);
+        View view = snack.getView();
+        FrameLayout.LayoutParams params =(FrameLayout.LayoutParams)view.getLayoutParams();
+        params.gravity = Gravity.TOP;
+        view.setLayoutParams(params);
+        snack.show();
 
 
     }

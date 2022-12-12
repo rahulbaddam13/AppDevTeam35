@@ -1,10 +1,12 @@
 package edu.northeastern.numad22fa_mrp.nextrent;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +16,8 @@ import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import edu.northeastern.numad22fa_mrp.R;
 
@@ -30,11 +34,13 @@ public class BasicQuestionsActivity extends AppCompatActivity {
     private EditText fullName;
     private EditText emailID;
     private EditText phoneNumber;
+    RadioGroup legalSexRG;
+    RadioButton male, female, other;
     final String[] legalSex = new String[1];
     private Button nextBtn;
     //bundle with data from previous activity.
     Bundle bundle = null;
-    String userKey;
+    String userKey,seekerFullName, seekerEmailId,seekerPhone, legalSexb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +49,19 @@ public class BasicQuestionsActivity extends AppCompatActivity {
 
         bundle = getIntent().getExtras();
         userKey = bundle.getString("userKey");
+        seekerFullName = bundle.getString("seekerFullName");
+        seekerEmailId =bundle.getString("seekerEmailId");
+        seekerPhone = bundle.getString("seekerPhone");
+        legalSexb = bundle.getString("legalSex");
+
 
         fullName = findViewById(R.id.editTextSeekerFullName);
         emailID = findViewById(R.id.editTextSeekerEmail);
         phoneNumber= findViewById(R.id.editTextSeekerPhoneNumber);
+        legalSexRG = (RadioGroup) findViewById(R.id.radioGroupLegalSex);
+        male = (RadioButton) findViewById(R.id.radioButtonMale);
+        female = (RadioButton) findViewById(R.id.radioButtonFemale);
+        other = (RadioButton) findViewById(R.id.radioButtonOthers);
         avatar = findViewById(R.id.user_avatar);
         if(bundle.getInt("imageId") == 0){
             avatar.setImageResource(R.drawable.user_profile_default);
@@ -54,38 +69,48 @@ public class BasicQuestionsActivity extends AppCompatActivity {
             avatar.setImageResource(bundle.getInt("imageId"));
         }
 
+        if(seekerFullName != null){
+            fullName.setText(seekerFullName);
+        }
+        if(seekerEmailId != null){
+            emailID.setText(seekerEmailId);
+        }
+        if(seekerPhone!=null){
+            phoneNumber.setText(seekerPhone);
+        }
+        if(legalSexb != null){
+            if("Male".equalsIgnoreCase(legalSexb)){
+                male.setSelected(true);
+            } else if("Female".equalsIgnoreCase(legalSexb)){
+                female.setSelected(true);
+            } else{
+                other.setSelected(true);
+            }
+        }
+
         //on click of avatar
         avatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Get the values,do validation.
+                String seekerFullName = fullName.getText().toString();
+                String seekerEmailId = emailID.getText().toString();
+                String seekerPhone = phoneNumber.getText().toString();
+
                 Intent clickIntent = new Intent(BasicQuestionsActivity.this, UserAvatarActivity.class);
+                clickIntent.putExtra("seekerFullName", seekerFullName);
+                clickIntent.putExtra("seekerEmailId", seekerEmailId);
+                clickIntent.putExtra("seekerPhone", seekerPhone);
+                clickIntent.putExtra("legalSex",legalSex[0]);
                 clickIntent.putExtra("userKey", userKey);
                 startActivity(clickIntent);
             }
         });
-        RadioGroup legalSexRG  = (RadioGroup) findViewById(R.id.radioGroupLegalSex);
         legalSexRG.setOnCheckedChangeListener((group, checkedId) -> {
             // do operations specific to this selection
             RadioButton radioButton = (RadioButton) findViewById(checkedId);
             legalSex[0] = radioButton.getText().toString();
         });
-
-        //age picker
-        /*picker = (NumberPicker) findViewById(R.id.age_number_picker);
-        int j = 0;
-        for(int i = 18; i <= 100; i++,j++){
-            pickerVal[j] = String.valueOf(i);
-        }
-        picker.setMinValue(18);
-        picker.setMaxValue(pickerVal.length - 1);
-        picker.setDisplayedValues(pickerVal);
-
-        picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-                agePicker = String.valueOf(picker.getValue());
-            }
-        });*/
 
         nextBtn = (Button) findViewById(R.id.nextBtn);
         nextBtn.setOnClickListener(new View.OnClickListener() {
@@ -109,4 +134,5 @@ public class BasicQuestionsActivity extends AppCompatActivity {
             }
         });
     }
+
 }
