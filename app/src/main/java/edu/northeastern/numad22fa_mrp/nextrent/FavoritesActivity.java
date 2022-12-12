@@ -90,7 +90,7 @@ public class FavoritesActivity extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.page_profile:
-                        Intent clickIntent1 = new Intent(FavoritesActivity.this, UserProfileActivity.class);
+                        Intent clickIntent1 = new Intent(FavoritesActivity.this, SeekerProfileActivity.class);
                         clickIntent1.putExtra("userKey", userKey);
                         startActivity(clickIntent1);
                         overridePendingTransition(0,0);
