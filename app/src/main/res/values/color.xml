@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="gradEnd">#67EFC8</color>
+    <color name="gradStart">#63C9FF</color>
+    <color name="headings">#3797CF</color>
+    <color name="grey">#E5E5E5</color>
+    <color name="btnclr">#31647F</color>
+
+</resources>

@@ -1,10 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@drawable/grad"
+    tools:context=".nextrent.FinalProject">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/appName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/marcellussc"
+            android:gravity="center_horizontal"
+            android:text="@string/final_app_name"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/black"
+            android:textSize="50sp" />
+
+        <TextView
+            android:id="@+id/appTagline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/appName"
+            android:fontFamily="@font/marcellussc"
+            android:gravity="center_horizontal"
+            android:text="Find your next home!"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/edittext_username"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/appTagline"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="185dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/custom_edit_text"
+            android:backgroundTint="#F9F9FB"
+            android:hint="@string/user_name"
+            android:inputType="textShortMessage"
+            android:padding="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="#696969"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/appQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edittext_username"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:fontFamily="@font/marcellussc"
+            android:gravity="center_horizontal"
+            android:text="@string/login_as"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/seekerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/appQuestion"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/btnclr"
+            android:fontFamily="@font/marcellussc"
+            android:onClick="onClickTypeOfUser"
+            android:text="Seeker"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+
+        <Button
+            android:id="@+id/managerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/seekerButton"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/btnclr"
+            android:fontFamily="@font/marcellussc"
+            android:onClick="onClickTypeOfUser"
+            android:text="@string/login_owner_btn"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+</ScrollView>

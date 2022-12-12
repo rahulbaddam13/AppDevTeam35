@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_two">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/enterLocationTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/questrialregular"
+            android:text="Enter the locations"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:id="@+id/linearOne"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/enterLocationTextView"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <EditText
+                android:id="@+id/editTextTextLocation"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/custom_edit_text"
+                android:ems="10"
+                android:hint="City"
+                android:inputType="textPersonName"
+                android:padding="15dp"
+                android:textColor="@color/black"
+                android:textColorHint="#696969"
+                android:textSize="15sp" />
+
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/addLocationBtn"
+            android:layout_width="85dp"
+            android:layout_height="54dp"
+            android:layout_below="@id/linearOne"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="25dp"
+            android:backgroundTint="@color/purple_200"
+            android:onClick="addChipToGroup"
+            android:text="Add" />
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/locationChipGroup"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/addLocationBtn"
+            android:layout_height="wrap_content">
+
+        </com.google.android.material.chip.ChipGroup>
+
+        <TextView
+            android:id="@+id/typeOfHouseTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/locationChipGroup"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/questrialregular"
+            android:text="What type of house are you looking for?"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup2"
+            android:layout_width="match_parent"
+            android:layout_height="113dp"
+            android:layout_below="@id/typeOfHouseTextView"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp">
+
+            <RadioGroup
+                android:layout_width="224dp"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/apartment_chkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/questrialregular"
+                    android:text="Apartment"
+                    android:textStyle="bold"
+
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+
+                <CheckBox
+                    android:id="@+id/condo_chkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/questrialregular"
+                    android:text="Condo"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+            </RadioGroup>
+
+            <RadioGroup
+                android:layout_width="158dp"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/townhouse_chkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/questrialregular"
+                    android:text="Townhouse"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <CheckBox
+                    android:id="@+id/duplex_chkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/questrialregular"
+                    android:text="Duplex"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+            </RadioGroup>
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/NumberOfBedroomTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/radioGroup2"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/questrialregular"
+            android:text="Number of bedrooms : "
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/bedroomRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@+id/NumberOfBedroomTextView">
+
+            <RadioButton
+                android:id="@+id/oneBedroom"
+                android:layout_width="63dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/questrialregular"
+                android:text="1"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+            <RadioButton
+                android:id="@+id/twoToThreeBedrooms"
+                android:layout_width="76dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/questrialregular"
+                android:text="2 - 3"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+            <RadioButton
+                android:id="@+id/moreBedrooms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/questrialregular"
+                android:text="> 4"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/NumberOfBathroomTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bedroomRadioGroup"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/questrialregular"
+            android:text="Number of bathrooms : "
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/bathroomRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@+id/NumberOfBathroomTextView">
+
+
+            <RadioButton
+                android:id="@+id/oneBathroom"
+                android:layout_width="63dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/questrialregular"
+                android:text="1"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+            <RadioButton
+                android:id="@+id/twoToThreeBathrooms"
+                android:layout_width="76dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/questrialregular"
+                android:text="2 - 3"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+            <RadioButton
+                android:id="@+id/moreBathrooms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/questrialregular"
+                android:text="> 4"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/priceRangeTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bathroomRadioGroup"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/questrialregular"
+            android:text="What's your price range?"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/minimumPriceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/priceRangeTextView"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/questrialregular"
+            android:text="Minimum"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/maximumPriceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/priceRangeTextView"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/questrialregular"
+            android:text="Maximum"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="15sp" />
+
+        <Spinner
+            android:id="@+id/minimumPriceSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/minimumPriceTextView"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown" />
+
+        <Spinner
+            android:id="@+id/maximumPriceSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"
+            android:layout_marginLeft="250dp"
+            android:layout_below="@id/maximumPriceTextView"/>
+
+        <Button
+            android:id="@+id/surveySubmitBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/minimumPriceSpinner"
+            android:backgroundTint="@color/btnclr"
+            android:onClick="submitPreferenceBtn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:text="Submit" />
+
+
+    </RelativeLayout>
+
+</ScrollView>

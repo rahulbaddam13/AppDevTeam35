@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".nextrent.CommentActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/sharedCardview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:elevation="5dp"
+                android:padding="10dp"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/commentHouseInfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <ImageView
+                                android:id="@+id/commentImageview"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:padding="5dp"
+                                android:src="@drawable/happy_fox" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/commentRent"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="end"
+                                        android:padding="5dp"
+                                        android:text="Rent in $:"
+                                        android:textSize="15dp"
+                                        android:textStyle="italic" />
+
+                                    <TextView
+                                        android:id="@+id/commentRentTv"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="end"
+                                        android:padding="5dp"
+                                        android:text="2000"
+                                        android:textSize="15dp"
+                                        android:textStyle="bold" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="1" />
+                                    <!--                        <Button-->
+                                    <!--                            android:id="@+id/editButton"-->
+                                    <!--                            android:layout_width="fill_parent"-->
+                                    <!--                            android:layout_height="35dp"-->
+                                    <!--                            android:textAlignment="textStart"-->
+                                    <!--                            android:text="Edit"-->
+                                    <!--                            android:drawableRight="@drawable/ic_search_foreground"-->
+                                    <!--                            android:textSize="12sp"-->
+                                    <!--                            android:textStyle="bold"-->
+                                    <!--                            android:background="@android:color/transparent">-->
+                                    <!--                        </Button>-->
+
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/commentRooms"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:ellipsize="end"
+                                        android:padding="5dp"
+                                        android:text="Rooms:"
+                                        android:textSize="15dp"
+                                        android:textStyle="italic" />
+
+                                    <TextView
+                                        android:id="@+id/commentRoomsTV"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:ellipsize="end"
+                                        android:padding="5dp"
+                                        android:text="2"
+                                        android:textSize="15dp"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:padding="5dp"
+                                        android:text="Address : "
+                                        android:textSize="15dp"
+                                        android:maxLines="1"
+                                        android:textStyle="italic" />
+
+                                    <TextView
+                                        android:id="@+id/commentAddressTV"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:ellipsize="end"
+                                        android:padding="5dp"
+                                        android:text="Boston"
+                                        android:textSize="15dp"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:ellipsize="end"
+                                        android:padding="5dp"
+                                        android:text="State : "
+                                        android:textSize="15dp"
+                                        android:textStyle="italic" />
+
+                                    <TextView
+                                        android:id="@+id/commentStateTV"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:ellipsize="end"
+                                        android:padding="5dp"
+                                        android:text="MA"
+                                        android:textSize="15dp"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:ellipsize="end"
+                                        android:padding="5dp"
+                                        android:text="Country : "
+                                        android:textSize="15dp"
+                                        android:textStyle="italic" />
+
+                                    <TextView
+                                        android:id="@+id/commentCountryTv"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:ellipsize="end"
+                                        android:padding="5dp"
+                                        android:text="USA"
+                                        android:textSize="15dp"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:ellipsize="end"
+                                        android:padding="5dp"
+                                        android:text="Type : "
+                                        android:textSize="15dp"
+                                        android:textStyle="italic" />
+
+                                    <TextView
+                                        android:id="@+id/commentTypeTv"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:ellipsize="end"
+                                        android:padding="5dp"
+                                        android:text="Condo"
+                                        android:textSize="15dp"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                </LinearLayout>
+                                <!--                    <LinearLayout-->
+                                <!--                        android:layout_width="wrap_content"-->
+                                <!--                        android:layout_height="wrap_content"-->
+                                <!--                        android:gravity="right">-->
+                                <!--                        <View-->
+                                <!--                            android:layout_width="0dp"-->
+                                <!--                            android:layout_height="0dp"-->
+                                <!--                            android:layout_weight="1"-->
+                                <!--                            />-->
+                                <!--                        <Button-->
+                                <!--                            android:id="@+id/editProperty"-->
+                                <!--                            android:layout_width="101dp"-->
+                                <!--                            android:layout_height="35dp"-->
+                                <!--                            android:background="@drawable/edit_text"-->
+                                <!--                            android:drawableRight="@android:drawable/ic_menu_edit"-->
+                                <!--                            android:text="Edit"-->
+                                <!--                            android:textAllCaps="false" />-->
+
+                                <!--                    </LinearLayout>-->
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/commentDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/commentHouseInfo"
+                        android:layout_margin="10dp"
+                        android:text="Description" />
+
+                    <!--<LinearLayout
+                        android:id="@+id/likeCommentLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/commentDescription"
+                        android:layout_margin="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/commentLikesTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="# of Likes"
+                            android:textColor="@color/colorPrimary" />
+
+                        <TextView
+                            android:id="@+id/commentsTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="# of Comments"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/colorPrimary" />
+
+
+                    </LinearLayout>-->
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/commentDescription"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <!--<Button
+                            android:id="@+id/CommentLikeBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:layout_weight="1"
+                            android:drawableLeft="@drawable/ic_like"
+                            android:text="Like" />-->
+
+                        <Button
+                            android:id="@+id/CommentContactOwnerBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:layout_weight="1"
+                            android:text="Contact Owner" />
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+           <!-- <TextView
+                android:id="@+id/commentText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sharedCardview"
+                android:layout_margin="5dp"
+                android:drawableLeft="@drawable/ic_comment"
+                android:drawablePadding="5dp"
+                android:padding="2dp"
+                android:text="Comments"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/commentsRV"/>-->
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+   <!-- <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/createComment">
+
+        <EditText
+            android:id="@+id/commentEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:hint="Enter Comment ..."
+            android:inputType="textCapSentences|textMultiLine"
+            android:layout_toStartOf="@id/sendBtn"/>
+
+        <ImageButton
+            android:id="@+id/sendBtn"
+            android:src="@drawable/ic_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:layout_alignParentEnd="true"/>
+
+
+    </RelativeLayout>-->
+
+</RelativeLayout>

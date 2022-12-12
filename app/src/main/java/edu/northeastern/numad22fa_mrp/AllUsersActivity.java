@@ -230,6 +230,7 @@ public class AllUsersActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putString("userName", userName);
         bundle.putString("currentUserName", currentUserName);
+        bundle.putString("source", "notification");
         resultingIntent.putExtras(bundle);
         PendingIntent pendingIntenet = PendingIntent.getActivity(this,
                 (int) System.currentTimeMillis(),

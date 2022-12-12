@@ -16,10 +16,49 @@
     <string name="rahul">Rahul Baddam</string>
     <string name="madhuri">Madhuri Krishnamurthy</string>
     <string name="team35">Team 35: Next Rent</string>
+    <string name="final_app_name">NEXT RENT</string>
+    <string name="login_seeker_btn">Property seeker</string>
+    <string name="login_owner_btn">Property owner</string>
+    <string name="login_as">I am a..</string>
     <item name="happy_fox" type="id" />
     <item name="sad_fox" type="id" />
     <item name="angry_fox" type="id" />
     <item name="hungry_fox" type="id" />
     <item name="love_fox" type="id" />
     <item name="sick_fox" type="id" />
+    <string-array name="propertyType">
+        <item>Apartment</item>
+        <item>Townhouse</item>
+        <item>Duplex</item>
+        <item>Condo</item>
+    </string-array>
+    <string-array name="min_price_array">
+        <item>$0</item>
+        <item>$200</item>
+        <item>$400</item>
+        <item>$600</item>
+        <item>$800</item>
+        <item>$1000</item>
+        <item>$1200</item>
+        <item>$1400</item>
+        <item>$1600</item>
+        <item>$1800</item>
+    </string-array>
+    <string-array name="max_price_array">
+        <item>$2000</item>
+        <item>$2200</item>
+        <item>$2400</item>
+        <item>$2600</item>
+        <item>$2800</item>
+        <item>$3000</item>
+        <item>$3500</item>
+        <item>$4000</item>
+        <item>$4500</item>
+        <item>$5000</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="vertical_ellipsis">&#8942;</string>
+    <string name="register"><u>Register</u>.</string>
+    <string name="login"><u>Login</u>.</string>
 </resources>
