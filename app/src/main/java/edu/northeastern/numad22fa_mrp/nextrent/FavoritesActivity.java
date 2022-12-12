@@ -139,7 +139,9 @@ public class FavoritesActivity extends AppCompatActivity {
     public void onBackPressed()
     {
         super.onBackPressed();
-        startActivity(new Intent(FavoritesActivity.this, PropertySeekerActivity.class));
+        Intent clickIntent1 = new Intent(FavoritesActivity.this, PropertySeekerActivity.class);
+        clickIntent1.putExtra("userKey", userKey);
+        startActivity(clickIntent1);
         finish();
     }
 }

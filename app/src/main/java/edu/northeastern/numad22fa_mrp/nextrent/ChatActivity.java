@@ -140,7 +140,9 @@ public class ChatActivity extends AppCompatActivity {
     public void onBackPressed()
     {
         super.onBackPressed();
-        startActivity(new Intent(ChatActivity.this, PropertySeekerActivity.class));
+        Intent clickIntent1 = new Intent(ChatActivity.this, PropertySeekerActivity.class);
+        clickIntent1.putExtra("userKey", userKey);
+        startActivity(clickIntent1);
         finish();
     }
 }
